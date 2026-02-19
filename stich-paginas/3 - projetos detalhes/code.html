@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Terminal: Interactive Project Deep Dive</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#007AFF", // Electric Blue
+                        "background-dark": "#0A0C10", // Deep void background
+                        "editor-bg": "#0d1117",
+                        "panel-bg": "#161b22",
+                        "border-dim": "#30363d",
+                        "accent-glow": "rgba(0, 122, 255, 0.15)",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1f2937 1px, transparent 1px), linear-gradient(to bottom, #1f2937 1px, transparent 1px)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(22, 27, 34, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(48, 54, 61, 0.6);
+        }
+        .code-block {
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+        }.circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #007AFF, transparent);
+            opacity: 0.6;
+            z-index: 10;
+        }
+        .glow-point {
+            box-shadow: 0 0 10px #007AFF, 0 0 20px #007AFF;
+        }::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0C10;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #007AFF;
+        }
+    </style>
+</head>
+<body class="bg-background-dark min-h-screen flex flex-col font-display text-slate-100 overflow-x-hidden selection:bg-primary/30">
+<div class="fixed inset-0 z-0 pointer-events-none opacity-20" style="background-image: radial-gradient(#1f2937 1px, transparent 1px); background-size: 30px 30px;"></div>
+<div class="fixed top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[128px] pointer-events-none z-0"></div>
+<div class="fixed bottom-0 right-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
+<header class="flex items-center justify-between whitespace-nowrap border-b border-border-dim bg-[#0d1117]/90 backdrop-blur-md px-6 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="size-6 text-primary animate-pulse">
+<span class="material-symbols-outlined text-2xl">terminal</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-tight">The Terminal <span class="text-slate-500 font-normal text-sm ml-2">// v2.4.0</span></h2>
+</div>
+<div class="hidden lg:flex flex-1 justify-center gap-1">
+<a class="px-4 py-2 text-slate-400 hover:text-primary transition-colors text-sm font-medium flex items-center gap-2 font-mono" href="#">
+<span class="material-symbols-outlined text-[16px]">folder</span> projects/
+            </a>
+<div class="px-4 py-2 bg-[#1e293b]/50 text-white border-b-2 border-primary text-sm font-bold flex items-center gap-2 font-mono shadow-[0_4px_20px_-10px_rgba(0,122,255,0.5)]">
+<span class="material-symbols-outlined text-[16px] text-primary">code</span> project_view.tsx
+            </div>
+<a class="px-4 py-2 text-slate-400 hover:text-primary transition-colors text-sm font-medium flex items-center gap-2 font-mono" href="#">
+<span class="material-symbols-outlined text-[16px]">description</span> README.md
+            </a>
+</div>
+<div class="flex gap-3 items-center">
+<div class="hidden md:flex items-center gap-2 px-3 py-1 bg-border-dim/30 rounded text-xs font-mono text-slate-400 border border-border-dim">
+<span class="size-2 rounded-full bg-green-500 animate-pulse"></span>
+                Server Online
+            </div>
+<button class="flex size-9 items-center justify-center rounded bg-border-dim text-white hover:bg-primary hover:text-white transition-all duration-300">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 relative z-10 max-w-[1920px] mx-auto w-full">
+<aside class="hidden md:flex w-16 flex-col items-center py-6 border-r border-border-dim bg-[#0d1117] gap-6 sticky top-[61px] h-[calc(100vh-61px)]">
+<div class="flex flex-col gap-4 w-full items-center">
+<button class="group relative flex items-center justify-center size-10 rounded-lg text-slate-400 hover:text-white hover:bg-border-dim transition-all">
+<span class="material-symbols-outlined text-2xl">folder_open</span>
+<span class="absolute left-14 bg-gray-800 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-gray-700 pointer-events-none">Explorer</span>
+</button>
+<button class="group relative flex items-center justify-center size-10 rounded-lg text-slate-400 hover:text-white hover:bg-border-dim transition-all">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+<button class="group relative flex items-center justify-center size-10 rounded-lg text-primary bg-primary/10 border border-primary/20">
+<span class="material-symbols-outlined text-2xl">grid_view</span>
+</button>
+<button class="group relative flex items-center justify-center size-10 rounded-lg text-slate-400 hover:text-white hover:bg-border-dim transition-all">
+<span class="material-symbols-outlined text-2xl">bug_report</span>
+</button>
+</div>
+<div class="mt-auto flex flex-col gap-4">
+<button class="flex items-center justify-center size-10 rounded-lg text-slate-400 hover:text-white hover:bg-border-dim transition-all">
+<span class="material-symbols-outlined text-2xl">account_circle</span>
+</button>
+</div>
+</aside>
+<main class="flex-1 flex flex-col lg:flex-row overflow-hidden">
+<div class="flex-1 flex flex-col min-h-0 overflow-y-auto custom-scrollbar relative">
+<div class="h-10 border-b border-border-dim bg-[#0d1117] flex items-center justify-between px-6 sticky top-0 z-30">
+<div class="flex items-center gap-2 text-sm text-slate-400 font-mono">
+<span class="text-slate-600">src</span>
+<span class="material-symbols-outlined text-[14px] text-slate-600">chevron_right</span>
+<span class="text-slate-600">components</span>
+<span class="material-symbols-outlined text-[14px] text-slate-600">chevron_right</span>
+<span class="text-primary font-bold">ProjectShowcase.tsx</span>
+</div>
+<div class="flex gap-4 text-xs font-mono text-slate-500">
+<span class="flex items-center gap-1 hover:text-slate-300 cursor-pointer"><span class="material-symbols-outlined text-[14px]">visibility</span> Preview</span>
+<span class="flex items-center gap-1 hover:text-slate-300 cursor-pointer"><span class="material-symbols-outlined text-[14px]">code</span> Split</span>
+</div>
+</div>
+<div class="relative w-full min-h-[600px] flex items-center justify-center bg-gradient-to-b from-[#0f1218] to-[#0A0C10] p-8 lg:p-12 overflow-hidden group">
+<div class="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
+<div class="absolute top-[15%] left-[5%] lg:left-[10%] z-20 hidden md:block animate-[float_4s_ease-in-out_infinite]">
+<div class="glass-panel p-3 rounded-lg w-56 border-l-2 border-l-primary shadow-[0_0_15px_rgba(0,122,255,0.2)]">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-sm">bolt</span>
+<span class="text-xs font-bold text-primary font-mono">PERFORMANCE</span>
+</div>
+<p class="text-xs text-slate-300 font-mono">React Query hydration state management optimized for 60fps.</p>
+</div>
+<svg class="absolute top-1/2 -right-24 w-24 h-[100px] pointer-events-none" style="transform: translateY(-50%)">
+<path class="opacity-60" d="M0,50 L24,50 L40,80 L96,80" fill="none" stroke="#007AFF" stroke-width="1"></path>
+<circle class="glow-point animate-ping" cx="96" cy="80" fill="#007AFF" r="2"></circle>
+</svg>
+</div>
+<div class="absolute bottom-[20%] right-[5%] lg:right-[10%] z-20 hidden md:block animate-[float_5s_ease-in-out_infinite_1s]">
+<svg class="absolute top-1/2 -left-24 w-24 h-[60px] pointer-events-none" style="transform: translateY(-50%)">
+<path class="opacity-60" d="M96,30 L72,30 L50,0 L0,0" fill="none" stroke="#007AFF" stroke-width="1"></path>
+<circle class="glow-point animate-ping" cx="0" cy="0" fill="#007AFF" r="2"></circle>
+</svg>
+<div class="glass-panel p-3 rounded-lg w-56 border-r-2 border-r-primary shadow-[0_0_15px_rgba(0,122,255,0.2)] text-right">
+<div class="flex items-center justify-end gap-2 mb-1">
+<span class="text-xs font-bold text-primary font-mono">INTERACTION</span>
+<span class="material-symbols-outlined text-primary text-sm">touch_app</span>
+</div>
+<p class="text-xs text-slate-300 font-mono">Tailwind micro-animations on hover states using Framer Motion.</p>
+</div>
+</div>
+<div class="relative w-full max-w-4xl aspect-video bg-[#0d1117] rounded-xl border border-[#30363d] shadow-2xl z-10 overflow-hidden transform transition-transform duration-700 hover:scale-[1.01] hover:shadow-[0_0_50px_rgba(0,122,255,0.15)]">
+<div class="h-8 bg-[#161b22] border-b border-[#30363d] flex items-center px-4 gap-2">
+<div class="flex gap-1.5">
+<div class="size-2.5 rounded-full bg-[#ff5f56]"></div>
+<div class="size-2.5 rounded-full bg-[#ffbd2e]"></div>
+<div class="size-2.5 rounded-full bg-[#27c93f]"></div>
+</div>
+<div class="mx-auto w-1/2 h-5 bg-[#0d1117] rounded flex items-center justify-center text-[10px] text-slate-500 font-mono">
+<span class="material-symbols-outlined text-[10px] mr-1">lock</span> localhost:3000
+                            </div>
+</div>
+<div class="relative w-full h-[calc(100%-2rem)] bg-slate-900 flex items-center justify-center group overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-slate-900 to-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-slate-700 group-hover:text-primary transition-colors duration-500">play_circle</span>
+</div>
+<div class="absolute inset-0 p-8 flex flex-col pointer-events-none opacity-50">
+<div class="w-full h-16 bg-white/5 mb-8 rounded"></div>
+<div class="flex gap-4">
+<div class="w-1/4 h-64 bg-white/5 rounded"></div>
+<div class="flex-1 h-64 bg-white/5 rounded"></div>
+</div>
+</div>
+<div class="absolute bottom-4 left-4 glass-panel px-3 py-1 rounded text-xs text-white font-mono flex items-center gap-2">
+<span class="size-2 bg-red-500 rounded-full animate-pulse"></span> REC 00:04:23
+                            </div>
+</div>
+</div>
+</div>
+<div class="px-6 py-12 md:px-12 max-w-5xl mx-auto w-full">
+<div class="flex items-baseline gap-4 mb-8 border-b border-border-dim pb-4">
+<h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Project Aurora</h1>
+<span class="text-primary font-mono text-sm bg-primary/10 px-2 py-1 rounded border border-primary/30">v1.0.0-beta</span>
+</div>
+<div class="grid gap-12">
+<div class="prose prose-invert max-w-none">
+<p class="text-slate-400 text-lg leading-relaxed">
+                                A high-performance dashboard for visualizing real-time financial data. Built with a focus on low-latency updates and GPU-accelerated rendering for charts. The architecture leverages WebSockets for live data streaming and a custom WebGL renderer.
+                            </p>
+</div>
+<div class="space-y-6">
+<h3 class="text-xl font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">data_object</span>
+                                Core Architecture
+                            </h3>
+<div class="code-block rounded-lg overflow-hidden shadow-lg font-mono text-sm">
+<div class="bg-[#161b22] px-4 py-2 border-b border-[#30363d] flex justify-between items-center text-xs text-slate-400">
+<span>hooks/useWebSocket.ts</span>
+<span class="text-primary cursor-pointer hover:underline">Copy</span>
+</div>
+<div class="p-4 overflow-x-auto text-slate-300">
+<div class="flex">
+<div class="pr-4 text-slate-600 border-r border-[#30363d] mr-4 select-none text-right">
+                                            1<br/>2<br/>3<br/>4<br/>5<br/>6
+                                        </div>
+<div>
+<span class="text-purple-400">export const</span> <span class="text-blue-400">useDataStream</span> = (url: <span class="text-yellow-300">string</span>) =&gt; {<br/>
+                                              <span class="text-purple-400">const</span> [data, setData] = <span class="text-blue-400">useState</span>(null);<br/>
+                                              <span class="text-slate-500">// WebSocket implementation with auto-reconnect logic</span><br/>
+                                              <span class="text-purple-400">useEffect</span>(() =&gt; {<br/>
+                                                <span class="text-purple-400">const</span> ws = <span class="text-purple-400">new</span> <span class="text-yellow-300">WebSocket</span>(url);<br/>
+                                              }, [url]);<br/>
+                                            }
+                                        </div>
+</div>
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-4 mt-4">
+<div class="glass-panel p-4 rounded-lg">
+<h4 class="font-bold text-white mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-green-400">check_circle</span>
+                                        Real-time Sync
+                                    </h4>
+<p class="text-sm text-slate-400">Sub-100ms latency updates across all connected clients.</p>
+</div>
+<div class="glass-panel p-4 rounded-lg">
+<h4 class="font-bold text-white mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-blue-400">memory</span>
+                                        Memory Safe
+                                    </h4>
+<p class="text-sm text-slate-400">Automatic garbage collection for stale data nodes.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-16 pt-8 border-t border-border-dim flex justify-center">
+<a class="group relative inline-flex items-center justify-center px-8 py-4 font-mono font-bold text-white transition-all duration-200 bg-primary/10 font-lg rounded-lg hover:bg-primary/20 hover:shadow-[0_0_20px_rgba(0,122,255,0.4)] border border-primary/50" href="#">
+<span class="mr-2 text-primary group-hover:text-white transition-colors">$</span> cd .. /projects
+                            <div class="absolute inset-0 rounded-lg ring-1 ring-inset ring-primary/20 group-hover:ring-primary/50"></div>
+</a>
+</div>
+</div>
+<footer class="mt-auto border-t border-border-dim bg-[#0d1117] p-6 text-center text-slate-500 text-xs font-mono">
+<p>Designed &amp; Built by [User Name] © 2023</p>
+</footer>
+</div>
+<aside class="w-full lg:w-80 border-t lg:border-t-0 lg:border-l border-border-dim bg-[#0d1117] flex flex-col h-auto lg:h-[calc(100vh-61px)] overflow-y-auto custom-scrollbar">
+<div class="px-6 py-4 border-b border-border-dim bg-[#161b22]">
+<h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider font-mono">Project Specs</h3>
+</div>
+<div class="p-6 space-y-8">
+<div>
+<h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2 font-display">
+<span class="material-symbols-outlined text-primary text-[18px]">layers</span>
+                            Stack Architecture
+                        </h4>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-background-dark border border-border-dim p-3 rounded flex flex-col items-center justify-center gap-2 hover:border-primary/50 transition-colors group">
+<span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-[#61DAFB] transition-colors">code_blocks</span>
+<span class="text-xs font-mono text-slate-400">React</span>
+</div>
+<div class="bg-background-dark border border-border-dim p-3 rounded flex flex-col items-center justify-center gap-2 hover:border-primary/50 transition-colors group">
+<span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-white transition-colors">javascript</span>
+<span class="text-xs font-mono text-slate-400">Next.js</span>
+</div>
+<div class="bg-background-dark border border-border-dim p-3 rounded flex flex-col items-center justify-center gap-2 hover:border-primary/50 transition-colors group">
+<span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-[#38BDF8] transition-colors">css</span>
+<span class="text-xs font-mono text-slate-400">Tailwind</span>
+</div>
+<div class="bg-background-dark border border-border-dim p-3 rounded flex flex-col items-center justify-center gap-2 hover:border-primary/50 transition-colors group">
+<span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-[#3178C6] transition-colors">data_object</span>
+<span class="text-xs font-mono text-slate-400">TypeScript</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2 font-display">
+<span class="material-symbols-outlined text-primary text-[18px]">speed</span>
+                            Lighthouse Score
+                        </h4>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-1">
+<span>Performance</span>
+<span class="text-green-400">98/100</span>
+</div>
+<div class="w-full bg-background-dark h-2 rounded-full overflow-hidden border border-border-dim">
+<div class="bg-green-500 h-full w-[98%] shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
+</div>
+<div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-1 mt-3">
+<span>Accessibility</span>
+<span class="text-green-400">100/100</span>
+</div>
+<div class="w-full bg-background-dark h-2 rounded-full overflow-hidden border border-border-dim">
+<div class="bg-green-500 h-full w-[100%] shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
+</div>
+<div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-1 mt-3">
+<span>SEO</span>
+<span class="text-yellow-400">92/100</span>
+</div>
+<div class="w-full bg-background-dark h-2 rounded-full overflow-hidden border border-border-dim">
+<div class="bg-yellow-400 h-full w-[92%] shadow-[0_0_10px_rgba(250,204,21,0.5)]"></div>
+</div>
+</div>
+</div>
+<div>
+<h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2 font-display">
+<span class="material-symbols-outlined text-primary text-[18px]">terminal</span>
+                            Deployment
+                        </h4>
+<div class="flex flex-col gap-3">
+<a class="flex items-center justify-between p-3 rounded bg-background-dark border border-border-dim hover:border-primary/50 group transition-all" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-white">rocket_launch</span>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-white group-hover:text-primary transition-colors">Live Demo</span>
+<span class="text-[10px] font-mono text-slate-500">$ npm run start</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-sm text-slate-600 group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
+</a>
+<a class="flex items-center justify-between p-3 rounded bg-background-dark border border-border-dim hover:border-primary/50 group transition-all" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-white">code</span>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-white group-hover:text-primary transition-colors">Repository</span>
+<span class="text-[10px] font-mono text-slate-500">$ git clone repo</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-sm text-slate-600 group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2 font-display">
+<span class="material-symbols-outlined text-primary text-[18px]">group</span>
+                            Contributors
+                        </h4>
+<div class="flex -space-x-2">
+<div class="size-8 rounded-full bg-blue-500 border-2 border-[#0d1117] flex items-center justify-center text-xs font-bold text-white">AD</div>
+<div class="size-8 rounded-full bg-purple-500 border-2 border-[#0d1117] flex items-center justify-center text-xs font-bold text-white">JS</div>
+<div class="size-8 rounded-full bg-[#1e293b] border-2 border-[#0d1117] flex items-center justify-center text-xs font-bold text-slate-400">+2</div>
+</div>
+</div>
+</div>
+</aside>
+</main>
+</div>
+<style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+
+</body></html>

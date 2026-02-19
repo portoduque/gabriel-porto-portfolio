@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Terminal: Projects JSON View</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#007AFF","primary-dark": "#0564ca",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0A0C10",
+                        "panel-dark": "#161b22",
+                        "border-dark": "#30363D","text-main": "#c9d1d9",
+                        "text-muted": "#8b949e",
+                        "card-hover-border": "#007AFF",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    },
+                    backgroundImage: {
+                        'dot-pattern': 'radial-gradient(circle, #21262d 1px, transparent 1px)',
+                    },
+                    backgroundSize: {
+                        'dot-pattern': '24px 24px',
+                    },
+                    animation: {
+                        'blink': 'blink 1s step-end infinite',
+                    },
+                    keyframes: {
+                        blink: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0' },
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 15px rgba(0, 122, 255, 0.3)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0C10;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #21262d;
+            border-radius: 5px;
+            border: 2px solid #0A0C10;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #30363d;
+        }
+        .token-keyword { color: #ff7b72; }
+        .token-string { color: #a5d6ff; }
+        .token-function { color: #d2a8ff; }
+        .token-variable { color: #79c0ff; }
+        .token-comment { color: #8b949e; font-style: italic; }
+        .token-operator { color: #c9d1d9; }
+        .token-number { color: #79c0ff; }
+        .token-class { color: #ffa657; }
+        .card-repo {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-repo:hover {
+            transform: translateY(-2px);
+            border-color: #007AFF;
+            box-shadow: 0 4px 20px rgba(0, 122, 255, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-text-main font-display min-h-screen flex flex-col overflow-hidden selection:bg-primary/30 selection:text-white">
+<div class="flex-1 flex flex-col h-screen w-full relative">
+<div class="absolute inset-0 z-0 opacity-20 pointer-events-none bg-dot-pattern"></div>
+<header class="flex items-center justify-between px-4 py-2 bg-panel-dark border-b border-border-dark z-10 select-none h-12 shrink-0">
+<div class="flex items-center gap-2 w-20">
+<div class="w-3 h-3 rounded-full bg-[#ff5f56] hover:bg-[#ff5f56]/80 cursor-pointer transition-colors"></div>
+<div class="w-3 h-3 rounded-full bg-[#ffbd2e] hover:bg-[#ffbd2e]/80 cursor-pointer transition-colors"></div>
+<div class="w-3 h-3 rounded-full bg-[#27c93f] hover:bg-[#27c93f]/80 cursor-pointer transition-colors"></div>
+</div>
+<div class="flex items-center gap-2 text-sm font-mono text-text-muted opacity-80">
+<span class="material-symbols-outlined text-[16px]">folder</span>
+<span>user</span>
+<span class="text-border-dark">/</span>
+<span>source</span>
+<span class="text-border-dark">/</span>
+<span class="text-white font-medium">projects</span>
+</div>
+<div class="flex items-center gap-4 w-20 justify-end">
+<button class="text-text-muted hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">remove</span>
+</button>
+<button class="text-text-muted hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">crop_square</span>
+</button>
+<button class="text-text-muted hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden z-10">
+<aside class="w-12 bg-background-dark border-r border-border-dark flex flex-col items-center py-4 gap-6 shrink-0 hidden md:flex">
+<button class="text-white relative group">
+<div class="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]"></div>
+<span class="material-symbols-outlined text-[24px] opacity-100 group-hover:opacity-100 transition-opacity">files</span>
+</button>
+<button class="text-text-muted hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</button>
+<button class="text-text-muted hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[24px]">source_environment</span>
+</button>
+<button class="text-text-muted hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[24px]">bug_report</span>
+</button>
+<button class="text-text-muted hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[24px]">extension</span>
+</button>
+<div class="flex-1"></div>
+<button class="text-text-muted hover:text-white transition-colors pb-4">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+</button>
+</aside>
+<div class="flex-1 flex flex-col bg-background-dark/50 backdrop-blur-sm">
+<div class="flex items-end bg-panel-dark border-b border-border-dark overflow-x-auto no-scrollbar h-10 shrink-0">
+<div class="flex items-center gap-2 px-4 h-full bg-panel-dark text-text-muted hover:bg-background-dark/50 border-r border-border-dark border-t-[2px] border-t-transparent min-w-[140px] cursor-pointer group transition-colors">
+<span class="material-symbols-outlined text-[16px] text-[#3776ab]">code</span>
+<span class="text-xs font-mono">main.py</span>
+<span class="material-symbols-outlined text-[14px] ml-auto opacity-0 group-hover:opacity-100 text-text-muted hover:text-white">close</span>
+</div>
+<div class="flex items-center gap-2 px-4 h-full bg-background-dark border-t-[2px] border-t-primary text-white border-r border-border-dark min-w-[140px] cursor-pointer group">
+<span class="material-symbols-outlined text-[16px] text-[#f7df1e]">javascript</span>
+<span class="text-xs font-mono">projects.json</span>
+<span class="material-symbols-outlined text-[14px] ml-auto opacity-0 group-hover:opacity-100 text-text-muted hover:text-white">close</span>
+</div>
+<div class="flex items-center gap-2 px-4 h-full bg-panel-dark text-text-muted hover:bg-background-dark/50 border-r border-border-dark border-t-[2px] border-t-transparent min-w-[140px] cursor-pointer group transition-colors">
+<span class="material-symbols-outlined text-[16px] text-[#3b82f6]">markdown</span>
+<span class="text-xs font-mono">experience.md</span>
+<span class="material-symbols-outlined text-[14px] ml-auto opacity-0 group-hover:opacity-100 text-text-muted hover:text-white">close</span>
+</div>
+<div class="flex items-center gap-2 px-4 h-full bg-panel-dark text-text-muted hover:bg-background-dark/50 border-r border-border-dark border-t-[2px] border-t-transparent min-w-[140px] cursor-pointer group transition-colors">
+<span class="material-symbols-outlined text-[16px] text-green-500">terminal</span>
+<span class="text-xs font-mono">contact.sh</span>
+<span class="material-symbols-outlined text-[14px] ml-auto opacity-0 group-hover:opacity-100 text-text-muted hover:text-white">close</span>
+</div>
+</div>
+<div class="flex-1 flex overflow-y-auto">
+<div class="flex-1 flex">
+<div class="flex flex-col gap-1 pt-8 px-4 text-right text-text-muted/20 font-mono text-sm select-none border-r border-border-dark bg-background-dark w-16 shrink-0 hidden md:flex">
+<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+</div>
+<div class="flex-1 p-8 lg:p-12 overflow-y-auto">
+<div class="mb-6 font-mono text-sm text-text-muted">
+<span class="text-primary">const</span> <span class="text-blue-300">projects</span> <span class="text-white">=</span> <span class="text-white">[</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-8">
+<div class="card-repo bg-[#0d1117] border border-[#30363D] rounded-lg p-5 flex flex-col gap-4 group cursor-pointer">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[20px]">folder</span>
+<h3 class="text-lg font-bold text-white group-hover:text-primary transition-colors font-display">nebula-engine</h3>
+</div>
+<div class="flex items-center gap-2 px-2 py-0.5 rounded-full bg-[#1c2128] border border-border-dark text-xs font-mono">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
+<span class="text-text-muted">Public</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 font-mono text-xs">
+<span class="text-blue-300 bg-blue-900/20 px-2 py-1 rounded border border-blue-900/30">TypeScript</span>
+<span class="text-purple-300 bg-purple-900/20 px-2 py-1 rounded border border-purple-900/30">Three.js</span>
+<span class="text-orange-300 bg-orange-900/20 px-2 py-1 rounded border border-orange-900/30">WebGL</span>
+</div>
+<p class="text-sm text-text-muted leading-relaxed line-clamp-2">
+                                    A high-performance WebGL rendering engine optimized for handling massive particle systems in real-time browser environments.
+                                </p>
+<div class="mt-auto pt-4 border-t border-border-dark flex items-center justify-between text-xs text-text-muted font-mono">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span>2.4k</span>
+</div>
+<div class="flex items-center gap-1 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[14px]">call_split</span>
+<span>342</span>
+</div>
+</div>
+<span class="opacity-60">Updated 2h ago</span>
+</div>
+</div>
+<div class="card-repo bg-[#0d1117] border border-[#30363D] rounded-lg p-5 flex flex-col gap-4 group cursor-pointer">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[20px]">folder</span>
+<h3 class="text-lg font-bold text-white group-hover:text-primary transition-colors font-display">quantum-cli</h3>
+</div>
+<div class="flex items-center gap-2 px-2 py-0.5 rounded-full bg-[#1c2128] border border-border-dark text-xs font-mono">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
+<span class="text-text-muted">Public</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 font-mono text-xs">
+<span class="text-red-300 bg-red-900/20 px-2 py-1 rounded border border-red-900/30">Rust</span>
+<span class="text-yellow-300 bg-yellow-900/20 px-2 py-1 rounded border border-yellow-900/30">WASM</span>
+<span class="text-green-300 bg-green-900/20 px-2 py-1 rounded border border-green-900/30">Tokio</span>
+</div>
+<p class="text-sm text-text-muted leading-relaxed line-clamp-2">
+                                    Command-line interface for managing distributed quantum computing simulations across cloud providers.
+                                </p>
+<div class="mt-auto pt-4 border-t border-border-dark flex items-center justify-between text-xs text-text-muted font-mono">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span>892</span>
+</div>
+<div class="flex items-center gap-1 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[14px]">call_split</span>
+<span>86</span>
+</div>
+</div>
+<span class="opacity-60">Updated 5d ago</span>
+</div>
+</div>
+<div class="card-repo bg-[#0d1117] border border-[#30363D] rounded-lg p-5 flex flex-col gap-4 group cursor-pointer">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[20px]">folder</span>
+<h3 class="text-lg font-bold text-white group-hover:text-primary transition-colors font-display">synthwave-ui</h3>
+</div>
+<div class="flex items-center gap-2 px-2 py-0.5 rounded-full bg-[#1c2128] border border-border-dark text-xs font-mono">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
+<span class="text-text-muted">Public</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 font-mono text-xs">
+<span class="text-cyan-300 bg-cyan-900/20 px-2 py-1 rounded border border-cyan-900/30">React</span>
+<span class="text-blue-300 bg-blue-900/20 px-2 py-1 rounded border border-blue-900/30">Tailwind</span>
+<span class="text-pink-300 bg-pink-900/20 px-2 py-1 rounded border border-pink-900/30">Framer</span>
+</div>
+<p class="text-sm text-text-muted leading-relaxed line-clamp-2">
+                                    A retro-futuristic component library for modern web applications, inspired by 80s aesthetics and terminal interfaces.
+                                </p>
+<div class="mt-auto pt-4 border-t border-border-dark flex items-center justify-between text-xs text-text-muted font-mono">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span>1.2k</span>
+</div>
+<div class="flex items-center gap-1 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[14px]">call_split</span>
+<span>143</span>
+</div>
+</div>
+<span class="opacity-60">Updated 1w ago</span>
+</div>
+</div>
+<div class="card-repo bg-[#0d1117] border border-[#30363D] rounded-lg p-5 flex flex-col gap-4 group cursor-pointer">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[20px]">lock</span>
+<h3 class="text-lg font-bold text-white group-hover:text-primary transition-colors font-display">void-protocol</h3>
+</div>
+<div class="flex items-center gap-2 px-2 py-0.5 rounded-full bg-[#1c2128] border border-border-dark text-xs font-mono">
+<div class="w-1.5 h-1.5 rounded-full bg-yellow-500 shadow-[0_0_8px_rgba(234,179,8,0.6)]"></div>
+<span class="text-text-muted">Private</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 font-mono text-xs">
+<span class="text-indigo-300 bg-indigo-900/20 px-2 py-1 rounded border border-indigo-900/30">Solidity</span>
+<span class="text-slate-300 bg-slate-800/40 px-2 py-1 rounded border border-slate-700/50">Hardhat</span>
+<span class="text-emerald-300 bg-emerald-900/20 px-2 py-1 rounded border border-emerald-900/30">ZK-Snarks</span>
+</div>
+<p class="text-sm text-text-muted leading-relaxed line-clamp-2">
+                                    Privacy-preserving decentralized finance protocol utilizing zero-knowledge proofs for anonymous transactions.
+                                </p>
+<div class="mt-auto pt-4 border-t border-border-dark flex items-center justify-between text-xs text-text-muted font-mono">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span>--</span>
+</div>
+<div class="flex items-center gap-1 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[14px]">visibility_off</span>
+<span>Hidden</span>
+</div>
+</div>
+<span class="opacity-60">Updated 3h ago</span>
+</div>
+</div>
+</div>
+<div class="font-mono text-sm text-text-muted">
+<span class="text-white">];</span>
+<span class="text-text-muted block mt-2 ml-2">// <span class="text-primary cursor-pointer hover:underline">load_more_projects()</span></span>
+</div>
+</div>
+</div>
+</div>
+<footer class="h-6 bg-primary text-white text-[11px] flex items-center justify-between px-3 shrink-0 select-none font-mono z-20">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 hover:bg-white/10 px-1 rounded cursor-pointer">
+<span class="material-symbols-outlined text-[12px]">source</span>
+<span>projects.json*</span>
+</div>
+<div class="flex items-center gap-1 hover:bg-white/10 px-1 rounded cursor-pointer">
+<span class="material-symbols-outlined text-[12px]">sync</span>
+<span>0</span>
+<span class="material-symbols-outlined text-[12px]">arrow_upward</span>
+<span>4</span>
+<span class="material-symbols-outlined text-[12px]">arrow_downward</span>
+</div>
+<div class="flex items-center gap-1 hover:bg-white/10 px-1 rounded cursor-pointer hidden sm:flex">
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+<span>No issues</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="cursor-pointer hover:bg-white/10 px-1 rounded">Ln 42, Col 12</span>
+<span class="cursor-pointer hover:bg-white/10 px-1 rounded hidden sm:inline">JSON</span>
+<span class="cursor-pointer hover:bg-white/10 px-1 rounded hidden sm:inline">UTF-8</span>
+<span class="material-symbols-outlined text-[14px] cursor-pointer hover:bg-white/10 rounded">notifications</span>
+</div>
+</footer>
+</div>
+</div>
+</div>
+
+</body></html>
