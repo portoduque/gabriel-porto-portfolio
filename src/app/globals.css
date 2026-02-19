@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-panel: var(--panel);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-text-muted: var(--text-muted);
+  --color-text-main: var(--foreground);
+  /* Alias for backward compatibility */
+
+  --color-neon-green: #3fb950;
+  --color-neon-blue: #58a6ff;
+  --color-neon-purple: #bc8cff;
+
+  --color-syntax-keyword: var(--syntax-keyword);
+  --color-syntax-string: var(--syntax-string);
+  --color-syntax-function: var(--syntax-function);
+  --color-syntax-variable: var(--syntax-variable);
+  --color-syntax-comment: var(--syntax-comment);
+  --color-syntax-class: var(--syntax-class);
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  @keyframes blink {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes gradient-x {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  --animate-blink: blink 1s step-end infinite;
+  --animate-gradient-x: gradient-x 15s ease infinite;
+}
+
+:root {
+  /* Light Mode (VS Code Light Modern inspired) */
+  --background: #ffffff;
+  --foreground: #24292f;
+  --panel: #f6f8fa;
+  --border: #d0d7de;
+  --primary: #0969da;
+  --primary-dark: #0550ae;
+  --text-muted: #57606a;
+
+  --syntax-keyword: #cf222e;
+  --syntax-string: #0a3069;
+  --syntax-function: #8250df;
+  --syntax-variable: #953800;
+  --syntax-comment: #6e7781;
+  --syntax-class: #953800;
+}
+
+.dark {
+  /* Dark Mode (Existing) */
+  --background: #0A0C10;
+  --foreground: #c9d1d9;
+  --panel: #161b22;
+  --border: #21262d;
+  --primary: #067bf9;
+  --primary-dark: #0564ca;
+  --text-muted: #8b949e;
+
+  --syntax-keyword: #ff7b72;
+  --syntax-string: #a5d6ff;
+  --syntax-function: #d2a8ff;
+  --syntax-variable: #79c0ff;
+  --syntax-comment: #8b949e;
+  --syntax-class: #ffa657;
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 5px;
+  border: 2px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Syntax token colors */
+.token-keyword {
+  color: var(--syntax-keyword);
+}
+
+.token-string {
+  color: var(--syntax-string);
+}
+
+.token-function {
+  color: var(--syntax-function);
+}
+
+.token-variable {
+  color: var(--syntax-variable);
+}
+
+.token-comment {
+  color: var(--syntax-comment);
+  font-style: italic;
+}
+
+.token-operator {
+  color: var(--foreground);
+}
+
+.token-number {
+  color: var(--syntax-variable);
+}
+
+.token-class {
+  color: var(--syntax-class);
+}
+
+/* Tech icon hover */
+.tech-icon:hover {
+  filter: drop-shadow(0 0 8px var(--primary));
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* No scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Dot pattern background */
+.bg-dot-pattern {
+  background-image: radial-gradient(circle, var(--text-muted) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Neon blue box shadow */
+.shadow-neon-blue {
+  box-shadow: 0 0 15px rgba(0, 122, 255, 0.3), 0 0 5px rgba(0, 122, 255, 0.1) inset;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-display);
+  min-height: 100vh;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html {
+  overflow: hidden;
+}
+
+/* Fade mask for scrollable areas */
+.mask-linear-fade {
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
