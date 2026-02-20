@@ -98,7 +98,7 @@ export function SystemOverview() {
         >
             <motion.div
                 style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-                className="relative bg-background/80 backdrop-blur-xl border border-border rounded-xl shadow-2xl overflow-hidden group hover:border-blue-500/30 transition-colors duration-500"
+                className="relative bg-panel/95 backdrop-blur-xl border border-border/80 rounded-xl shadow-2xl shadow-black/40 overflow-hidden group hover:border-blue-500/30 transition-colors duration-500"
             >
                 {/* Glow Effects */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -106,7 +106,7 @@ export function SystemOverview() {
                 {/* Content Body */}
                 <div className="relative min-h-[500px] p-6 px-8 font-mono text-sm leading-relaxed text-blue-100/90 dark:text-blue-100/90 text-blue-900/90">
                     {/* Line Numbers */}
-                    <div className="absolute left-0 top-0 bottom-0 w-12 border-r border-border/50 bg-background/30 text-right py-6 pr-3 text-muted/20 select-none hidden sm:block text-xs font-mono">
+                    <div className="absolute left-0 top-0 bottom-0 w-12 border-r border-border/30 bg-background/20 text-right py-6 pr-3 text-muted/30 select-none hidden sm:block text-xs font-mono">
                         {Array.from({ length: 30 }).map((_, i) => (
                             <div key={i}>{(i + 1).toString().padStart(2, '0')}</div>
                         ))}

@@ -10,7 +10,7 @@ const pt: Record<string, string> = {
     "hero.title.prefix": "Transformando",
     "hero.title.highlight": "problemas em produtos digitais",
     "hero.cta.projects": "cd /projetos",
-    "hero.cta.contact": "./contato.sh",
+    "hero.cta.contact": "contato.yaml",
 
     // Expertise
     "expertise.title": "Competências",
@@ -36,7 +36,7 @@ const pt: Record<string, string> = {
     "system.label.stack": "STACK",
     "system.label.tools": "FERRAMENTAS",
     "system.label.status": "STATUS",
-    "system.prompt": "usuario@portfolio:~$",
+    "system.prompt": "portoduque@portfolio:~$",
 
     // Sections
     "sections.projects": "projetos",
@@ -47,11 +47,25 @@ const pt: Record<string, string> = {
     "nav.main": "main.py",
     "nav.projects": "projetos.json",
     "nav.experience": "experiencias.md",
-    "nav.contact": "contato.sh",
+    "nav.contact": "contato.yaml",
     "nav.resume": "curriculo.pdf",
 
     // Contact
-    "contact.social": "Links Sociais:",
+    "contact.title": "Informações de Contato",
+    "contact.social": "Redes Sociais:",
+    "contact.location": "Localização",
+    "contact.available": "Disponível para novos projetos",
+    "contact.yaml.contact": "contato",
+    "contact.yaml.email": "email",
+    "contact.yaml.whatsapp": "whatsapp",
+    "contact.yaml.social": "redes_sociais",
+    "contact.yaml.linkedin": "linkedin",
+    "contact.yaml.github": "github",
+    "contact.yaml.location": "localizacao",
+    "contact.yaml.city": "cidade",
+    "contact.yaml.state": "estado",
+    "contact.yaml.country": "pais",
+    "contact.yaml.status": "status",
 
     // Experience
     "exp.0.role": "Analista e Desenvolvedor de Sistemas",
@@ -145,7 +159,7 @@ const en: Record<string, string> = {
     "hero.title.prefix": "Transforming",
     "hero.title.highlight": "problems into digital products",
     "hero.cta.projects": "cd /projects",
-    "hero.cta.contact": "./contact.sh",
+    "hero.cta.contact": "contact.yaml",
 
     // Expertise
     "expertise.title": "Soft Skills",
@@ -171,7 +185,7 @@ const en: Record<string, string> = {
     "system.label.stack": "STACK",
     "system.label.tools": "TOOLS",
     "system.label.status": "STATUS",
-    "system.prompt": "user@portfolio:~$",
+    "system.prompt": "portoduque@portfolio:~$",
 
     // Sections
     "sections.projects": "projects",
@@ -182,11 +196,25 @@ const en: Record<string, string> = {
     "nav.main": "main.py",
     "nav.projects": "projects.json",
     "nav.experience": "experience.md",
-    "nav.contact": "contact.sh",
+    "nav.contact": "contact.yaml",
     "nav.resume": "resume.pdf",
 
     // Contact
+    "contact.title": "Contact Information",
     "contact.social": "Social Links:",
+    "contact.location": "Location",
+    "contact.available": "Available for new projects",
+    "contact.yaml.contact": "contact",
+    "contact.yaml.email": "email",
+    "contact.yaml.whatsapp": "whatsapp",
+    "contact.yaml.social": "social",
+    "contact.yaml.linkedin": "linkedin",
+    "contact.yaml.github": "github",
+    "contact.yaml.location": "location",
+    "contact.yaml.city": "city",
+    "contact.yaml.state": "state",
+    "contact.yaml.country": "country",
+    "contact.yaml.status": "status",
 
     // Experience
     "exp.0.role": "Systems Analyst & Developer",

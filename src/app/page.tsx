@@ -17,7 +17,8 @@ import {
   VscFilePdf,
   VscGitCommit,
   VscSettingsGear,
-  VscDatabase
+  VscDatabase,
+  VscMail
 } from "react-icons/vsc";
 import {
   SiPython,
@@ -29,12 +30,12 @@ import {
 } from "react-icons/si";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<"main.py" | "projects.json" | "experiencias.md" | "contact.sh">("main.py");
+  const [activeTab, setActiveTab] = useState<"main.py" | "projects.json" | "experiencias.md" | "contact.yaml">("main.py");
   const { locale, t } = useLanguage();
   const profile = getProfile(locale);
   const activityLog = getActivityLog(locale);
 
-  const handleTabClick = (tab: "main.py" | "projects.json" | "experiencias.md" | "contact.sh") => {
+  const handleTabClick = (tab: "main.py" | "projects.json" | "experiencias.md" | "contact.yaml") => {
     setActiveTab(tab);
   };
 
@@ -70,11 +71,11 @@ export default function Home() {
           </button>
           <div className="flex-1" />
           <button
-            onClick={() => setActiveTab("contact.sh")}
-            className={clsx("pb-4 transition-colors relative", activeTab === "contact.sh" ? "text-foreground" : "text-muted hover:text-foreground")}
+            onClick={() => setActiveTab("contact.yaml")}
+            className={clsx("pb-4 transition-colors relative", activeTab === "contact.yaml" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
-            {activeTab === "contact.sh" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
-            <VscTerminal size={24} />
+            {activeTab === "contact.yaml" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
+            <VscMail size={24} />
           </button>
         </aside>
 
@@ -103,12 +104,12 @@ export default function Home() {
               isActive={activeTab === "experiencias.md"}
               onClick={() => setActiveTab("experiencias.md")}
             />
-            {/* Tab 4 — contact.sh */}
+            {/* Tab 4 — contact.yaml */}
             <Tab
               name={t("nav.contact")}
-              icon={<VscTerminal size={16} className="text-green-500" />}
-              isActive={activeTab === "contact.sh"}
-              onClick={() => setActiveTab("contact.sh")}
+              icon={<VscMail size={16} className="text-red-400" />}
+              isActive={activeTab === "contact.yaml"}
+              onClick={() => setActiveTab("contact.yaml")}
             />
             {/* CV Download / Open Tab */}
             <a
@@ -176,7 +177,7 @@ export default function Home() {
                           </span>
                         </button>
                         <button
-                          onClick={() => setActiveTab("contact.sh")}
+                          onClick={() => setActiveTab("contact.yaml")}
                           className="group inline-flex items-center justify-center px-8 py-3.5 font-[family-name:var(--font-mono)] text-sm font-medium text-muted transition-all duration-300 hover:text-foreground border border-border hover:border-muted rounded-sm bg-panel/50 hover:bg-panel cursor-pointer">
                           <span className="relative flex items-center gap-2 z-10">
                             {t("hero.cta.contact")}
@@ -320,7 +321,7 @@ export default function Home() {
 
               {activeTab === "projects.json" && <ProjectsView />}
               {activeTab === "experiencias.md" && <ExperienceView />}
-              {activeTab === "contact.sh" && <ContactView />}
+              {activeTab === "contact.yaml" && <ContactView />}
 
             </div>
           </div>
@@ -356,7 +357,7 @@ export default function Home() {
               "main.py": "Python",
               "projects.json": "JSON",
               "experiencias.md": "Markdown",
-              "contact.sh": "Shell Script",
+              "contact.yaml": "YAML",
             }[activeTab]}
           </span>
           <span className="cursor-pointer hover:bg-white/10 px-1 rounded-sm">Prettier</span>
