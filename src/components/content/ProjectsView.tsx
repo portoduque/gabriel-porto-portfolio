@@ -33,8 +33,9 @@ export function ProjectsView() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="group relative bg-panel/30 backdrop-blur-sm border border-border rounded-xl overflow-hidden hover:bg-panel/50 hover:border-primary/50 transition-all duration-300"
+                        className="group relative bg-panel/60 backdrop-blur-md border border-border/50 rounded-xl overflow-hidden hover:bg-panel/80 hover:border-primary/50 transition-all duration-300 shadow-lg hover:shadow-primary/5 shadow-black/20"
                     >
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="p-6 flex flex-col h-full">
                             <div className="flex items-start justify-between mb-4">
                                 <div className="font-[family-name:var(--font-mono)] text-primary text-sm">

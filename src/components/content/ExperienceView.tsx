@@ -44,7 +44,8 @@ export function ExperienceView() {
                             {/* Dot on timeline */}
                             <div className="absolute -left-[41px] lg:-left-[59px] top-6 w-5 h-5 rounded-full bg-background border-2 border-primary group-hover:scale-125 transition-transform duration-300 z-10" />
 
-                            <div className="bg-panel/30 backdrop-blur-sm border border-border p-6 rounded-xl hover:bg-panel/50 hover:border-primary/50 transition-all duration-300 shadow-sm">
+                            <div className="bg-panel/60 backdrop-blur-md border border-border/50 p-6 rounded-xl hover:bg-panel/80 hover:border-primary/50 transition-all duration-300 shadow-lg relative overflow-hidden group">
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
                                     <h3 className="text-xl font-bold text-primary group-hover:text-foreground transition-colors">
                                         {exp.role}
@@ -85,8 +86,9 @@ export function ExperienceView() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 + index * 0.1 }}
-                            className="bg-panel/20 border border-border/50 p-6 rounded-xl hover:border-neon-purple/50 transition-colors group"
+                            className="bg-panel/60 backdrop-blur-md border border-border/50 p-6 rounded-xl hover:bg-panel/80 hover:border-neon-purple/50 transition-all duration-300 group relative overflow-hidden shadow-lg"
                         >
+                            <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                             <div className="w-10 h-10 bg-neon-purple/10 rounded-lg flex items-center justify-center text-neon-purple mb-4 group-hover:scale-110 transition-transform">
                                 <span className="material-symbols-outlined">school</span>
                             </div>

@@ -173,7 +173,6 @@ function EnvRow({ label, value, color, delay }: { label: string, value: string, 
                 ) : (
                     <span>&quot;{scrambled}&quot;</span>
                 )}
-                <span className="text-muted/30 ml-0.5">;</span>
             </span>
         </div>
     );

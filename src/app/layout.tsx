@@ -22,9 +22,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Gabriel Porto | Analista e Desenvolvedor de Sistemas",
+  title: "Gabriel Porto Duque Estrada Fiorante | Analista e Desenvolvedor de Sistemas",
   description:
-    "Portfólio de Gabriel Porto — Profissional de TI com experiência em infraestrutura, desenvolvimento web, segurança cibernética e automação de processos.",
+    "Portfólio de Gabriel Porto Duque Estrada Fiorante — Profissional de TI com experiência em infraestrutura, desenvolvimento web, segurança cibernética e automação de processos.",
 };
 
 export default function RootLayout({

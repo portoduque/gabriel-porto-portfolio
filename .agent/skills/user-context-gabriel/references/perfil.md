@@ -1,7 +1,7 @@
-# Gabriel Porto - Perfil Profissional Completo
+# Gabriel Porto Duque Estrada Fiorante - Perfil Profissional Completo
 
 ## 👤 Informações Pessoais
-- **Nome:** Gabriel Porto
+- **Nome:** Gabriel Porto Duque Estrada Fiorante
 - **Idade:** 28 anos
 - **Localização:** Porto Velho - RO, Brasil
 - **E-mail:** portoduque@outlook.com

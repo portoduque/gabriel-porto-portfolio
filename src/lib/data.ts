@@ -2,7 +2,7 @@
 import type { Locale } from "./i18n";
 
 export const PROFILE = {
-    name: "Gabriel Porto",
+    name: "Gabriel Porto Duque Estrada Fiorante",
     email: "portoduque@outlook.com",
     phone: "(21) 97572-2770",
     social: {
@@ -262,18 +262,34 @@ export function getProjects(locale: Locale) {
 export function getActivityLog(locale: Locale) {
     if (locale === "en") {
         return [
-            { hash: "a7b2c9d", message: "feat: RPA automation v2", time: "2h ago" },
-            { hash: "f3e1a4b", message: "fix: whatsapp api integration", time: "5h ago" },
-            { hash: "9c8d7e6", message: "feat: dashboard CIGES", time: "1d ago" },
-            { hash: "2b5a1f0", message: "docs: update readme", time: "2d ago" },
+            { hash: "d8f2a1c", message: "feat: hydrological data scrapper (RPA)", time: "2h ago" },
+            { hash: "b5e9c0f", message: "fix: WhatsApp API notification service", time: "5h ago" },
+            { hash: "7a3d2e1", message: "feat: CIGES dashboards integration", time: "1d ago" },
+            { hash: "e9b4c6a", message: "feat: push notifications health alerts", time: "2d ago" },
+            { hash: "f6d3s2a", message: "refactor: optimize patient transfer SQL queries", time: "3d ago" },
+            { hash: "c1v8n9m", message: "feat: build health digital portal (SESAU-RO)", time: "4d ago" },
+            { hash: "k4j7h2l", message: "fix: responsive layout for Telesaúde portal", time: "1w ago" },
+            { hash: "p0o9i8u", message: "docs: cybersecurity risk assessment report", time: "2w ago" },
+            { hash: "n5m3v2x", message: "chore: setup Airflow DAGs for data pipeline", time: "3w ago" },
+            { hash: "u8y1t9r", message: "test: integration tests for RPA selenium module", time: "1m ago" },
+            { hash: "q1w2e3r", message: "ci: github actions for security scanning (OWASP)", time: "1m ago" },
+            { hash: "l9k8j7h", message: "fix: Linux Apache server hardening", time: "1m ago" },
         ];
     }
 
     return [
-        { hash: "a7b2c9d", message: "feat: RPA automation v2", time: "2h atrás" },
-        { hash: "f3e1a4b", message: "fix: whatsapp api integration", time: "5h atrás" },
-        { hash: "9c8d7e6", message: "feat: dashboard CIGES", time: "1d atrás" },
-        { hash: "2b5a1f0", message: "docs: update readme", time: "2d atrás" },
+        { hash: "d8f2a1c", message: "feat: coletor de dados hidrológicos (RPA)", time: "2h atrás" },
+        { hash: "b5e9c0f", message: "fix: serviço de notificação WhatsApp API", time: "5h atrás" },
+        { hash: "7a3d2e1", message: "feat: integração de dashboards CIGES", time: "1d atrás" },
+        { hash: "e9b4c6a", message: "feat: notificações push alertas de saúde", time: "2d atrás" },
+        { hash: "f6d3s2a", message: "refactor: otimização de queries SQL fluxo paciente", time: "3d atrás" },
+        { hash: "c1v8n9m", message: "feat: desenvolvimento portal saúde digital (SESAU-RO)", time: "4d atrás" },
+        { hash: "k4j7h2l", message: "fix: layout responsivo portal telesaúde", time: "1sem atrás" },
+        { hash: "p0o9i8u", message: "docs: relatório de análise de riscos de segurança", time: "2sem atrás" },
+        { hash: "n5m3v2x", message: "chore: configuração de DAGs Airflow para pipeline", time: "3sem atrás" },
+        { hash: "u8y1t9r", message: "test: testes de integração módulo RPA selenium", time: "1mês atrás" },
+        { hash: "q1w2e3r", message: "ci: automação de scan de segurança (OWASP)", time: "1mês atrás" },
+        { hash: "l9k8j7h", message: "fix: hardening de servidor Apache Linux", time: "1mês atrás" },
     ];
 }
 
