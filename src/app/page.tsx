@@ -10,27 +10,31 @@ import { useLanguage } from "@/lib/i18n";
 import { clsx } from "clsx";
 import { BentoCard } from "@/components/ui/BentoCard";
 import {
-  FileCode,
-  Search,
-  Layout,
-  Terminal,
-  Code2,
-  Database,
-  Smartphone,
-  Server,
-  GitCommit,
-  Globe,
-  Settings,
-  FileDown
-} from "lucide-react";
+  VscListSelection,
+  VscJson,
+  VscMarkdown,
+  VscTerminal,
+  VscFilePdf,
+  VscGitCommit,
+  VscSettingsGear,
+  VscDatabase
+} from "react-icons/vsc";
+import {
+  SiPython,
+  SiHtml5,
+  SiCss3,
+  SiPhp,
+  SiFlutter,
+  SiLinux
+} from "react-icons/si";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<"main.py" | "projects.json" | "experience.md" | "contact.sh">("main.py");
+  const [activeTab, setActiveTab] = useState<"main.py" | "projects.json" | "experiencias.md" | "contact.sh">("main.py");
   const { locale, t } = useLanguage();
   const profile = getProfile(locale);
   const activityLog = getActivityLog(locale);
 
-  const handleTabClick = (tab: "main.py" | "projects.json" | "experience.md" | "contact.sh") => {
+  const handleTabClick = (tab: "main.py" | "projects.json" | "experiencias.md" | "contact.sh") => {
     setActiveTab(tab);
   };
 
@@ -48,21 +52,21 @@ export default function Home() {
             className={clsx("relative group transition-colors", activeTab === "main.py" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
             {activeTab === "main.py" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
-            <FileCode size={24} />
+            <SiPython size={24} />
           </button>
           <button
             onClick={() => setActiveTab("projects.json")}
             className={clsx("transition-colors relative", activeTab === "projects.json" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
             {activeTab === "projects.json" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
-            <Search size={24} />
+            <VscJson size={24} />
           </button>
           <button
-            onClick={() => setActiveTab("experience.md")}
-            className={clsx("transition-colors relative", activeTab === "experience.md" ? "text-foreground" : "text-muted hover:text-foreground")}
+            onClick={() => setActiveTab("experiencias.md")}
+            className={clsx("transition-colors relative", activeTab === "experiencias.md" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
-            {activeTab === "experience.md" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
-            <Layout size={24} />
+            {activeTab === "experiencias.md" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
+            <VscMarkdown size={24} />
           </button>
           <div className="flex-1" />
           <button
@@ -70,7 +74,7 @@ export default function Home() {
             className={clsx("pb-4 transition-colors relative", activeTab === "contact.sh" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
             {activeTab === "contact.sh" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
-            <Terminal size={24} />
+            <VscTerminal size={24} />
           </button>
         </aside>
 
@@ -81,40 +85,40 @@ export default function Home() {
             {/* Tab 1 — main.py */}
             <Tab
               name={t("nav.main")}
-              icon={<Code2 size={16} className="text-[#3776ab]" />}
+              icon={<SiPython size={16} className="text-[#3776ab]" />}
               isActive={activeTab === "main.py"}
               onClick={() => setActiveTab("main.py")}
             />
             {/* Tab 2 — projects.json */}
             <Tab
               name={t("nav.projects")}
-              icon={<Settings size={16} className="text-[#f7df1e]" />}
+              icon={<VscJson size={16} className="text-[#f7df1e]" />}
               isActive={activeTab === "projects.json"}
               onClick={() => setActiveTab("projects.json")}
             />
-            {/* Tab 3 — experience.md */}
+            {/* Tab 3 — experiencias.md */}
             <Tab
               name={t("nav.experience")}
-              icon={<FileCode size={16} className="text-[#3b82f6]" />}
-              isActive={activeTab === "experience.md"}
-              onClick={() => setActiveTab("experience.md")}
+              icon={<VscMarkdown size={16} className="text-[#3b82f6]" />}
+              isActive={activeTab === "experiencias.md"}
+              onClick={() => setActiveTab("experiencias.md")}
             />
             {/* Tab 4 — contact.sh */}
             <Tab
               name={t("nav.contact")}
-              icon={<Terminal size={16} className="text-green-500" />}
+              icon={<VscTerminal size={16} className="text-green-500" />}
               isActive={activeTab === "contact.sh"}
               onClick={() => setActiveTab("contact.sh")}
             />
             {/* CV Download / Open Tab */}
             <a
-              href="/gabriel-porto-cv.pdf"
+              href="/Gabriel-Porto-Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 h-full border-r border-border min-w-[140px] cursor-pointer group transition-colors select-none bg-panel text-muted hover:bg-background/50 border-t-[2px] border-t-transparent hover:text-foreground"
               title="Download / Open Resume"
             >
-              <FileDown size={16} className="text-red-400" />
+              <VscFilePdf size={16} className="text-red-400" />
               <span className="text-xs font-[family-name:var(--font-mono)]">{t("nav.resume")}</span>
               {/* No close button for this one, maybe an external link icon? */}
               <span className="material-symbols-outlined text-[14px] ml-auto opacity-0 group-hover:opacity-100 text-muted">open_in_new</span>
@@ -184,14 +188,14 @@ export default function Home() {
                       {/* Tech stack bar - Mini */}
                       <div className="w-full mt-6 opacity-80 scale-90 lg:scale-100 origin-center lg:origin-center">
                         <div className="flex items-center gap-6 overflow-x-auto no-scrollbar pb-2 mask-linear-fade w-full max-w-full px-4">
-                          <TechIcon icon={<Globe size={24} />} label="HTML" />
-                          <TechIcon icon={<Layout size={24} />} label="CSS" />
-                          <TechIcon icon={<Code2 size={24} />} label="PHP" />
-                          <TechIcon icon={<Terminal size={24} />} label="Python" />
-                          <TechIcon icon={<Smartphone size={24} />} label="Flutter" />
-                          <TechIcon icon={<Database size={24} />} label="SQL" />
-                          <TechIcon icon={<Server size={24} />} label="Linux" />
-                          <TechIcon icon={<GitCommit size={24} />} label="Git" />
+                          <TechIcon icon={<SiHtml5 size={24} className="text-[#E34F26] group-hover:scale-110 transition-transform" />} label="HTML" />
+                          <TechIcon icon={<SiCss3 size={24} className="text-[#1572B6] group-hover:scale-110 transition-transform" />} label="CSS" />
+                          <TechIcon icon={<SiPhp size={24} className="text-[#777BB4] group-hover:scale-110 transition-transform" />} label="PHP" />
+                          <TechIcon icon={<SiPython size={24} className="text-[#3776AB] group-hover:scale-110 transition-transform" />} label="Python" />
+                          <TechIcon icon={<SiFlutter size={24} className="text-[#02569B] group-hover:scale-110 transition-transform" />} label="Flutter" />
+                          <TechIcon icon={<VscDatabase size={24} className="text-[#4479A1] group-hover:scale-110 transition-transform" />} label="SQL" />
+                          <TechIcon icon={<SiLinux size={24} className="text-[#FCC624] group-hover:scale-110 transition-transform" />} label="Linux" />
+                          <TechIcon icon={<VscGitCommit size={24} className="group-hover:scale-110 transition-transform text-[#F05032]" />} label="Git" />
                         </div>
                       </div>
                     </div>
@@ -315,7 +319,7 @@ export default function Home() {
               )}
 
               {activeTab === "projects.json" && <ProjectsView />}
-              {activeTab === "experience.md" && <ExperienceView />}
+              {activeTab === "experiencias.md" && <ExperienceView />}
               {activeTab === "contact.sh" && <ContactView />}
 
             </div>
@@ -327,11 +331,11 @@ export default function Home() {
       <footer className="h-6 bg-primary text-white text-[11px] flex items-center justify-between px-3 shrink-0 select-none font-[family-name:var(--font-mono)] z-20">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1 hover:bg-white/10 px-1 rounded-sm cursor-pointer">
-            <GitCommit size={12} />
+            <VscGitCommit size={12} />
             <span>main*</span>
           </div>
           <div className="flex items-center gap-1 hover:bg-white/10 px-1 rounded-sm cursor-pointer">
-            <Settings size={12} className="animate-spin-slow" />
+            <VscSettingsGear size={12} className="animate-spin-slow" />
             <span>0</span>
             <span className="material-symbols-outlined text-[12px]">arrow_upward</span>
             <span>1</span>
@@ -351,7 +355,7 @@ export default function Home() {
             {{
               "main.py": "Python",
               "projects.json": "JSON",
-              "experience.md": "Markdown",
+              "experiencias.md": "Markdown",
               "contact.sh": "Shell Script",
             }[activeTab]}
           </span>

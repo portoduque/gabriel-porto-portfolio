@@ -58,7 +58,7 @@ export function ProjectsView() {
 
                             <div className="bg-background/50 p-3 rounded-lg border border-border/50 mb-4">
                                 <span className="text-syntax-comment text-xs block mb-1">
-                  // Highlight
+                                    {"// Highlight"}
                                 </span>
                                 <span className="text-xs text-foreground/80 font-[family-name:var(--font-mono)]">
                                     {project.highlight}

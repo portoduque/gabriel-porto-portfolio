@@ -51,11 +51,9 @@ export function BentoCard({
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             style={{
-                // @ts-ignore
                 "--glow-color": glowColor,
-                // @ts-ignore
                 "--border-color": `var(--color-neon-${borderColor}, var(--color-primary))`,
-            }}
+            } as React.CSSProperties}
             className={cn(
                 "relative rounded-xl border border-border/50 bg-panel/60 dark:bg-panel/95 backdrop-blur-md overflow-hidden group transition-all duration-500",
                 `hover:border-neon-${borderColor}/50`,

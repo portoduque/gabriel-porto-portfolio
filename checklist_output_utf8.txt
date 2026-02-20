@@ -1,0 +1,57 @@
+
+[1m[96m============================================================[0m
+python : Traceback (most 
+recent call last):
+No linha:1 caractere:1
++ python 
+.agent/scripts/checklist.py . 
+> checklist_output.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~
+    + CategoryInfo          : 
+    NotSpecified: (Traceback  
+   (most recent call last):   
+ :String) [], RemoteExcept    
+ion
+    + FullyQualifiedErrorId : 
+    NativeCommandError
+ 
+  File "C:\Users\15372896752\D
+ocuments\gabriel-porto-portfol
+io\.agent\scripts\checklist.py
+", line 217, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\15372896752\D
+ocuments\gabriel-porto-portfol
+io\.agent\scripts\checklist.py
+", line 184, in main
+    print_header("\U0001f680 
+ANTIGRAVITY KIT - MASTER 
+CHECKLIST")
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15372896752\D
+ocuments\gabriel-porto-portfol
+io\.agent\scripts\checklist.py
+", line 42, in print_header
+    print(f"{Colors.BOLD}{Colo
+rs.CYAN}{text.center(60)}{Colo
+rs.ENDC}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
+  File "C:\Program Files\Pytho
+n313\Lib\encodings\cp1252.py",
+ line 19, in encode
+    return codecs.charmap_enco
+de(input,self.errors,encoding_
+table)[0]
+           ~~~~~~~~~~~~~~~~~~~
+~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^
+UnicodeEncodeError: 'charmap' 
+codec can't encode character 
+'\U0001f680' in position 21: 
+character maps to <undefined>

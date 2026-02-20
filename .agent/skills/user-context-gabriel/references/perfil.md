@@ -31,7 +31,7 @@ Profissional de Tecnologia da Informação com sólida experiência em infraestr
 ### Ferramentas e Processos
 - **CMS:** WordPress (Temas customizados, Elementor, JetEngine)
 - **Gestão:** Jira, Trello, Metodologias Ágeis
-- **Versionamento:** Git, GitHub
+- **Versionamento:** GitHub
 - **Automação:** Selenium WebDriver, RPA com Python, Airflow
 
 ---

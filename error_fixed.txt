@@ -1,0 +1,92 @@
+﻿python : Traceback (most 
+recent call last):
+No linha:1 caractere:1
++ python update_pdf.py 2> 
+error.log
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo          : 
+    NotSpecified: (Traceback  
+   (most recent call last):   
+ :String) [], RemoteExcept    
+ion
+    + FullyQualifiedErrorId : 
+    NativeCommandError
+ 
+  File "C:\Users\15372896752\D
+ocuments\gabriel-porto-portfol
+io\update_pdf.py", line 26, 
+in <module>
+    page.insert_text((39.6, 
+642), "P¾s-graduaþÒo em 
+CiÛncia de Dados", 
+fontname="helv-bold", 
+fontsize=9.0, 
+color=RESUME_COLOR)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^
+  File "C:\Users\15372896752\A
+ppData\Roaming\Python\Python31
+3\site-packages\pymupdf\__init
+__.py", line 12624, in 
+insert_text
+    rc = img.insert_text(
+        point,
+    ...<16 lines>...
+        oc=oc,
+    )
+  File "C:\Users\15372896752\A
+ppData\Roaming\Python\Python31
+3\site-packages\pymupdf\__init
+__.py", line 15275, in 
+insert_text
+    xref = 
+self.page.insert_font(
+        fontname=fname, 
+fontfile=fontfile, 
+encoding=encoding, 
+set_simple=set_simple
+    )
+  File "C:\Users\15372896752\A
+ppData\Roaming\Python\Python31
+3\site-packages\pymupdf\__init
+__.py", line 12304, in 
+insert_font
+    val = 
+self._insertFont(fontname, 
+bfname, fontfile_str, 
+fontbuffer, set_simple, idx,
+                           
+wmode, serif, encoding, 
+CJK_number)
+  File "C:\Users\15372896752\A
+ppData\Roaming\Python\Python31
+3\site-packages\pymupdf\__init
+__.py", line 10200, in 
+_insertFont
+    value = 
+JM_insert_font(pdf, bfname, 
+fontfile,fontbuffer, 
+set_simple, idx, wmode, 
+serif, encoding, ordering)
+  File "C:\Users\15372896752\A
+ppData\Roaming\Python\Python31
+3\site-packages\pymupdf\__init
+__.py", line 20428, in 
+JM_insert_font
+    
+RAISEPY(MSG_FILE_OR_BUFFER, 
+PyExc_ValueError)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15372896752\A
+ppData\Roaming\Python\Python31
+3\site-packages\pymupdf\__init
+__.py", line 22046, in RAISEPY
+    raise Exception( msg)
+Exception: need font file or 
+buffer
+

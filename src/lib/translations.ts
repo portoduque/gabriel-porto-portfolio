@@ -46,7 +46,7 @@ const pt: Record<string, string> = {
     // Navbar (Tabs)
     "nav.main": "main.py",
     "nav.projects": "projetos.json",
-    "nav.experience": "curriculo.md",
+    "nav.experience": "experiencias.md",
     "nav.contact": "contato.sh",
     "nav.resume": "curriculo.pdf",
 

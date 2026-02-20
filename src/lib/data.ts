@@ -10,7 +10,7 @@ export const PROFILE = {
         github: "https://github.com/portoduque",
     },
     highlights: [
-        { label: "CERT", value: "CCNA + Google Cybersecurity" },
+        { label: "CERT", value: "CCNA + Google + Harvard CS50’s" },
         { label: "TECH", value: "Full Stack + DevOps + Security" }
     ]
 };
@@ -53,11 +53,12 @@ export const SKILLS = {
         "Jira",
         "Trello",
         "Agile",
-        "Git",
         "GitHub",
         "Selenium WebDriver",
         "RPA",
         "Airflow",
+        "Madbuilder",
+        "FlutterFlow",
     ],
 };
 
