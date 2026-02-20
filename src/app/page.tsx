@@ -104,14 +104,12 @@ export default function Home() {
 
           {/* Editor content area */}
           <div className="flex-1 overflow-y-auto relative custom-scrollbar flex">
-            {/* Line Numbers - Hidden on Hero for cleaner look */}
-            {activeTab !== "main.py" && (
-              <div className="hidden md:flex flex-col items-end w-12 lg:w-16 py-8 pr-4 border-r border-border/50 shrink-0 text-muted/20 font-mono text-xs lg:text-sm select-none bg-background/30 h-full min-h-screen">
-                {Array.from({ length: 45 }).map((_, i) => (
-                  <div key={i} className="leading-6 lg:leading-7">{i + 1}</div>
-                ))}
-              </div>
-            )}
+            {/* Line Numbers - Visible on all pages now */}
+            <div className="hidden md:flex flex-col items-end w-12 lg:w-16 py-8 pr-4 border-r border-border/50 shrink-0 text-muted/20 font-mono text-xs lg:text-sm select-none bg-background/30 h-full min-h-screen">
+              {Array.from({ length: 100 }).map((_, i) => (
+                <div key={i} className="leading-6 lg:leading-7">{i + 1}</div>
+              ))}
+            </div>
 
             <div className="flex-1 flex flex-col relative w-full min-h-full">
               {activeTab === "main.py" && (
