@@ -5,7 +5,8 @@ import { SystemOverview } from "@/components/hero/SystemOverview";
 import { ProjectsView } from "@/components/content/ProjectsView";
 import { ExperienceView } from "@/components/content/ExperienceView";
 import { ContactView } from "@/components/content/ContactView";
-import { PROFILE, SKILLS, ACTIVITY_LOG } from "@/lib/data";
+import { getProfile, SKILLS, getActivityLog } from "@/lib/data";
+import { useLanguage } from "@/lib/i18n";
 import { clsx } from "clsx";
 import {
   FileCode,
@@ -18,11 +19,15 @@ import {
   Server,
   GitCommit,
   Globe,
-  Settings
+  Settings,
+  FileDown
 } from "lucide-react";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<"main.py" | "projects.json" | "experience.md" | "contact.sh">("main.py");
+  const { locale, t } = useLanguage();
+  const profile = getProfile(locale);
+  const activityLog = getActivityLog(locale);
 
   const handleTabClick = (tab: "main.py" | "projects.json" | "experience.md" | "contact.sh") => {
     setActiveTab(tab);
@@ -74,32 +79,45 @@ export default function Home() {
           <div className="flex items-end bg-panel border-b border-border overflow-x-auto no-scrollbar h-10 shrink-0">
             {/* Tab 1 — main.py */}
             <Tab
-              name="main.py"
+              name={t("nav.main")}
               icon={<Code2 size={16} className="text-[#3776ab]" />}
               isActive={activeTab === "main.py"}
               onClick={() => setActiveTab("main.py")}
             />
             {/* Tab 2 — projects.json */}
             <Tab
-              name="projects.json"
+              name={t("nav.projects")}
               icon={<Settings size={16} className="text-[#f7df1e]" />}
               isActive={activeTab === "projects.json"}
               onClick={() => setActiveTab("projects.json")}
             />
             {/* Tab 3 — experience.md */}
             <Tab
-              name="experience.md"
+              name={t("nav.experience")}
               icon={<FileCode size={16} className="text-[#3b82f6]" />}
               isActive={activeTab === "experience.md"}
               onClick={() => setActiveTab("experience.md")}
             />
             {/* Tab 4 — contact.sh */}
             <Tab
-              name="contact.sh"
+              name={t("nav.contact")}
               icon={<Terminal size={16} className="text-green-500" />}
               isActive={activeTab === "contact.sh"}
               onClick={() => setActiveTab("contact.sh")}
             />
+            {/* CV Download / Open Tab */}
+            <a
+              href="/gabriel-porto-cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 h-full border-r border-border min-w-[140px] cursor-pointer group transition-colors select-none bg-panel text-muted hover:bg-background/50 border-t-[2px] border-t-transparent hover:text-foreground"
+              title="Download / Open Resume"
+            >
+              <FileDown size={16} className="text-red-400" />
+              <span className="text-xs font-[family-name:var(--font-mono)]">{t("nav.resume")}</span>
+              {/* No close button for this one, maybe an external link icon? */}
+              <span className="material-symbols-outlined text-[14px] ml-auto opacity-0 group-hover:opacity-100 text-muted">open_in_new</span>
+            </a>
           </div>
 
           {/* Editor content area */}
@@ -118,10 +136,10 @@ export default function Home() {
                     {/* Left Column: Hero Content */}
                     <div className="flex flex-col gap-6 items-center text-center lg:items-center lg:text-center">
                       <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold tracking-tighter text-foreground leading-[1.1]">
-                        Engineering the{" "}
+                        {t("hero.title.prefix")}{" "}
                         <span className="relative inline-block">
                           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-neon-blue to-primary animate-gradient-x">
-                            full stack from secure cores to fluid code
+                            {t("hero.title.highlight")}
                           </span>
                           <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent rounded-full opacity-50"></span>
                         </span>
@@ -133,14 +151,14 @@ export default function Home() {
                         <span className="text-syntax-keyword">const</span>
                         <span className="text-syntax-variable">role</span>
                         <span className="text-foreground">=</span>
-                        <span className="text-syntax-string font-medium">&quot;{PROFILE.role}&quot;</span>
+                        <span className="text-syntax-string font-medium">&quot;{profile.role}&quot;</span>
                         <span className="text-foreground">;</span>
                         <span className="w-2 h-5 bg-primary animate-blink inline-block ml-1 shadow-[0_0_8px_var(--color-primary)]" />
                       </div>
 
                       {/* Description */}
                       <p className="text-muted text-base lg:text-lg max-w-xl font-light leading-relaxed">
-                        {PROFILE.summary}
+                        {profile.summary}
                       </p>
 
                       {/* CTA buttons */}
@@ -150,7 +168,7 @@ export default function Home() {
                           className="group relative inline-flex items-center justify-center px-8 py-3.5 font-[family-name:var(--font-mono)] text-sm font-medium text-white transition-all duration-300 overflow-hidden rounded-sm bg-primary hover:bg-primary-dark shadow-[0_0_20px_rgba(6,123,249,0.3)] hover:shadow-[0_0_30px_rgba(6,123,249,0.5)] cursor-pointer">
                           <span className="relative flex items-center gap-2 z-10">
                             <span className="text-white/70 group-hover:text-white transition-colors">$</span>
-                            cd /projects
+                            {t("hero.cta.projects")}
                             <span className="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
                           </span>
                         </button>
@@ -158,7 +176,7 @@ export default function Home() {
                           onClick={() => setActiveTab("contact.sh")}
                           className="group inline-flex items-center justify-center px-8 py-3.5 font-[family-name:var(--font-mono)] text-sm font-medium text-muted transition-all duration-300 hover:text-foreground border border-border hover:border-muted rounded-sm bg-panel/50 hover:bg-panel cursor-pointer">
                           <span className="relative flex items-center gap-2 z-10">
-                            ./contact.sh
+                            {t("hero.cta.contact")}
                             <span className="material-symbols-outlined text-[18px] opacity-0 group-hover:opacity-100 transition-all -ml-2 group-hover:ml-0 translate-y-[1px]">send</span>
                           </span>
                         </button>
@@ -189,7 +207,7 @@ export default function Home() {
                   <div className="w-full max-w-7xl mx-auto mt-24 mb-16 relative z-10">
                     <div className="flex items-center justify-center lg:justify-center gap-2 mb-8 opacity-80">
                       <span className="text-syntax-keyword text-xl font-[family-name:var(--font-mono)]">##</span>
-                      <h2 className="text-2xl font-bold text-foreground tracking-widest uppercase">Expertise</h2>
+                      <h2 className="text-2xl font-bold text-foreground tracking-widest uppercase">{t("expertise.title")}</h2>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {/* Scalability */}
@@ -198,10 +216,10 @@ export default function Home() {
                           <div className="w-10 h-10 rounded-lg bg-neon-blue/10 flex items-center justify-center text-neon-blue group-hover:scale-110 transition-transform">
                             <span className="material-symbols-outlined">scale</span>
                           </div>
-                          <h3 className="font-[family-name:var(--font-mono)] text-neon-blue font-bold group-hover:text-foreground transition-colors">Scalability</h3>
+                          <h3 className="font-[family-name:var(--font-mono)] text-neon-blue font-bold group-hover:text-foreground transition-colors">{t("expertise.scalability")}</h3>
                         </div>
                         <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background/50 p-4 rounded-lg border border-foreground/5 group-hover:border-primary/20 transition-colors">
-                          <span className="text-syntax-comment">{"// Modular design"}</span><br />
+                          <span className="text-syntax-comment">{t("expertise.scalability.comment")}</span><br />
                           <span className="text-syntax-keyword">class</span> <span className="text-syntax-class">System</span> {"{"}<br />
                           &nbsp;&nbsp;scaling = <span className="text-syntax-keyword">true</span>;<br />
                           {"}"}
@@ -213,10 +231,10 @@ export default function Home() {
                           <div className="w-10 h-10 rounded-lg bg-neon-purple/10 flex items-center justify-center text-neon-purple group-hover:scale-110 transition-transform">
                             <span className="material-symbols-outlined">precision_manufacturing</span>
                           </div>
-                          <h3 className="font-[family-name:var(--font-mono)] text-neon-purple font-bold group-hover:text-foreground transition-colors">Precision</h3>
+                          <h3 className="font-[family-name:var(--font-mono)] text-neon-purple font-bold group-hover:text-foreground transition-colors">{t("expertise.precision")}</h3>
                         </div>
                         <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background/50 p-4 rounded-lg border border-foreground/5 group-hover:border-neon-purple/20 transition-colors">
-                          <span className="text-syntax-comment">{"// Pixel-perfect"}</span><br />
+                          <span className="text-syntax-comment">{t("expertise.precision.comment")}</span><br />
                           &nbsp;&nbsp;RPA_Accuracy = <span className="text-syntax-string">&quot;100%&quot;</span>;<br />
                         </div>
                       </div>
@@ -226,10 +244,10 @@ export default function Home() {
                           <div className="w-10 h-10 rounded-lg bg-neon-green/10 flex items-center justify-center text-neon-green group-hover:scale-110 transition-transform">
                             <span className="material-symbols-outlined">speed</span>
                           </div>
-                          <h3 className="font-[family-name:var(--font-mono)] text-neon-green font-bold group-hover:text-foreground transition-colors">Performance</h3>
+                          <h3 className="font-[family-name:var(--font-mono)] text-neon-green font-bold group-hover:text-foreground transition-colors">{t("expertise.performance")}</h3>
                         </div>
                         <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background/50 p-4 rounded-lg border border-foreground/5 group-hover:border-neon-green/20 transition-colors">
-                          <span className="text-syntax-comment">{"// Optimized"}</span><br />
+                          <span className="text-syntax-comment">{t("expertise.performance.comment")}</span><br />
                           <span className="text-syntax-keyword">await</span> <span className="text-syntax-function">optimize</span>();<br />
                         </div>
                       </div>
@@ -241,11 +259,11 @@ export default function Home() {
                     <div className="bg-background/80 backdrop-blur-xl rounded-xl border border-border/50 overflow-hidden shadow-2xl">
                       <div className="bg-panel/50 px-6 py-2 flex items-center justify-between border-b border-border/50">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-[family-name:var(--font-mono)] text-muted opacity-70">git_activity.log</span>
+                          <span className="text-xs font-[family-name:var(--font-mono)] text-muted opacity-70">{t("activity.filename")}</span>
                         </div>
                       </div>
                       <div className="p-4 font-[family-name:var(--font-mono)] text-xs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        {ACTIVITY_LOG.map((log, i) => (
+                        {activityLog.map((log, i) => (
                           <ActivityLogEntry key={i} hash={log.hash} message={log.message} time={log.time} />
                         ))}
                       </div>
@@ -334,5 +352,3 @@ function ActivityLogEntry({ hash, message, time }: { hash: string; message: stri
     </div>
   );
 }
-
-

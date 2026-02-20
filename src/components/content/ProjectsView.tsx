@@ -2,9 +2,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PROJECTS } from "@/lib/data";
+import { getProjects } from "@/lib/data";
+import { useLanguage } from "@/lib/i18n";
 
 export function ProjectsView() {
+    const { locale } = useLanguage();
+    const projects = getProjects(locale);
+
     return (
         <div className="w-full max-w-7xl mx-auto px-6 lg:px-12 pt-12 pb-24">
             <div className="flex items-center gap-2 mb-8 opacity-80">
@@ -23,7 +27,7 @@ export function ProjectsView() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {PROJECTS.map((project, index) => (
+                {projects.map((project, index) => (
                     <motion.div
                         key={project.id}
                         initial={{ opacity: 0, y: 20 }}
@@ -34,7 +38,7 @@ export function ProjectsView() {
                         <div className="p-6 flex flex-col h-full">
                             <div className="flex items-start justify-between mb-4">
                                 <div className="font-[family-name:var(--font-mono)] text-primary text-sm">
-                                    "{project.id}"
+                                    &quot;{project.id}&quot;
                                 </div>
                                 <div className="flex gap-2">
                                     <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50" />

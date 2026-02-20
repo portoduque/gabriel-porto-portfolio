@@ -1,21 +1,37 @@
 
+import type { Locale } from "./i18n";
+
 export const PROFILE = {
     name: "Gabriel Porto",
-    role: "Desenvolvedor Full-Stack",
-    location: "Porto Velho - RO, Brasil",
     email: "portoduque@outlook.com",
     phone: "(21) 97572-2770",
     social: {
         linkedin: "https://www.linkedin.com/in/portoduque",
         github: "https://github.com/portoduque",
     },
-    summary:
-        "Transformando problemas complexos em produtos digitais escaláveis. Como Desenvolvedor Full-Stack, utilizo ecossistemas como Python e PHP para construir aplicações Web e Mobile (Flutter) focadas em UX e alta disponibilidade. Meu diferencial está na visão 360º: uno código de alta qualidade com automação RPA e uma infraestrutura segura (CCNA/Linux), garantindo que a solução não apenas funcione, mas seja eficiente e protegida.",
     highlights: [
         { label: "CERT", value: "CCNA + Google Cybersecurity" },
         { label: "TECH", value: "Full Stack + DevOps + Security" }
     ]
 };
+
+export function getProfile(locale: Locale) {
+    const localized = locale === "en"
+        ? {
+            role: "Full-Stack Developer",
+            location: "Porto Velho - RO, Brazil",
+            summary:
+                "Turning complex problems into scalable digital products. As a Full-Stack Developer, I leverage ecosystems like Python and PHP to build Web and Mobile (Flutter) applications focused on UX and high availability. My edge is a 360° vision: I combine high-quality code with RPA automation and a secure infrastructure (CCNA/Linux), ensuring solutions are not only functional but efficient and protected.",
+        }
+        : {
+            role: "Desenvolvedor Full-Stack",
+            location: "Porto Velho - RO, Brasil",
+            summary:
+                "Transformando problemas complexos em produtos digitais escaláveis. Como Desenvolvedor Full-Stack, utilizo ecossistemas como Python e PHP para construir aplicações Web e Mobile (Flutter) focadas em UX e alta disponibilidade. Meu diferencial está na visão 360º: uno código de alta qualidade com automação RPA e uma infraestrutura segura (CCNA/Linux), garantindo que a solução não apenas funcione, mas seja eficiente e protegida.",
+        };
+
+    return { ...PROFILE, ...localized };
+}
 
 export const SKILLS = {
     languages: ["PHP", "Python", "JavaScript (ES6+)", "HTML5", "CSS3"],
@@ -45,127 +61,224 @@ export const SKILLS = {
     ],
 };
 
-export const EXPERIENCE = [
-    {
-        role: "Analista e Desenvolvedor de Sistemas",
-        period: "Dezembro 2024 – Presente",
-        description: [
-            "Desenvolvimento de sites e sistemas web (WordPress, PHP/MadBuilder).",
-            "Criação de automações (RPA) com Python e Selenium.",
-            "Implantação e configuração de servidores Linux (Apache).",
-            "Levantamento de requisitos e modelagem de sistemas para a área da saúde.",
-        ],
-    },
-    {
-        role: "Suporte Técnico de TI",
-        period: "Agosto 2024 – Dezembro 2024",
-        description: [
-            "Manutenção, formatação e otimização de infraestrutura.",
-            "Troubleshooting avançado em sistemas comerciais e backups críticos.",
-            "Atendimento especializado e implementação de segurança digital.",
-        ],
-    },
-    {
-        role: "Experiências Internacionais (Bar Waiter e Kitchen Utility)",
-        period: "2021 – 2023",
-        description: [
-            "Atendimento de alto padrão em ambientes multiculturais.",
-            "Operação de sistemas (Micros) e conformidade com padrões CDC/FDA.",
-        ],
-    },
-];
+export function getExperience(locale: Locale) {
+    if (locale === "en") {
+        return [
+            {
+                role: "Systems Analyst & Developer",
+                period: "December 2024 – Present",
+                description: [
+                    "Development of websites and web systems (WordPress, PHP/MadBuilder).",
+                    "Creation of automations (RPA) with Python and Selenium.",
+                    "Deployment and configuration of Linux servers (Apache).",
+                    "Requirements gathering and system modeling for healthcare.",
+                ],
+            },
+            {
+                role: "IT Technical Support",
+                period: "August 2024 – December 2024",
+                description: [
+                    "Maintenance, formatting and infrastructure optimization.",
+                    "Advanced troubleshooting in commercial systems and critical backups.",
+                    "Specialized support and digital security implementation.",
+                ],
+            },
+            {
+                role: "International Experience (Bar Waiter & Kitchen Utility)",
+                period: "2021 – 2023",
+                description: [
+                    "High-standard service in multicultural environments.",
+                    "System operations (Micros) and CDC/FDA compliance.",
+                ],
+            },
+        ];
+    }
 
-export const EDUCATION = [
-    {
-        degree: "Pós-graduação em Ciência de Dados",
-        year: "2026 – Presente",
-    },
-    {
-        degree: "Pós-graduação em Gestão na Cibersegurança Empresarial",
-        year: "2025",
-    },
-    {
-        degree: "Bacharelado em Sistemas de Informação",
-        year: "2017 – 2021",
-    },
-];
+    return [
+        {
+            role: "Analista e Desenvolvedor de Sistemas",
+            period: "Dezembro 2024 – Presente",
+            description: [
+                "Desenvolvimento de sites e sistemas web (WordPress, PHP/MadBuilder).",
+                "Criação de automações (RPA) com Python e Selenium.",
+                "Implantação e configuração de servidores Linux (Apache).",
+                "Levantamento de requisitos e modelagem de sistemas para a área da saúde.",
+            ],
+        },
+        {
+            role: "Suporte Técnico de TI",
+            period: "Agosto 2024 – Dezembro 2024",
+            description: [
+                "Manutenção, formatação e otimização de infraestrutura.",
+                "Troubleshooting avançado em sistemas comerciais e backups críticos.",
+                "Atendimento especializado e implementação de segurança digital.",
+            ],
+        },
+        {
+            role: "Experiências Internacionais (Bar Waiter e Kitchen Utility)",
+            period: "2021 – 2023",
+            description: [
+                "Atendimento de alto padrão em ambientes multiculturais.",
+                "Operação de sistemas (Micros) e conformidade com padrões CDC/FDA.",
+            ],
+        },
+    ];
+}
+
+export function getEducation(locale: Locale) {
+    if (locale === "en") {
+        return [
+            { degree: "Postgraduate in Data Science", year: "2026 – Present" },
+            { degree: "Postgraduate in Enterprise Cybersecurity Management", year: "2025" },
+            { degree: "Bachelor's in Information Systems", year: "2017 – 2021" },
+        ];
+    }
+
+    return [
+        { degree: "Pós-graduação em Ciência de Dados", year: "2026 – Presente" },
+        { degree: "Pós-graduação em Gestão na Cibersegurança Empresarial", year: "2025" },
+        { degree: "Bacharelado em Sistemas de Informação", year: "2017 – 2021" },
+    ];
+}
 
 export const CERTIFICATES = [
     "Cisco Certified Network Associate (CCNA)",
     "Google Cybersecurity Professional Certificate",
-    "CS50’s Introduction to Programming with Python (Harvard)",
+    "CS50's Introduction to Programming with Python (Harvard)",
     "C# COMPLETO - Programação Orientada a Objetos",
     "CompTIA Security+ (SY0-701) Complete Course",
     "Curso de Administrador Linux",
     "Google Cloud Foundations Academy"
 ];
 
-export const PROJECTS = [
-    {
-        id: "rpa-ana",
-        name: "Automação de Coleta de Dados Hidrológicos (RPA)",
-        tech: ["Python", "Selenium WebDriver"],
-        description:
-            "Solução para coleta diária e automática de dados históricos de qualidade da água da ANA.",
-        highlight:
-            "Redução de falhas manuais e organização automatizada de diretórios por estação.",
-    },
-    {
-        id: "fluxo-paciente",
-        name: "Sistema Fluxo Transporte Paciente",
-        tech: ["PHP", "MadBuilder", "PostgreSQL", "MySQL"],
-        description:
-            "Gestão de logística inter-hospitalar para transferência de pacientes.",
-        highlight:
-            "Redução de 40% no tempo de organização e integração com WhatsApp API.",
-    },
-    {
-        id: "portal-ciges",
-        name: "Portal do CIGES (Saúde Pública)",
-        tech: ["C#", ".NET", "JavaScript", "Bootstrap"],
-        description:
-            "Plataforma de dashboards dinâmicos para indicadores de saúde de Rondônia.",
-        highlight:
-            "Centralização de dados críticos para decisões baseadas em evidências (SESAU-RO).",
-    },
-    {
-        id: "respirar-mobile",
-        name: "Projeto RespirAR (Mobile)",
-        tech: ["Flutter", "FlutterFlow", "Firebase"],
-        description:
-            "Aplicativo focado em saúde e bem-estar com notificações push e geolocalização.",
-        highlight: "Experiência intuitiva multiplataforma (Android/iOS).",
-    },
-    {
-        id: "saude-digital",
-        name: "Portal da Saúde Digital (SESAU-RO)",
-        tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
-        description:
-            "Site oficial para iniciativas de saúde digital, promovendo transparência.",
-        highlight:
-            "Foco em acessibilidade e navegação fluida em dispositivos móveis.",
-    },
-    {
-        id: "captacao-recursos",
-        name: "Sistema de Captação de Recursos",
-        tech: ["WordPress", "PHP", "JetEngine"],
-        description:
-            "Gestão de editais e financiamentos para projetos de saúde pública.",
-        highlight: "Fortalecimento da governança digital e sustentabilidade financeira.",
-    },
-    {
-        id: "portal-telesaude",
-        name: "Portal da Telesaúde",
-        tech: ["WordPress", "PHP", "Elementor"],
-        description:
-            "Plataforma para teleconsultas e monitoramento remoto de pacientes.",
-        highlight: "Expansão do acesso à saúde em áreas remotas de Rondônia.",
-    },
-];
+export function getProjects(locale: Locale) {
+    if (locale === "en") {
+        return [
+            {
+                id: "rpa-ana",
+                name: "Hydrological Data Collection Automation (RPA)",
+                tech: ["Python", "Selenium WebDriver"],
+                description: "Solution for daily and automatic collection of historical water quality data from ANA.",
+                highlight: "Reduction of manual errors and automated directory organization by station.",
+            },
+            {
+                id: "fluxo-paciente",
+                name: "Patient Transport Flow System",
+                tech: ["PHP", "MadBuilder", "PostgreSQL", "MySQL"],
+                description: "Inter-hospital logistics management for patient transfers.",
+                highlight: "40% reduction in organization time and WhatsApp API integration.",
+            },
+            {
+                id: "portal-ciges",
+                name: "CIGES Portal (Public Health)",
+                tech: ["C#", ".NET", "JavaScript", "Bootstrap"],
+                description: "Dynamic dashboard platform for health indicators in Rondônia state.",
+                highlight: "Centralization of critical data for evidence-based decisions (SESAU-RO).",
+            },
+            {
+                id: "respirar-mobile",
+                name: "RespirAR Project (Mobile)",
+                tech: ["Flutter", "FlutterFlow", "Firebase"],
+                description: "Health and wellness app with push notifications and geolocation.",
+                highlight: "Intuitive cross-platform experience (Android/iOS).",
+            },
+            {
+                id: "saude-digital",
+                name: "Digital Health Portal (SESAU-RO)",
+                tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+                description: "Official website for digital health initiatives, promoting transparency.",
+                highlight: "Focus on accessibility and fluid mobile navigation.",
+            },
+            {
+                id: "captacao-recursos",
+                name: "Resource Acquisition System",
+                tech: ["WordPress", "PHP", "JetEngine"],
+                description: "Management of grants and funding for public health projects.",
+                highlight: "Strengthening digital governance and financial sustainability.",
+            },
+            {
+                id: "portal-telesaude",
+                name: "Telehealth Portal",
+                tech: ["WordPress", "PHP", "Elementor"],
+                description: "Platform for teleconsultations and remote patient monitoring.",
+                highlight: "Expanding healthcare access in remote areas of Rondônia.",
+            },
+        ];
+    }
 
-export const ACTIVITY_LOG = [
-    { hash: "a7b2c9d", message: "feat: RPA automation v2", time: "2h ago" },
-    { hash: "f3e1a4b", message: "fix: whatsapp api integration", time: "5h ago" },
-    { hash: "9c8d7e6", message: "feat: dashboard CIGES", time: "1d ago" },
-    { hash: "2b5a1f0", message: "docs: update readme", time: "2d ago" },
-];
+    return [
+        {
+            id: "rpa-ana",
+            name: "Automação de Coleta de Dados Hidrológicos (RPA)",
+            tech: ["Python", "Selenium WebDriver"],
+            description: "Solução para coleta diária e automática de dados históricos de qualidade da água da ANA.",
+            highlight: "Redução de falhas manuais e organização automatizada de diretórios por estação.",
+        },
+        {
+            id: "fluxo-paciente",
+            name: "Sistema Fluxo Transporte Paciente",
+            tech: ["PHP", "MadBuilder", "PostgreSQL", "MySQL"],
+            description: "Gestão de logística inter-hospitalar para transferência de pacientes.",
+            highlight: "Redução de 40% no tempo de organização e integração com WhatsApp API.",
+        },
+        {
+            id: "portal-ciges",
+            name: "Portal do CIGES (Saúde Pública)",
+            tech: ["C#", ".NET", "JavaScript", "Bootstrap"],
+            description: "Plataforma de dashboards dinâmicos para indicadores de saúde de Rondônia.",
+            highlight: "Centralização de dados críticos para decisões baseadas em evidências (SESAU-RO).",
+        },
+        {
+            id: "respirar-mobile",
+            name: "Projeto RespirAR (Mobile)",
+            tech: ["Flutter", "FlutterFlow", "Firebase"],
+            description: "Aplicativo focado em saúde e bem-estar com notificações push e geolocalização.",
+            highlight: "Experiência intuitiva multiplataforma (Android/iOS).",
+        },
+        {
+            id: "saude-digital",
+            name: "Portal da Saúde Digital (SESAU-RO)",
+            tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+            description: "Site oficial para iniciativas de saúde digital, promovendo transparência.",
+            highlight: "Foco em acessibilidade e navegação fluida em dispositivos móveis.",
+        },
+        {
+            id: "captacao-recursos",
+            name: "Sistema de Captação de Recursos",
+            tech: ["WordPress", "PHP", "JetEngine"],
+            description: "Gestão de editais e financiamentos para projetos de saúde pública.",
+            highlight: "Fortalecimento da governança digital e sustentabilidade financeira.",
+        },
+        {
+            id: "portal-telesaude",
+            name: "Portal da Telesaúde",
+            tech: ["WordPress", "PHP", "Elementor"],
+            description: "Plataforma para teleconsultas e monitoramento remoto de pacientes.",
+            highlight: "Expansão do acesso à saúde em áreas remotas de Rondônia.",
+        },
+    ];
+}
+
+export function getActivityLog(locale: Locale) {
+    if (locale === "en") {
+        return [
+            { hash: "a7b2c9d", message: "feat: RPA automation v2", time: "2h ago" },
+            { hash: "f3e1a4b", message: "fix: whatsapp api integration", time: "5h ago" },
+            { hash: "9c8d7e6", message: "feat: dashboard CIGES", time: "1d ago" },
+            { hash: "2b5a1f0", message: "docs: update readme", time: "2d ago" },
+        ];
+    }
+
+    return [
+        { hash: "a7b2c9d", message: "feat: RPA automation v2", time: "2h atrás" },
+        { hash: "f3e1a4b", message: "fix: whatsapp api integration", time: "5h atrás" },
+        { hash: "9c8d7e6", message: "feat: dashboard CIGES", time: "1d atrás" },
+        { hash: "2b5a1f0", message: "docs: update readme", time: "2d atrás" },
+    ];
+}
+
+// Keep backward-compatible exports for non-i18n usage
+export const EXPERIENCE = getExperience("pt-BR");
+export const EDUCATION = getEducation("pt-BR");
+export const PROJECTS = getProjects("pt-BR");
+export const ACTIVITY_LOG = getActivityLog("pt-BR");

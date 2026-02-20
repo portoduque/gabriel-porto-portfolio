@@ -3,6 +3,11 @@ import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { LanguageProvider } from "@/lib/i18n";
+
+import { LanguageToggle } from "@/components/LanguageToggle";
+
+
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-display",
@@ -44,11 +49,14 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          {children}
-          {/* Fixed position theme toggle for easy access */}
-          <div className="fixed top-4 right-4 z-50">
-            <ThemeToggle />
-          </div>
+          <LanguageProvider>
+            {children}
+            {/* Fixed position controls for easy access */}
+            <div className="fixed top-4 right-4 z-50 flex items-center gap-4">
+              <LanguageToggle />
+              <ThemeToggle />
+            </div>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

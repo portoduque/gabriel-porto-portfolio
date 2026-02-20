@@ -4,7 +4,8 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { PROFILE, SKILLS } from "@/lib/data";
+import { getProfile, SKILLS } from "@/lib/data";
+import { useLanguage } from "@/lib/i18n";
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -35,7 +36,7 @@ function useScrambleText(text: string, delay: number = 0) {
                         .join("");
                 });
 
-                iteration += 1 / 2; // Increase speed
+                iteration += 1 / 2;
             }, 30);
         };
 
@@ -51,6 +52,9 @@ function useScrambleText(text: string, delay: number = 0) {
 }
 
 export function SystemOverview() {
+    const { locale, t } = useLanguage();
+    const profile = getProfile(locale);
+
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
@@ -80,7 +84,6 @@ export function SystemOverview() {
         y.set(0);
     };
 
-    // Principal skills for recruiters (Top 4 each)
     const stackDisplay = "[PHP, Python, HTML5, CSS3, Flutter]";
     const toolsDisplay = "[Linux, WordPress, RPA, Git]";
 
@@ -100,8 +103,6 @@ export function SystemOverview() {
                 {/* Glow Effects */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-
-
                 {/* Content Body */}
                 <div className="relative min-h-[500px] p-6 px-8 font-mono text-sm leading-relaxed text-blue-100/90 dark:text-blue-100/90 text-blue-900/90">
                     {/* Line Numbers */}
@@ -112,30 +113,30 @@ export function SystemOverview() {
                     </div>
 
                     <div className="sm:pl-6 flex flex-col gap-3 relative z-10 font-medium">
-                        <EnvRow label="USER" value={PROFILE.name} color="text-purple-400" delay={400} />
-                        <EnvRow label="ROLE" value={PROFILE.role} color="text-blue-400" delay={700} />
-                        <EnvRow label="LOC" value="Porto Velho, Brasil" color="text-emerald-400" delay={1000} />
+                        <EnvRow label={t("system.label.user")} value={profile.name} color="text-purple-400" delay={400} />
+                        <EnvRow label={t("system.label.role")} value={profile.role} color="text-blue-400" delay={700} />
+                        <EnvRow label={t("system.label.loc")} value={t("system.loc")} color="text-emerald-400" delay={1000} />
 
                         <div className="h-px bg-border/50 w-full my-2" />
 
-                        <EnvRow label="STACK" value={stackDisplay} color="text-yellow-400" delay={1300} />
-                        <EnvRow label="TOOLS" value={toolsDisplay} color="text-orange-400" delay={1600} />
+                        <EnvRow label={t("system.label.stack")} value={stackDisplay} color="text-yellow-400" delay={1300} />
+                        <EnvRow label={t("system.label.tools")} value={toolsDisplay} color="text-orange-400" delay={1600} />
 
                         <div className="h-px bg-border/50 w-full my-2" />
 
                         {/* Status Row */}
                         <div className="flex items-center gap-4 group/status cursor-pointer mt-1">
-                            <span className="text-red-400 font-bold w-16 shrink-0 tracking-wider text-xs">STATUS</span>
+                            <span className="text-red-400 font-bold w-28 shrink-0 tracking-wider text-xs">{t("system.label.status")}</span>
                             <div className="flex items-center gap-2 bg-green-500/10 px-2 py-1 rounded border border-green-500/20 group-hover/status:border-green-500/50 transition-colors">
-                                <span className="text-green-400 font-bold text-xs animate-pulse">AVAILABLE</span>
+                                <span className="text-green-400 font-bold text-xs animate-pulse">{t("system.status")}</span>
                             </div>
                         </div>
 
-                        {PROFILE.highlights && (
+                        {profile.highlights && (
                             <>
                                 <div className="h-px bg-border/50 w-full my-2" />
                                 <div className="flex flex-col gap-2">
-                                    {PROFILE.highlights.map((h, i) => (
+                                    {profile.highlights.map((h, i) => (
                                         <EnvRow
                                             key={h.label}
                                             label={h.label}
@@ -150,7 +151,7 @@ export function SystemOverview() {
 
                         {/* Cursor Line */}
                         <div className="flex items-center gap-2 text-muted/30 mt-4 text-xs">
-                            <span>user@portfolio:~$</span>
+                            <span>{t("system.prompt")}</span>
                             <span className="animate-pulse bg-muted/50 w-2 h-4 block"></span>
                         </div>
                     </div>
@@ -165,9 +166,9 @@ function EnvRow({ label, value, color, delay }: { label: string, value: string, 
 
     return (
         <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 p-1 -mx-1 rounded transition-colors duration-200 group/row">
-            <span className={cn("font-bold w-16 shrink-0 tracking-wider text-xs opacity-70 group-hover/row:opacity-100 transition-opacity", color)}>{label}</span>
+            <span className={cn("font-bold w-28 shrink-0 tracking-wider text-xs opacity-70 group-hover/row:opacity-100 transition-opacity", color)}>{label}</span>
             <span className="text-foreground/80 font-normal tracking-wide group-hover/row:text-foreground transition-colors">
-                {label === "STACK" || label === "TOOLS" ? (
+                {label === "STACK" || label === "TOOLS" || label === "FERRAMENTAS" ? (
                     <span className="text-syntax-string">{scrambled}</span>
                 ) : (
                     <span>&quot;{scrambled}&quot;</span>

@@ -2,9 +2,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { EXPERIENCE, EDUCATION } from "@/lib/data";
+import { getExperience, getEducation } from "@/lib/data";
+import { useLanguage } from "@/lib/i18n";
 
 export function ExperienceView() {
+    const { locale } = useLanguage();
+    const experience = getExperience(locale);
+    const education = getEducation(locale);
+
     return (
         <div className="w-full max-w-7xl mx-auto px-6 lg:px-12 pt-12 pb-24">
             {/* Experience Section */}
@@ -28,7 +33,7 @@ export function ExperienceView() {
                 </div>
 
                 <div className="space-y-12 relative border-l-2 border-border/50 ml-3 lg:ml-8 pl-8 lg:pl-12">
-                    {EXPERIENCE.map((exp, index) => (
+                    {experience.map((exp, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, x: -20 }}
@@ -74,7 +79,7 @@ export function ExperienceView() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ml-3 lg:ml-8">
-                    {EDUCATION.map((edu, index) => (
+                    {education.map((edu, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 20 }}
