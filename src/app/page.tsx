@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { SystemOverview } from "@/components/hero/SystemOverview";
 import { ProjectsView } from "@/components/content/ProjectsView";
-import { ExperienceView } from "@/components/content/ExperienceView";
+import { CareerPipelineView } from "@/components/content/CareerPipelineView";
 import { ContactView } from "@/components/content/ContactView";
 import { getProfile, SKILLS, getActivityLog } from "@/lib/data";
 import { useLanguage } from "@/lib/i18n";
@@ -12,7 +12,6 @@ import { BentoCard } from "@/components/ui/BentoCard";
 import {
   VscListSelection,
   VscJson,
-  VscMarkdown,
   VscTerminal,
   VscFilePdf,
   VscGitCommit,
@@ -30,14 +29,10 @@ import {
 } from "react-icons/si";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<"main.py" | "projects.json" | "experiencias.md" | "contact.yaml">("main.py");
+  const [activeTab, setActiveTab] = useState<"main.py" | "projects.json" | "carreira.sh" | "contact.yaml">("main.py");
   const { locale, t } = useLanguage();
   const profile = getProfile(locale);
   const activityLog = getActivityLog(locale);
-
-  const handleTabClick = (tab: "main.py" | "projects.json" | "experiencias.md" | "contact.yaml") => {
-    setActiveTab(tab);
-  };
 
   return (
     <div className="flex flex-col h-screen w-full relative font-[family-name:var(--font-display)]">
@@ -63,11 +58,11 @@ export default function Home() {
             <VscJson size={24} />
           </button>
           <button
-            onClick={() => setActiveTab("experiencias.md")}
-            className={clsx("transition-colors relative", activeTab === "experiencias.md" ? "text-foreground" : "text-muted hover:text-foreground")}
+            onClick={() => setActiveTab("carreira.sh")}
+            className={clsx("transition-colors relative", activeTab === "carreira.sh" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
-            {activeTab === "experiencias.md" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
-            <VscMarkdown size={24} />
+            {activeTab === "carreira.sh" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
+            <VscTerminal size={24} />
           </button>
           <div className="flex-1" />
           <button
@@ -97,12 +92,12 @@ export default function Home() {
               isActive={activeTab === "projects.json"}
               onClick={() => setActiveTab("projects.json")}
             />
-            {/* Tab 3 — experiencias.md */}
+            {/* Tab 3 — carreira.sh */}
             <Tab
               name={t("nav.experience")}
-              icon={<VscMarkdown size={16} className="text-[#3b82f6]" />}
-              isActive={activeTab === "experiencias.md"}
-              onClick={() => setActiveTab("experiencias.md")}
+              icon={<VscTerminal size={16} className="text-neon-green" />}
+              isActive={activeTab === "carreira.sh"}
+              onClick={() => setActiveTab("carreira.sh")}
             />
             {/* Tab 4 — contact.yaml */}
             <Tab
@@ -320,7 +315,7 @@ export default function Home() {
               )}
 
               {activeTab === "projects.json" && <ProjectsView />}
-              {activeTab === "experiencias.md" && <ExperienceView />}
+              {activeTab === "carreira.sh" && <CareerPipelineView />}
               {activeTab === "contact.yaml" && <ContactView />}
 
             </div>
@@ -356,7 +351,7 @@ export default function Home() {
             {{
               "main.py": "Python",
               "projects.json": "JSON",
-              "experiencias.md": "Markdown",
+              "carreira.sh": "Shell Script",
               "contact.yaml": "YAML",
             }[activeTab]}
           </span>

@@ -46,9 +46,28 @@ const pt: Record<string, string> = {
     // Navbar (Tabs)
     "nav.main": "main.py",
     "nav.projects": "projetos.json",
-    "nav.experience": "experiencias.md",
+    "nav.experience": "carreira.sh",
     "nav.contact": "contato.yaml",
     "nav.resume": "curriculo.pdf",
+
+    // Career Page
+    "career.experience": "Experiência Profissional",
+    "career.education": "Formação Acadêmica",
+    "career.timeline.title": "Minha Carreira",
+    "career.timeline.current": "Atual",
+    "career.pipeline.title": "deploy-carreira.sh",
+    "career.pipeline.header": "Pipeline de Carreira",
+    "career.pipeline.stages": "Etapas",
+    "career.pipeline.running": "Em execução",
+    "career.pipeline.cert.title": "Certificações",
+    "career.pipeline.cert.value": "Google Cybersec & CCNA",
+    "career.pipeline.global.title": "Vivência Global",
+    "career.pipeline.global.value": "Ambientes Multiculturais",
+    "career.pipeline.status.running": "EM ANDAMENTO",
+    "career.pipeline.status.passed": "CONCLUÍDO",
+    "career.pipeline.deps": "# dependências",
+    "career.pipeline.deps.comment": "Formação acadêmica instalada",
+    "career.pipeline.complete": "concluído com sucesso",
 
     // Contact
     "contact.title": "Informações de Contato",
@@ -195,9 +214,28 @@ const en: Record<string, string> = {
     // Navbar (Tabs)
     "nav.main": "main.py",
     "nav.projects": "projects.json",
-    "nav.experience": "experience.md",
+    "nav.experience": "career.sh",
     "nav.contact": "contact.yaml",
     "nav.resume": "resume.pdf",
+
+    // Career Page
+    "career.experience": "Professional Experience",
+    "career.education": "Education",
+    "career.timeline.title": "My Career",
+    "career.timeline.current": "Current",
+    "career.pipeline.title": "deploy-career.sh",
+    "career.pipeline.header": "Career Pipeline",
+    "career.pipeline.stages": "Stages",
+    "career.pipeline.running": "Running",
+    "career.pipeline.cert.title": "Certifications",
+    "career.pipeline.cert.value": "Google Cybersec & CCNA",
+    "career.pipeline.global.title": "Global Experience",
+    "career.pipeline.global.value": "Multicultural Environments",
+    "career.pipeline.status.running": "RUNNING",
+    "career.pipeline.status.passed": "PASSED",
+    "career.pipeline.deps": "# dependencies",
+    "career.pipeline.deps.comment": "Academic foundation installed",
+    "career.pipeline.complete": "completed successfully",
 
     // Contact
     "contact.title": "Contact Information",

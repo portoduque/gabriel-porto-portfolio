@@ -70,9 +70,9 @@ export function getExperience(locale: Locale) {
                 period: "December 2024 – Present",
                 description: [
                     "Development of websites and web systems (WordPress, PHP/MadBuilder).",
-                    "Creation of automations (RPA) with Python and Selenium.",
+                    "Creation of automations (RPA) with Python, Selenium and Airflow.",
                     "Deployment and configuration of Linux servers (Apache).",
-                    "Requirements gathering and system modeling for healthcare.",
+                    "Requirements gathering, system modeling for healthcare, and project management.",
                 ],
             },
             {
@@ -85,11 +85,12 @@ export function getExperience(locale: Locale) {
                 ],
             },
             {
-                role: "International Experience (Bar Waiter & Kitchen Utility)",
-                period: "2021 – 2023",
+                role: "International Experience (Oceania & MSC Cruises)",
+                period: "01/2021 – 12/2023",
                 description: [
-                    "High-standard service in multicultural environments.",
-                    "System operations (Micros) and CDC/FDA compliance.",
+                    "High-standard service in multicultural environments, demonstrating adaptability and global communication skills.",
+                    "Transaction management and record-keeping via the Micros system, ensuring uncompromising accuracy and reliability.",
+                    "Strict compliance with international safety and hygiene protocols established by the CDC/FDA.",
                 ],
             },
         ];
@@ -101,9 +102,9 @@ export function getExperience(locale: Locale) {
             period: "Dezembro 2024 – Presente",
             description: [
                 "Desenvolvimento de sites e sistemas web (WordPress, PHP/MadBuilder).",
-                "Criação de automações (RPA) com Python e Selenium.",
+                "Criação de automações (RPA) com Python, Selenium e Airflow.",
                 "Implantação e configuração de servidores Linux (Apache).",
-                "Levantamento de requisitos e modelagem de sistemas para a área da saúde.",
+                "Levantamento de requisitos, modelagem de sistemas para a área da saúde e gestão de projetos.",
             ],
         },
         {
@@ -116,11 +117,12 @@ export function getExperience(locale: Locale) {
             ],
         },
         {
-            role: "Experiências Internacionais (Bar Waiter e Kitchen Utility)",
-            period: "2021 – 2023",
+            role: "Experiências Internacionais (Oceania e MSC Cruzeiros)",
+            period: "01/2021 – 12/2023",
             description: [
-                "Atendimento de alto padrão em ambientes multiculturais.",
-                "Operação de sistemas (Micros) e conformidade com padrões CDC/FDA.",
+                "Atendimento de alto padrão em ambiente multicultural, demonstrando forte adaptabilidade e comunicação global.",
+                "Gestão de transações com sistema Micros, garantindo precisão e confiabilidade no registro de operações.",
+                "Adesão estrita a rigorosos padrões internacionais de segurança e conformidade estabelecidos pelo CDC/FDA.",
             ],
         },
     ];

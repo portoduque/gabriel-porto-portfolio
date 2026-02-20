@@ -30,7 +30,7 @@ Profissional de Tecnologia da Informação com sólida experiência em infraestr
 
 ### Ferramentas e Processos
 - **CMS:** WordPress (Temas customizados, Elementor, JetEngine)
-- **Gestão:** Jira, Trello, Metodologias Ágeis
+- **Gestão:** Jira, Trello, Metodologias Ágeis, Gestão de Projetos
 - **Versionamento:** GitHub
 - **Automação:** Selenium WebDriver, RPA com Python, Airflow
 
@@ -41,9 +41,9 @@ Profissional de Tecnologia da Informação com sólida experiência em infraestr
 ### Analista e Desenvolvedor de Sistemas
 *Dezembro 2024 – Presente*
 - Desenvolvimento de sites e sistemas web (WordPress, PHP/MadBuilder).
-- Criação de automações (RPA) com Python e Selenium.
+- Criação de automações (RPA) com Python, Selenium e Airflow.
 - Implantação e configuração de servidores Linux (Apache).
-- Levantamento de requisitos e modelagem de sistemas para a área da saúde.
+- Levantamento de requisitos, modelagem de sistemas para a área da saúde e gestão de projetos.
 
 ### Suporte Técnico de TI
 *Agosto 2024 – Dezembro 2024*
@@ -51,10 +51,11 @@ Profissional de Tecnologia da Informação com sólida experiência em infraestr
 - Troubleshooting avançado em sistemas comerciais e backups críticos.
 - Atendimento especializado e implementação de segurança digital.
 
-### Experiências Internacionais (Bar Waiter e Kitchen Utility)
-*2021 – 2023*
-- Atendimento de alto padrão em ambientes multiculturais.
-- Operação de sistemas (Micros) e conformidade com padrões CDC/FDA.
+### Experiências Internacionais (Oceania e MSC Cruzeiros)
+*01/2021 – 12/2023*
+- Atendimento de alto padrão em ambiente multicultural, demonstrando forte adaptabilidade e comunicação global.
+- Gestão de transações com sistema Micros, garantindo precisão e confiabilidade no registro de operações.
+- Adesão estrita a rigorosos padrões internacionais de segurança e conformidade estabelecidos pelo CDC/FDA.
 
 ---
 
