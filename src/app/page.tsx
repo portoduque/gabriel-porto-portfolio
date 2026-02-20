@@ -2,22 +2,21 @@
 
 import { useState } from "react";
 import { SystemOverview } from "@/components/hero/SystemOverview";
-import { ProjectsView } from "@/components/content/ProjectsView";
+import { DockerComposeView } from "@/components/content/DockerComposeView";
 import { CareerPipelineView } from "@/components/content/CareerPipelineView";
 import { ContactView } from "@/components/content/ContactView";
-import { getProfile, SKILLS, getActivityLog } from "@/lib/data";
+import { getProfile, getActivityLog } from "@/lib/data";
 import { useLanguage } from "@/lib/i18n";
 import { clsx } from "clsx";
 import { BentoCard } from "@/components/ui/BentoCard";
 import {
-  VscListSelection,
-  VscJson,
   VscTerminal,
   VscFilePdf,
   VscGitCommit,
   VscSettingsGear,
   VscDatabase,
-  VscMail
+  VscMail,
+  VscPlug
 } from "react-icons/vsc";
 import {
   SiPython,
@@ -25,11 +24,12 @@ import {
   SiCss3,
   SiPhp,
   SiFlutter,
-  SiLinux
+  SiLinux,
+  SiDocker
 } from "react-icons/si";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<"main.py" | "projects.json" | "carreira.sh" | "contact.yaml">("main.py");
+  const [activeTab, setActiveTab] = useState<"main.py" | "projetos.yml" | "carreira.sh" | "contact.yaml">("main.py");
   const { locale, t } = useLanguage();
   const profile = getProfile(locale);
   const activityLog = getActivityLog(locale);
@@ -51,11 +51,11 @@ export default function Home() {
             <SiPython size={24} />
           </button>
           <button
-            onClick={() => setActiveTab("projects.json")}
-            className={clsx("transition-colors relative", activeTab === "projects.json" ? "text-foreground" : "text-muted hover:text-foreground")}
+            onClick={() => setActiveTab("projetos.yml")}
+            className={clsx("transition-colors relative", activeTab === "projetos.yml" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
-            {activeTab === "projects.json" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
-            <VscJson size={24} />
+            {activeTab === "projetos.yml" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
+            <SiDocker size={24} />
           </button>
           <button
             onClick={() => setActiveTab("carreira.sh")}
@@ -85,12 +85,12 @@ export default function Home() {
               isActive={activeTab === "main.py"}
               onClick={() => setActiveTab("main.py")}
             />
-            {/* Tab 2 — projects.json */}
+            {/* Tab 2 — docker-compose.yml */}
             <Tab
               name={t("nav.projects")}
-              icon={<VscJson size={16} className="text-[#f7df1e]" />}
-              isActive={activeTab === "projects.json"}
-              onClick={() => setActiveTab("projects.json")}
+              icon={<SiDocker size={16} className="text-[#1D63ED]" />}
+              isActive={activeTab === "projetos.yml"}
+              onClick={() => setActiveTab("projetos.yml")}
             />
             {/* Tab 3 — carreira.sh */}
             <Tab
@@ -163,7 +163,7 @@ export default function Home() {
                       {/* CTA buttons */}
                       <div className="flex flex-wrap justify-center lg:justify-center gap-4 mt-2">
                         <button
-                          onClick={() => setActiveTab("projects.json")}
+                          onClick={() => setActiveTab("projetos.yml")}
                           className="group relative inline-flex items-center justify-center px-8 py-3.5 font-[family-name:var(--font-mono)] text-sm font-medium text-white transition-all duration-300 overflow-hidden rounded-sm bg-primary hover:bg-primary-dark shadow-[0_0_20px_rgba(6,123,249,0.3)] hover:shadow-[0_0_30px_rgba(6,123,249,0.5)] cursor-pointer">
                           <span className="relative flex items-center gap-2 z-10">
                             <span className="text-white/70 group-hover:text-white transition-colors">$</span>
@@ -182,14 +182,16 @@ export default function Home() {
                       </div>
 
                       {/* Tech stack bar - Mini */}
-                      <div className="w-full mt-6 opacity-80 scale-90 lg:scale-100 origin-center lg:origin-center">
-                        <div className="flex items-center gap-6 overflow-x-auto no-scrollbar pb-2 mask-linear-fade w-full max-w-full px-4">
+                      <div className="w-full mt-6 opacity-80">
+                        <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-3 pb-2 w-full px-4">
                           <TechIcon icon={<SiHtml5 size={24} className="text-[#E34F26] group-hover:scale-110 transition-transform" />} label="HTML" />
                           <TechIcon icon={<SiCss3 size={24} className="text-[#1572B6] group-hover:scale-110 transition-transform" />} label="CSS" />
                           <TechIcon icon={<SiPhp size={24} className="text-[#777BB4] group-hover:scale-110 transition-transform" />} label="PHP" />
                           <TechIcon icon={<SiPython size={24} className="text-[#3776AB] group-hover:scale-110 transition-transform" />} label="Python" />
                           <TechIcon icon={<SiFlutter size={24} className="text-[#02569B] group-hover:scale-110 transition-transform" />} label="Flutter" />
                           <TechIcon icon={<VscDatabase size={24} className="text-[#4479A1] group-hover:scale-110 transition-transform" />} label="SQL" />
+                          <TechIcon icon={<SiDocker size={24} className="text-[#2496ED] group-hover:scale-110 transition-transform" />} label="Docker" />
+                          <TechIcon icon={<VscPlug size={24} className="text-[#00C7B7] group-hover:scale-110 transition-transform" />} label="REST API" />
                           <TechIcon icon={<SiLinux size={24} className="text-[#FCC624] group-hover:scale-110 transition-transform" />} label="Linux" />
                           <TechIcon icon={<VscGitCommit size={24} className="group-hover:scale-110 transition-transform text-[#F05032]" />} label="Git" />
                         </div>
@@ -314,7 +316,7 @@ export default function Home() {
                 </div>
               )}
 
-              {activeTab === "projects.json" && <ProjectsView />}
+              {activeTab === "projetos.yml" && <DockerComposeView />}
               {activeTab === "carreira.sh" && <CareerPipelineView />}
               {activeTab === "contact.yaml" && <ContactView />}
 
@@ -350,7 +352,7 @@ export default function Home() {
           <span className="cursor-pointer hover:bg-white/10 px-1 rounded-sm hidden sm:inline">
             {{
               "main.py": "Python",
-              "projects.json": "JSON",
+              "projetos.yml": "YAML",
               "carreira.sh": "Shell Script",
               "contact.yaml": "YAML",
             }[activeTab]}

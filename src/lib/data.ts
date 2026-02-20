@@ -163,6 +163,7 @@ export function getProjects(locale: Locale) {
                 tech: ["Python", "Selenium WebDriver"],
                 description: "Solution for daily and automatic collection of historical water quality data from ANA.",
                 highlight: "Reduction of manual errors and automated directory organization by station.",
+                visibility: "private" as const,
             },
             {
                 id: "fluxo-paciente",
@@ -170,6 +171,7 @@ export function getProjects(locale: Locale) {
                 tech: ["PHP", "MadBuilder", "PostgreSQL", "MySQL"],
                 description: "Inter-hospital logistics management for patient transfers.",
                 highlight: "40% reduction in organization time and WhatsApp API integration.",
+                visibility: "private" as const,
             },
             {
                 id: "portal-ciges",
@@ -177,6 +179,7 @@ export function getProjects(locale: Locale) {
                 tech: ["C#", ".NET", "JavaScript", "Bootstrap"],
                 description: "Dynamic dashboard platform for health indicators in Rondônia state.",
                 highlight: "Centralization of critical data for evidence-based decisions (SESAU-RO).",
+                visibility: "public" as const,
             },
             {
                 id: "respirar-mobile",
@@ -184,6 +187,7 @@ export function getProjects(locale: Locale) {
                 tech: ["Flutter", "FlutterFlow", "Firebase"],
                 description: "Health and wellness app with push notifications and geolocation.",
                 highlight: "Intuitive cross-platform experience (Android/iOS).",
+                visibility: "public" as const,
             },
             {
                 id: "saude-digital",
@@ -191,6 +195,7 @@ export function getProjects(locale: Locale) {
                 tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
                 description: "Official website for digital health initiatives, promoting transparency.",
                 highlight: "Focus on accessibility and fluid mobile navigation.",
+                visibility: "public" as const,
             },
             {
                 id: "captacao-recursos",
@@ -198,6 +203,7 @@ export function getProjects(locale: Locale) {
                 tech: ["WordPress", "PHP", "JetEngine"],
                 description: "Management of grants and funding for public health projects.",
                 highlight: "Strengthening digital governance and financial sustainability.",
+                visibility: "private" as const,
             },
             {
                 id: "portal-telesaude",
@@ -205,6 +211,7 @@ export function getProjects(locale: Locale) {
                 tech: ["WordPress", "PHP", "Elementor"],
                 description: "Platform for teleconsultations and remote patient monitoring.",
                 highlight: "Expanding healthcare access in remote areas of Rondônia.",
+                visibility: "public" as const,
             },
         ];
     }
@@ -216,6 +223,7 @@ export function getProjects(locale: Locale) {
             tech: ["Python", "Selenium WebDriver"],
             description: "Solução para coleta diária e automática de dados históricos de qualidade da água da ANA.",
             highlight: "Redução de falhas manuais e organização automatizada de diretórios por estação.",
+            visibility: "private" as const,
         },
         {
             id: "fluxo-paciente",
@@ -223,6 +231,7 @@ export function getProjects(locale: Locale) {
             tech: ["PHP", "MadBuilder", "PostgreSQL", "MySQL"],
             description: "Gestão de logística inter-hospitalar para transferência de pacientes.",
             highlight: "Redução de 40% no tempo de organização e integração com WhatsApp API.",
+            visibility: "private" as const,
         },
         {
             id: "portal-ciges",
@@ -230,6 +239,7 @@ export function getProjects(locale: Locale) {
             tech: ["C#", ".NET", "JavaScript", "Bootstrap"],
             description: "Plataforma de dashboards dinâmicos para indicadores de saúde de Rondônia.",
             highlight: "Centralização de dados críticos para decisões baseadas em evidências (SESAU-RO).",
+            visibility: "public" as const,
         },
         {
             id: "respirar-mobile",
@@ -237,6 +247,7 @@ export function getProjects(locale: Locale) {
             tech: ["Flutter", "FlutterFlow", "Firebase"],
             description: "Aplicativo focado em saúde e bem-estar com notificações push e geolocalização.",
             highlight: "Experiência intuitiva multiplataforma (Android/iOS).",
+            visibility: "public" as const,
         },
         {
             id: "saude-digital",
@@ -244,6 +255,7 @@ export function getProjects(locale: Locale) {
             tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
             description: "Site oficial para iniciativas de saúde digital, promovendo transparência.",
             highlight: "Foco em acessibilidade e navegação fluida em dispositivos móveis.",
+            visibility: "public" as const,
         },
         {
             id: "captacao-recursos",
@@ -251,6 +263,7 @@ export function getProjects(locale: Locale) {
             tech: ["WordPress", "PHP", "JetEngine"],
             description: "Gestão de editais e financiamentos para projetos de saúde pública.",
             highlight: "Fortalecimento da governança digital e sustentabilidade financeira.",
+            visibility: "private" as const,
         },
         {
             id: "portal-telesaude",
@@ -258,6 +271,7 @@ export function getProjects(locale: Locale) {
             tech: ["WordPress", "PHP", "Elementor"],
             description: "Plataforma para teleconsultas e monitoramento remoto de pacientes.",
             highlight: "Expansão do acesso à saúde em áreas remotas de Rondônia.",
+            visibility: "public" as const,
         },
     ];
 }

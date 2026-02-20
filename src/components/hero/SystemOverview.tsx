@@ -84,7 +84,7 @@ export function SystemOverview() {
         y.set(0);
     };
 
-    const stackDisplay = "[PHP, Python, HTML5, CSS3, Flutter]";
+    const stackDisplay = "[PHP, Python, HTML5, CSS3, Flutter, Docker, REST API]";
     const toolsDisplay = "[Linux, WordPress, RPA, Apache, Airflow, FlutterFlow, Madbuilder]";
 
     return (
