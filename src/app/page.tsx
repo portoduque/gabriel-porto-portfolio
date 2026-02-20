@@ -28,11 +28,22 @@ import {
   SiDocker
 } from "react-icons/si";
 
-export default function Home() {
+import { useSearchParams } from "next/navigation";
+import { useEffect, Suspense } from "react";
+
+function HomeContent() {
   const [activeTab, setActiveTab] = useState<"main.py" | "projetos.yml" | "carreira.sh" | "contact.yaml">("main.py");
   const { locale, t } = useLanguage();
   const profile = getProfile(locale);
   const activityLog = getActivityLog(locale);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const tab = searchParams.get("tab");
+    if (tab === "main.py" || tab === "projetos.yml" || tab === "carreira.sh" || tab === "contact.yaml") {
+      setActiveTab(tab);
+    }
+  }, [searchParams]);
 
   return (
     <div className="flex flex-col h-screen w-full relative font-[family-name:var(--font-display)]">
@@ -362,6 +373,14 @@ export default function Home() {
         </div>
       </footer>
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div className="h-screen w-full bg-background" />}>
+      <HomeContent />
+    </Suspense>
   );
 }
 

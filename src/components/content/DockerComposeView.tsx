@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { getProjects } from "@/lib/data";
 import { useLanguage } from "@/lib/i18n";
 import { useState } from "react";
+import Link from "next/link";
 
 function generateHash() {
     return Math.random().toString(16).slice(2, 14);
@@ -366,16 +367,13 @@ export function DockerComposeView() {
 
                                                 {/* Action Button */}
                                                 <div className="mt-5 flex justify-end">
-                                                    <button
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            // Functionality coming soon
-                                                        }}
+                                                    <Link
+                                                        href={`/projetos/${container.id}`}
                                                         className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold font-[family-name:var(--font-mono)] text-primary border border-primary/30 bg-primary/5 hover:bg-primary hover:text-white transition-all duration-300 uppercase tracking-tight shadow-sm"
                                                     >
                                                         {t("docker.action.details")}
                                                         <span className="material-symbols-outlined text-[16px]">open_in_new</span>
-                                                    </button>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </motion.div>

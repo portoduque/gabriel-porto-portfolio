@@ -154,7 +154,24 @@ export const CERTIFICATES = [
     "Google Cloud Foundations Academy"
 ];
 
-export function getProjects(locale: Locale) {
+export interface ProjectMedia {
+    type: "image" | "video";
+    url: string;
+    alt?: string;
+}
+
+export interface Project {
+    id: string;
+    name: string;
+    tech: string[];
+    description: string;
+    highlight: string;
+    visibility: "public" | "private";
+    content?: string;
+    media?: ProjectMedia[];
+}
+
+export function getProjects(locale: Locale): Project[] {
     if (locale === "en") {
         return [
             {
@@ -164,6 +181,26 @@ export function getProjects(locale: Locale) {
                 description: "Solution for daily and automatic collection of historical water quality data from ANA.",
                 highlight: "Reduction of manual errors and automated directory organization by station.",
                 visibility: "private" as const,
+                content: `
+# Hydrological Data Collection Automation (RPA)
+
+This project was developed to solve a recurring problem: the manual and error-prone collection of historical water quality data provided by the National Water Agency (ANA) in Brazil.
+
+The automation accesses the hydrological portal, fills in the search forms based on pre-defined parameters, and downloads detailed reports or spreadsheets.
+
+## Challenges
+
+- **Dynamic Navigation**: The portal uses complex controls that require precise interactions via WebDriver.
+- **Exception Handling**: When data from a station is unavailable, the script must log the failure and continue the process instead of stopping.
+
+## Results
+
+The script drastically reduced the time and risk of failures in the process. The automated organization of directories makes it easier to integrate the downloaded data with the team's data science pipelines.
+`,
+                media: [
+                    { type: 'image', url: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=2070', alt: 'Automation script running code' },
+                    { type: 'image', url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2070', alt: 'Data dashboard generated from results' }
+                ]
             },
             {
                 id: "fluxo-paciente",
@@ -224,6 +261,26 @@ export function getProjects(locale: Locale) {
             description: "Solução para coleta diária e automática de dados históricos de qualidade da água da ANA.",
             highlight: "Redução de falhas manuais e organização automatizada de diretórios por estação.",
             visibility: "private" as const,
+            content: `
+# Automação de Coleta de Dados Hidrológicos (RPA)
+
+Este projeto foi desenvolvido para resolver um problema recorrente: a coleta manual e propensa a erros de dados históricos de qualidade da água disponibilizados pela Agência Nacional de Águas (ANA). 
+
+A automação acessa o portal hidrológico, preenche os formulários de busca com base em parâmetros pré-definidos, e realiza o download de relatórios ou planilhas detalhadas.
+
+## Desafios
+
+- **Navegação Dinâmica**: O portal utiliza controles complexos que necessitam de interações precisas via WebDriver.
+- **Tratamento de Exceções**: Quando os dados de uma estação não estão disponíveis, o script precisa registrar a falha e continuar o processo em vez de parar.
+
+## Resultados
+
+O script reduziu drasticamente o tempo e o risco de falhas no processo. A organização automatizada dos diretórios facilita a integração dos dados baixados com os pipelines de ciência de dados da equipe.
+`,
+            media: [
+                { type: 'image', url: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=2070', alt: 'Demonstração do script de automação rodando' },
+                { type: 'image', url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2070', alt: 'Dashboard de dados gerado a partir dos resultados' }
+            ]
         },
         {
             id: "fluxo-paciente",
