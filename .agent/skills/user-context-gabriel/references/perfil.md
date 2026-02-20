@@ -82,33 +82,40 @@ Profissional de Tecnologia da Informação com sólida experiência em infraestr
 - **Tecnologias:** Python, Selenium WebDriver
 - **Descrição:** Solução para coleta diária e automática de dados históricos de qualidade da água da ANA.
 - **Destaque:** Redução de falhas manuais e organização automatizada de diretórios por estação.
+- **Visibilidade:** Interno/Privado
 
 ### 2. Sistema Fluxo Transporte Paciente
 - **Tecnologias:** PHP, MadBuilder, PostgreSQL/MySQL
 - **Descrição:** Gestão de logística inter-hospitalar para transferência de pacientes.
 - **Destaque:** Redução de 40% no tempo de organização e integração com WhatsApp API.
+- **Visibilidade:** Interno/Privado
 
 ### 3. Portal do CIGES (Saúde Pública)
 - **Tecnologias:** C#, .NET, JavaScript, Bootstrap
 - **Descrição:** Plataforma de dashboards dinâmicos para indicadores de saúde de Rondônia.
 - **Destaque:** Centralização de dados críticos para decisões baseadas em evidências (SESAU-RO).
+- **Visibilidade:** Público
 
 ### 4. Projeto RespirAR (Mobile)
 - **Tecnologias:** Flutter, FlutterFlow, Firebase
 - **Descrição:** Aplicativo focado em saúde e bem-estar com notificações push e geolocalização.
 - **Destaque:** Experiência intuitiva multiplataforma (Android/iOS).
+- **Visibilidade:** Público
 
 ### 5. Portal da Saúde Digital (SESAU-RO)
 - **Tecnologias:** HTML5, CSS3, JavaScript, Bootstrap
 - **Descrição:** Site oficial para iniciativas de saúde digital, promovendo transparência.
 - **Destaque:** Foco em acessibilidade e navegação fluida em dispositivos móveis.
+- **Visibilidade:** Público
 
 ### 6. Sistema de Captação de Recursos
 - **Tecnologias:** WordPress, PHP, JetEngine
 - **Descrição:** Gestão de editais e financiamentos para projetos de saúde pública.
 - **Destaque:** Fortalecimento da governança digital e sustentabilidade financeira.
+- **Visibilidade:** Interno/Privado
 
 ### 7. Portal da Telesaúde
 - **Tecnologias:** WordPress, PHP, Elementor
 - **Descrição:** Plataforma para teleconsultas e monitoramento remoto de pacientes.
 - **Destaque:** Expansão do acesso à saúde em áreas remotas de Rondônia.
+- **Visibilidade:** Público

@@ -168,7 +168,14 @@ const pt: Record<string, string> = {
     "docker.logs": "Logs Recentes",
     "docker.footer": "containers listados",
     "docker.visibility.public": "Público",
+    "docker.visibility.public.desc": "Ferramenta de uso público.",
     "docker.visibility.private": "Interno",
+    "docker.visibility.private.desc": "Ferramenta de uso restrito.",
+    "docker.action.details": "Ver detalhes",
+    "docker.inspect": "Configurações (docker inspect)",
+    "docker.meta.image": "Image / Repo:",
+    "docker.meta.env": "Environment Variables (ENV):",
+    "docker.meta.volumes": "Volumes:",
 
     // Swagger View
     "swagger.title": "Gabriel Porto API",
@@ -379,7 +386,14 @@ const en: Record<string, string> = {
     "docker.logs": "Recent Logs",
     "docker.footer": "containers listed",
     "docker.visibility.public": "Public",
+    "docker.visibility.public.desc": "Public use tool.",
     "docker.visibility.private": "Internal",
+    "docker.visibility.private.desc": "Restricted use tool.",
+    "docker.action.details": "View details",
+    "docker.inspect": "Configuration (docker inspect)",
+    "docker.meta.image": "Image / Repo:",
+    "docker.meta.env": "Environment Variables (ENV):",
+    "docker.meta.volumes": "Volumes:",
 
     // Swagger View
     "swagger.title": "Gabriel Porto API",
