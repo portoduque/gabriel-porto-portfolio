@@ -80,7 +80,7 @@ export default function Home() {
         </aside>
 
         {/* ===== EDITOR PANEL ===== */}
-        <div className="flex-1 flex flex-col bg-background/50 backdrop-blur-sm">
+        <div className="flex-1 flex flex-col bg-panel">
           {/* Tab bar (navbar) */}
           <div className="flex items-end bg-panel border-b border-border overflow-x-auto no-scrollbar h-10 shrink-0">
             {/* Tab 1 — main.py */}
@@ -116,7 +116,7 @@ export default function Home() {
               href="/Gabriel-Porto-Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 h-full border-r border-border min-w-[140px] cursor-pointer group transition-colors select-none bg-panel text-muted hover:bg-background/50 border-t-[2px] border-t-transparent hover:text-foreground"
+              className="flex items-center gap-2 px-4 h-full border-r border-border min-w-[140px] cursor-pointer group transition-colors select-none bg-panel text-muted hover:bg-background dark:hover:bg-panel-highlight border-t-[2px] border-t-transparent hover:text-foreground"
               title="Download / Open Resume"
             >
               <VscFilePdf size={16} className="text-red-400" />
@@ -129,7 +129,7 @@ export default function Home() {
           {/* Editor content area */}
           <div className="flex-1 overflow-y-auto relative custom-scrollbar flex">
             {/* Line Numbers - Visible on all pages now */}
-            <div className="hidden md:flex flex-col items-end w-12 lg:w-16 py-8 pr-4 border-r border-border/50 shrink-0 text-muted/20 font-mono text-xs lg:text-sm select-none bg-background/30 h-full min-h-screen">
+            <div className="hidden md:flex flex-col items-end w-12 lg:w-16 py-8 pr-4 border-r border-border shrink-0 text-muted/30 font-mono text-xs lg:text-sm select-none bg-panel h-full min-h-screen">
               {Array.from({ length: 100 }).map((_, i) => (
                 <div key={i} className="leading-6 lg:leading-7">{i + 1}</div>
               ))}
@@ -178,7 +178,7 @@ export default function Home() {
                         </button>
                         <button
                           onClick={() => setActiveTab("contact.yaml")}
-                          className="group inline-flex items-center justify-center px-8 py-3.5 font-[family-name:var(--font-mono)] text-sm font-medium text-muted transition-all duration-300 hover:text-foreground border border-border hover:border-muted rounded-sm bg-panel/50 hover:bg-panel cursor-pointer">
+                          className="group inline-flex items-center justify-center px-8 py-3.5 font-[family-name:var(--font-mono)] text-sm font-medium text-muted transition-all duration-300 hover:text-foreground border border-border hover:border-muted rounded-sm bg-background dark:bg-panel hover:bg-panel dark:hover:bg-panel-highlight cursor-pointer">
                           <span className="relative flex items-center gap-2 z-10">
                             {t("hero.cta.contact")}
                             <span className="material-symbols-outlined text-[18px] opacity-0 group-hover:opacity-100 transition-all -ml-2 group-hover:ml-0 translate-y-[1px]">send</span>
@@ -215,7 +215,7 @@ export default function Home() {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {/* Critical Thinking */}
-                      <div className="bg-panel/60 dark:bg-panel/95 backdrop-blur-md border border-border/50 dark:border-border/80 dark:shadow-md rounded-xl p-6 group hover:border-neon-blue/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 hover:shadow-[0_0_30px_rgba(6,123,249,0.15)] relative overflow-hidden">
+                      <div className="bg-panel/60 dark:bg-panel-highlight backdrop-blur-md border border-border/50 dark:border-border rounded-xl p-6 group hover:border-neon-blue/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[0_0_30px_rgba(6,123,249,0.15)] relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="flex items-center gap-3 mb-4">
                           <div className="w-10 h-10 rounded-lg bg-neon-blue/10 flex items-center justify-center text-neon-blue group-hover:scale-110 transition-transform">
@@ -223,13 +223,13 @@ export default function Home() {
                           </div>
                           <h3 className="font-[family-name:var(--font-mono)] text-neon-blue font-bold group-hover:text-foreground transition-colors">{t("expertise.critical_thinking")}</h3>
                         </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background/50 p-4 rounded-lg border border-foreground/5 group-hover:border-primary/20 transition-colors">
+                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-lg border border-border/50 group-hover:border-primary/20 transition-colors">
                           <span className="text-syntax-comment">{t("expertise.critical_thinking.comment")}</span><br />
                           <span className="text-syntax-variable">result</span> = [<span className="text-syntax-function">logic</span>(v) <span className="text-syntax-keyword">for</span> v <span className="text-syntax-keyword">in</span> <span className="text-syntax-function">analyze</span>(data)]
                         </div>
                       </div>
                       {/* Continuous Learning */}
-                      <div className="bg-panel/60 dark:bg-panel/95 backdrop-blur-md border border-border/50 dark:border-border/80 dark:shadow-md rounded-xl p-6 group hover:border-neon-purple/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 hover:shadow-[0_0_30px_rgba(188,140,255,0.15)] relative overflow-hidden">
+                      <div className="bg-panel/60 dark:bg-panel-highlight backdrop-blur-md border border-border/50 dark:border-border rounded-xl p-6 group hover:border-neon-purple/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[0_0_30px_rgba(188,140,255,0.15)] relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="flex items-center gap-3 mb-4">
                           <div className="w-10 h-10 rounded-lg bg-neon-purple/10 flex items-center justify-center text-neon-purple group-hover:scale-110 transition-transform">
@@ -237,13 +237,13 @@ export default function Home() {
                           </div>
                           <h3 className="font-[family-name:var(--font-mono)] text-neon-purple font-bold group-hover:text-foreground transition-colors">{t("expertise.learning")}</h3>
                         </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background/50 p-4 rounded-lg border border-foreground/5 group-hover:border-neon-purple/20 transition-colors">
+                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-lg border border-border/50 group-hover:border-neon-purple/20 transition-colors">
                           <span className="text-syntax-comment">{t("expertise.learning.comment")}</span><br />
                           <span className="text-syntax-keyword">while</span> <span className="text-syntax-keyword">True</span>: <span className="text-syntax-function">learn</span>(<span className="text-syntax-variable">new_tech</span>)
                         </div>
                       </div>
                       {/* Time Management */}
-                      <div className="bg-panel/60 dark:bg-panel/95 backdrop-blur-md border border-border/50 dark:border-border/80 dark:shadow-md rounded-xl p-6 group hover:border-neon-green/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 hover:shadow-[0_0_30px_rgba(63,185,80,0.15)] relative overflow-hidden">
+                      <div className="bg-panel/60 dark:bg-panel-highlight backdrop-blur-md border border-border/50 dark:border-border rounded-xl p-6 group hover:border-neon-green/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[0_0_30px_rgba(63,185,80,0.15)] relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-neon-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="flex items-center gap-3 mb-4">
                           <div className="w-10 h-10 rounded-lg bg-neon-green/10 flex items-center justify-center text-neon-green group-hover:scale-110 transition-transform">
@@ -251,13 +251,13 @@ export default function Home() {
                           </div>
                           <h3 className="font-[family-name:var(--font-mono)] text-neon-green font-bold group-hover:text-foreground transition-colors">{t("expertise.time_management")}</h3>
                         </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background/50 p-4 rounded-lg border border-foreground/5 group-hover:border-neon-green/20 transition-colors">
+                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-lg border border-border/50 group-hover:border-neon-green/20 transition-colors">
                           <span className="text-syntax-comment">{t("expertise.time_management.comment")}</span><br />
                           tasks.<span className="text-syntax-function">sort</span>(key=<span className="text-syntax-keyword">lambda</span> t: -t.priority)
                         </div>
                       </div>
                       {/* Problem Solving */}
-                      <div className="bg-panel/60 dark:bg-panel/95 backdrop-blur-md border border-border/50 dark:border-border/80 dark:shadow-md rounded-xl p-6 group hover:border-neon-orange/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 hover:shadow-[0_0_30px_rgba(255,166,87,0.15)] relative overflow-hidden">
+                      <div className="bg-panel/60 dark:bg-panel-highlight backdrop-blur-md border border-border/50 dark:border-border rounded-xl p-6 group hover:border-neon-orange/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[0_0_30px_rgba(255,166,87,0.15)] relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-neon-orange/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="flex items-center gap-3 mb-4">
                           <div className="w-10 h-10 rounded-lg bg-neon-orange/10 flex items-center justify-center text-neon-orange group-hover:scale-110 transition-transform">
@@ -265,13 +265,13 @@ export default function Home() {
                           </div>
                           <h3 className="font-[family-name:var(--font-mono)] text-neon-orange font-bold group-hover:text-foreground transition-colors">{t("expertise.problem_solving")}</h3>
                         </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background/50 p-4 rounded-lg border border-foreground/5 group-hover:border-neon-orange/20 transition-colors">
+                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-lg border border-border/50 group-hover:border-neon-orange/20 transition-colors">
                           <span className="text-syntax-comment">{t("expertise.problem_solving.comment")}</span><br />
                           <span className="text-syntax-variable">root_cause</span> = <span className="text-syntax-function">debug</span>(issue)
                         </div>
                       </div>
                       {/* Technical Communication */}
-                      <div className="bg-panel/60 dark:bg-panel/95 backdrop-blur-md border border-border/50 dark:border-border/80 dark:shadow-md rounded-xl p-6 group hover:border-neon-cyan/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 hover:shadow-[0_0_30px_rgba(57,197,187,0.15)] relative overflow-hidden">
+                      <div className="bg-panel/60 dark:bg-panel-highlight backdrop-blur-md border border-border/50 dark:border-border rounded-xl p-6 group hover:border-neon-cyan/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[0_0_30px_rgba(57,197,187,0.15)] relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="flex items-center gap-3 mb-4">
                           <div className="w-10 h-10 rounded-lg bg-neon-cyan/10 flex items-center justify-center text-neon-cyan group-hover:scale-110 transition-transform">
@@ -279,13 +279,13 @@ export default function Home() {
                           </div>
                           <h3 className="font-[family-name:var(--font-mono)] text-neon-cyan font-bold group-hover:text-foreground transition-colors">{t("expertise.communication")}</h3>
                         </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background/50 p-4 rounded-lg border border-foreground/5 group-hover:border-neon-cyan/20 transition-colors">
+                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-lg border border-border/50 group-hover:border-neon-cyan/20 transition-colors">
                           <span className="text-syntax-comment">{t("expertise.communication.comment")}</span><br />
                           <span className="text-syntax-function">explain</span>(complex_code).<span className="text-syntax-function">to</span>(humans)
                         </div>
                       </div>
                       {/* Agile Collaboration */}
-                      <div className="bg-panel/60 dark:bg-panel/95 backdrop-blur-md border border-border/50 dark:border-border/80 dark:shadow-md rounded-xl p-6 group hover:border-neon-yellow/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 hover:shadow-[0_0_30px_rgba(241,224,90,0.15)] relative overflow-hidden">
+                      <div className="bg-panel/60 dark:bg-panel-highlight backdrop-blur-md border border-border/50 dark:border-border rounded-xl p-6 group hover:border-neon-yellow/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[0_0_30px_rgba(241,224,90,0.15)] relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-neon-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="flex items-center gap-3 mb-4">
                           <div className="w-10 h-10 rounded-lg bg-neon-yellow/10 flex items-center justify-center text-neon-yellow group-hover:scale-110 transition-transform">
@@ -293,7 +293,7 @@ export default function Home() {
                           </div>
                           <h3 className="font-[family-name:var(--font-mono)] text-neon-yellow font-bold group-hover:text-foreground transition-colors">{t("expertise.collaboration")}</h3>
                         </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background/50 p-4 rounded-lg border border-foreground/5 group-hover:border-neon-yellow/20 transition-colors">
+                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-lg border border-border/50 group-hover:border-neon-yellow/20 transition-colors">
                           <span className="text-syntax-comment">{t("expertise.collaboration.comment")}</span><br />
                           git.<span className="text-syntax-function">merge</span>(collective_intelligence)
                         </div>
@@ -303,8 +303,8 @@ export default function Home() {
 
                   {/* Activity log integrated into footer of hero */}
                   <div className="w-full max-w-7xl mx-auto mb-12 relative z-10 hidden lg:block px-4">
-                    <BentoCard borderColor="blue" glowColor="rgba(6, 123, 249, 0.1)" className="overflow-hidden shadow-2xl bg-background/80 backdrop-blur-xl">
-                      <div className="bg-panel/50 px-6 py-2 flex items-center justify-between border-b border-border/50">
+                    <BentoCard borderColor="blue" glowColor="rgba(6, 123, 249, 0.1)" className="overflow-hidden shadow-2xl bg-panel">
+                      <div className="bg-background dark:bg-panel px-6 py-2 flex items-center justify-between border-b border-border/50 dark:border-border">
                         <div className="flex items-center gap-2">
                           <span className="text-xs font-[family-name:var(--font-mono)] text-muted opacity-70">{t("activity.filename")}</span>
                         </div>
@@ -378,7 +378,7 @@ function Tab({ name, icon, isActive, onClick }: { name: string, icon: React.Reac
         "flex items-center gap-2 px-4 h-full border-r border-border min-w-[140px] cursor-pointer group transition-colors select-none",
         isActive
           ? "bg-background border-t-[2px] border-t-primary text-foreground"
-          : "bg-panel text-muted hover:bg-background/50 border-t-[2px] border-t-transparent"
+          : "bg-panel text-muted hover:bg-background dark:hover:bg-panel-highlight border-t-[2px] border-t-transparent"
       )}
     >
       {icon}

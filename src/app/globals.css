@@ -6,6 +6,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-panel: var(--panel);
+  --color-panel-highlight: var(--panel-highlight);
   --color-border: var(--border);
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
@@ -63,6 +64,7 @@
   --background: #ffffff;
   --foreground: #24292f;
   --panel: #f6f8fa;
+  --panel-highlight: #eaeef2;
   --border: #d0d7de;
   --primary: #0969da;
   --primary-dark: #0550ae;
@@ -77,14 +79,15 @@
 }
 
 .dark {
-  /* Dark Mode (Existing) */
-  --background: #0A0C10;
-  --foreground: #c9d1d9;
-  --panel: #161b22;
-  --border: #21262d;
-  --primary: #067bf9;
-  --primary-dark: #0564ca;
-  --text-muted: #8b949e;
+  /* Dark Mode — High Contrast */
+  --background: #010409;
+  --foreground: #E6EDF3;
+  --panel: #0D1117;
+  --panel-highlight: #161B22;
+  --border: #3D444D;
+  --primary: #2F81F7;
+  --primary-dark: #1F6FEB;
+  --text-muted: #9198A1;
 
   --syntax-keyword: #ff7b72;
   --syntax-string: #a5d6ff;

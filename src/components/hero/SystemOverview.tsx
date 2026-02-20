@@ -98,15 +98,15 @@ export function SystemOverview() {
         >
             <motion.div
                 style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-                className="relative bg-panel/95 backdrop-blur-xl border border-border/80 rounded-xl shadow-2xl shadow-black/40 overflow-hidden group hover:border-blue-500/30 transition-colors duration-500"
+                className="relative bg-panel dark:bg-panel-highlight backdrop-blur-xl border border-border rounded-xl shadow-2xl shadow-black/40 dark:shadow-[0_0_40px_rgba(47,129,247,0.2)] overflow-hidden group hover:border-primary/40 dark:hover:border-primary/50 dark:hover:shadow-[0_0_60px_rgba(47,129,247,0.3)] transition-all duration-500"
             >
                 {/* Glow Effects */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                 {/* Content Body */}
-                <div className="relative min-h-[500px] p-6 px-8 font-mono text-sm leading-relaxed text-blue-100/90 dark:text-blue-100/90 text-blue-900/90">
+                <div className="relative min-h-[500px] p-6 px-8 font-mono text-sm leading-relaxed text-slate-800 dark:text-slate-200">
                     {/* Line Numbers */}
-                    <div className="absolute left-0 top-0 bottom-0 w-12 border-r border-border/30 bg-background/20 text-right py-6 pr-3 text-muted/30 select-none hidden sm:block text-xs font-mono">
+                    <div className="absolute left-0 top-0 bottom-0 w-12 border-r border-border bg-panel dark:bg-panel text-right py-6 pr-3 text-muted/30 select-none hidden sm:block text-xs font-mono">
                         {Array.from({ length: 30 }).map((_, i) => (
                             <div key={i}>{(i + 1).toString().padStart(2, '0')}</div>
                         ))}

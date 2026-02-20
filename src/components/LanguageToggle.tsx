@@ -21,7 +21,7 @@ export function LanguageToggle() {
     return (
         <button
             onClick={() => setLocale(isEn ? "pt-BR" : "en")}
-            className="relative flex items-center gap-3 px-3 py-2 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 shadow-sm hover:shadow-md hover:bg-accent/50 transition-all duration-300 group"
+            className="relative flex items-center gap-3 px-3 py-2 rounded-full bg-background dark:bg-panel border border-border/50 dark:border-border shadow-sm hover:shadow-md transition-all duration-300 group"
             aria-label={isEn ? "Switch to Portuguese" : "Mudar para Inglês"}
             title={isEn ? "Switch to Portuguese" : "Mudar para Inglês"}
         >
