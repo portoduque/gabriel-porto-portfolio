@@ -56,14 +56,14 @@ export function BentoCard({
                 "--border-color": `var(--color-neon-${borderColor}, var(--color-primary))`,
             } as React.CSSProperties}
             className={cn(
-                "relative rounded-xl border border-border/50 dark:border-border bg-panel/60 dark:bg-panel-highlight backdrop-blur-md overflow-hidden group transition-all duration-500",
+                "relative rounded-none border border-border border-2 dark:border-border bg-panel dark:bg-panel-highlight  overflow-hidden group transition-all duration-500",
                 `hover:border-neon-${borderColor}/50`,
                 className
             )}
         >
             {/* Spotlight Effect */}
             <motion.div
-                className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
+                className="pointer-events-none absolute -inset-px rounded-none opacity-0 transition duration-300 group-hover:opacity-100"
                 style={{
                     background: useTransform(
                         [spotlightX, spotlightY],
@@ -80,7 +80,7 @@ export function BentoCard({
             {/* Subtle border beam effect on hover */}
             <div
                 className={cn(
-                    "absolute inset-0 border border-transparent rounded-xl transition-opacity duration-500",
+                    "absolute inset-0 border border-transparent rounded-none transition-opacity duration-500",
                     isHovered ? "opacity-100" : "opacity-0"
                 )}
                 style={{

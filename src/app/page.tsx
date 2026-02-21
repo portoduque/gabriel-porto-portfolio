@@ -70,6 +70,7 @@ function HomeContent() {
         {/* ===== SIDEBAR ===== */}
         <aside className="w-12 bg-background border-r border-border hidden md:flex flex-col items-center py-4 gap-6 shrink-0">
           <button
+            aria-label={t("nav.main")}
             onClick={() => handleTabChange("main.py")}
             className={clsx("relative group transition-colors", activeTab === "main.py" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
@@ -77,6 +78,7 @@ function HomeContent() {
             <SiPython size={24} />
           </button>
           <button
+            aria-label={t("nav.projects")}
             onClick={() => handleTabChange("projetos.yml")}
             className={clsx("transition-colors relative", activeTab === "projetos.yml" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
@@ -84,6 +86,7 @@ function HomeContent() {
             <SiDocker size={24} />
           </button>
           <button
+            aria-label={t("nav.experience")}
             onClick={() => handleTabChange("carreira.sh")}
             className={clsx("transition-colors relative", activeTab === "carreira.sh" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
@@ -92,6 +95,7 @@ function HomeContent() {
           </button>
           <div className="flex-1" />
           <button
+            aria-label={t("nav.contact")}
             onClick={() => handleTabChange("contact.yaml")}
             className={clsx("pb-4 transition-colors relative", activeTab === "contact.yaml" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
@@ -156,13 +160,13 @@ function HomeContent() {
               ))}
             </div>
 
-            <div className="flex-1 flex flex-col relative w-full min-h-full">
+            <main className="flex-1 flex flex-col relative w-full min-h-full">
               {activeTab === "main.py" && (
-                <div className="w-full max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-20 my-auto">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
+                <div className="w-full max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-20 mt-8 mb-12">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start relative z-10">
                     {/* Left Column: Hero Content */}
-                    <div className="flex flex-col gap-6 items-center text-center lg:items-center lg:text-center">
-                      <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold tracking-tighter text-foreground leading-[1.1]">
+                    <div className="col-span-1 lg:col-span-7 flex flex-col gap-8 items-start text-left">
+                      <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold tracking-tighter text-foreground leading-[1.05]">
                         {t("hero.title.prefix")}{" "}
                         <span className="relative inline-block">
                           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-neon-blue to-primary animate-gradient-x">
@@ -173,7 +177,7 @@ function HomeContent() {
                       </h1>
 
                       {/* Role subtitle */}
-                      <div className="font-[family-name:var(--font-mono)] text-base lg:text-xl text-muted flex flex-wrap justify-center lg:justify-center items-center gap-2">
+                      <div className="font-[family-name:var(--font-mono)] text-lg lg:text-2xl text-muted flex flex-wrap justify-start items-center gap-3">
                         <span className="text-primary font-bold animate-pulse">&gt;</span>
                         <span className="text-syntax-variable">role</span>
                         <span className="text-foreground">=</span>
@@ -182,15 +186,15 @@ function HomeContent() {
                       </div>
 
                       {/* Description */}
-                      <p className="text-muted text-base lg:text-lg max-w-xl font-light leading-relaxed">
+                      <p className="text-muted text-lg lg:text-xl max-w-2xl font-light leading-relaxed">
                         {profile.summary}
                       </p>
 
                       {/* CTA buttons */}
-                      <div className="flex flex-wrap justify-center lg:justify-center gap-4 mt-2">
+                      <div className="flex flex-wrap justify-start gap-6 mt-4">
                         <button
                           onClick={() => handleTabChange("projetos.yml")}
-                          className="group relative inline-flex items-center justify-center px-8 py-3.5 font-[family-name:var(--font-mono)] text-sm font-medium text-white transition-all duration-300 overflow-hidden rounded-sm bg-primary hover:bg-primary-dark shadow-[0_0_20px_rgba(6,123,249,0.3)] hover:shadow-[0_0_30px_rgba(6,123,249,0.5)] cursor-pointer">
+                          className="group relative inline-flex items-center justify-center px-8 py-3.5 font-[family-name:var(--font-mono)] text-sm font-medium text-white transition-all duration-300 overflow-hidden rounded-none bg-primary hover:bg-primary-dark shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] dark:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] border border-primary hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.6)] dark:hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.9)] cursor-pointer">
                           <span className="relative flex items-center gap-2 z-10">
                             <span className="text-white/70 group-hover:text-white transition-colors">$</span>
                             {t("hero.cta.projects")}
@@ -199,7 +203,7 @@ function HomeContent() {
                         </button>
                         <button
                           onClick={() => handleTabChange("contact.yaml")}
-                          className="group inline-flex items-center justify-center px-8 py-3.5 font-[family-name:var(--font-mono)] text-sm font-medium text-muted transition-all duration-300 hover:text-foreground border border-border hover:border-muted rounded-sm bg-background dark:bg-panel hover:bg-panel dark:hover:bg-panel-highlight cursor-pointer">
+                          className="group inline-flex items-center justify-center px-8 py-3.5 font-[family-name:var(--font-mono)] text-sm font-medium text-muted transition-all duration-300 hover:text-foreground border border-border hover:border-muted rounded-none bg-background dark:bg-panel hover:bg-panel dark:hover:bg-panel-highlight cursor-pointer">
                           <span className="relative flex items-center gap-2 z-10">
                             {t("hero.cta.contact")}
                             <span className="material-symbols-outlined text-[18px] opacity-0 group-hover:opacity-100 transition-all -ml-2 group-hover:ml-0 translate-y-[1px]">send</span>
@@ -209,7 +213,7 @@ function HomeContent() {
 
                       {/* Tech stack bar - Mini */}
                       <div className="w-full mt-6 opacity-80">
-                        <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-3 pb-2 w-full px-4">
+                        <div className="flex flex-wrap justify-start items-center gap-x-6 gap-y-4 pb-2 w-full py-4 px-0">
                           <TechIcon icon={<SiHtml5 size={24} className="text-[#E34F26] group-hover:scale-110 transition-transform" />} label="HTML" />
                           <TechIcon icon={<SiCss3 size={24} className="text-[#1572B6] group-hover:scale-110 transition-transform" />} label="CSS" />
                           <TechIcon icon={<SiPhp size={24} className="text-[#777BB4] group-hover:scale-110 transition-transform" />} label="PHP" />
@@ -225,7 +229,7 @@ function HomeContent() {
                     </div>
 
                     {/* Right Column: System Overview Component */}
-                    <div className="w-full flex justify-center items-center lg:justify-center perspective-[2000px] mt-8 lg:mt-0">
+                    <div className="col-span-1 lg:col-span-5 w-full flex justify-end items-center perspective-[2000px] mt-8 lg:mt-0 lg:pl-8">
                       <SystemOverview />
                     </div>
                   </div>
@@ -236,87 +240,87 @@ function HomeContent() {
                       <span className="text-syntax-keyword text-xl font-[family-name:var(--font-mono)]">##</span>
                       <h2 className="text-2xl font-bold text-foreground tracking-widest uppercase">{t("expertise.title")}</h2>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l border-t border-border -ml-px -mt-px relative">
                       {/* Critical Thinking */}
-                      <div className="bg-panel/60 dark:bg-panel-highlight backdrop-blur-md border border-border/50 dark:border-border rounded-xl p-6 group hover:border-neon-blue/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[0_0_30px_rgba(6,123,249,0.15)] relative overflow-hidden">
+                      <div className="bg-panel dark:bg-panel-highlight  border border-border dark:border-border rounded-none p-8 group border-r border-b border-border hover:border-neon-blue/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[8px_8px_0px_0px_rgba(6,123,249,0.8)] relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 rounded-lg bg-neon-blue/10 flex items-center justify-center text-neon-blue group-hover:scale-110 transition-transform">
+                          <div className="w-10 h-10 rounded-none border border-border bg-neon-blue/10 flex items-center justify-center text-neon-blue group-hover:scale-110 transition-transform">
                             <span className="material-symbols-outlined">psychology</span>
                           </div>
                           <h3 className="font-[family-name:var(--font-mono)] text-neon-blue font-bold group-hover:text-foreground transition-colors">{t("expertise.critical_thinking")}</h3>
                         </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-lg border border-border/50 group-hover:border-primary/20 transition-colors">
+                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-none border border-border border border-border group-hover:border-primary/20 transition-colors">
                           <span className="text-syntax-comment">{t("expertise.critical_thinking.comment")}</span><br />
                           <span className="text-syntax-variable">result</span> = [<span className="text-syntax-function">logic</span>(v) <span className="text-syntax-keyword">for</span> v <span className="text-syntax-keyword">in</span> <span className="text-syntax-function">analyze</span>(data)]
                         </div>
                       </div>
                       {/* Continuous Learning */}
-                      <div className="bg-panel/60 dark:bg-panel-highlight backdrop-blur-md border border-border/50 dark:border-border rounded-xl p-6 group hover:border-neon-emerald/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[0_0_30px_rgba(52,211,153,0.15)] relative overflow-hidden">
+                      <div className="bg-panel dark:bg-panel-highlight  border border-border dark:border-border rounded-none p-8 group border-r border-b border-border hover:border-neon-emerald/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[8px_8px_0px_0px_rgba(52,211,153,0.8)] relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-neon-emerald/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 rounded-lg bg-neon-emerald/10 flex items-center justify-center text-neon-emerald group-hover:scale-110 transition-transform">
+                          <div className="w-10 h-10 rounded-none border border-border bg-neon-emerald/10 flex items-center justify-center text-neon-emerald group-hover:scale-110 transition-transform">
                             <span className="material-symbols-outlined">auto_stories</span>
                           </div>
                           <h3 className="font-[family-name:var(--font-mono)] text-neon-emerald font-bold group-hover:text-foreground transition-colors">{t("expertise.learning")}</h3>
                         </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-lg border border-border/50 group-hover:border-neon-emerald/20 transition-colors">
+                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-none border border-border border border-border group-hover:border-neon-emerald/20 transition-colors">
                           <span className="text-syntax-comment">{t("expertise.learning.comment")}</span><br />
                           <span className="text-syntax-keyword">while</span> <span className="text-syntax-keyword">True</span>: <span className="text-syntax-function">learn</span>(<span className="text-syntax-variable">new_tech</span>)
                         </div>
                       </div>
                       {/* Time Management */}
-                      <div className="bg-panel/60 dark:bg-panel-highlight backdrop-blur-md border border-border/50 dark:border-border rounded-xl p-6 group hover:border-neon-green/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[0_0_30px_rgba(63,185,80,0.15)] relative overflow-hidden">
+                      <div className="bg-panel dark:bg-panel-highlight  border border-border dark:border-border rounded-none p-8 group border-r border-b border-border hover:border-neon-green/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[8px_8px_0px_0px_rgba(63,185,80,0.8)] relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-neon-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 rounded-lg bg-neon-green/10 flex items-center justify-center text-neon-green group-hover:scale-110 transition-transform">
+                          <div className="w-10 h-10 rounded-none border border-border bg-neon-green/10 flex items-center justify-center text-neon-green group-hover:scale-110 transition-transform">
                             <span className="material-symbols-outlined">schedule</span>
                           </div>
                           <h3 className="font-[family-name:var(--font-mono)] text-neon-green font-bold group-hover:text-foreground transition-colors">{t("expertise.time_management")}</h3>
                         </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-lg border border-border/50 group-hover:border-neon-green/20 transition-colors">
+                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-none border border-border border border-border group-hover:border-neon-green/20 transition-colors">
                           <span className="text-syntax-comment">{t("expertise.time_management.comment")}</span><br />
                           tasks.<span className="text-syntax-function">sort</span>(key=<span className="text-syntax-keyword">lambda</span> t: -t.priority)
                         </div>
                       </div>
                       {/* Problem Solving */}
-                      <div className="bg-panel/60 dark:bg-panel-highlight backdrop-blur-md border border-border/50 dark:border-border rounded-xl p-6 group hover:border-neon-orange/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[0_0_30px_rgba(255,166,87,0.15)] relative overflow-hidden">
+                      <div className="bg-panel dark:bg-panel-highlight  border border-border dark:border-border rounded-none p-8 group border-r border-b border-border hover:border-neon-orange/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[8px_8px_0px_0px_rgba(255,166,87,0.8)] relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-neon-orange/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 rounded-lg bg-neon-orange/10 flex items-center justify-center text-neon-orange group-hover:scale-110 transition-transform">
+                          <div className="w-10 h-10 rounded-none border border-border bg-neon-orange/10 flex items-center justify-center text-neon-orange group-hover:scale-110 transition-transform">
                             <span className="material-symbols-outlined">terminal</span>
                           </div>
                           <h3 className="font-[family-name:var(--font-mono)] text-neon-orange font-bold group-hover:text-foreground transition-colors">{t("expertise.problem_solving")}</h3>
                         </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-lg border border-border/50 group-hover:border-neon-orange/20 transition-colors">
+                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-none border border-border border border-border group-hover:border-neon-orange/20 transition-colors">
                           <span className="text-syntax-comment">{t("expertise.problem_solving.comment")}</span><br />
                           <span className="text-syntax-variable">root_cause</span> = <span className="text-syntax-function">debug</span>(issue)
                         </div>
                       </div>
                       {/* Technical Communication */}
-                      <div className="bg-panel/60 dark:bg-panel-highlight backdrop-blur-md border border-border/50 dark:border-border rounded-xl p-6 group hover:border-neon-cyan/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[0_0_30px_rgba(57,197,187,0.15)] relative overflow-hidden">
+                      <div className="bg-panel dark:bg-panel-highlight  border border-border dark:border-border rounded-none p-8 group border-r border-b border-border hover:border-neon-cyan/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[8px_8px_0px_0px_rgba(57,197,187,0.8)] relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 rounded-lg bg-neon-cyan/10 flex items-center justify-center text-neon-cyan group-hover:scale-110 transition-transform">
+                          <div className="w-10 h-10 rounded-none border border-border bg-neon-cyan/10 flex items-center justify-center text-neon-cyan group-hover:scale-110 transition-transform">
                             <span className="material-symbols-outlined">forum</span>
                           </div>
                           <h3 className="font-[family-name:var(--font-mono)] text-neon-cyan font-bold group-hover:text-foreground transition-colors">{t("expertise.communication")}</h3>
                         </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-lg border border-border/50 group-hover:border-neon-cyan/20 transition-colors">
+                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-none border border-border border border-border group-hover:border-neon-cyan/20 transition-colors">
                           <span className="text-syntax-comment">{t("expertise.communication.comment")}</span><br />
                           <span className="text-syntax-function">explain</span>(complex_code).<span className="text-syntax-function">to</span>(humans)
                         </div>
                       </div>
                       {/* Agile Collaboration */}
-                      <div className="bg-panel/60 dark:bg-panel-highlight backdrop-blur-md border border-border/50 dark:border-border rounded-xl p-6 group hover:border-neon-yellow/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[0_0_30px_rgba(241,224,90,0.15)] relative overflow-hidden">
+                      <div className="bg-panel dark:bg-panel-highlight  border border-border dark:border-border rounded-none p-8 group border-r border-b border-border hover:border-neon-yellow/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[8px_8px_0px_0px_rgba(241,224,90,0.8)] relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-neon-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 rounded-lg bg-neon-yellow/10 flex items-center justify-center text-neon-yellow group-hover:scale-110 transition-transform">
+                          <div className="w-10 h-10 rounded-none border border-border bg-neon-yellow/10 flex items-center justify-center text-neon-yellow group-hover:scale-110 transition-transform">
                             <span className="material-symbols-outlined">groups</span>
                           </div>
                           <h3 className="font-[family-name:var(--font-mono)] text-neon-yellow font-bold group-hover:text-foreground transition-colors">{t("expertise.collaboration")}</h3>
                         </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-lg border border-border/50 group-hover:border-neon-yellow/20 transition-colors">
+                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-none border border-border border border-border group-hover:border-neon-yellow/20 transition-colors">
                           <span className="text-syntax-comment">{t("expertise.collaboration.comment")}</span><br />
                           git.<span className="text-syntax-function">merge</span>(collective_intelligence)
                         </div>
@@ -327,7 +331,7 @@ function HomeContent() {
                   {/* Activity log integrated into footer of hero */}
                   <div className="w-full max-w-7xl mx-auto mb-12 relative z-10 hidden lg:block px-4">
                     <BentoCard borderColor="blue" glowColor="rgba(6, 123, 249, 0.1)" className="overflow-hidden shadow-2xl bg-panel">
-                      <div className="bg-background dark:bg-panel px-6 py-2 flex items-center justify-between border-b border-border/50 dark:border-border">
+                      <div className="bg-background dark:bg-panel px-6 py-2 flex items-center justify-between border-b border-border dark:border-border">
                         <div className="flex items-center gap-2">
                           <span className="text-xs font-[family-name:var(--font-mono)] text-muted opacity-70">{t("activity.filename")}</span>
                         </div>
@@ -345,8 +349,7 @@ function HomeContent() {
               {activeTab === "projetos.yml" && <DockerComposeView />}
               {activeTab === "carreira.sh" && <CareerPipelineView />}
               {activeTab === "contact.yaml" && <ContactView />}
-
-            </div>
+            </main>
           </div>
         </div>
       </div>
@@ -354,18 +357,18 @@ function HomeContent() {
       {/* ========== STATUS BAR ========== */}
       <footer className="h-6 bg-primary text-white text-[11px] flex items-center justify-between px-3 shrink-0 select-none font-[family-name:var(--font-mono)] z-20">
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1 hover:bg-white/10 px-1 rounded-sm cursor-pointer">
+          <div className="flex items-center gap-1 hover:bg-white/10 px-1 rounded-none cursor-pointer">
             <VscGitCommit size={12} />
             <span>main*</span>
           </div>
-          <div className="flex items-center gap-1 hover:bg-white/10 px-1 rounded-sm cursor-pointer">
+          <div className="flex items-center gap-1 hover:bg-white/10 px-1 rounded-none cursor-pointer">
             <VscSettingsGear size={12} className="animate-spin-slow" />
             <span>0</span>
             <span className="material-symbols-outlined text-[12px]">arrow_upward</span>
             <span>1</span>
             <span className="material-symbols-outlined text-[12px]">arrow_downward</span>
           </div>
-          <div className="hidden sm:flex items-center gap-1 hover:bg-white/10 px-1 rounded-sm cursor-pointer">
+          <div className="hidden sm:flex items-center gap-1 hover:bg-white/10 px-1 rounded-none cursor-pointer">
             <span className="material-symbols-outlined text-[12px]">error</span>
             <span>0</span>
             <span className="material-symbols-outlined text-[12px]">warning</span>
@@ -373,9 +376,9 @@ function HomeContent() {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <span className="cursor-pointer hover:bg-white/10 px-1 rounded-sm">Ln 12, Col 43</span>
-          <span className="cursor-pointer hover:bg-white/10 px-1 rounded-sm hidden sm:inline">UTF-8</span>
-          <span className="cursor-pointer hover:bg-white/10 px-1 rounded-sm hidden sm:inline">
+          <span className="cursor-pointer hover:bg-white/10 px-1 rounded-none">Ln 12, Col 43</span>
+          <span className="cursor-pointer hover:bg-white/10 px-1 rounded-none hidden sm:inline">UTF-8</span>
+          <span className="cursor-pointer hover:bg-white/10 px-1 rounded-none hidden sm:inline">
             {{
               "main.py": "Python",
               "projetos.yml": "YAML",
@@ -383,8 +386,8 @@ function HomeContent() {
               "contact.yaml": "YAML",
             }[activeTab]}
           </span>
-          <span className="cursor-pointer hover:bg-white/10 px-1 rounded-sm">Prettier</span>
-          <span className="material-symbols-outlined text-[14px] cursor-pointer hover:bg-white/10 rounded-sm">notifications</span>
+          <span className="cursor-pointer hover:bg-white/10 px-1 rounded-none">Prettier</span>
+          <span className="material-symbols-outlined text-[14px] cursor-pointer hover:bg-white/10 rounded-none">notifications</span>
         </div>
       </footer>
     </div>
@@ -403,7 +406,8 @@ export default function Home() {
 
 function Tab({ name, icon, isActive, onClick }: { name: string, icon: React.ReactNode, isActive: boolean, onClick: () => void }) {
   return (
-    <div
+    <button
+      aria-label={name}
       onClick={onClick}
       className={clsx(
         "flex items-center gap-2 px-4 h-full border-r border-border min-w-[140px] cursor-pointer group transition-colors select-none",
@@ -414,8 +418,8 @@ function Tab({ name, icon, isActive, onClick }: { name: string, icon: React.Reac
     >
       {icon}
       <span className="text-xs font-[family-name:var(--font-mono)]">{name}</span>
-      <span className={clsx("material-symbols-outlined text-[14px] ml-auto hover:text-foreground", isActive ? "opacity-100 text-muted" : "opacity-0 group-hover:opacity-100 text-muted")}>close</span>
-    </div>
+      <span aria-hidden="true" className={clsx("material-symbols-outlined text-[14px] ml-auto hover:text-foreground", isActive ? "opacity-100 text-muted" : "opacity-0 group-hover:opacity-100 text-muted")}>close</span>
+    </button>
   )
 }
 

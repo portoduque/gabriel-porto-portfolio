@@ -174,7 +174,8 @@
 
 /* Dot pattern background */
 .bg-dot-pattern {
-  background-image: radial-gradient(circle, var(--text-muted) 1px, transparent 1px);
+  background-image: radial-gradient(circle, var(--border) 1.5px, transparent 1.5px);
+  opacity: 0.3 !important;
   background-size: 24px 24px;
 }
 
