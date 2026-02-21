@@ -108,7 +108,7 @@ const pt: Record<string, string> = {
     "exp.1.desc.0": "Manutenção, formatação e otimização de infraestrutura.",
     "exp.1.desc.1": "Troubleshooting avançado em sistemas comerciais e backups críticos.",
     "exp.1.desc.2": "Atendimento especializado e implementação de segurança digital.",
-    "exp.2.role": "Experiências Internacionais (Bar Waiter e Kitchen Utility)",
+    "exp.2.role": "Experiências Internacionais (Oceania Cruzeiro e MSC Cruzeiros)",
     "exp.2.period": "2021 – 2023",
     "exp.2.desc.0": "Atendimento de alto padrão em ambientes multiculturais.",
     "exp.2.desc.1": "Operação de sistemas (Micros) e conformidade com padrões CDC/FDA.",

@@ -150,10 +150,17 @@ export function CareerPipelineView() {
                                             </div>
                                         </div>
 
-                                        {/* Period */}
-                                        <p className="text-xs font-[family-name:var(--font-mono)] text-muted mb-3 sm:ml-11">
-                                            {exp.period}
-                                        </p>
+                                        {/* Company and Period */}
+                                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-3 sm:ml-11">
+                                            <div className="flex items-center gap-1.5">
+                                                <span className="material-symbols-outlined text-[16px] text-neon-cyan">business</span>
+                                                <span className="text-xs font-bold text-neon-cyan tracking-tight uppercase">{exp.company}</span>
+                                            </div>
+                                            <div className="hidden sm:block w-1 h-1 rounded-full bg-muted/40" />
+                                            <p className="text-xs font-[family-name:var(--font-mono)] text-muted">
+                                                {exp.period}
+                                            </p>
+                                        </div>
 
                                         {/* Steps */}
                                         <div className="sm:ml-11 space-y-1.5 mt-2">

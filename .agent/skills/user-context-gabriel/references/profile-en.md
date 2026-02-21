@@ -46,7 +46,7 @@ Turning complex problems into scalable digital products. As a Full-Stack Develop
 - Linux server deployment and configuration (Apache).
 - Requirements gathering and project management.
 
-### IT Technical Support
+### IT Technical Support (SMC Sistemas)
 *August 2024 – December 2024*
 - Maintenance, formatting, and infrastructure optimization.
 - Advanced troubleshooting in commercial systems and critical backups.

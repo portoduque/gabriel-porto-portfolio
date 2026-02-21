@@ -103,6 +103,7 @@ export const SKILLS = SKILLS_PT;
 const EXPERIENCE_EN = [
     {
         role: "Systems Analyst & Developer",
+        company: "Sesau/RO",
         period: "December 2024 – Present",
         description: [
             "Automated critical processes through RPA flows (Python/Airflow).",
@@ -114,6 +115,7 @@ const EXPERIENCE_EN = [
     },
     {
         role: "IT Technical Support",
+        company: "SMC Sistemas",
         period: "August 2024 – December 2024",
         description: [
             "Maintenance, formatting and infrastructure optimization.",
@@ -122,12 +124,11 @@ const EXPERIENCE_EN = [
         ],
     },
     {
-        role: "International Experience (Oceania & MSC Cruises)",
+        role: "International Experience",
+        company: "Oceania Cruises & MSC Cruises",
         period: "01/2021 – 12/2023",
         description: [
             "High-standard service in multicultural environments, demonstrating adaptability and global communication skills.",
-            "Transaction management and record-keeping via the Micros system, ensuring uncompromising accuracy and reliability.",
-            "Strict compliance with international safety and hygiene protocols established by the CDC/FDA.",
         ],
     },
 ];
@@ -135,6 +136,7 @@ const EXPERIENCE_EN = [
 const EXPERIENCE_PT = [
     {
         role: "Analista e Desenvolvedor de Sistemas",
+        company: "Sesau/RO",
         period: "Dezembro 2024 – Presente",
         description: [
             "Automatizei processos críticos através de fluxos RPA (Python/Airflow)",
@@ -146,6 +148,7 @@ const EXPERIENCE_PT = [
     },
     {
         role: "Suporte Técnico de TI",
+        company: "SMC Sistemas",
         period: "Agosto 2024 – Dezembro 2024",
         description: [
             "Manutenção, formatação e otimização de infraestrutura.",
@@ -154,7 +157,8 @@ const EXPERIENCE_PT = [
         ],
     },
     {
-        role: "Experiências Internacionais (Oceania e MSC Cruzeiros)",
+        role: "Experiências Internacionais",
+        company: "Oceania Cruzeiro e MSC Cruzeiros",
         period: "01/2021 – 12/2023",
         description: [
             "Atendimento de alto padrão em ambiente multicultural, demonstrando forte adaptabilidade e comunicação global.",
@@ -162,7 +166,14 @@ const EXPERIENCE_PT = [
     },
 ];
 
-export function getExperience(locale: Locale) {
+export interface Experience {
+    role: string;
+    company: string;
+    period: string;
+    description: string[];
+}
+
+export function getExperience(locale: Locale): Experience[] {
     return locale === "en" ? EXPERIENCE_EN : EXPERIENCE_PT;
 }
 

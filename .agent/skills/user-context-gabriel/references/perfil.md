@@ -46,13 +46,13 @@ Transformando problemas complexos em produtos digitais escaláveis. Como Desenvo
 - Implantação e configuração de servidores Linux (Apache).
 - Levantamento de requisitos e gestão de projetos.
 
-### Suporte Técnico de TI
+### Suporte Técnico de TI (SMC Sistemas)
 *Agosto 2024 – Dezembro 2024*
 - Manutenção, formatação e otimização de infraestrutura.
 - Troubleshooting avançado em sistemas comerciais e backups críticos.
 - Atendimento especializado e implementação de segurança digital.
 
-### Experiências Internacionais (Oceania e MSC Cruzeiros)
+### Experiências Internacionais (Oceania Cruzeiro e MSC Cruzeiros)
 *01/2021 – 12/2023*
 - Atendimento de alto padrão em ambiente multicultural, demonstrando forte adaptabilidade e comunicação global.
 - Gestão de transações com sistema Micros, garantindo precisão e confiabilidade no registro de operações.
