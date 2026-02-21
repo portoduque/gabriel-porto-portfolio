@@ -106,8 +106,8 @@ function HomeContent() {
 
         {/* ===== EDITOR PANEL ===== */}
         <div className="flex-1 flex flex-col bg-panel min-w-0">
-          {/* Tab bar (navbar) */}
-          <div className="flex items-end bg-panel border-b border-border overflow-x-auto no-scrollbar h-10 shrink-0">
+          {/* Desktop Tab bar (navbar) - Hidden on Mobile */}
+          <div className="hidden md:flex items-end bg-panel border-b border-border overflow-x-auto no-scrollbar h-10 shrink-0">
             {/* Tab 1 — main.py */}
             <Tab
               name={t("nav.main")}
@@ -141,18 +141,17 @@ function HomeContent() {
               href="/Gabriel-Porto-Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-3 sm:px-4 h-full border-r border-border min-w-fit sm:min-w-[140px] cursor-pointer group transition-colors select-none bg-panel text-muted hover:bg-background dark:hover:bg-panel-highlight border-t-[2px] border-t-transparent hover:text-foreground"
+              className="flex items-center gap-2 px-4 h-full border-r border-border min-w-[140px] cursor-pointer group transition-colors select-none bg-panel text-muted hover:bg-background dark:hover:bg-panel-highlight border-t-[2px] border-t-transparent hover:text-foreground"
               title="Download / Open Resume"
             >
               <VscFilePdf size={16} className="text-red-400" />
-              <span className="text-xs font-[family-name:var(--font-mono)] whitespace-nowrap">{t("nav.resume")}</span>
-              {/* No close button for this one, maybe an external link icon? */}
-              <span className="material-symbols-outlined text-[14px] ml-auto opacity-0 group-hover:opacity-100 text-muted hidden sm:block">open_in_new</span>
+              <span className="text-xs font-[family-name:var(--font-mono)]">{t("nav.resume")}</span>
+              <span className="material-symbols-outlined text-[14px] ml-auto opacity-0 group-hover:opacity-100 text-muted">open_in_new</span>
             </a>
           </div>
 
           {/* Editor content area */}
-          <div className="flex-1 overflow-y-auto relative custom-scrollbar flex">
+          <div className="flex-1 overflow-y-auto relative custom-scrollbar flex pb-20 md:pb-0">
             {/* Line Numbers - Visible on all pages now */}
             <div className="hidden md:flex flex-col items-end w-12 lg:w-16 py-8 pr-4 border-r border-border shrink-0 text-muted/30 font-mono text-xs lg:text-sm select-none bg-panel h-full min-h-screen">
               {Array.from({ length: 100 }).map((_, i) => (
@@ -354,8 +353,8 @@ function HomeContent() {
         </div>
       </div>
 
-      {/* ========== STATUS BAR ========== */}
-      <footer className="h-6 bg-primary text-white text-[11px] flex items-center justify-between px-3 shrink-0 select-none font-[family-name:var(--font-mono)] z-20 overflow-x-auto no-scrollbar w-full">
+      {/* ========== STATUS BAR (Desktop Only) ========== */}
+      <footer className="hidden md:flex h-6 bg-primary text-white text-[11px] items-center justify-between px-3 shrink-0 select-none font-[family-name:var(--font-mono)] z-20 overflow-x-auto no-scrollbar w-full">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1 hover:bg-white/10 px-1 rounded-none cursor-pointer">
             <VscGitCommit size={12} />
@@ -390,6 +389,47 @@ function HomeContent() {
           <span className="material-symbols-outlined text-[14px] cursor-pointer hover:bg-white/10 rounded-none">notifications</span>
         </div>
       </footer>
+
+      {/* ========== MOBILE BOTTOM NAVBAR ========== */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-panel/95 backdrop-blur-md border-t border-border z-50 flex items-center justify-around px-2 pb-safe">
+        <MobileNavItem
+          label={t("nav.main")}
+          icon={<SiPython size={20} />}
+          isActive={activeTab === "main.py"}
+          onClick={() => handleTabChange("main.py")}
+          activeColor="text-[#3776ab]"
+        />
+        <MobileNavItem
+          label={t("nav.projects")}
+          icon={<SiDocker size={20} />}
+          isActive={activeTab === "projetos.yml"}
+          onClick={() => handleTabChange("projetos.yml")}
+          activeColor="text-[#1D63ED]"
+        />
+        <MobileNavItem
+          label={t("nav.experience")}
+          icon={<VscTerminal size={20} />}
+          isActive={activeTab === "carreira.sh"}
+          onClick={() => handleTabChange("carreira.sh")}
+          activeColor="text-neon-green"
+        />
+        <MobileNavItem
+          label={t("nav.contact")}
+          icon={<VscMail size={20} />}
+          isActive={activeTab === "contact.yaml"}
+          onClick={() => handleTabChange("contact.yaml")}
+          activeColor="text-red-400"
+        />
+        <a
+          href="/Gabriel-Porto-Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col items-center gap-1 p-2 rounded-lg transition-all text-muted hover:text-foreground"
+        >
+          <VscFilePdf size={20} />
+          <span className="text-[10px] font-medium">{t("nav.resume")}</span>
+        </a>
+      </nav>
     </div>
   );
 }
@@ -421,6 +461,21 @@ function Tab({ name, icon, isActive, onClick }: { name: string, icon: React.Reac
       <span aria-hidden="true" className={clsx("material-symbols-outlined text-[14px] ml-auto hover:text-foreground hidden sm:block", isActive ? "opacity-100 text-muted" : "opacity-0 group-hover:opacity-100 text-muted")}>close</span>
     </button>
   )
+}
+
+function MobileNavItem({ label, icon, isActive, onClick, activeColor }: { label: string, icon: React.ReactNode, isActive: boolean, onClick: () => void, activeColor: string }) {
+  return (
+    <button
+      onClick={onClick}
+      className={clsx(
+        "flex flex-col items-center gap-1 p-2 rounded-lg transition-all active:scale-95",
+        isActive ? clsx("bg-primary/10", activeColor) : "text-muted hover:text-foreground"
+      )}
+    >
+      {icon}
+      <span className="text-[10px] font-medium">{label}</span>
+    </button>
+  );
 }
 
 function TechIcon({ icon, label }: { icon: React.ReactNode; label: string }) {

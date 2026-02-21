@@ -21,27 +21,39 @@ export function LanguageToggle() {
     return (
         <button
             onClick={() => setLocale(isEn ? "pt-BR" : "en")}
-            className="relative flex items-center gap-3 px-3 py-2 rounded-full bg-background dark:bg-panel border border-border/50 dark:border-border shadow-sm hover:shadow-md transition-all duration-300 group"
+            className="relative flex items-center justify-center p-2 md:px-3 md:py-2 rounded-full bg-background dark:bg-panel border border-border/50 dark:border-border shadow-sm hover:shadow-md transition-all duration-300 group"
             aria-label={isEn ? "Switch to Portuguese" : "Mudar para Inglês"}
             title={isEn ? "Switch to Portuguese" : "Mudar para Inglês"}
         >
-            <div
-                className={`flex items-center justify-center transition-all duration-300 ${isEn ? "opacity-30 grayscale scale-75" : "opacity-100 grayscale-0 scale-110 drop-shadow-sm"
-                    }`}
-            >
-                <BrazilFlag className="w-6 h-4 rounded-sm" />
-            </div>
-            <div className="relative w-11 h-6 rounded-full bg-muted/80 border border-border transition-all duration-300 group-hover:border-primary/50">
+            {/* Desktop: Full Toggle (Pill) */}
+            <div className="hidden md:flex items-center gap-3">
                 <div
-                    className={`absolute top-0.5 h-4.5 w-4.5 rounded-full bg-primary shadow-sm transition-all duration-300 ${isEn ? "left-[calc(100%-20px)]" : "left-0.5"
+                    className={`flex items-center justify-center transition-all duration-300 ${isEn ? "opacity-30 grayscale scale-75" : "opacity-100 grayscale-0 scale-110 drop-shadow-sm"
                         }`}
-                />
+                >
+                    <BrazilFlag className="w-6 h-4 rounded-sm" />
+                </div>
+                <div className="relative w-11 h-6 rounded-full bg-muted/80 border border-border transition-all duration-300 group-hover:border-primary/50">
+                    <div
+                        className={`absolute top-0.5 h-4.5 w-4.5 rounded-full bg-primary shadow-sm transition-all duration-300 ${isEn ? "left-[calc(100%-20px)]" : "left-0.5"
+                            }`}
+                    />
+                </div>
+                <div
+                    className={`flex items-center justify-center transition-all duration-300 ${isEn ? "opacity-100 grayscale-0 scale-110 drop-shadow-sm" : "opacity-30 grayscale scale-75"
+                        }`}
+                >
+                    <USFlag className="w-6 h-4 rounded-sm" />
+                </div>
             </div>
-            <div
-                className={`flex items-center justify-center transition-all duration-300 ${isEn ? "opacity-100 grayscale-0 scale-110 drop-shadow-sm" : "opacity-30 grayscale scale-75"
-                    }`}
-            >
-                <USFlag className="w-6 h-4 rounded-sm" />
+
+            {/* Mobile: Compact Button (Circle showing target language) */}
+            <div className="flex md:hidden items-center justify-center w-5 h-5">
+                {isEn ? (
+                    <BrazilFlag className="w-6 h-4 rounded-sm shadow-sm" />
+                ) : (
+                    <USFlag className="w-6 h-4 rounded-sm shadow-sm" />
+                )}
             </div>
         </button>
     );

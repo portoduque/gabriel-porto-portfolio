@@ -76,7 +76,7 @@ export default function RootLayout({
           <LanguageProvider>
             {children}
             {/* Fixed position controls for easy access */}
-            <div className="fixed bottom-10 right-4 md:top-4 md:bottom-auto md:right-4 z-50 flex flex-col md:flex-row items-end md:items-center gap-3 md:gap-4 drop-shadow-lg">
+            <div className="fixed top-3 right-3 md:top-4 md:right-4 z-50 flex flex-row items-center gap-2 md:gap-4 drop-shadow-lg">
               <LanguageToggle />
               <ThemeToggle />
             </div>
