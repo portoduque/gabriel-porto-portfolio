@@ -127,10 +127,10 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
                 </div>
 
                 {/* Content Area */}
-                <div className="flex-1 flex flex-col relative w-full pb-24 px-6 md:px-12 py-8 min-w-0 font-light">
+                <div className="flex-1 flex flex-col relative w-full pb-24 px-4 sm:px-6 md:px-12 py-4 sm:py-8 min-w-0 font-light">
                     {/* Project Header (single, no duplicate) */}
                     <div className="mb-4 max-w-4xl">
-                        <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight leading-tight">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight leading-tight break-words">
                             {project.name}
                         </h1>
                         <p className="text-lg text-muted/80 font-light mb-8 leading-relaxed max-w-2xl">
@@ -160,10 +160,10 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
                                 </div>
                             </div>
 
-                            <div className="flex flex-wrap gap-4 items-center shrink-0">
+                            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 items-center shrink-0 w-full xl:w-auto">
                                 {project.liveUrl && (
                                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
-                                        className="group relative flex items-center gap-3 px-6 py-3 rounded-full bg-primary border border-primary/50 hover:bg-primary/90 text-white transition-all shadow-sm hover:shadow-md">
+                                        className="group relative flex justify-center w-full sm:w-auto items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-primary border border-primary/50 hover:bg-primary/90 text-white transition-all shadow-sm hover:shadow-md">
                                         <span className="material-symbols-outlined text-[18px] relative z-10">language</span>
                                         <span className="text-xs font-bold font-[family-name:var(--font-mono)] uppercase tracking-wider relative z-10">
                                             {locale === "en" ? "Live Demo" : "Acessar Site"}
@@ -174,7 +174,7 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
 
                                 {project.repoUrl && (
                                     <a href={project.repoUrl} target="_blank" rel="noopener noreferrer"
-                                        className="group relative flex items-center gap-3 px-6 py-3 rounded-full bg-panel border border-border/50 hover:border-foreground/30 hover:bg-foreground hover:text-background transition-all overflow-hidden shadow-sm hover:shadow-md">
+                                        className="group relative flex justify-center w-full sm:w-auto items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-panel border border-border/50 hover:border-foreground/30 hover:bg-foreground hover:text-background transition-all overflow-hidden shadow-sm hover:shadow-md">
                                         <SiGithub size={18} className="relative z-10" />
                                         <span className="text-xs font-bold font-[family-name:var(--font-mono)] uppercase tracking-wider relative z-10">
                                             {locale === "en" ? "Source Code" : "Ver no GitHub"}
@@ -215,7 +215,7 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -8 }}
                                     transition={{ duration: 0.2 }}
-                                    className="text-foreground font-light text-base lg:text-lg"
+                                    className="text-foreground font-light text-base lg:text-lg break-words"
                                 >
                                     {project.content ? renderContent(project.content) : (
                                         <div className="w-full p-8 border border-dashed border-border/50 text-center rounded-xl bg-panel/30">

@@ -35,6 +35,7 @@ export function getProfile(locale: Locale) {
     return locale === "en" ? PROFILE_EN : PROFILE_PT;
 }
 
+
 export const SKILLS = {
     languages: ["PHP", "Python", "JavaScript (ES6+)", "HTML5", "CSS3"],
     frameworks: ["Bootstrap", "MadBuilder (PHP)", "Flutter/Dart"],

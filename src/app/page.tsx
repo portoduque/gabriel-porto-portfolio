@@ -61,12 +61,12 @@ function HomeContent() {
   }, [searchParams, activeTab]);
 
   return (
-    <div className="flex flex-col h-screen w-full relative font-[family-name:var(--font-display)]">
+    <div className="flex flex-col h-[100dvh] w-full overflow-x-hidden relative font-[family-name:var(--font-display)]">
       {/* Dot pattern background */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none bg-dot-pattern" />
 
       {/* ========== MAIN AREA ========== */}
-      <div className="flex flex-1 overflow-hidden z-10">
+      <div className="flex flex-1 overflow-hidden z-10 w-full min-w-0">
         {/* ===== SIDEBAR ===== */}
         <aside className="w-12 bg-background border-r border-border hidden md:flex flex-col items-center py-4 gap-6 shrink-0">
           <button
@@ -105,7 +105,7 @@ function HomeContent() {
         </aside>
 
         {/* ===== EDITOR PANEL ===== */}
-        <div className="flex-1 flex flex-col bg-panel">
+        <div className="flex-1 flex flex-col bg-panel min-w-0">
           {/* Tab bar (navbar) */}
           <div className="flex items-end bg-panel border-b border-border overflow-x-auto no-scrollbar h-10 shrink-0">
             {/* Tab 1 — main.py */}
@@ -162,14 +162,14 @@ function HomeContent() {
 
             <main className="flex-1 flex flex-col relative w-full min-h-full">
               {activeTab === "main.py" && (
-                <div className="w-full max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-20 mt-8 mb-12">
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start relative z-10">
+                <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-8 lg:py-20 mt-4 sm:mt-8 mb-12">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-start relative z-10 w-full">
                     {/* Left Column: Hero Content */}
-                    <div className="col-span-1 lg:col-span-7 flex flex-col gap-8 items-start text-left">
-                      <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold tracking-tighter text-foreground leading-[1.05]">
+                    <div className="col-span-1 lg:col-span-6 flex flex-col gap-5 sm:gap-6 lg:gap-8 items-start text-left w-full overflow-hidden">
+                      <h1 className="text-3xl lg:text-5xl xl:text-6xl font-bold tracking-tighter text-foreground leading-[1.1] max-w-full break-words">
                         {t("hero.title.prefix")}{" "}
-                        <span className="relative inline-block">
-                          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-neon-blue to-primary animate-gradient-x">
+                        <span className="relative inline-block w-full sm:w-auto">
+                          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-neon-blue to-primary animate-gradient-x block sm:inline">
                             {t("hero.title.highlight")}
                           </span>
                           <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent rounded-full opacity-50"></span>
@@ -177,16 +177,16 @@ function HomeContent() {
                       </h1>
 
                       {/* Role subtitle */}
-                      <div className="font-[family-name:var(--font-mono)] text-lg lg:text-2xl text-muted flex flex-wrap justify-start items-center gap-3">
+                      <div className="font-[family-name:var(--font-mono)] text-base lg:text-xl text-muted flex flex-wrap justify-start items-center gap-2 sm:gap-3">
                         <span className="text-primary font-bold animate-pulse">&gt;</span>
-                        <span className="text-syntax-variable">role</span>
+                        <span className="text-syntax-variable">{t("hero.role_var")}</span>
                         <span className="text-foreground">=</span>
                         <span className="text-syntax-string font-medium">&quot;{profile.role}&quot;</span>
                         <span className="w-2 h-5 bg-primary animate-blink inline-block ml-1 shadow-[0_0_8px_var(--color-primary)]" />
                       </div>
 
                       {/* Description */}
-                      <p className="text-muted text-lg lg:text-xl max-w-2xl font-light leading-relaxed">
+                      <p className="text-muted text-base lg:text-lg max-w-2xl font-light leading-relaxed">
                         {profile.summary}
                       </p>
 
@@ -212,8 +212,8 @@ function HomeContent() {
                       </div>
 
                       {/* Tech stack bar - Mini */}
-                      <div className="w-full mt-6 opacity-80">
-                        <div className="flex flex-wrap justify-start items-center gap-x-6 gap-y-4 pb-2 w-full py-4 px-0">
+                      <div className="w-full mt-4 lg:mt-6 opacity-80">
+                        <div className="flex flex-wrap justify-start items-center gap-x-4 lg:gap-x-6 gap-y-3 pb-2 w-full py-4 px-0">
                           <TechIcon icon={<SiHtml5 size={24} className="text-[#E34F26] group-hover:scale-110 transition-transform" />} label="HTML" />
                           <TechIcon icon={<SiCss3 size={24} className="text-[#1572B6] group-hover:scale-110 transition-transform" />} label="CSS" />
                           <TechIcon icon={<SiPhp size={24} className="text-[#777BB4] group-hover:scale-110 transition-transform" />} label="PHP" />
@@ -229,18 +229,18 @@ function HomeContent() {
                     </div>
 
                     {/* Right Column: System Overview Component */}
-                    <div className="col-span-1 lg:col-span-5 w-full flex justify-end items-center perspective-[2000px] mt-8 lg:mt-0 lg:pl-8">
+                    <div className="col-span-1 lg:col-span-6 w-full flex justify-end items-center perspective-[2000px] mt-8 lg:mt-0 lg:pl-4">
                       <SystemOverview />
                     </div>
                   </div>
 
                   {/* CORE PHILOSOPHY / EXPERTISE */}
                   <div className="w-full max-w-7xl mx-auto mt-24 mb-16 relative z-10">
-                    <div className="flex items-center justify-center lg:justify-center gap-2 mb-8 opacity-80">
-                      <span className="text-syntax-keyword text-xl font-[family-name:var(--font-mono)]">##</span>
-                      <h2 className="text-2xl font-bold text-foreground tracking-widest uppercase">{t("expertise.title")}</h2>
+                    <div className="flex items-center justify-center lg:justify-center gap-2 mb-8 opacity-80 max-w-full overflow-hidden">
+                      <span className="text-syntax-keyword text-xl font-[family-name:var(--font-mono)] flex-shrink-0">##</span>
+                      <h2 className="text-xl sm:text-2xl font-bold text-foreground tracking-widest uppercase truncate">{t("expertise.title")}</h2>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l border-t border-border -ml-px -mt-px relative">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l border-t border-border -ml-px lg:-ml-px -mt-px relative w-full overflow-hidden">
                       {/* Critical Thinking */}
                       <div className="bg-panel dark:bg-panel-highlight  border border-border dark:border-border rounded-none p-8 group border-r border-b border-border hover:border-neon-blue/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[8px_8px_0px_0px_rgba(6,123,249,0.8)] relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -355,7 +355,7 @@ function HomeContent() {
       </div>
 
       {/* ========== STATUS BAR ========== */}
-      <footer className="h-6 bg-primary text-white text-[11px] flex items-center justify-between px-3 shrink-0 select-none font-[family-name:var(--font-mono)] z-20">
+      <footer className="h-6 bg-primary text-white text-[11px] flex items-center justify-between px-3 shrink-0 select-none font-[family-name:var(--font-mono)] z-20 overflow-x-auto no-scrollbar w-full">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1 hover:bg-white/10 px-1 rounded-none cursor-pointer">
             <VscGitCommit size={12} />

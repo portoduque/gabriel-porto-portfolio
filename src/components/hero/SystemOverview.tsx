@@ -2,14 +2,9 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
 import { getProfile, SKILLS } from "@/lib/data";
 import { useLanguage } from "@/lib/i18n";
-
-function cn(...inputs: ClassValue[]) {
-    return twMerge(clsx(inputs));
-}
+import { cn } from "@/lib/utils";
 
 function useScrambleText(text: string, delay: number = 0) {
     const [displayText, setDisplayText] = useState("");
@@ -92,7 +87,7 @@ export function SystemOverview() {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="perspective-1000 w-full max-w-xl"
+            className="perspective-1000 w-full"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
@@ -104,42 +99,42 @@ export function SystemOverview() {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                 {/* Content Body */}
-                <div className="relative min-h-[500px] p-6 px-8 font-mono text-sm leading-relaxed text-slate-800 dark:text-slate-200">
+                <div className="relative min-h-[440px] py-4 lg:py-6 px-0 font-mono text-[10px] sm:text-xs lg:text-sm text-slate-800 dark:text-slate-200">
                     {/* Line Numbers */}
-                    <div className="absolute left-0 top-0 bottom-0 w-12 border-r border-border bg-panel dark:bg-panel text-right py-6 pr-3 text-muted/30 select-none hidden sm:block text-xs font-mono">
-                        {Array.from({ length: 30 }).map((_, i) => (
+                    <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-10 lg:w-12 border-r border-border bg-panel dark:bg-panel text-right py-4 lg:py-6 pr-1 sm:pr-2 lg:pr-3 text-muted/30 select-none hidden sm:block text-[8px] sm:text-[10px] lg:text-xs font-mono leading-5 lg:leading-6">
+                        {Array.from({ length: 40 }).map((_, i) => (
                             <div key={i}>{(i + 1).toString().padStart(2, '0')}</div>
                         ))}
                     </div>
 
-                    <div className="sm:pl-6 flex flex-col gap-3 relative z-10 font-medium">
+                    <div className="px-3 sm:pl-10 lg:pl-14 pr-2 lg:pr-4 flex flex-col relative z-10 font-medium leading-5 lg:leading-6 w-full max-w-full overflow-hidden">
                         <EnvRow label={t("system.label.user")} value={profile.name} color="text-teal-400" delay={400} />
                         <EnvRow label={t("system.label.role")} value={profile.role} color="text-blue-400" delay={700} />
                         <EnvRow label={t("system.label.loc")} value={t("system.loc")} color="text-emerald-400" delay={1000} />
 
-                        <div className="h-px bg-border/50 w-full my-2" />
+                        <div className="h-4 lg:h-6 flex items-center px-2 lg:px-4"><div className="h-px bg-border/30 w-full" /></div>
 
                         <EnvRow label={t("system.label.stack")} value={stackDisplay} color="text-yellow-400" delay={1300} />
                         <EnvRow label={t("system.label.tools")} value={toolsDisplay} color="text-orange-400" delay={1600} />
 
-                        <div className="h-px bg-border/50 w-full my-2" />
+                        <div className="h-4 lg:h-6 flex items-center px-2 lg:px-4"><div className="h-px bg-border/30 w-full" /></div>
 
                         {/* Status Row */}
-                        <div className="flex items-center gap-4 group/status cursor-pointer mt-1">
-                            <span className="text-red-400 font-bold w-28 shrink-0 tracking-wider text-xs">{t("system.label.status")}</span>
-                            <div className="flex items-center gap-2 bg-green-500/10 px-2 py-1 rounded border border-green-500/20 group-hover/status:border-green-500/50 transition-colors">
-                                <span className="text-green-400 font-bold text-xs animate-pulse">{t("system.status")}</span>
+                        <div className="flex items-center gap-1 sm:gap-2 group/status cursor-pointer min-h-[1.5rem] px-1 h-5 lg:h-6">
+                            <span className="text-red-400 font-bold w-16 sm:w-20 lg:w-24 shrink-0 tracking-wider text-[9px] sm:text-[10px] lg:text-xs leading-5 lg:leading-6 opacity-70 truncate">{t("system.label.status")}</span>
+                            <div className="flex items-center gap-2 bg-green-500/10 px-1.5 lg:px-2 h-4 lg:h-5 rounded border border-green-500/20 group-hover/status:border-green-500/50 transition-colors">
+                                <span className="text-green-400 font-bold text-[8px] lg:text-[10px] uppercase tracking-tighter animate-pulse truncate">{t("system.status")}</span>
                             </div>
                         </div>
 
                         {profile.highlights && (
                             <>
-                                <div className="h-px bg-border/50 w-full my-2" />
-                                <div className="flex flex-col gap-2">
+                                <div className="h-4 lg:h-6 flex items-center px-2 lg:px-4"><div className="h-px bg-border/30 w-full" /></div>
+                                <div className="flex flex-col">
                                     {profile.highlights.map((h, i) => (
                                         <EnvRow
                                             key={h.label}
-                                            label={h.label}
+                                            label={h.label === "CERT" ? t("system.label.cert") : h.label === "TECH" ? t("system.label.tech") : h.label}
                                             value={h.value}
                                             color={i === 0 ? "text-cyan-400" : i === 1 ? "text-pink-400" : "text-amber-400"}
                                             delay={1900 + (i * 300)}
@@ -149,10 +144,12 @@ export function SystemOverview() {
                             </>
                         )}
 
+                        <div className="h-4 lg:h-6" /> {/* Blank line to maintain rhythm */}
+
                         {/* Cursor Line */}
-                        <div className="flex items-center gap-2 text-muted/30 mt-4 text-xs">
-                            <span>{t("system.prompt")}</span>
-                            <span className="animate-pulse bg-muted/50 w-2 h-4 block"></span>
+                        <div className="flex items-center gap-1.5 sm:gap-2 text-muted/30 h-5 lg:h-6 px-1 text-[9px] sm:text-[10px] lg:text-xs">
+                            <span className="leading-5 lg:leading-6">{t("system.prompt")}</span>
+                            <span className="animate-pulse bg-muted/50 w-1.5 lg:w-2 h-3 lg:h-4 block"></span>
                         </div>
                     </div>
                 </div>
@@ -162,13 +159,14 @@ export function SystemOverview() {
 }
 
 function EnvRow({ label, value, color, delay }: { label: string, value: string, color: string, delay: number }) {
+    const { t } = useLanguage();
     const scrambled = useScrambleText(value, delay);
 
     return (
-        <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 p-1 -mx-1 rounded transition-colors duration-200 group/row">
-            <span className={cn("font-bold w-28 shrink-0 tracking-wider text-xs opacity-70 group-hover/row:opacity-100 transition-opacity", color)}>{label}</span>
-            <span className="text-foreground/80 font-normal tracking-wide group-hover/row:text-foreground transition-colors">
-                {label === "STACK" || label === "TOOLS" || label === "FERRAMENTAS" ? (
+        <div className="flex flex-col sm:flex-row sm:items-start lg:items-baseline gap-0 sm:gap-2 lg:gap-3 px-1 py-0.5 sm:py-0 min-h-[1.5rem] rounded transition-colors duration-200 group/row w-full overflow-hidden">
+            <span className={cn("font-bold w-full sm:w-20 lg:w-24 shrink-0 tracking-wider text-[9px] sm:text-[10px] lg:text-xs opacity-70 group-hover/row:opacity-100 transition-opacity leading-snug sm:leading-5 lg:leading-6 truncate", color)}>{label}</span>
+            <span className="text-foreground/80 font-normal tracking-wide group-hover/row:text-foreground transition-colors leading-relaxed sm:leading-5 lg:leading-6 flex-1 min-w-0 break-words whitespace-pre-wrap">
+                {label === "STACK" || label === t("system.label.tools") ? (
                     <span className="text-syntax-string">{scrambled}</span>
                 ) : (
                     <span>&quot;{scrambled}&quot;</span>
