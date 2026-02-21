@@ -28,15 +28,27 @@ import {
   SiDocker
 } from "react-icons/si";
 
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, Suspense } from "react";
 
 function HomeContent() {
-  const [activeTab, setActiveTab] = useState<"main.py" | "projetos.yml" | "carreira.sh" | "contact.yaml">("main.py");
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const { locale, t } = useLanguage();
   const profile = getProfile(locale);
   const activityLog = getActivityLog(locale);
-  const searchParams = useSearchParams();
+
+  const initialTab = searchParams.get("tab") as "main.py" | "projetos.yml" | "carreira.sh" | "contact.yaml" | null;
+  const defaultTab = initialTab && ["main.py", "projetos.yml", "carreira.sh", "contact.yaml"].includes(initialTab)
+    ? initialTab
+    : "main.py";
+
+  const [activeTab, setActiveTab] = useState<"main.py" | "projetos.yml" | "carreira.sh" | "contact.yaml">(defaultTab);
+
+  const handleTabChange = (tab: "main.py" | "projetos.yml" | "carreira.sh" | "contact.yaml") => {
+    setActiveTab(tab);
+    router.push(`/?tab=${tab}`);
+  };
 
   useEffect(() => {
     const tab = searchParams.get("tab");
@@ -58,21 +70,21 @@ function HomeContent() {
         {/* ===== SIDEBAR ===== */}
         <aside className="w-12 bg-background border-r border-border hidden md:flex flex-col items-center py-4 gap-6 shrink-0">
           <button
-            onClick={() => setActiveTab("main.py")}
+            onClick={() => handleTabChange("main.py")}
             className={clsx("relative group transition-colors", activeTab === "main.py" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
             {activeTab === "main.py" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
             <SiPython size={24} />
           </button>
           <button
-            onClick={() => setActiveTab("projetos.yml")}
+            onClick={() => handleTabChange("projetos.yml")}
             className={clsx("transition-colors relative", activeTab === "projetos.yml" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
             {activeTab === "projetos.yml" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
             <SiDocker size={24} />
           </button>
           <button
-            onClick={() => setActiveTab("carreira.sh")}
+            onClick={() => handleTabChange("carreira.sh")}
             className={clsx("transition-colors relative", activeTab === "carreira.sh" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
             {activeTab === "carreira.sh" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
@@ -80,7 +92,7 @@ function HomeContent() {
           </button>
           <div className="flex-1" />
           <button
-            onClick={() => setActiveTab("contact.yaml")}
+            onClick={() => handleTabChange("contact.yaml")}
             className={clsx("pb-4 transition-colors relative", activeTab === "contact.yaml" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
             {activeTab === "contact.yaml" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
@@ -97,28 +109,28 @@ function HomeContent() {
               name={t("nav.main")}
               icon={<SiPython size={16} className="text-[#3776ab]" />}
               isActive={activeTab === "main.py"}
-              onClick={() => setActiveTab("main.py")}
+              onClick={() => handleTabChange("main.py")}
             />
             {/* Tab 2 — docker-compose.yml */}
             <Tab
               name={t("nav.projects")}
               icon={<SiDocker size={16} className="text-[#1D63ED]" />}
               isActive={activeTab === "projetos.yml"}
-              onClick={() => setActiveTab("projetos.yml")}
+              onClick={() => handleTabChange("projetos.yml")}
             />
             {/* Tab 3 — carreira.sh */}
             <Tab
               name={t("nav.experience")}
               icon={<VscTerminal size={16} className="text-neon-green" />}
               isActive={activeTab === "carreira.sh"}
-              onClick={() => setActiveTab("carreira.sh")}
+              onClick={() => handleTabChange("carreira.sh")}
             />
             {/* Tab 4 — contact.yaml */}
             <Tab
               name={t("nav.contact")}
               icon={<VscMail size={16} className="text-red-400" />}
               isActive={activeTab === "contact.yaml"}
-              onClick={() => setActiveTab("contact.yaml")}
+              onClick={() => handleTabChange("contact.yaml")}
             />
             {/* CV Download / Open Tab */}
             <a
@@ -177,7 +189,7 @@ function HomeContent() {
                       {/* CTA buttons */}
                       <div className="flex flex-wrap justify-center lg:justify-center gap-4 mt-2">
                         <button
-                          onClick={() => setActiveTab("projetos.yml")}
+                          onClick={() => handleTabChange("projetos.yml")}
                           className="group relative inline-flex items-center justify-center px-8 py-3.5 font-[family-name:var(--font-mono)] text-sm font-medium text-white transition-all duration-300 overflow-hidden rounded-sm bg-primary hover:bg-primary-dark shadow-[0_0_20px_rgba(6,123,249,0.3)] hover:shadow-[0_0_30px_rgba(6,123,249,0.5)] cursor-pointer">
                           <span className="relative flex items-center gap-2 z-10">
                             <span className="text-white/70 group-hover:text-white transition-colors">$</span>
@@ -186,7 +198,7 @@ function HomeContent() {
                           </span>
                         </button>
                         <button
-                          onClick={() => setActiveTab("contact.yaml")}
+                          onClick={() => handleTabChange("contact.yaml")}
                           className="group inline-flex items-center justify-center px-8 py-3.5 font-[family-name:var(--font-mono)] text-sm font-medium text-muted transition-all duration-300 hover:text-foreground border border-border hover:border-muted rounded-sm bg-background dark:bg-panel hover:bg-panel dark:hover:bg-panel-highlight cursor-pointer">
                           <span className="relative flex items-center gap-2 z-10">
                             {t("hero.cta.contact")}
