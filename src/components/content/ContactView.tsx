@@ -48,10 +48,10 @@ export function ContactView() {
                 </div>
 
                 {/* Terminal Body */}
-                <div className="p-6 md:p-8 font-[family-name:var(--font-mono)] text-sm md:text-base leading-[1.8] text-[#24292e] dark:text-[#f8f8f2] transition-colors duration-300">
+                <div className="p-4 sm:p-6 md:p-8 font-[family-name:var(--font-mono)] text-xs sm:text-sm md:text-base leading-[1.6] sm:leading-[1.8] text-[#24292e] dark:text-[#f8f8f2] transition-colors duration-300">
 
                     {/* The Command */}
-                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="mb-6 flex gap-1 flex-wrap">
+                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="mb-4 sm:mb-6 flex gap-1 flex-wrap">
                         <span className="text-[#22863a] dark:text-[#50fa7b] font-bold">portoduque@macbook</span>
                         <span className="text-[#24292e] dark:text-[#f8f8f2]">:</span>
                         <span className="text-[#005cc5] dark:text-[#8be9fd] font-bold">~</span>
@@ -66,26 +66,26 @@ export function ContactView() {
                     </motion.div>
 
                     {/* email */}
-                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-6">
+                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-4 sm:pl-6 flex flex-wrap gap-x-1">
                         <span className="text-[#005cc5] dark:text-[#8be9fd]">{t("contact.yaml.email")}</span>
                         <span className="text-[#24292e] dark:text-[#f8f8f2]">: </span>
                         <a
                             href={`mailto:${profile.email}`}
-                            className="text-[#22863a] dark:text-[#f1fa8c] hover:text-[#005cc5] dark:hover:text-white transition-colors hover:underline cursor-pointer"
+                            className="text-[#22863a] dark:text-[#f1fa8c] hover:text-[#005cc5] dark:hover:text-white transition-colors hover:underline cursor-pointer break-all"
                         >
                             &quot;{profile.email}&quot;
                         </a>
                     </motion.div>
 
                     {/* whatsapp */}
-                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-6">
+                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-4 sm:pl-6 flex flex-wrap gap-x-1">
                         <span className="text-[#005cc5] dark:text-[#8be9fd]">{t("contact.yaml.whatsapp")}</span>
                         <span className="text-[#24292e] dark:text-[#f8f8f2]">: </span>
                         <a
                             href={whatsappLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[#22863a] dark:text-[#f1fa8c] hover:text-[#005cc5] dark:hover:text-white transition-colors hover:underline cursor-pointer"
+                            className="text-[#22863a] dark:text-[#f1fa8c] hover:text-[#005cc5] dark:hover:text-white transition-colors hover:underline cursor-pointer break-all"
                         >
                             &quot;{profile.phone}&quot;
                         </a>
@@ -96,23 +96,23 @@ export function ContactView() {
                     </motion.div>
 
                     {/* social: section */}
-                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="text-[#6a737d] dark:text-[#6272a4] pl-6">
+                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="text-[#6a737d] dark:text-[#6272a4] pl-4 sm:pl-6 pt-2">
                         # {t("contact.social")}
                     </motion.div>
-                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-6">
+                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-4 sm:pl-6">
                         <span className="text-[#d73a49] dark:text-[#ff79c6]">{t("contact.yaml.social")}</span>
                         <span className="text-[#24292e] dark:text-[#f8f8f2]">:</span>
                     </motion.div>
 
                     {/* linkedin */}
-                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-12">
+                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-8 sm:pl-12 flex flex-wrap gap-x-1 items-center">
                         <span className="text-[#005cc5] dark:text-[#8be9fd]">{t("contact.yaml.linkedin")}</span>
                         <span className="text-[#24292e] dark:text-[#f8f8f2]">: </span>
                         <a
                             href={profile.social.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[#22863a] dark:text-[#f1fa8c] hover:text-[#005cc5] dark:hover:text-white transition-colors hover:underline cursor-pointer group inline-flex items-center gap-1"
+                            className="text-[#22863a] dark:text-[#f1fa8c] hover:text-[#005cc5] dark:hover:text-white transition-colors hover:underline cursor-pointer group inline-flex items-center gap-1 break-all"
                         >
                             &quot;/in/portoduque&quot;
                             <span className="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
@@ -120,14 +120,14 @@ export function ContactView() {
                     </motion.div>
 
                     {/* github */}
-                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-12">
+                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-8 sm:pl-12 flex flex-wrap gap-x-1 items-center">
                         <span className="text-[#005cc5] dark:text-[#8be9fd]">{t("contact.yaml.github")}</span>
                         <span className="text-[#24292e] dark:text-[#f8f8f2]">: </span>
                         <a
                             href={profile.social.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[#22863a] dark:text-[#f1fa8c] hover:text-[#005cc5] dark:hover:text-white transition-colors hover:underline cursor-pointer group inline-flex items-center gap-1"
+                            className="text-[#22863a] dark:text-[#f1fa8c] hover:text-[#005cc5] dark:hover:text-white transition-colors hover:underline cursor-pointer group inline-flex items-center gap-1 break-all"
                         >
                             &quot;/portoduque&quot;
                             <span className="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
@@ -139,27 +139,27 @@ export function ContactView() {
                     </motion.div>
 
                     {/* location: section */}
-                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="text-[#6a737d] dark:text-[#6272a4] pl-6">
+                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="text-[#6a737d] dark:text-[#6272a4] pl-4 sm:pl-6 pt-2">
                         # {t("contact.location")}
                     </motion.div>
-                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-6">
+                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-4 sm:pl-6">
                         <span className="text-[#d73a49] dark:text-[#ff79c6]">{t("contact.yaml.location")}</span>
                         <span className="text-[#24292e] dark:text-[#f8f8f2]">:</span>
                     </motion.div>
-                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-12">
+                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-8 sm:pl-12 flex flex-wrap gap-x-1">
                         <span className="text-[#005cc5] dark:text-[#8be9fd]">{t("contact.yaml.city")}</span>
                         <span className="text-[#24292e] dark:text-[#f8f8f2]">: </span>
-                        <span className="text-[#22863a] dark:text-[#f1fa8c]">&quot;Porto Velho&quot;</span>
+                        <span className="text-[#22863a] dark:text-[#f1fa8c] break-all">&quot;Porto Velho&quot;</span>
                     </motion.div>
-                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-12">
+                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-8 sm:pl-12 flex flex-wrap gap-x-1">
                         <span className="text-[#005cc5] dark:text-[#8be9fd]">{t("contact.yaml.state")}</span>
                         <span className="text-[#24292e] dark:text-[#f8f8f2]">: </span>
-                        <span className="text-[#22863a] dark:text-[#f1fa8c]">&quot;Rondônia (RO)&quot;</span>
+                        <span className="text-[#22863a] dark:text-[#f1fa8c] break-all">&quot;Rondônia (RO)&quot;</span>
                     </motion.div>
-                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-12">
+                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-8 sm:pl-12 flex flex-wrap gap-x-1">
                         <span className="text-[#005cc5] dark:text-[#8be9fd]">{t("contact.yaml.country")}</span>
                         <span className="text-[#24292e] dark:text-[#f8f8f2]">: </span>
-                        <span className="text-[#22863a] dark:text-[#f1fa8c]">&quot;{isPt ? "Brasil" : "Brazil"}&quot;</span>
+                        <span className="text-[#22863a] dark:text-[#f1fa8c] break-all">&quot;{isPt ? "Brasil" : "Brazil"}&quot;</span>
                     </motion.div>
 
                     <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible">
@@ -167,10 +167,10 @@ export function ContactView() {
                     </motion.div>
 
                     {/* status */}
-                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-6">
+                    <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-4 sm:pl-6 pt-2 flex flex-wrap gap-x-1 items-center">
                         <span className="text-[#005cc5] dark:text-[#8be9fd]">{t("contact.yaml.status")}</span>
                         <span className="text-[#24292e] dark:text-[#f8f8f2]">: </span>
-                        <span className="text-[#22863a] dark:text-[#f1fa8c] inline-flex items-center gap-2">
+                        <span className="text-[#22863a] dark:text-[#f1fa8c] inline-flex items-center gap-2 break-all">
                             &quot;{t("contact.available")}&quot;
                             <span className="inline-block w-2 h-2 rounded-full bg-[#22863a] dark:bg-[#50fa7b] animate-pulse shadow-[0_0_8px_rgba(34,134,58,0.5)] dark:shadow-[0_0_8px_#50fa7b]" />
                         </span>

@@ -119,7 +119,7 @@ export default function ProjectDetails() {
                     </div>
 
                     {/* Breadcrumb / Back Button */}
-                    <div className="px-6 md:px-8 pt-4 pb-2 bg-background/50 border-b border-border/30">
+                    <div className="px-4 sm:px-6 md:px-8 pt-4 pb-2 bg-background/50 border-b border-border/30">
                         <button
                             onClick={() => router.push("/?tab=projetos.yml")}
                             className="group flex items-center gap-2 text-sm font-[family-name:var(--font-mono)] text-muted hover:text-primary transition-colors cursor-pointer w-fit"

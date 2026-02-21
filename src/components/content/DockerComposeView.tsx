@@ -125,7 +125,7 @@ export function DockerComposeView() {
     const exitedCount = enriched.filter(c => c.status === "exited").length;
 
     return (
-        <div className="w-full max-w-5xl mx-auto px-6 lg:px-12 pt-8 pb-24">
+        <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-12 pt-8 pb-24">
             {/* Header — Docker style */}
             <motion.div
                 initial={{ opacity: 0, y: -10 }}
@@ -155,7 +155,7 @@ export function DockerComposeView() {
                 </div>
 
                 {/* Summary bar */}
-                <div className="bg-panel/60 dark:bg-panel-highlight/80 backdrop-blur-sm border border-border/50 dark:border-border rounded-xl p-3.5 flex flex-wrap items-center gap-4 lg:gap-6">
+                <div className="bg-panel/60 dark:bg-panel-highlight/80 backdrop-blur-sm border border-border/50 dark:border-border rounded-xl p-2 sm:p-3.5 flex flex-wrap items-center gap-2 sm:gap-4 lg:gap-6">
                     <button
                         onClick={() => setFilterStatus("all")}
                         className={`flex items-center gap-2 px-2 py-1 rounded-lg transition-all cursor-pointer ${filterStatus === "all" ? "bg-primary/10 border border-primary/30" : "hover:bg-panel/80"}`}
@@ -210,14 +210,14 @@ export function DockerComposeView() {
                                 className={`relative rounded-xl border overflow-hidden cursor-pointer transition-all duration-300 ${isRunning
                                     ? "border-neon-green/20 hover:border-neon-green/40 hover:shadow-lg hover:shadow-neon-green/5"
                                     : "border-neon-orange/20 hover:border-neon-orange/40 hover:shadow-lg hover:shadow-neon-orange/5"
-                                    } bg-panel/60 dark:bg-panel-highlight/80`}
+                                    } bg-panel/60 dark:bg-panel-highlight/80 w-full overflow-hidden`}
                             >
                                 {/* Left accent */}
                                 <div className={`absolute left-0 top-0 bottom-0 w-1 ${isRunning ? "bg-neon-green" : "bg-neon-orange/70"}`} />
 
-                                <div className="p-4 lg:p-5 pl-5 lg:pl-7">
+                                <div className="p-3 lg:p-5 pl-3 sm:pl-5 lg:pl-7">
                                     {/* Top row */}
-                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
+                                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-2">
                                         <div className="flex items-start gap-3">
                                             <span className={`material-symbols-outlined text-lg mt-1 ${isRunning ? "text-neon-green" : "text-neon-orange/70"}`}>
                                                 {isRunning ? "play_circle" : "stop_circle"}
@@ -248,7 +248,7 @@ export function DockerComposeView() {
                                         </div>
 
                                         {/* Actions + Status */}
-                                        <div className="flex items-center gap-4 sm:ml-auto">
+                                        <div className="flex flex-wrap items-center gap-2 sm:gap-4 sm:ml-auto mt-2 sm:mt-0">
                                             {/* (Moved action button to expanded details pane) */}
 
                                             <div className="flex items-center gap-3">
@@ -269,12 +269,12 @@ export function DockerComposeView() {
                                     </div>
 
                                     {/* Description */}
-                                    <p className="text-sm text-muted leading-relaxed mb-4 ml-8">
+                                    <p className="text-sm text-muted leading-relaxed mb-4 ml-0 sm:ml-12 pr-2 mt-2 sm:mt-0">
                                         {container.description}
                                     </p>
 
                                     {/* Meta row: ports + tech */}
-                                    <div className="flex flex-wrap items-center gap-3 ml-8">
+                                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 ml-0 sm:ml-12 mt-4 sm:mt-0">
                                         {/* Port mapping */}
                                         <div className="flex items-center gap-1.5 text-[11px] font-[family-name:var(--font-mono)] bg-background/80 dark:bg-panel px-2 py-1 rounded border border-border/40 text-muted/70">
                                             <span className="material-symbols-outlined text-[12px]">cable</span>
@@ -299,7 +299,7 @@ export function DockerComposeView() {
                                         </div>
 
                                         {/* Expand icon */}
-                                        <span className="material-symbols-outlined text-muted/40 text-sm ml-auto transition-transform duration-300"
+                                        <span className="material-symbols-outlined text-muted/40 text-sm ml-auto sm:ml-auto transition-transform duration-300"
                                             style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0)" }}
                                         >
                                             expand_more
@@ -315,9 +315,9 @@ export function DockerComposeView() {
                                             animate={{ height: "auto", opacity: 1 }}
                                             exit={{ height: 0, opacity: 0 }}
                                             transition={{ duration: 0.3 }}
-                                            className="overflow-hidden"
+                                            className="overflow-hidden w-full"
                                         >
-                                            <div className="border-t border-border/30 bg-background/60 dark:bg-panel/80 p-4 pl-7">
+                                            <div className="border-t border-border/30 bg-background/60 dark:bg-panel/80 p-3 sm:p-4 pl-4 sm:pl-7">
                                                 {/* Highlight */}
                                                 <div className="mb-4">
                                                     <span className="text-[10px] font-bold font-[family-name:var(--font-mono)] text-muted uppercase tracking-wider">{t("docker.highlight")}</span>
@@ -377,7 +377,7 @@ export function DockerComposeView() {
                                                                     initial={{ opacity: 0, x: -10 }}
                                                                     animate={{ opacity: 1, x: 0 }}
                                                                     transition={{ delay: i * 0.15 }}
-                                                                    className="font-[family-name:var(--font-mono)] text-[11px] text-neon-green/70 leading-5"
+                                                                    className="font-[family-name:var(--font-mono)] text-[11px] text-neon-green/70 leading-5 break-words sm:break-normal"
                                                                 >
                                                                     <span className="text-muted/30">[{new Date().toISOString().slice(11, 19)}]</span>{" "}
                                                                     {line}
