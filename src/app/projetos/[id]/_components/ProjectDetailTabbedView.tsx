@@ -138,25 +138,22 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
                         </p>
 
                         {/* Meta Row: Tech + Links */}
-                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 py-6 border-y border-border/30 mb-8">
+                        <div className="flex flex-col xl:flex-row xl:items-start justify-between gap-8 py-6 border-y border-border/30 mb-8">
                             {/* Tech Stack */}
-                            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-                                <div className="flex items-center gap-2 text-[10px] font-bold font-[family-name:var(--font-mono)] text-muted/40 uppercase tracking-[0.2em]">
-                                    <span className="material-symbols-outlined text-[14px]">terminal</span>
-                                    <span>{locale === "en" ? "Stack" : "Stack"}</span>
+                            <div className="flex flex-col gap-3 flex-1 min-w-[280px]">
+                                <div className="flex items-center gap-2 text-[10px] font-bold font-[family-name:var(--font-mono)] text-muted/50 uppercase tracking-[0.2em] mb-1">
+                                    <span className="material-symbols-outlined text-[14px] text-primary/70">terminal</span>
+                                    <span>{locale === "en" ? "Tech Stack" : "Tecnologias"}</span>
                                 </div>
-                                <div className="flex flex-wrap gap-4 items-center">
+                                <div className="flex flex-wrap gap-2.5 items-center">
                                     {project.tech.map((t: string) => {
                                         const Icon = techIcons[t.toLowerCase()];
-                                        const isWordmark = t.toLowerCase() === "c#" || t.toLowerCase() === ".net";
                                         return (
-                                            <div key={t} className="flex items-center gap-1.5 group cursor-default h-6">
-                                                {Icon && <Icon className="text-muted/50 group-hover:text-primary transition-colors" size={isWordmark ? 24 : 16} />}
-                                                {!isWordmark && (
-                                                    <span className="text-xs font-medium font-[family-name:var(--font-mono)] text-muted/80 group-hover:text-foreground transition-colors">
-                                                        {t}
-                                                    </span>
-                                                )}
+                                            <div key={t} className="flex items-center gap-2 group cursor-default px-3 py-1.5 rounded-md bg-white dark:bg-[#0d1117] border border-border/50 hover:border-primary/50 hover:bg-primary/5 transition-all shadow-sm translate-y-0 hover:-translate-y-0.5">
+                                                {Icon && <Icon className="text-muted/70 group-hover:text-primary transition-colors" size={14} />}
+                                                <span className="text-[11px] font-bold font-[family-name:var(--font-mono)] text-foreground/70 group-hover:text-foreground uppercase tracking-widest mt-[1px]">
+                                                    {t}
+                                                </span>
                                             </div>
                                         );
                                     })}

@@ -523,6 +523,52 @@ The goal of this project was to create a functional and scalable platform using 
 - **Management Efficiency**: Centralization of critical resources to strengthen digital public health in the state.
 `
             },
+            {
+                id: "gerenciador-credenciais",
+                name: "Inventory System (Credential Manager)",
+                tech: ["C#", ".NET 8.0", "ASP.NET Core MVC", "Entity Framework", "SQL Server", "Bootstrap"],
+                description: "Web application developed to catalog and manage digital resources like virtual machines, e-mail accounts, websites, and credentials, focused on security and organization.",
+                highlight: "Robust authentication via OpenID Connect and sensitive data encryption with automated PDF reports.",
+                visibility: "private" as const,
+                role: "Systems Analyst & Developer",
+                date: "January 2025",
+                status: "Active",
+                impact: "Centralizes digital resource control, providing efficiency, traceability, and security for the institution's technological management.",
+                metrics: [
+                    { label: "Security", value: "High", icon: "shield" },
+                    { label: "Auth", value: "Azure AD", icon: "security" },
+                    { label: "Reports", value: "PDF Auto", icon: "picture_as_pdf" },
+                    { label: "UI", value: "Responsive", icon: "devices" }
+                ],
+                media: [
+                    { type: 'image', url: '/projects/gerenciador-credenciais/sindv 1.png', alt: 'Inventory System Description and Technologies' },
+                    { type: 'image', url: '/projects/gerenciador-credenciais/sindv 2.png', alt: 'Overview and Used Frameworks' },
+                    { type: 'image', url: '/projects/gerenciador-credenciais/sindv 3.png', alt: 'Security, UI, and Special Features' },
+                    { type: 'image', url: '/projects/gerenciador-credenciais/sindv 4.png', alt: 'Description for Portfolio and Conclusion' }
+                ],
+                content: `
+# Inventory System (Credential Manager)
+
+The **Inventory** is a complete web application developed in ASP.NET Core 8.0 to catalog and manage digital resources, such as virtual machines, e-mail accounts, websites, and credentials, focusing on security and organization.
+
+## Technical Highlights & Architecture
+
+- **Core Framework**: Developed with .NET 8.0, ASP.NET Core MVC, and C#.
+- **Database & Persistence**: Utilizes Entity Framework Core 8.0.11 as ORM, SQL Server, and Microsoft.Data.SqlClient.
+- **Authentication & Security**: Features robust authentication via \`Microsoft.AspNetCore.Authentication.OpenIdConnect\`, integration with Azure AD (\`Azure.Identity\`), identity management (\`Microsoft.Identity.Client\`), and password encryption using \`System.Security.Cryptography\`.
+- **User Interface**: Built with ASP.NET Core MVC, Razor Pages, Bootstrap for responsive layout, and interactive notifications using \`AspNetCoreHero.ToastNotification\` and \`NToastNotify\`.
+
+## Special Features
+
+- **Automated PDF Reports**: Uses \`PuppeteerSharp\` for generating PDF reports.
+- **External APIs Integration**: Uses \`RestSharp\` for integrations.
+- **Data Formatting**: Employs \`Humanizer\` for humanized data formatting.
+
+## Generated Impact
+
+The Inventory system is a robust and secure platform that centralizes the control of digital resources, providing efficiency, traceability, and security for the technological management of the institution. It does not handle physical inventory, but rather serves as a smart catalog for technological resources.
+`
+            },
         ];
     }
 
@@ -861,6 +907,52 @@ Este projeto teve como objetivo criar uma plataforma funcional e escalável util
 - **Acesso Ampliado**: Expansão da telemedicina para áreas remotas, otimizando recursos assistenciais.
 - **Decisão Clínica**: Facilitação do acesso a regulamentações, protocolos e informações farmacêuticas.
 - **Eficiência na Gestão**: Centralização de recursos críticos para o fortalecimento da saúde pública digital no estado.
+`
+        },
+        {
+            id: "gerenciador-credenciais",
+            name: "Sistema de Inventário (Gerenciador de Credenciais)",
+            tech: ["C#", ".NET 8.0", "ASP.NET Core MVC", "Entity Framework", "SQL Server", "Bootstrap"],
+            description: "Aplicação web desenvolvida para catalogar e gerenciar recursos digitais como máquinas virtuais, contas de e-mail, sites e credenciais, com foco em segurança e organização.",
+            highlight: "Autenticação robusta via OpenID Connect e criptografia de dados sensíveis com relatórios PDF automatizados.",
+            visibility: "private" as const,
+            role: "Analista e Desenvolvedor de Sistemas",
+            date: "Janeiro de 2025",
+            status: "Ativo",
+            impact: "Centraliza o controle de recursos digitais, proporcionando eficiência, rastreabilidade e segurança para a gestão tecnológica da instituição.",
+            metrics: [
+                { label: "Segurança", value: "Alta", icon: "shield" },
+                { label: "Autenticação", value: "Azure AD", icon: "security" },
+                { label: "Relatórios", value: "PDF Auto", icon: "picture_as_pdf" },
+                { label: "UI", value: "Responsiva", icon: "devices" }
+            ],
+            media: [
+                { type: 'image', url: '/projects/gerenciador-credenciais/sindv 1.png', alt: 'Descrição e Tecnologias do Sistema de Inventário' },
+                { type: 'image', url: '/projects/gerenciador-credenciais/sindv 2.png', alt: 'Visão Geral e Frameworks Utilizados' },
+                { type: 'image', url: '/projects/gerenciador-credenciais/sindv 3.png', alt: 'Segurança, UI e Funcionalidades Especiais' },
+                { type: 'image', url: '/projects/gerenciador-credenciais/sindv 4.png', alt: 'Descrição para Portfólio e Conclusão' }
+            ],
+            content: `
+# Sistema de Inventário (Gerenciador de Credenciais)
+
+O **Inventário** é uma aplicação web completa desenvolvida em ASP.NET Core 8.0 para gerenciar e organizar recursos digitais, como máquinas virtuais, contas de e-mail, sites e credenciais, com foco em segurança e organização.
+
+## Destaques Técnicos & Arquitetura
+
+- **Core Framework**: Desenvolvido com .NET 8.0, ASP.NET Core MVC e C#.
+- **Banco de Dados e Persistência**: Utiliza Entity Framework Core 8.0.11 como ORM, SQL Server e Microsoft.Data.SqlClient.
+- **Autenticação e Segurança**: Conta com autenticação segura via \`Microsoft.AspNetCore.Authentication.OpenIdConnect\`, integração com Azure AD (\`Azure.Identity\`), gerenciamento de identidade (\`Microsoft.Identity.Client\`) e criptografia para senhas usando \`System.Security.Cryptography\`.
+- **Interface do Usuário**: Construído com ASP.NET Core MVC, Razor Pages, Bootstrap para layout responsivo e notificações interativas utilizando \`AspNetCoreHero.ToastNotification\` e \`NToastNotify\`.
+
+## Funcionalidades Especiais
+
+- **Relatórios PDF Automatizados**: Uso de \`PuppeteerSharp\` para geração de relatórios em PDF.
+- **Integração com APIs Externas**: Utiliza \`RestSharp\` para integrações.
+- **Formatação de Dados**: Emprega \`Humanizer\` para formatação humanizada de dados.
+
+## Impacto Gerado
+
+O sistema Inventário é uma plataforma robusta e segura que centraliza o controle de recursos digitais, proporcionando eficiência, rastreabilidade e segurança para a gestão tecnológica da instituição. O sistema não trata de estoque físico, mas sim do catálogo inteligente de recursos tecnológicos da instituição.
 `
         },
     ];

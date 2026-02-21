@@ -208,3 +208,18 @@ Information Technology professional with solid experience in IT infrastructure, 
     - Modernizing the state's digital public health management.
 - **Status:** Active (February 2025)
 - **Visibility:** Public
+
+### 8. Inventory System (Credential Manager)
+- **Technologies:** C#, .NET 8.0, ASP.NET Core MVC, Entity Framework, SQL Server, Bootstrap, OIDC, Azure ID.
+- **Technical Insights & Architecture:**
+    - **Core Framework:** Developed with .NET 8.0, ASP.NET Core MVC, and C#.
+    - **Database & Persistence:** Utilizes Entity Framework Core 8.0.11 as ORM, SQL Server, and Microsoft.Data.SqlClient.
+    - **Authentication & Security:** Features robust authentication via OpenID Connect, integration with Azure AD (\`Azure.Identity\`), identity management (\`Microsoft.Identity.Client\`), and password encryption using \`System.Security.Cryptography\`.
+    - **User Interface:** Built with ASP.NET Core MVC, Razor Pages, Bootstrap for responsive layout, and interactive notifications using \`AspNetCoreHero.ToastNotification\` and \`NToastNotify\`.
+    - **Automated PDF Reports:** Uses \`PuppeteerSharp\` for generating PDF reports.
+    - **External APIs Integration:** Uses \`RestSharp\` for integrations.
+    - **Data Formatting:** Employs \`Humanizer\` for humanized data formatting.
+- **Generated Impact:**
+    - The Inventory system is a robust and secure platform that centralizes the control of digital resources, providing efficiency, traceability, and security for the technological management of the institution. It does not handle physical inventory, but rather serves as a smart catalog for technological resources.
+- **Status:** Active (January 2025)
+- **Visibility:** Private

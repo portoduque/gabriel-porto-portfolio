@@ -209,3 +209,17 @@ Profissional de Tecnologia da Informação com sólida experiência em infraestr
 - **Status:** Ativo (Fevereiro de 2025)
 - **Visibilidade:** Público
 
+### 8. Sistema de Inventário (Gerenciador de Credenciais)
+- **Tecnologias:** C#, .NET 8.0, ASP.NET Core MVC, Entity Framework, SQL Server, Bootstrap, OIDC, Azure ID.
+- **Insights Técnicos & Arquitetura:**
+    - **Core Framework:** Desenvolvido com .NET 8.0, ASP.NET Core MVC e C#.
+    - **Banco de Dados e Persistência:** Utiliza Entity Framework Core 8.0.11 como ORM, SQL Server e Microsoft.Data.SqlClient.
+    - **Autenticação e Segurança:** Conta com autenticação segura via OpenID Connect, integração com Azure AD (\`Azure.Identity\`), gerenciamento de identidade (\`Microsoft.Identity.Client\`) e criptografia para senhas usando \`System.Security.Cryptography\`.
+    - **Interface do Usuário:** Construído com ASP.NET Core MVC, Razor Pages, Bootstrap para layout responsivo e notificações interativas utilizando \`AspNetCoreHero.ToastNotification\` e \`NToastNotify\`.
+    - **Relatórios PDF Automatizados:** Uso de \`PuppeteerSharp\` para geração de relatórios em PDF.
+    - **Integração com APIs Externas:** Utiliza \`RestSharp\` para integrações.
+    - **Formatação de Dados:** Emprega \`Humanizer\` para formatação humanizada de dados.
+- **Impacto Gerado:**
+    - O sistema Inventário é uma plataforma robusta e segura que centraliza o controle de recursos digitais, proporcionando eficiência, rastreabilidade e segurança para a gestão tecnológica da instituição. O sistema não trata de estoque físico, mas sim do catálogo inteligente de recursos tecnológicos da instituição.
+- **Status:** Ativo (Janeiro de 2025)
+- **Visibilidade:** Privado/Interno
