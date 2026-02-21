@@ -10,10 +10,6 @@ function generateHash() {
     return Math.random().toString(16).slice(2, 14);
 }
 
-function generatePort() {
-    return (3000 + Math.floor(Math.random() * 6000));
-}
-
 const CONTAINER_META = [
     { status: "running", uptime: "3d 14h", port: 8080, internalPort: 80 },
     { status: "running", uptime: "7d 2h", port: 3001, internalPort: 3000 },
@@ -125,7 +121,7 @@ export function DockerComposeView() {
     const exitedCount = enriched.filter(c => c.status === "exited").length;
 
     return (
-        <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-12 pt-8 pb-24">
+        <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-12 pt-8 pb-32 sm:pb-24">
             {/* Header — Docker style */}
             <motion.div
                 initial={{ opacity: 0, y: -10 }}
@@ -133,8 +129,8 @@ export function DockerComposeView() {
                 transition={{ duration: 0.4 }}
                 className="mb-6"
             >
-                {/* File indicator */}
-                <div className="font-[family-name:var(--font-mono)] text-xs text-muted/50 mb-2">
+                {/* File indicator - Hidden on mobile */}
+                <div className="hidden sm:block font-[family-name:var(--font-mono)] text-xs text-muted/50 mb-2">
                     version: &apos;3.8&apos;
                 </div>
 
@@ -197,6 +193,9 @@ export function DockerComposeView() {
                     const isRunning = container.status === "running";
                     const isExpanded = expanded === container.id;
 
+                    // Logic to limit tech tags on mobile
+                    const mobileTechLimit = 3;
+
                     return (
                         <motion.div
                             key={container.id}
@@ -224,78 +223,98 @@ export function DockerComposeView() {
                                             </span>
 
                                             <div>
-                                                <div className="flex flex-wrap items-center gap-2 mb-1">
-                                                    <h3 className="text-base font-bold text-foreground group-hover:text-primary transition-colors">
+                                                <div className="flex flex-wrap items-center gap-2 mb-1 pr-28 sm:pr-0">
+                                                    <h3 className="text-base font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1">
                                                         {container.name}
                                                     </h3>
-                                                    {/* Visibility badge with material icon + tooltip */}
+                                                    {/* Visibility badge - Simplified for mobile */}
                                                     <span
                                                         title={t(`docker.visibility.${container.visibility}.desc`)}
-                                                        className={`inline-flex items-center gap-1 text-[10px] font-bold font-[family-name:var(--font-mono)] px-2 py-0.5 rounded-full border cursor-help transition-colors ${container.visibility === "public"
+                                                        className={`items-center gap-1 text-[10px] font-bold font-[family-name:var(--font-mono)] px-2 py-0.5 rounded-full border cursor-help transition-colors ${container.visibility === "public"
                                                             ? "bg-neon-cyan/10 text-neon-cyan border-neon-cyan/25 hover:bg-neon-cyan/20"
                                                             : "bg-muted/10 text-muted/70 border-border/60 hover:bg-muted/20"
-                                                            }`}>
+                                                            } ${/* Hide text on mobile, show only icon */ ""} hidden sm:inline-flex`}>
                                                         <span className="material-symbols-outlined text-[10px] leading-none">
                                                             {container.visibility === "public" ? "public" : "lock"}
                                                         </span>
                                                         {t(`docker.visibility.${container.visibility}`)}
                                                     </span>
+                                                    {/* Mobile Only Icon for Visibility */}
+                                                    <span className={`sm:hidden material-symbols-outlined text-[14px] ${container.visibility === "public" ? "text-neon-cyan" : "text-muted"}`}>
+                                                        {container.visibility === "public" ? "public" : "lock"}
+                                                    </span>
                                                 </div>
-                                                <p className="text-[11px] font-[family-name:var(--font-mono)] text-muted/60">
+                                                <p className="hidden sm:block text-[11px] font-[family-name:var(--font-mono)] text-muted/60">
                                                     {container.containerId}
                                                 </p>
                                             </div>
                                         </div>
 
-                                        {/* Actions + Status */}
-                                        <div className="flex flex-wrap items-center gap-2 sm:gap-4 sm:ml-auto mt-2 sm:mt-0">
-                                            {/* (Moved action button to expanded details pane) */}
-
-                                            <div className="flex items-center gap-3">
-                                                {isRunning && (
-                                                    <span className="text-xs font-[family-name:var(--font-mono)] text-muted">
-                                                        ↑ {container.uptime}
-                                                    </span>
-                                                )}
-                                                <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold font-[family-name:var(--font-mono)] px-2.5 py-1 rounded-md ${isRunning
-                                                    ? "bg-neon-green/10 text-neon-green border border-neon-green/20"
-                                                    : "bg-neon-orange/10 text-neon-orange border border-neon-orange/20"
-                                                    }`}>
-                                                    <span className={`w-1.5 h-1.5 rounded-full ${isRunning ? "bg-neon-green animate-pulse" : "bg-neon-orange/70"}`} />
-                                                    {isRunning ? t("docker.badge.running") : t("docker.badge.exited")}
+                                        {/* Status Badge */}
+                                        <div className="flex items-center gap-2 sm:gap-4 sm:ml-auto absolute top-3 right-3 sm:relative sm:top-auto sm:right-auto">
+                                            {isRunning && (
+                                                <span className="hidden sm:block text-xs font-[family-name:var(--font-mono)] text-muted">
+                                                    ↑ {container.uptime}
                                                 </span>
-                                            </div>
+                                            )}
+                                            <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold font-[family-name:var(--font-mono)] px-2.5 py-1 rounded-md ${isRunning
+                                                ? "bg-neon-green/10 text-neon-green border border-neon-green/20"
+                                                : "bg-neon-orange/10 text-neon-orange border border-neon-orange/20"
+                                                }`}>
+                                                <span className={`w-1.5 h-1.5 rounded-full ${isRunning ? "bg-neon-green animate-pulse" : "bg-neon-orange/70"}`} />
+                                                {isRunning ? t("docker.badge.running") : t("docker.badge.exited")}
+                                            </span>
                                         </div>
                                     </div>
 
                                     {/* Description */}
-                                    <p className="text-sm text-muted leading-relaxed mb-4 ml-0 sm:ml-12 pr-2 mt-2 sm:mt-0">
+                                    <p className="text-sm text-muted leading-relaxed mb-4 ml-0 sm:ml-12 pr-2 mt-2 sm:mt-0 line-clamp-2 sm:line-clamp-none">
                                         {container.description}
                                     </p>
 
                                     {/* Meta row: ports + tech */}
                                     <div className="flex flex-wrap items-center gap-2 sm:gap-3 ml-0 sm:ml-12 mt-4 sm:mt-0">
-                                        {/* Port mapping */}
-                                        <div className="flex items-center gap-1.5 text-[11px] font-[family-name:var(--font-mono)] bg-background/80 dark:bg-panel px-2 py-1 rounded border border-border/40 text-muted/70">
+                                        {/* Port mapping - Hidden on mobile */}
+                                        <div className="hidden sm:flex items-center gap-1.5 text-[11px] font-[family-name:var(--font-mono)] bg-background/80 dark:bg-panel px-2 py-1 rounded border border-border/40 text-muted/70">
                                             <span className="material-symbols-outlined text-[12px]">cable</span>
                                             <span className="text-foreground/80 font-bold">{container.port}</span>
                                             <span className="material-symbols-outlined text-[12px] text-muted/50">arrow_right_alt</span>
                                             <span>{container.internalPort}</span>
                                         </div>
 
-                                        {/* Separator */}
-                                        <span className="text-border/40">|</span>
+                                        {/* Separator - Hidden on mobile */}
+                                        <span className="hidden sm:inline text-border/40">|</span>
 
-                                        {/* Tech tags — prominent */}
-                                        <div className="flex flex-wrap gap-1.5">
-                                            {container.tech.map(tech => (
-                                                <span
-                                                    key={tech}
-                                                    className="px-2.5 py-1 rounded-md text-[11px] font-bold font-[family-name:var(--font-mono)] bg-primary/15 text-primary border border-primary/30 uppercase tracking-wider hover:bg-primary/25 transition-colors cursor-default"
-                                                >
-                                                    {tech}
-                                                </span>
-                                            ))}
+                                        {/* Tech tags - Limited on Mobile */}
+                                        <div className="flex flex-wrap gap-1.5 w-full sm:w-auto">
+                                            {/* Desktop: Show all */}
+                                            <div className="hidden sm:contents">
+                                                {container.tech.map(tech => (
+                                                    <span
+                                                        key={tech}
+                                                        className="px-2.5 py-1 rounded-md text-[11px] font-bold font-[family-name:var(--font-mono)] bg-primary/15 text-primary border border-primary/30 uppercase tracking-wider hover:bg-primary/25 transition-colors cursor-default"
+                                                    >
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
+
+                                            {/* Mobile: Show limited */}
+                                            <div className="contents sm:hidden">
+                                                {container.tech.slice(0, mobileTechLimit).map(tech => (
+                                                    <span
+                                                        key={tech}
+                                                        className="px-2.5 py-1 rounded-md text-[10px] font-bold font-[family-name:var(--font-mono)] bg-primary/15 text-primary border border-primary/30 uppercase tracking-wider"
+                                                    >
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                                {container.tech.length > mobileTechLimit && (
+                                                    <span className="px-2 py-1 rounded-md text-[10px] font-bold font-[family-name:var(--font-mono)] bg-muted/10 text-muted border border-border/50">
+                                                        +{container.tech.length - mobileTechLimit}
+                                                    </span>
+                                                )}
+                                            </div>
                                         </div>
 
                                         {/* Expand icon */}
@@ -326,8 +345,8 @@ export function DockerComposeView() {
                                                     </p>
                                                 </div>
 
-                                                {/* Clean Info Line: Deps + Stats */}
-                                                <div className="mb-4 flex flex-wrap items-center gap-x-6 gap-y-3 font-[family-name:var(--font-mono)]">
+                                                {/* Clean Info Line: Deps + Stats - Hidden on Mobile to reduce clutter */}
+                                                <div className="hidden sm:flex mb-4 flex-wrap items-center gap-x-6 gap-y-3 font-[family-name:var(--font-mono)]">
                                                     {/* Dependencies */}
                                                     {container.dockerMeta.deps.length > 0 && (
                                                         <div>
@@ -368,18 +387,19 @@ export function DockerComposeView() {
 
                                                 {/* Simulated logs */}
                                                 {isRunning && (
-                                                    <div>
+                                                    <div className="mb-4 sm:mb-0">
                                                         <span className="text-[10px] font-bold font-[family-name:var(--font-mono)] text-muted uppercase tracking-wider">{t("docker.logs")}</span>
                                                         <div className="mt-1 bg-[#0d1117] rounded-lg p-3 border border-border/30 overflow-hidden">
+                                                            {/* Show fewer logs on mobile (2 lines) vs desktop (4 lines) */}
                                                             {logLines.slice(0, 4).map((line, i) => (
                                                                 <motion.div
                                                                     key={i}
                                                                     initial={{ opacity: 0, x: -10 }}
                                                                     animate={{ opacity: 1, x: 0 }}
                                                                     transition={{ delay: i * 0.15 }}
-                                                                    className="font-[family-name:var(--font-mono)] text-[11px] text-neon-green/70 leading-5 break-words sm:break-normal"
+                                                                    className={`font-[family-name:var(--font-mono)] text-[11px] text-neon-green/70 leading-5 break-words sm:break-normal ${i >= 2 ? "hidden sm:block" : ""}`}
                                                                 >
-                                                                    <span className="text-muted/30">[{new Date().toISOString().slice(11, 19)}]</span>{" "}
+                                                                    <span className="hidden sm:inline text-muted/30">[{new Date().toISOString().slice(11, 19)}]</span>{" "}
                                                                     {line}
                                                                 </motion.div>
                                                             ))}
@@ -388,10 +408,10 @@ export function DockerComposeView() {
                                                 )}
 
                                                 {/* Action Button */}
-                                                <div className="mt-5 flex justify-center sm:justify-end">
+                                                <div className="mt-2 sm:mt-5 flex justify-center sm:justify-end">
                                                     <Link
                                                         href={`/projetos/${container.id}`}
-                                                        className="flex items-center justify-center sm:justify-start w-full sm:w-auto gap-2 px-4 py-2 rounded-lg text-xs font-bold font-[family-name:var(--font-mono)] text-primary border border-primary/30 bg-primary/5 hover:bg-primary hover:text-white transition-all duration-300 uppercase tracking-tight shadow-sm"
+                                                        className="flex items-center justify-center w-full sm:w-auto gap-2 px-4 py-3 sm:py-2 rounded-lg text-sm sm:text-xs font-bold font-[family-name:var(--font-mono)] text-primary border border-primary/30 bg-primary/5 hover:bg-primary hover:text-white transition-all duration-300 uppercase tracking-tight shadow-sm active:scale-95"
                                                     >
                                                         {t("docker.action.details")}
                                                         <span className="material-symbols-outlined text-[16px]">open_in_new</span>
