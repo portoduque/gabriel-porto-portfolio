@@ -118,9 +118,9 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
 
     return (
         <>
-            <div className="flex-1 overflow-y-auto relative custom-scrollbar flex">
-                {/* Line Numbers Sidebar */}
-                <div className="hidden md:flex flex-col items-end w-12 lg:w-16 py-8 pr-4 border-r border-border shrink-0 text-muted/30 font-mono text-xs lg:text-sm select-none bg-panel h-full min-h-max">
+            <div className="flex-1 overflow-y-auto relative custom-scrollbar flex h-full">
+                {/* Line Numbers Sidebar (Desktop only) */}
+                <div className="hidden md:flex flex-col items-end w-12 lg:w-16 py-8 pr-4 border-r border-border shrink-0 text-muted/30 font-mono text-xs lg:text-sm select-none bg-panel min-h-full">
                     {Array.from({ length: 120 }).map((_, i) => (
                         <div key={i} className="leading-6 lg:leading-7">{i + 1}</div>
                     ))}
@@ -130,15 +130,15 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
                 <div className="flex-1 flex flex-col relative w-full pb-24 px-4 sm:px-6 md:px-12 py-4 sm:py-8 min-w-0 font-light">
                     {/* Project Header (single, no duplicate) */}
                     <div className="mb-4 max-w-4xl">
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight leading-tight break-words">
+                        <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight leading-tight break-words">
                             {project.name}
                         </h1>
-                        <p className="text-lg text-muted/80 font-light mb-8 leading-relaxed max-w-2xl">
+                        <p className="text-base sm:text-lg text-muted/80 font-light mb-8 leading-relaxed max-w-2xl">
                             {project.description}
                         </p>
 
                         {/* Meta Row: Tech + Links */}
-                        <div className="flex flex-col xl:flex-row xl:items-start justify-between gap-8 py-6 border-y border-border/30 mb-8">
+                        <div className="flex flex-col xl:flex-row xl:items-start justify-between gap-6 sm:gap-8 py-6 border-y border-border/30 mb-8">
                             {/* Tech Stack */}
                             <div className="flex flex-col gap-3 flex-1 min-w-[280px]">
                                 <div className="flex items-center gap-2 text-[10px] font-bold font-[family-name:var(--font-mono)] text-muted/50 uppercase tracking-[0.2em] mb-1">
@@ -163,7 +163,7 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
                             <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 items-center shrink-0 w-full xl:w-auto">
                                 {project.liveUrl && (
                                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
-                                        className="group relative flex justify-center w-full sm:w-auto items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-primary border border-primary/50 hover:bg-primary/90 text-white transition-all shadow-sm hover:shadow-md">
+                                        className="group relative flex justify-center w-full sm:w-auto items-center gap-3 px-4 sm:px-6 py-3 rounded-full bg-primary border border-primary/50 hover:bg-primary/90 text-white transition-all shadow-sm hover:shadow-md active:scale-95">
                                         <span className="material-symbols-outlined text-[18px] relative z-10">language</span>
                                         <span className="text-xs font-bold font-[family-name:var(--font-mono)] uppercase tracking-wider relative z-10">
                                             {locale === "en" ? "Live Demo" : "Acessar Site"}
@@ -174,7 +174,7 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
 
                                 {project.repoUrl && (
                                     <a href={project.repoUrl} target="_blank" rel="noopener noreferrer"
-                                        className="group relative flex justify-center w-full sm:w-auto items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-panel border border-border/50 hover:border-foreground/30 hover:bg-foreground hover:text-background transition-all overflow-hidden shadow-sm hover:shadow-md">
+                                        className="group relative flex justify-center w-full sm:w-auto items-center gap-3 px-4 sm:px-6 py-3 rounded-full bg-panel border border-border/50 hover:border-foreground/30 hover:bg-foreground hover:text-background transition-all overflow-hidden shadow-sm hover:shadow-md active:scale-95">
                                         <SiGithub size={18} className="relative z-10" />
                                         <span className="text-xs font-bold font-[family-name:var(--font-mono)] uppercase tracking-wider relative z-10">
                                             {locale === "en" ? "Source Code" : "Ver no GitHub"}

@@ -14,6 +14,7 @@ import {
 } from "react-icons/vsc";
 import { SiPython, SiDocker } from "react-icons/si";
 import ProjectDetailTabbedView from "./_components/ProjectDetailTabbedView";
+import { MobileNavbar } from "@/components/ui/MobileNavbar";
 
 
 export default function ProjectDetails() {
@@ -64,8 +65,8 @@ export default function ProjectDetails() {
 
                 {/* ===== EDITOR PANEL ===== */}
                 <div className="flex-1 flex flex-col bg-panel min-w-0">
-                    {/* Tab bar (navbar) */}
-                    <div className="flex items-end bg-panel border-b border-border overflow-x-auto no-scrollbar h-10 shrink-0">
+                    {/* Desktop Tab bar (navbar) - Hidden on Mobile */}
+                    <div className="hidden md:flex items-end bg-panel border-b border-border overflow-x-auto no-scrollbar h-10 shrink-0">
                         <button
                             onClick={() => router.push("/?tab=main.py")}
                             className={baseTabClasses}
@@ -130,12 +131,14 @@ export default function ProjectDetails() {
                     </div>
 
                     {/* View Content */}
-                    <ProjectDetailTabbedView project={project} locale={locale} />
+                    <div className="flex-1 overflow-hidden pb-20 md:pb-0 relative flex flex-col">
+                        <ProjectDetailTabbedView project={project} locale={locale} />
+                    </div>
                 </div>
             </div>
 
-            {/* ========== STATUS BAR ========== */}
-            <footer className="h-6 bg-primary text-white text-[11px] flex items-center justify-between px-3 shrink-0 select-none font-[family-name:var(--font-mono)] z-20">
+            {/* ========== STATUS BAR (Desktop Only) ========== */}
+            <footer className="hidden md:flex h-6 bg-primary text-white text-[11px] items-center justify-between px-3 shrink-0 select-none font-[family-name:var(--font-mono)] z-20">
                 <div className="flex items-center gap-4">
                     <div className="flex items-center gap-1 hover:bg-white/10 px-1 rounded-sm cursor-pointer">
                         <VscGitCommit size={12} />
@@ -156,6 +159,9 @@ export default function ProjectDetails() {
                     <span className="material-symbols-outlined text-[14px] cursor-pointer hover:bg-white/10 rounded-sm">notifications</span>
                 </div>
             </footer>
+
+            {/* ========== MOBILE BOTTOM NAVBAR ========== */}
+            <MobileNavbar />
         </div>
     );
 }
