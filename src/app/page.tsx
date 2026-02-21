@@ -252,15 +252,15 @@ function HomeContent() {
                         </div>
                       </div>
                       {/* Continuous Learning */}
-                      <div className="bg-panel/60 dark:bg-panel-highlight backdrop-blur-md border border-border/50 dark:border-border rounded-xl p-6 group hover:border-neon-purple/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[0_0_30px_rgba(188,140,255,0.15)] relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="bg-panel/60 dark:bg-panel-highlight backdrop-blur-md border border-border/50 dark:border-border rounded-xl p-6 group hover:border-neon-emerald/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[0_0_30px_rgba(52,211,153,0.15)] relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-neon-emerald/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 rounded-lg bg-neon-purple/10 flex items-center justify-center text-neon-purple group-hover:scale-110 transition-transform">
+                          <div className="w-10 h-10 rounded-lg bg-neon-emerald/10 flex items-center justify-center text-neon-emerald group-hover:scale-110 transition-transform">
                             <span className="material-symbols-outlined">auto_stories</span>
                           </div>
-                          <h3 className="font-[family-name:var(--font-mono)] text-neon-purple font-bold group-hover:text-foreground transition-colors">{t("expertise.learning")}</h3>
+                          <h3 className="font-[family-name:var(--font-mono)] text-neon-emerald font-bold group-hover:text-foreground transition-colors">{t("expertise.learning")}</h3>
                         </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-lg border border-border/50 group-hover:border-neon-purple/20 transition-colors">
+                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-lg border border-border/50 group-hover:border-neon-emerald/20 transition-colors">
                           <span className="text-syntax-comment">{t("expertise.learning.comment")}</span><br />
                           <span className="text-syntax-keyword">while</span> <span className="text-syntax-keyword">True</span>: <span className="text-syntax-function">learn</span>(<span className="text-syntax-variable">new_tech</span>)
                         </div>
@@ -445,7 +445,7 @@ function ActivityLogEntry({ hash, message, time }: { hash: string; message: stri
           "w-1 h-1 rounded-full shrink-0 transition-all duration-300 group-hover/log:scale-150 group-hover/log:animate-pulse",
           isFeat ? "bg-neon-blue shadow-[0_0_8px_var(--color-primary)]" :
             isFix ? "bg-red-400 shadow-[0_0_8px_#f87171]" :
-              isRefactor ? "bg-neon-purple shadow-[0_0_8px_#bc8cff]" :
+              isRefactor ? "bg-neon-emerald shadow-[0_0_8px_#34d399]" :
                 isDocs ? "bg-neon-green shadow-[0_0_8px_#3fb950]" :
                   isTest ? "bg-neon-orange shadow-[0_0_8px_#ffa657]" :
                     isCI ? "bg-neon-cyan shadow-[0_0_8px_#39c5bb]" :

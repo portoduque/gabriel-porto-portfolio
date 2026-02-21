@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import Link from "next/link";
+
 import { getProjects } from "@/lib/data";
 import { useLanguage } from "@/lib/i18n";
 import {
@@ -28,16 +28,16 @@ export default function ProjectDetails() {
     if (!project) return (
         <div className="flex flex-col h-screen w-full relative font-[family-name:var(--font-display)] bg-background text-foreground items-center justify-center">
             <span className="text-xl mb-4">{locale === "en" ? "Project not found" : "Projeto não encontrado"}</span>
-            <Link href="/?tab=projetos.yml" className="text-primary hover:underline">
+            <button onClick={() => router.push("/?tab=projetos.yml")} className="text-primary hover:underline">
                 {locale === "en" ? "Return to projects" : "Voltar aos projetos"}
-            </Link>
+            </button>
         </div>
     );
 
     const baseTabClasses = "flex items-center gap-2 px-4 h-full border-r border-border min-w-[140px] cursor-pointer group transition-colors select-none bg-panel text-muted hover:bg-background dark:hover:bg-panel-highlight border-t-2 border-t-transparent";
 
     return (
-        <div className="flex flex-col h-screen w-full relative font-[family-name:var(--font-display)]">
+        <div aria-label="portfolio code page" className="flex flex-col h-screen w-full relative font-[family-name:var(--font-display)]">
             {/* Dot pattern background */}
             <div className="absolute inset-0 z-0 opacity-20 pointer-events-none bg-dot-pattern" />
 
@@ -46,54 +46,54 @@ export default function ProjectDetails() {
 
                 {/* ===== SIDEBAR ===== */}
                 <aside className="w-12 bg-background border-r border-border hidden md:flex flex-col items-center py-4 gap-6 shrink-0">
-                    <Link href="/?tab=main.py" className="text-muted hover:text-foreground transition-colors cursor-pointer" title="Home (main.py)">
+                    <button onClick={() => router.push("/?tab=main.py")} className="text-muted hover:text-foreground transition-colors cursor-pointer" title="Home (main.py)">
                         <SiPython size={24} />
-                    </Link>
-                    <Link href="/?tab=projetos.yml" className="text-foreground group relative transition-colors cursor-pointer" title="Projetos (projetos.yml)">
+                    </button>
+                    <button onClick={() => router.push("/?tab=projetos.yml")} className="text-foreground group relative transition-colors cursor-pointer" title="Projetos (projetos.yml)">
                         <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />
                         <SiDocker size={24} />
-                    </Link>
-                    <Link href="/?tab=carreira.sh" className="text-muted hover:text-foreground transition-colors cursor-pointer" title="Experiência (carreira.sh)">
+                    </button>
+                    <button onClick={() => router.push("/?tab=carreira.sh")} className="text-muted hover:text-foreground transition-colors cursor-pointer" title="Experiência (carreira.sh)">
                         <VscTerminal size={24} />
-                    </Link>
+                    </button>
                     <div className="flex-1" />
-                    <Link href="/?tab=contact.yaml" className="pb-4 text-muted hover:text-foreground transition-colors cursor-pointer" title="Contato">
+                    <button onClick={() => router.push("/?tab=contact.yaml")} className="pb-4 text-muted hover:text-foreground transition-colors cursor-pointer" title="Contato">
                         <VscMail size={24} />
-                    </Link>
+                    </button>
                 </aside>
 
                 {/* ===== EDITOR PANEL ===== */}
                 <div className="flex-1 flex flex-col bg-panel min-w-0">
                     {/* Tab bar (navbar) */}
                     <div className="flex items-end bg-panel border-b border-border overflow-x-auto no-scrollbar h-10 shrink-0">
-                        <Link
-                            href="/?tab=main.py"
+                        <button
+                            onClick={() => router.push("/?tab=main.py")}
                             className={baseTabClasses}
                         >
                             <SiPython size={16} className="text-[#3776ab]" />
                             <span className="text-xs font-[family-name:var(--font-mono)]">{t("nav.main")}</span>
-                        </Link>
-                        <Link
-                            href="/?tab=projetos.yml"
+                        </button>
+                        <button
+                            onClick={() => router.push("/?tab=projetos.yml")}
                             className={baseTabClasses}
                         >
                             <SiDocker size={16} className="text-[#1D63ED]" />
                             <span className="text-xs font-[family-name:var(--font-mono)]">{t("nav.projects")}</span>
-                        </Link>
-                        <Link
-                            href="/?tab=carreira.sh"
+                        </button>
+                        <button
+                            onClick={() => router.push("/?tab=carreira.sh")}
                             className={baseTabClasses}
                         >
                             <VscTerminal size={16} className="text-neon-green" />
                             <span className="text-xs font-[family-name:var(--font-mono)]">{t("nav.experience")}</span>
-                        </Link>
-                        <Link
-                            href="/?tab=contact.yaml"
+                        </button>
+                        <button
+                            onClick={() => router.push("/?tab=contact.yaml")}
                             className={baseTabClasses}
                         >
                             <VscMail size={16} className="text-red-400" />
                             <span className="text-xs font-[family-name:var(--font-mono)]">{t("nav.contact")}</span>
-                        </Link>
+                        </button>
                         {/* CV Download / Open Tab */}
                         <a
                             href="/Gabriel-Porto-Resume.pdf"
@@ -110,9 +110,9 @@ export default function ProjectDetails() {
                         <div className="flex items-center gap-2 px-4 h-full border-r border-border min-w-[140px] cursor-default group transition-colors select-none bg-background border-t-2 border-t-primary text-foreground">
                             <span className="material-symbols-outlined text-[16px] text-neon-blue">markdown</span>
                             <span className="text-xs font-[family-name:var(--font-mono)] text-primary font-bold italic truncate max-w-[120px]">{project.id}.md</span>
-                            <Link href="/?tab=projetos.yml" className="flex items-center ml-auto">
+                            <button onClick={() => router.push("/?tab=projetos.yml")} className="flex items-center ml-auto">
                                 <span className="material-symbols-outlined text-[14px] text-muted hover:text-red-400 cursor-pointer">close</span>
-                            </Link>
+                            </button>
                         </div>
                         {/* Spacer */}
                         <div className="flex-1" />
@@ -120,13 +120,13 @@ export default function ProjectDetails() {
 
                     {/* Breadcrumb / Back Button */}
                     <div className="px-6 md:px-8 pt-4 pb-2 bg-background/50 border-b border-border/30">
-                        <Link
-                            href="/?tab=projetos.yml"
+                        <button
+                            onClick={() => router.push("/?tab=projetos.yml")}
                             className="group flex items-center gap-2 text-sm font-[family-name:var(--font-mono)] text-muted hover:text-primary transition-colors cursor-pointer w-fit"
                         >
                             <VscArrowLeft size={16} className="text-primary group-hover:-translate-x-1 transition-transform" />
                             <span>{locale === "en" ? "Back" : "Voltar"}</span>
-                        </Link>
+                        </button>
                     </div>
 
                     {/* View Content */}

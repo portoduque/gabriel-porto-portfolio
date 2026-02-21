@@ -43,6 +43,7 @@ export function BentoCard({
     return (
         <motion.div
             ref={containerRef}
+            aria-label="Bento Card Profile"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onMouseMove={handleMouseMove}

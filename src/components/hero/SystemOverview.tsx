@@ -101,7 +101,7 @@ export function SystemOverview() {
                 className="relative bg-panel dark:bg-panel-highlight backdrop-blur-xl border border-border rounded-xl shadow-2xl shadow-black/40 dark:shadow-[0_0_40px_rgba(47,129,247,0.2)] overflow-hidden group hover:border-primary/40 dark:hover:border-primary/50 dark:hover:shadow-[0_0_60px_rgba(47,129,247,0.3)] transition-all duration-500"
             >
                 {/* Glow Effects */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                 {/* Content Body */}
                 <div className="relative min-h-[500px] p-6 px-8 font-mono text-sm leading-relaxed text-slate-800 dark:text-slate-200">
@@ -113,7 +113,7 @@ export function SystemOverview() {
                     </div>
 
                     <div className="sm:pl-6 flex flex-col gap-3 relative z-10 font-medium">
-                        <EnvRow label={t("system.label.user")} value={profile.name} color="text-purple-400" delay={400} />
+                        <EnvRow label={t("system.label.user")} value={profile.name} color="text-teal-400" delay={400} />
                         <EnvRow label={t("system.label.role")} value={profile.role} color="text-blue-400" delay={700} />
                         <EnvRow label={t("system.label.loc")} value={t("system.loc")} color="text-emerald-400" delay={1000} />
 

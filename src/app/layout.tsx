@@ -22,9 +22,26 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Gabriel Porto Duque Estrada Fiorante | Analista e Desenvolvedor de Sistemas",
+  title: "Gabriel Porto Duque Estrada Fiorante | Desenvolvedor Full Stack & Cyber Sec",
   description:
-    "Portfólio de Gabriel Porto Duque Estrada Fiorante — Profissional de TI com experiência em infraestrutura, desenvolvimento web, segurança cibernética e automação de processos.",
+    "Portfólio de Gabriel Porto Duque Estrada Fiorante — Profissional de TI com experiência em infraestrutura, desenvolvimento web, segurança cibernética e automação de processos. Conheça meus projetos.",
+  openGraph: {
+    title: "Gabriel Porto Duque Estrada Fiorante | Desenvolvedor Full Stack",
+    description: "Portfólio interativo de Gabriel Porto — Desenvolvedor de Software e Especialista em Infraestrutura.",
+    url: "https://gabrielporto.com.br",
+    siteName: "Gabriel Porto Portfolio",
+    locale: "pt_BR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gabriel Porto | Portfólio",
+    description: "Portfólio completo com projetos inovadores de Gabriel Porto.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  }
 };
 
 export default function RootLayout({
@@ -41,6 +58,7 @@ export default function RootLayout({
         />
       </head>
       <body
+        aria-label="portfolio body"
         className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-background text-foreground transition-colors duration-300`}
       >
         <ThemeProvider
