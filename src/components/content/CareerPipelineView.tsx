@@ -13,13 +13,13 @@ export function CareerPipelineView() {
         period.toLowerCase().includes("present") || period.toLowerCase().includes("presente");
 
     return (
-        <div className="w-full max-w-5xl mx-auto px-6 lg:px-12 pt-12 pb-24">
+        <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-12 pt-8 sm:pt-12 pb-24">
             {/* Header — Script style */}
             <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="mb-10"
+                className="mb-6 sm:mb-10"
             >
                 <div className="font-[family-name:var(--font-mono)] text-xs text-muted/50 mb-1">
                     #!/bin/bash
@@ -37,37 +37,37 @@ export function CareerPipelineView() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.4 }}
-                className="mb-10 bg-panel/60 dark:bg-panel-highlight/80 backdrop-blur-sm border border-border/50 dark:border-border rounded-xl p-4 flex flex-wrap items-start sm:items-center gap-4 lg:gap-8"
+                className="mb-10 bg-panel/60 dark:bg-panel-highlight/80 backdrop-blur-sm border border-border/50 dark:border-border rounded-xl p-4 grid grid-cols-2 gap-4 sm:flex sm:items-center sm:gap-8"
             >
                 <div className="flex items-center gap-2">
                     <span className="material-symbols-outlined text-neon-green text-lg">check_circle</span>
                     <div>
-                        <p className="text-xs text-muted font-[family-name:var(--font-mono)]">{t("career.pipeline.stages")}</p>
-                        <p className="text-sm font-bold text-foreground">{experience.length}</p>
+                        <p className="text-[10px] sm:text-xs text-muted font-[family-name:var(--font-mono)]">{t("career.pipeline.stages")}</p>
+                        <p className="text-xs sm:text-sm font-bold text-foreground">{experience.length}</p>
                     </div>
                 </div>
                 <div className="w-px h-8 bg-border/50 hidden sm:block" />
                 <div className="flex items-center gap-2">
                     <span className="material-symbols-outlined text-primary text-lg">play_circle</span>
                     <div>
-                        <p className="text-xs text-muted font-[family-name:var(--font-mono)]">{t("career.pipeline.status_label")}</p>
-                        <p className="text-sm font-bold text-neon-green">{t("career.pipeline.running")}</p>
+                        <p className="text-[10px] sm:text-xs text-muted font-[family-name:var(--font-mono)]">{t("career.pipeline.status_label")}</p>
+                        <p className="text-xs sm:text-sm font-bold text-neon-green">{t("career.pipeline.running")}</p>
                     </div>
                 </div>
                 <div className="w-px h-8 bg-border/50 hidden sm:block" />
                 <div className="flex items-center gap-2">
                     <span className="material-symbols-outlined text-neon-orange text-lg">workspace_premium</span>
                     <div>
-                        <p className="text-xs text-muted font-[family-name:var(--font-mono)]">{t("career.pipeline.cert.title")}</p>
-                        <p className="text-sm font-bold text-foreground">{t("career.pipeline.cert.value")}</p>
+                        <p className="text-[10px] sm:text-xs text-muted font-[family-name:var(--font-mono)]">{t("career.pipeline.cert.title")}</p>
+                        <p className="text-xs sm:text-sm font-bold text-foreground">{t("career.pipeline.cert.value")}</p>
                     </div>
                 </div>
                 <div className="w-px h-8 bg-border/50 hidden lg:block" />
                 <div className="flex items-center gap-2">
                     <span className="material-symbols-outlined text-neon-cyan text-lg">public</span>
                     <div>
-                        <p className="text-xs text-muted font-[family-name:var(--font-mono)]">{t("career.pipeline.global.title")}</p>
-                        <p className="text-sm font-bold text-foreground">{t("career.pipeline.global.value")}</p>
+                        <p className="text-[10px] sm:text-xs text-muted font-[family-name:var(--font-mono)]">{t("career.pipeline.global.title")}</p>
+                        <p className="text-xs sm:text-sm font-bold text-foreground">{t("career.pipeline.global.value")}</p>
                     </div>
                 </div>
             </motion.div>

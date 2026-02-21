@@ -141,13 +141,13 @@ function HomeContent() {
               href="/Gabriel-Porto-Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 h-full border-r border-border min-w-[140px] cursor-pointer group transition-colors select-none bg-panel text-muted hover:bg-background dark:hover:bg-panel-highlight border-t-[2px] border-t-transparent hover:text-foreground"
+              className="flex items-center gap-2 px-3 sm:px-4 h-full border-r border-border min-w-fit sm:min-w-[140px] cursor-pointer group transition-colors select-none bg-panel text-muted hover:bg-background dark:hover:bg-panel-highlight border-t-[2px] border-t-transparent hover:text-foreground"
               title="Download / Open Resume"
             >
               <VscFilePdf size={16} className="text-red-400" />
-              <span className="text-xs font-[family-name:var(--font-mono)]">{t("nav.resume")}</span>
+              <span className="text-xs font-[family-name:var(--font-mono)] whitespace-nowrap">{t("nav.resume")}</span>
               {/* No close button for this one, maybe an external link icon? */}
-              <span className="material-symbols-outlined text-[14px] ml-auto opacity-0 group-hover:opacity-100 text-muted">open_in_new</span>
+              <span className="material-symbols-outlined text-[14px] ml-auto opacity-0 group-hover:opacity-100 text-muted hidden sm:block">open_in_new</span>
             </a>
           </div>
 
@@ -410,15 +410,15 @@ function Tab({ name, icon, isActive, onClick }: { name: string, icon: React.Reac
       aria-label={name}
       onClick={onClick}
       className={clsx(
-        "flex items-center gap-2 px-4 h-full border-r border-border min-w-[140px] cursor-pointer group transition-colors select-none",
+        "flex items-center gap-2 px-3 sm:px-4 h-full border-r border-border min-w-fit sm:min-w-[140px] cursor-pointer group transition-colors select-none",
         isActive
           ? "bg-background border-t-[2px] border-t-primary text-foreground"
           : "bg-panel text-muted hover:bg-background dark:hover:bg-panel-highlight border-t-[2px] border-t-transparent"
       )}
     >
       {icon}
-      <span className="text-xs font-[family-name:var(--font-mono)]">{name}</span>
-      <span aria-hidden="true" className={clsx("material-symbols-outlined text-[14px] ml-auto hover:text-foreground", isActive ? "opacity-100 text-muted" : "opacity-0 group-hover:opacity-100 text-muted")}>close</span>
+      <span className="text-xs font-[family-name:var(--font-mono)] whitespace-nowrap">{name}</span>
+      <span aria-hidden="true" className={clsx("material-symbols-outlined text-[14px] ml-auto hover:text-foreground hidden sm:block", isActive ? "opacity-100 text-muted" : "opacity-0 group-hover:opacity-100 text-muted")}>close</span>
     </button>
   )
 }

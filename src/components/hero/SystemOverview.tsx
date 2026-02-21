@@ -99,7 +99,7 @@ export function SystemOverview() {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                 {/* Content Body */}
-                <div className="relative min-h-[440px] py-4 lg:py-6 px-0 font-mono text-[10px] sm:text-xs lg:text-sm text-slate-800 dark:text-slate-200">
+                <div className="relative min-h-fit sm:min-h-[440px] py-4 lg:py-6 px-0 font-mono text-[10px] sm:text-xs lg:text-sm text-slate-800 dark:text-slate-200">
                     {/* Line Numbers */}
                     <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-10 lg:w-12 border-r border-border bg-panel dark:bg-panel text-right py-4 lg:py-6 pr-1 sm:pr-2 lg:pr-3 text-muted/30 select-none hidden sm:block text-[8px] sm:text-[10px] lg:text-xs font-mono leading-5 lg:leading-6">
                         {Array.from({ length: 40 }).map((_, i) => (
@@ -120,7 +120,7 @@ export function SystemOverview() {
                         <div className="h-4 lg:h-6 flex items-center px-2 lg:px-4"><div className="h-px bg-border/30 w-full" /></div>
 
                         {/* Status Row */}
-                        <div className="flex items-center gap-1 sm:gap-2 group/status cursor-pointer min-h-[1.5rem] px-1 h-5 lg:h-6">
+                        <div className="flex items-center gap-2 lg:gap-3 px-1 min-h-[1.5rem] group/status cursor-pointer">
                             <span className="text-red-400 font-bold w-16 sm:w-20 lg:w-24 shrink-0 tracking-wider text-[9px] sm:text-[10px] lg:text-xs leading-5 lg:leading-6 opacity-70 truncate">{t("system.label.status")}</span>
                             <div className="flex items-center gap-2 bg-green-500/10 px-1.5 lg:px-2 h-4 lg:h-5 rounded border border-green-500/20 group-hover/status:border-green-500/50 transition-colors">
                                 <span className="text-green-400 font-bold text-[8px] lg:text-[10px] uppercase tracking-tighter animate-pulse truncate">{t("system.status")}</span>
@@ -163,8 +163,8 @@ function EnvRow({ label, value, color, delay }: { label: string, value: string, 
     const scrambled = useScrambleText(value, delay);
 
     return (
-        <div className="flex flex-col sm:flex-row sm:items-start lg:items-baseline gap-0 sm:gap-2 lg:gap-3 px-1 py-0.5 sm:py-0 min-h-[1.5rem] rounded transition-colors duration-200 group/row w-full overflow-hidden">
-            <span className={cn("font-bold w-full sm:w-20 lg:w-24 shrink-0 tracking-wider text-[9px] sm:text-[10px] lg:text-xs opacity-70 group-hover/row:opacity-100 transition-opacity leading-snug sm:leading-5 lg:leading-6 truncate", color)}>{label}</span>
+        <div className="flex flex-row items-start lg:items-baseline gap-2 lg:gap-3 px-1 py-0.5 min-h-[1.5rem] rounded transition-colors duration-200 group/row w-full overflow-hidden">
+            <span className={cn("font-bold w-16 sm:w-20 lg:w-24 shrink-0 tracking-wider text-[9px] sm:text-[10px] lg:text-xs opacity-70 group-hover/row:opacity-100 transition-opacity leading-snug sm:leading-5 lg:leading-6 truncate", color)}>{label}</span>
             <span className="text-foreground/80 font-normal tracking-wide group-hover/row:text-foreground transition-colors leading-relaxed sm:leading-5 lg:leading-6 flex-1 min-w-0 break-words whitespace-pre-wrap">
                 {label === "STACK" || label === t("system.label.tools") ? (
                     <span className="text-syntax-string">{scrambled}</span>

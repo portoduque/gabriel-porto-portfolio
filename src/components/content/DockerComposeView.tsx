@@ -155,37 +155,37 @@ export function DockerComposeView() {
                 </div>
 
                 {/* Summary bar */}
-                <div className="bg-panel/60 dark:bg-panel-highlight/80 backdrop-blur-sm border border-border/50 dark:border-border rounded-xl p-2 sm:p-3.5 flex flex-wrap items-center gap-2 sm:gap-4 lg:gap-6">
+                <div className="bg-panel/60 dark:bg-panel-highlight/80 backdrop-blur-sm border border-border/50 dark:border-border rounded-xl p-2 sm:p-3.5 grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-4 lg:gap-6">
                     <button
                         onClick={() => setFilterStatus("all")}
-                        className={`flex items-center gap-2 px-2 py-1 rounded-lg transition-all cursor-pointer ${filterStatus === "all" ? "bg-primary/10 border border-primary/30" : "hover:bg-panel/80"}`}
+                        className={`flex flex-col sm:flex-row items-center sm:gap-2 px-2 py-1 rounded-lg transition-all cursor-pointer ${filterStatus === "all" ? "bg-primary/10 border border-primary/30" : "hover:bg-panel/80"}`}
                     >
-                        <span className="material-symbols-outlined text-primary text-base">widgets</span>
-                        <div className="text-left">
-                            <p className="text-[10px] text-muted font-[family-name:var(--font-mono)]">{t("docker.total")}</p>
-                            <p className="text-sm font-bold text-foreground">{enriched.length}</p>
+                        <span className="material-symbols-outlined text-primary text-base mb-1 sm:mb-0">widgets</span>
+                        <div className="text-center sm:text-left">
+                            <p className="text-[9px] sm:text-[10px] text-muted font-[family-name:var(--font-mono)]">{t("docker.total")}</p>
+                            <p className="text-xs sm:text-sm font-bold text-foreground">{enriched.length}</p>
                         </div>
                     </button>
                     <div className="w-px h-8 bg-border/40 hidden sm:block" />
                     <button
                         onClick={() => setFilterStatus("running")}
-                        className={`flex items-center gap-2 px-2 py-1 rounded-lg transition-all cursor-pointer ${filterStatus === "running" ? "bg-neon-green/10 border border-neon-green/30" : "hover:bg-panel/80"}`}
+                        className={`flex flex-col sm:flex-row items-center sm:gap-2 px-2 py-1 rounded-lg transition-all cursor-pointer ${filterStatus === "running" ? "bg-neon-green/10 border border-neon-green/30" : "hover:bg-panel/80"}`}
                     >
-                        <span className="w-2 h-2 rounded-full bg-neon-green animate-pulse" />
-                        <div className="text-left">
-                            <p className="text-[10px] text-muted font-[family-name:var(--font-mono)]">{t("docker.status.running")}</p>
-                            <p className="text-sm font-bold text-neon-green">{runningCount}</p>
+                        <span className="w-2 h-2 rounded-full bg-neon-green animate-pulse mb-1 sm:mb-0" />
+                        <div className="text-center sm:text-left">
+                            <p className="text-[9px] sm:text-[10px] text-muted font-[family-name:var(--font-mono)]">{t("docker.status.running")}</p>
+                            <p className="text-xs sm:text-sm font-bold text-neon-green">{runningCount}</p>
                         </div>
                     </button>
                     <div className="w-px h-8 bg-border/40 hidden sm:block" />
                     <button
                         onClick={() => setFilterStatus("exited")}
-                        className={`flex items-center gap-2 px-2 py-1 rounded-lg transition-all cursor-pointer ${filterStatus === "exited" ? "bg-neon-orange/10 border border-neon-orange/30" : "hover:bg-panel/80"}`}
+                        className={`flex flex-col sm:flex-row items-center sm:gap-2 px-2 py-1 rounded-lg transition-all cursor-pointer ${filterStatus === "exited" ? "bg-neon-orange/10 border border-neon-orange/30" : "hover:bg-panel/80"}`}
                     >
-                        <span className="w-2 h-2 rounded-full bg-neon-orange/70" />
-                        <div className="text-left">
-                            <p className="text-[10px] text-muted font-[family-name:var(--font-mono)]">{t("docker.status.exited")}</p>
-                            <p className="text-sm font-bold text-neon-orange">{exitedCount}</p>
+                        <span className="w-2 h-2 rounded-full bg-neon-orange/70 mb-1 sm:mb-0" />
+                        <div className="text-center sm:text-left">
+                            <p className="text-[9px] sm:text-[10px] text-muted font-[family-name:var(--font-mono)]">{t("docker.status.exited")}</p>
+                            <p className="text-xs sm:text-sm font-bold text-neon-orange">{exitedCount}</p>
                         </div>
                     </button>
                 </div>
@@ -388,10 +388,10 @@ export function DockerComposeView() {
                                                 )}
 
                                                 {/* Action Button */}
-                                                <div className="mt-5 flex justify-end">
+                                                <div className="mt-5 flex justify-center sm:justify-end">
                                                     <Link
                                                         href={`/projetos/${container.id}`}
-                                                        className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold font-[family-name:var(--font-mono)] text-primary border border-primary/30 bg-primary/5 hover:bg-primary hover:text-white transition-all duration-300 uppercase tracking-tight shadow-sm"
+                                                        className="flex items-center justify-center sm:justify-start w-full sm:w-auto gap-2 px-4 py-2 rounded-lg text-xs font-bold font-[family-name:var(--font-mono)] text-primary border border-primary/30 bg-primary/5 hover:bg-primary hover:text-white transition-all duration-300 uppercase tracking-tight shadow-sm"
                                                     >
                                                         {t("docker.action.details")}
                                                         <span className="material-symbols-outlined text-[16px]">open_in_new</span>
