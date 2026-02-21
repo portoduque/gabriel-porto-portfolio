@@ -15,31 +15,26 @@ export const PROFILE = {
     ]
 };
 
-export function getProfile(locale: Locale) {
-    const localized = locale === "en"
-        ? {
-            role: "Full-Stack Developer",
-            location: "Porto Velho - RO, Brazil",
-            summary:
-                "Turning complex problems into scalable digital products. As a Full-Stack Developer, I leverage ecosystems like Python and PHP to build Web and Mobile (Flutter) applications focused on UX and high availability. My edge is a 360° vision: I combine high-quality code with RPA automation and a secure infrastructure (CCNA/Linux), ensuring solutions are not only functional but efficient and protected.",
-            highlights: [
-                { label: "CERT", value: "CCNA + Google + Harvard CS50’s" },
-                { label: "TECH", value: "Full Stack + DevOps + Security" }
-            ]
-        }
-        : {
-            role: "Desenvolvedor Full-Stack",
-            location: "Porto Velho - RO, Brasil",
-            summary:
-                "Transformando problemas complexos em produtos digitais escaláveis. Como Desenvolvedor Full-Stack, utilizo ecossistemas como Python e PHP para construir aplicações Web e Mobile (Flutter) focadas em UX e alta disponibilidade. Meu diferencial está na visão 360º: uno código de alta qualidade com automação RPA e uma infraestrutura segura (CCNA/Linux), garantindo que a solução não apenas funcione, mas seja eficiente e protegida.",
-            highlights: [
-                { label: "CERT", value: "CCNA + Google + Harvard CS50’s" },
-                { label: "TECH", value: "Full Stack + DevOps + Security" }
-            ]
-        };
+const PROFILE_EN = {
+    ...PROFILE,
+    role: "Full-Stack Developer",
+    location: "Porto Velho - RO, Brazil",
+    summary:
+        "Turning complex problems into scalable digital products. As a Full-Stack Developer, I leverage ecosystems like Python and PHP to build Web and Mobile (Flutter) applications focused on UX and high availability. My edge is a 360° vision: I combine high-quality code with RPA automation and a secure infrastructure (CCNA/Linux), ensuring solutions are not only functional but efficient and protected.",
+};
 
-    return { ...PROFILE, ...localized };
+const PROFILE_PT = {
+    ...PROFILE,
+    role: "Desenvolvedor Full-Stack",
+    location: "Porto Velho - RO, Brasil",
+    summary:
+        "Transformando problemas complexos em produtos digitais escaláveis. Como Desenvolvedor Full-Stack, utilizo ecossistemas como Python e PHP para construir aplicações Web e Mobile (Flutter) focadas em UX e alta disponibilidade. Meu diferencial está na visão 360º: uno código de alta qualidade com automação RPA e uma infraestrutura segura (CCNA/Linux), garantindo que a solução não apenas funcione, mas seja eficiente e protegida.",
+};
+
+export function getProfile(locale: Locale) {
+    return locale === "en" ? PROFILE_EN : PROFILE_PT;
 }
+
 
 export const SKILLS = {
     languages: ["PHP", "Python", "JavaScript (ES6+)", "HTML5", "CSS3"],
@@ -70,86 +65,86 @@ export const SKILLS = {
     ],
 };
 
-export function getExperience(locale: Locale) {
-    if (locale === "en") {
-        return [
-            {
-                role: "Systems Analyst & Developer",
-                period: "December 2024 – Present",
-                description: [
-                    "Development of websites and web systems (WordPress, PHP/MadBuilder).",
-                    "Creation of automations (RPA) with Python, Selenium and Airflow.",
-                    "Deployment and configuration of Linux servers (Apache).",
-                    "Requirements gathering, system modeling for healthcare, and project management.",
-                ],
-            },
-            {
-                role: "IT Technical Support",
-                period: "August 2024 – December 2024",
-                description: [
-                    "Maintenance, formatting and infrastructure optimization.",
-                    "Advanced troubleshooting in commercial systems and critical backups.",
-                    "Specialized support and digital security implementation.",
-                ],
-            },
-            {
-                role: "International Experience (Oceania & MSC Cruises)",
-                period: "01/2021 – 12/2023",
-                description: [
-                    "High-standard service in multicultural environments, demonstrating adaptability and global communication skills.",
-                    "Transaction management and record-keeping via the Micros system, ensuring uncompromising accuracy and reliability.",
-                    "Strict compliance with international safety and hygiene protocols established by the CDC/FDA.",
-                ],
-            },
-        ];
-    }
+const EXPERIENCE_EN = [
+    {
+        role: "Systems Analyst & Developer",
+        period: "December 2024 – Present",
+        description: [
+            "Development of websites and web systems (WordPress, PHP/MadBuilder).",
+            "Creation of automations (RPA) with Python, Selenium and Airflow.",
+            "Deployment and configuration of Linux servers (Apache).",
+            "Requirements gathering, system modeling for healthcare, and project management.",
+        ],
+    },
+    {
+        role: "IT Technical Support",
+        period: "August 2024 – December 2024",
+        description: [
+            "Maintenance, formatting and infrastructure optimization.",
+            "Advanced troubleshooting in commercial systems and critical backups.",
+            "Specialized support and digital security implementation.",
+        ],
+    },
+    {
+        role: "International Experience (Oceania & MSC Cruises)",
+        period: "01/2021 – 12/2023",
+        description: [
+            "High-standard service in multicultural environments, demonstrating adaptability and global communication skills.",
+            "Transaction management and record-keeping via the Micros system, ensuring uncompromising accuracy and reliability.",
+            "Strict compliance with international safety and hygiene protocols established by the CDC/FDA.",
+        ],
+    },
+];
 
-    return [
-        {
-            role: "Analista e Desenvolvedor de Sistemas",
-            period: "Dezembro 2024 – Presente",
-            description: [
-                "Desenvolvimento de sites e sistemas web (WordPress, PHP/MadBuilder).",
-                "Criação de automações (RPA) com Python, Selenium e Airflow.",
-                "Implantação e configuração de servidores Linux (Apache).",
-                "Levantamento de requisitos, modelagem de sistemas para a área da saúde e gestão de projetos.",
-            ],
-        },
-        {
-            role: "Suporte Técnico de TI",
-            period: "Agosto 2024 – Dezembro 2024",
-            description: [
-                "Manutenção, formatação e otimização de infraestrutura.",
-                "Troubleshooting avançado em sistemas comerciais e backups críticos.",
-                "Atendimento especializado e implementação de segurança digital.",
-            ],
-        },
-        {
-            role: "Experiências Internacionais (Oceania e MSC Cruzeiros)",
-            period: "01/2021 – 12/2023",
-            description: [
-                "Atendimento de alto padrão em ambiente multicultural, demonstrando forte adaptabilidade e comunicação global.",
-                "Gestão de transações com sistema Micros, garantindo precisão e confiabilidade no registro de operações.",
-                "Adesão estrita a rigorosos padrões internacionais de segurança e conformidade estabelecidos pelo CDC/FDA.",
-            ],
-        },
-    ];
+const EXPERIENCE_PT = [
+    {
+        role: "Analista e Desenvolvedor de Sistemas",
+        period: "Dezembro 2024 – Presente",
+        description: [
+            "Desenvolvimento de sites e sistemas web (WordPress, PHP/MadBuilder).",
+            "Criação de automações (RPA) com Python, Selenium e Airflow.",
+            "Implantação e configuração de servidores Linux (Apache).",
+            "Levantamento de requisitos, modelagem de sistemas para a área da saúde e gestão de projetos.",
+        ],
+    },
+    {
+        role: "Suporte Técnico de TI",
+        period: "Agosto 2024 – Dezembro 2024",
+        description: [
+            "Manutenção, formatação e otimização de infraestrutura.",
+            "Troubleshooting avançado em sistemas comerciais e backups críticos.",
+            "Atendimento especializado e implementação de segurança digital.",
+        ],
+    },
+    {
+        role: "Experiências Internacionais (Oceania e MSC Cruzeiros)",
+        period: "01/2021 – 12/2023",
+        description: [
+            "Atendimento de alto padrão em ambiente multicultural, demonstrando forte adaptabilidade e comunicação global.",
+            "Gestão de transações com sistema Micros, garantindo precisão e confiabilidade no registro de operações.",
+            "Adesão estrita a rigorosos padrões internacionais de segurança e conformidade estabelecidos pelo CDC/FDA.",
+        ],
+    },
+];
+
+export function getExperience(locale: Locale) {
+    return locale === "en" ? EXPERIENCE_EN : EXPERIENCE_PT;
 }
 
-export function getEducation(locale: Locale) {
-    if (locale === "en") {
-        return [
-            { degree: "Postgraduate in Data Science", year: "2026 – Present" },
-            { degree: "Postgraduate in Enterprise Cybersecurity Management", year: "2025" },
-            { degree: "Bachelor's in Information Systems", year: "2017 – 2021" },
-        ];
-    }
+const EDUCATION_EN = [
+    { degree: "Postgraduate in Data Science", year: "2026 – Present" },
+    { degree: "Postgraduate in Enterprise Cybersecurity Management", year: "2025" },
+    { degree: "Bachelor's in Information Systems", year: "2017 – 2021" },
+];
 
-    return [
-        { degree: "Pós-graduação em Ciência de Dados", year: "2026 – Presente" },
-        { degree: "Pós-graduação em Gestão na Cibersegurança Empresarial", year: "2025" },
-        { degree: "Bacharelado em Sistemas de Informação", year: "2017 – 2021" },
-    ];
+const EDUCATION_PT = [
+    { degree: "Pós-graduação em Ciência de Dados", year: "2026 – Presente" },
+    { degree: "Pós-graduação em Gestão na Cibersegurança Empresarial", year: "2025" },
+    { degree: "Bacharelado em Sistemas de Informação", year: "2017 – 2021" },
+];
+
+export function getEducation(locale: Locale) {
+    return locale === "en" ? EDUCATION_EN : EDUCATION_PT;
 }
 
 export const CERTIFICATES = [
@@ -192,18 +187,16 @@ export interface Project {
     liveUrl?: string;
 }
 
-export function getProjects(locale: Locale): Project[] {
-    if (locale === "en") {
-        return [
-            {
-                id: "rpa-ana",
-                name: "Hydrological Data Collection Automation (RPA)",
-                tech: ["Python", "Selenium", "Pathlib", "ActionChains"],
-                description: "Automated solution for daily collection of historical water quality data from ANA (National Water Agency).",
-                highlight: "Multi-OS architecture with dynamic download management and sequential resilience.",
-                visibility: "public" as const,
-                repoUrl: "https://github.com/portoduque/hidro-telemetria-automation",
-                content: `
+const PROJECTS_EN: Project[] = [
+    {
+        id: "rpa-ana",
+        name: "Hydrological Data Collection Automation (RPA)",
+        tech: ["Python", "Selenium", "Pathlib", "ActionChains"],
+        description: "Automated solution for daily collection of historical water quality data from ANA (National Water Agency).",
+        highlight: "Multi-OS architecture with dynamic download management and sequential resilience.",
+        visibility: "public" as const,
+        repoUrl: "https://github.com/portoduque/hidro-telemetria-automation",
+        content: `
 # Hydrological Data Collection Automation (RPA)
 
 This project was developed to automate the daily collection of historical water quality data from the **National Water and Sanitation Agency (ANA)**. It replaces a manual, error-prone process with a robust, autonomous execution engine.
@@ -222,43 +215,43 @@ This project was developed to automate the daily collection of historical water 
 - **Autonomous Organization**: Files are automatically organized into pre-defined local directories.
 - **Error Resilience**: Sequential execution with individual station failure logging.
 `,
-                media: [
-                    { type: 'video', url: '/projects/rpa-ana/gracacao-robo-hidrotelemetria.mp4', alt: 'Real-time demonstration of the RPA robot collecting data' }
-                ],
-                role: "Systems Analyst & Developer",
-                date: "2025",
-                impact: "Replaced a manual, error-prone daily process with a fully autonomous execution engine.",
-                metrics: [
-                    { label: "Stations", value: "4", icon: "location_on" },
-                    { label: "Compatibility", value: "Multi-OS", icon: "devices" },
-                    { label: "Process", value: "100% Auto", icon: "smart_toy" },
-                    { label: "Resilience", value: "Sequential", icon: "shield" }
-                ]
-            },
-            {
-                id: "fluxo-paciente",
-                name: "Patient Transport Flow System (Fluxo Paciente)",
-                tech: ["PHP", "MadBuilder", "PostgreSQL", "MySQL", "MariaDB", "WhatsApp API", "ViaCEP", "Bootstrap"],
-                description: "Inter-hospital logistics management for patient transfers with optimized routing and real-time communication.",
-                highlight: "40% reduction in organization time and 30% optimization in transport costs.",
-                visibility: "private" as const,
-                role: "Systems Analyst & Developer",
-                date: "June 2025",
-                status: "In Development",
-                impact: "Revolutionized patient transfer logistics through intelligent automation and real-time multi-platform integration.",
-                metrics: [
-                    { label: "Org. Time", value: "-40%", icon: "timer" },
-                    { label: "Costs", value: "-30%", icon: "savings" },
-                    { label: "Sync", value: "Real-time", icon: "sync" },
-                    { label: "Standard", value: "HL7/FHIR", icon: "verified" }
-                ],
-                media: [
-                    { type: 'image', url: '/projects/fluxo-paciente/1 - fluxotp.png', alt: 'Central Management of Inter-hospital Transport Requests' },
-                    { type: 'image', url: '/projects/fluxo-paciente/2 - fluxotp.png', alt: 'Transport Request Registration and Editing Interface' },
-                    { type: 'image', url: '/projects/fluxo-paciente/3 - fluxotp.png', alt: 'Patient Information and Registry Management' },
-                    { type: 'image', url: '/projects/fluxo-paciente/4 - fluxotp.png', alt: 'Healthcare Units and Hospital Configuration' }
-                ],
-                content: `
+        media: [
+            { type: 'video', url: '/projects/rpa-ana/gracacao-robo-hidrotelemetria.mp4', alt: 'Real-time demonstration of the RPA robot collecting data' }
+        ],
+        role: "Systems Analyst & Developer",
+        date: "2025",
+        impact: "Replaced a manual, error-prone daily process with a fully autonomous execution engine.",
+        metrics: [
+            { label: "Stations", value: "4", icon: "location_on" },
+            { label: "Compatibility", value: "Multi-OS", icon: "devices" },
+            { label: "Process", value: "100% Auto", icon: "smart_toy" },
+            { label: "Resilience", value: "Sequential", icon: "shield" }
+        ]
+    },
+    {
+        id: "fluxo-paciente",
+        name: "Patient Transport Flow System (Fluxo Paciente)",
+        tech: ["PHP", "MadBuilder", "PostgreSQL", "MySQL", "MariaDB", "WhatsApp API", "ViaCEP", "Bootstrap"],
+        description: "Inter-hospital logistics management for patient transfers with optimized routing and real-time communication.",
+        highlight: "40% reduction in organization time and 30% optimization in transport costs.",
+        visibility: "private" as const,
+        role: "Systems Analyst & Developer",
+        date: "June 2025",
+        status: "In Development",
+        impact: "Revolutionized patient transfer logistics through intelligent automation and real-time multi-platform integration.",
+        metrics: [
+            { label: "Org. Time", value: "-40%", icon: "timer" },
+            { label: "Costs", value: "-30%", icon: "savings" },
+            { label: "Sync", value: "Real-time", icon: "sync" },
+            { label: "Standard", value: "HL7/FHIR", icon: "verified" }
+        ],
+        media: [
+            { type: 'image', url: '/projects/fluxo-paciente/1 - fluxotp.png', alt: 'Central Management of Inter-hospital Transport Requests' },
+            { type: 'image', url: '/projects/fluxo-paciente/2 - fluxotp.png', alt: 'Transport Request Registration and Editing Interface' },
+            { type: 'image', url: '/projects/fluxo-paciente/3 - fluxotp.png', alt: 'Patient Information and Registry Management' },
+            { type: 'image', url: '/projects/fluxo-paciente/4 - fluxotp.png', alt: 'Healthcare Units and Hospital Configuration' }
+        ],
+        content: `
 # Patient Transport Flow System (Fluxo Paciente)
 
 Comprehensive web system for managing inter-hospital transport flow, developed with robust architecture and multi-platform integration. This solution revolutionizes the logistics of patient transfers between cities and health units through intelligent automation and real-time communication.
@@ -278,30 +271,30 @@ Comprehensive web system for managing inter-hospital transport flow, developed w
 - **Financial Savings**: 30% optimization in transport costs.
 - **Improved Communication**: Real-time updates for medical teams and patients via WhatsApp API integration.
 `
-            },
-            {
-                id: "portal-ciges",
-                name: "CIGES Portal (Strategic Health Dashboard)",
-                tech: ["HTML5", "CSS3", "JavaScript Vanilla", "Bootstrap", "CSS Grid/Flexbox", "C#", ".NET"],
-                description: "Centralized digital platform for public health strategic data in Rondônia, supporting evidence-based management of the Unified Health System (SUS).",
-                highlight: "Development of interactive dashboards for monitoring bed occupancy, hospital construction progress, and environmental health crises.",
-                visibility: "public" as const,
-                role: "Systems Analyst & Developer",
-                date: "January 2025",
-                impact: "Transformed health data management in Rondônia by providing real-time visibility into critical indicators for SESAU-RO.",
-                liveUrl: "https://ciges.sesau.ro.gov.br",
-                metrics: [
-                    { label: "Data Quality", value: "Strategic", icon: "insights" },
-                    { label: "Design", value: "Responsive", icon: "devices" },
-                    { label: "Integration", value: "REST APIs", icon: "api" },
-                    { label: "Accessibility", value: "W3C / Standards", icon: "accessibility" }
-                ],
-                media: [
-                    { type: 'image', url: '/projects/portal-ciges/ciges 1.png', alt: 'CIGES Portal Home Page - Main strategic pillars' },
-                    { type: 'image', url: '/projects/portal-ciges/ciges 2.png', alt: 'Health Management Dashboard - Water crisis, construction progress, and bed occupancy indicators' },
-                    { type: 'image', url: '/projects/portal-ciges/ciges 3.png', alt: 'Support and Contact Section - Institutional location and dynamic help forms' }
-                ],
-                content: `
+    },
+    {
+        id: "portal-ciges",
+        name: "CIGES Portal (Strategic Health Dashboard)",
+        tech: ["HTML5", "CSS3", "JavaScript Vanilla", "Bootstrap", "CSS Grid/Flexbox", "C#", ".NET"],
+        description: "Centralized digital platform for public health strategic data in Rondônia, supporting evidence-based management of the Unified Health System (SUS).",
+        highlight: "Development of interactive dashboards for monitoring bed occupancy, hospital construction progress, and environmental health crises.",
+        visibility: "public" as const,
+        role: "Systems Analyst & Developer",
+        date: "January 2025",
+        impact: "Transformed health data management in Rondônia by providing real-time visibility into critical indicators for SESAU-RO.",
+        liveUrl: "https://ciges.sesau.ro.gov.br",
+        metrics: [
+            { label: "Data Quality", value: "Strategic", icon: "insights" },
+            { label: "Design", value: "Responsive", icon: "devices" },
+            { label: "Integration", value: "REST APIs", icon: "api" },
+            { label: "Accessibility", value: "W3C / Standards", icon: "accessibility" }
+        ],
+        media: [
+            { type: 'image', url: '/projects/portal-ciges/ciges 1.png', alt: 'CIGES Portal Home Page - Main strategic pillars' },
+            { type: 'image', url: '/projects/portal-ciges/ciges 2.png', alt: 'Health Management Dashboard - Water crisis, construction progress, and bed occupancy indicators' },
+            { type: 'image', url: '/projects/portal-ciges/ciges 3.png', alt: 'Support and Contact Section - Institutional location and dynamic help forms' }
+        ],
+        content: `
 # CIGES Portal (Strategic Health Dashboard)
 
 The **CIGES Portal** is a digital platform that centralizes strategic health data to support the management of the Unified Health System (**SUS**) in Rondônia. It offers detailed reports, health indicators, strategic analysis, and data visualization tools, allowing managers, researchers, and health professionals to make evidence-based decisions.
@@ -322,29 +315,29 @@ The **CIGES Portal** is a digital platform that centralizes strategic health dat
 - **Decision Support**: Significant improvement in the speed and accuracy of decisions regarding resource allocation and emergency response.
 - **Transparency & Governance**: Enhanced digital governance through transparent monitoring of health projects and regional trends.
 `
-            },
-            {
-                id: "respirar-mobile",
-                name: "RespirAR Project (Mobile)",
-                tech: ["Flutter & Dart", "FlutterFlow", "PHP", "MadBuilder", "Firebase", "PostgreSQL", "REST API"],
-                description: "Health and wellness mobile app providing an intuitive experience for healthcare monitoring and management.",
-                highlight: "Accelerated visual development with FlutterFlow and a robust backend integrated with Firebase and MadBuilder.",
-                visibility: "public" as const,
-                role: "Systems Analyst & Developer",
-                date: "October 2025",
-                impact: "Centralization of mobile health services with push notifications and geolocation, optimizing patient follow-up.",
-                liveUrl: "https://respirar.sesau.ro.gov.br",
-                metrics: [
-                    { label: "Platforms", value: "iOS & Android", icon: "smartphone" },
-                    { label: "Sync", value: "Real-time", icon: "sync" },
-                    { label: "Resilience", value: "Offline Mode", icon: "cloud_off" },
-                    { label: "UX", value: "Material Design", icon: "palette" }
-                ],
-                media: [
-                    { type: 'image', url: '/projects/respirar-mobile/respirar-1.png', alt: 'RespirAR Mobile App Interface 1' },
-                    { type: 'image', url: '/projects/respirar-mobile/respirar-2.png', alt: 'RespirAR Mobile App Interface 2' }
-                ],
-                content: `
+    },
+    {
+        id: "respirar-mobile",
+        name: "RespirAR Project (Mobile)",
+        tech: ["Flutter & Dart", "FlutterFlow", "PHP", "MadBuilder", "Firebase", "PostgreSQL", "REST API"],
+        description: "Health and wellness mobile app providing an intuitive experience for healthcare monitoring and management.",
+        highlight: "Accelerated visual development with FlutterFlow and a robust backend integrated with Firebase and MadBuilder.",
+        visibility: "public" as const,
+        role: "Systems Analyst & Developer",
+        date: "October 2025",
+        impact: "Centralization of mobile health services with push notifications and geolocation, optimizing patient follow-up.",
+        liveUrl: "https://respirar.sesau.ro.gov.br",
+        metrics: [
+            { label: "Platforms", value: "iOS & Android", icon: "smartphone" },
+            { label: "Sync", value: "Real-time", icon: "sync" },
+            { label: "Resilience", value: "Offline Mode", icon: "cloud_off" },
+            { label: "UX", value: "Material Design", icon: "palette" }
+        ],
+        media: [
+            { type: 'image', url: '/projects/respirar-mobile/respirar-1.png', alt: 'RespirAR Mobile App Interface 1' },
+            { type: 'image', url: '/projects/respirar-mobile/respirar-2.png', alt: 'RespirAR Mobile App Interface 2' }
+        ],
+        content: `
 # RespirAR Project (Mobile)
 
 The **RespirAR** project is a robust mobile application focused on health and wellness, designed to provide a seamless experience for both end-users and system administrators.
@@ -364,32 +357,32 @@ The **RespirAR** project is a robust mobile application focused on health and we
 - Integrated reports and analytics.
 - Web administrative interface for global management.
 `
-            },
-            {
-                id: "saude-digital",
-                name: "Digital Health Portal (SESAU-RO)",
-                tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "CSS Grid/Flexbox", "C#", ".NET"],
-                description: "Official portal for the Digital Health Secretariat of the State of Rondônia Health Department, centralizing health initiatives, real-time data, and technological advances.",
-                highlight: "Full-scale UI development and optimization focused on accessibility, responsiveness, and state-level healthcare service integration.",
-                visibility: "public" as const,
-                role: "Systems Analyst & Developer",
-                date: "December 2024",
-                status: "Active",
-                impact: "Revolutionized digital health transparency in Rondônia, aligning government data with citizen accessibility needs.",
-                liveUrl: "https://saudedigital.sesau.ro.gov.br",
-                metrics: [
-                    { label: "Accessibility", value: "W3C Standards", icon: "accessibility" },
-                    { label: "Design", value: "Modern/Fluid", icon: "devices" },
-                    { label: "Performance", value: "Optimized", icon: "speed" },
-                    { label: "Gov Solutions", value: "Integrated", icon: "public" }
-                ],
-                media: [
-                    { type: 'image', url: '/projects/saude-digital/1 - saudedigital.png', alt: 'Digital Health Portal - Navigation and Accessibility' },
-                    { type: 'image', url: '/projects/saude-digital/2 - saudedigital.png', alt: 'Responsive Layout and Modern Interface' },
-                    { type: 'image', url: '/projects/saude-digital/3 - saudedigital.png', alt: 'Integration with Health Services and Data' },
-                    { type: 'image', url: '/projects/saude-digital/4 - saudedigital.png', alt: 'User Experience and Call to Action sections' }
-                ],
-                content: `
+    },
+    {
+        id: "saude-digital",
+        name: "Digital Health Portal (SESAU-RO)",
+        tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "CSS Grid/Flexbox", "C#", ".NET"],
+        description: "Official portal for the Digital Health Secretariat of the State of Rondônia Health Department, centralizing health initiatives, real-time data, and technological advances.",
+        highlight: "Full-scale UI development and optimization focused on accessibility, responsiveness, and state-level healthcare service integration.",
+        visibility: "public" as const,
+        role: "Systems Analyst & Developer",
+        date: "December 2024",
+        status: "Active",
+        impact: "Revolutionized digital health transparency in Rondônia, aligning government data with citizen accessibility needs.",
+        liveUrl: "https://saudedigital.sesau.ro.gov.br",
+        metrics: [
+            { label: "Accessibility", value: "W3C Standards", icon: "accessibility" },
+            { label: "Design", value: "Modern/Fluid", icon: "devices" },
+            { label: "Performance", value: "Optimized", icon: "speed" },
+            { label: "Gov Solutions", value: "Integrated", icon: "public" }
+        ],
+        media: [
+            { type: 'image', url: '/projects/saude-digital/1 - saudedigital.png', alt: 'Digital Health Portal - Navigation and Accessibility' },
+            { type: 'image', url: '/projects/saude-digital/2 - saudedigital.png', alt: 'Responsive Layout and Modern Interface' },
+            { type: 'image', url: '/projects/saude-digital/3 - saudedigital.png', alt: 'Integration with Health Services and Data' },
+            { type: 'image', url: '/projects/saude-digital/4 - saudedigital.png', alt: 'User Experience and Call to Action sections' }
+        ],
+        content: `
 # Digital Health Portal (SESAU-RO)
 
 The **Digital Health Portal** is the official gateway for technology initiatives in health for the State of Rondônia. It centralizes information on technological advances, projects, and public data, promoting transparency and bridging the gap between the State and its citizens.
@@ -425,31 +418,31 @@ This project consisted of the **creation and optimization of the User Interface*
 
 The project consolidated my expertise in **responsive and accessible frontend development**, while strengthening collaboration skills in multidisciplinary teams, delivering effective digital solutions for public health.
 `
-            },
-            {
-                id: "captacao-recursos",
-                name: "Resource Acquisition System",
-                tech: ["HTML5", "CSS3", "PHP", "WordPress", "JetEngine", "Elementor"],
-                description: "Platform developed to manage and monitor financial resources for public health projects and initiatives, ensuring transparency and efficiency.",
-                highlight: "Centralization of financing opportunities (calls/partnerships) and strengthening public financial management.",
-                visibility: "public" as const,
-                role: "Systems Analyst & Developer",
-                date: "March 2025",
-                status: "In Development",
-                impact: "Modernization of funding management and boosting transparency in the sustainability of social and public initiatives.",
-                metrics: [
-                    { label: "Management", value: "Financial", icon: "account_balance" },
-                    { label: "Status", value: "Ongoing", icon: "pending" },
-                    { label: "Focus", value: "Public Health", icon: "healing" },
-                    { label: "Standard", value: "Digital Gov.", icon: "gavel" }
-                ],
-                media: [
-                    { type: 'image', url: '/projects/captacao-recursos/cap-recursos-01.png', alt: 'Platform Overview - Resource Acquisition and Management' },
-                    { type: 'image', url: '/projects/captacao-recursos/cap-recursos-02.png', alt: 'Detailed Project and Grant Information View' },
-                    { type: 'image', url: '/projects/captacao-recursos/cap-recursos-03.png', alt: 'Financial Dashboard and Resource Monitoring' },
-                    { type: 'image', url: '/projects/captacao-recursos/cap-recursos-04.png', alt: 'Partnerships and Institutional Collaboration Interface' }
-                ],
-                content: `
+    },
+    {
+        id: "captacao-recursos",
+        name: "Resource Acquisition System",
+        tech: ["HTML5", "CSS3", "PHP", "WordPress", "JetEngine", "Elementor"],
+        description: "Platform developed to manage and monitor financial resources for public health projects and initiatives, ensuring transparency and efficiency.",
+        highlight: "Centralization of financing opportunities (calls/partnerships) and strengthening public financial management.",
+        visibility: "public" as const,
+        role: "Systems Analyst & Developer",
+        date: "March 2025",
+        status: "In Development",
+        impact: "Modernization of funding management and boosting transparency in the sustainability of social and public initiatives.",
+        metrics: [
+            { label: "Management", value: "Financial", icon: "account_balance" },
+            { label: "Status", value: "Ongoing", icon: "pending" },
+            { label: "Focus", value: "Public Health", icon: "healing" },
+            { label: "Standard", value: "Digital Gov.", icon: "gavel" }
+        ],
+        media: [
+            { type: 'image', url: '/projects/captacao-recursos/cap-recursos-01.png', alt: 'Platform Overview - Resource Acquisition and Management' },
+            { type: 'image', url: '/projects/captacao-recursos/cap-recursos-02.png', alt: 'Detailed Project and Grant Information View' },
+            { type: 'image', url: '/projects/captacao-recursos/cap-recursos-03.png', alt: 'Financial Dashboard and Resource Monitoring' },
+            { type: 'image', url: '/projects/captacao-recursos/cap-recursos-04.png', alt: 'Partnerships and Institutional Collaboration Interface' }
+        ],
+        content: `
 # Resource Acquisition System
 
 The **Resource Acquisition System** is a strategic platform developed to manage and monitor financial resources allocated to public health projects and initiatives. Its primary function is to facilitate the identification of funding opportunities, such as grant calls, partnerships with public agents, and action funding programs.
@@ -474,31 +467,31 @@ The **Resource Acquisition System** is a strategic platform developed to manage 
 - **Efficiency**: Centralization and ease of access to grants and partnerships in an intuitive system.
 - **Sustainability**: Direct boost to the long-term viability of social and public initiatives.
 `
-            },
-            {
-                id: "portal-telesaude",
-                name: "Telehealth Portal",
-                tech: ["WordPress", "PHP", "Elementor", "JetEngine", "HTML5", "CSS3"],
-                description: "Digital platform connecting healthcare professionals and patients for remote consultations, integrating teleconsultations, electronic health records management, and remote monitoring.",
-                highlight: "Expanding healthcare access in remote areas of Rondônia through telemedicine and clinical decision support.",
-                visibility: "public" as const,
-                role: "Systems Analyst & Developer",
-                date: "February 2025",
-                status: "Active",
-                impact: "Strengthening digital public health management and expanding the reach of healthcare services in Rondônia.",
-                metrics: [
-                    { label: "Performance", value: "Optimized", icon: "speed" },
-                    { label: "Design", value: "Responsive", icon: "devices" },
-                    { label: "SEO", value: "On-Page", icon: "search" },
-                    { label: "Security", value: "Digital Health", icon: "shield" }
-                ],
-                media: [
-                    { type: 'image', url: '/projects/portal-telesaude/telesaude 1.png', alt: 'Telehealth Portal Description and Tech Stack' },
-                    { type: 'image', url: '/projects/portal-telesaude/telesaude 2.png', alt: 'Overview and Development Tasks' },
-                    { type: 'image', url: '/projects/portal-telesaude/telesaude 3.png', alt: 'Demonstrated Skills and Generated Impact' },
-                    { type: 'image', url: '/projects/portal-telesaude/telesaude 4.png', alt: 'Project Conclusion and Digital Health Vision' }
-                ],
-                content: `
+    },
+    {
+        id: "portal-telesaude",
+        name: "Telehealth Portal",
+        tech: ["WordPress", "PHP", "Elementor", "JetEngine", "HTML5", "CSS3"],
+        description: "Digital platform connecting healthcare professionals and patients for remote consultations, integrating teleconsultations, electronic health records management, and remote monitoring.",
+        highlight: "Expanding healthcare access in remote areas of Rondônia through telemedicine and clinical decision support.",
+        visibility: "public" as const,
+        role: "Systems Analyst & Developer",
+        date: "February 2025",
+        status: "Active",
+        impact: "Strengthening digital public health management and expanding the reach of healthcare services in Rondônia.",
+        metrics: [
+            { label: "Performance", value: "Optimized", icon: "speed" },
+            { label: "Design", value: "Responsive", icon: "devices" },
+            { label: "SEO", value: "On-Page", icon: "search" },
+            { label: "Security", value: "Digital Health", icon: "shield" }
+        ],
+        media: [
+            { type: 'image', url: '/projects/portal-telesaude/telesaude 1.png', alt: 'Telehealth Portal Description and Tech Stack' },
+            { type: 'image', url: '/projects/portal-telesaude/telesaude 2.png', alt: 'Overview and Development Tasks' },
+            { type: 'image', url: '/projects/portal-telesaude/telesaude 3.png', alt: 'Demonstrated Skills and Generated Impact' },
+            { type: 'image', url: '/projects/portal-telesaude/telesaude 4.png', alt: 'Project Conclusion and Digital Health Vision' }
+        ],
+        content: `
 # Telehealth Portal
 
 The **Telehealth Portal** is a digital platform developed to connect healthcare professionals and patients in the state of Rondônia, facilitating remote consultations and strategic management of clinical services.
@@ -530,31 +523,31 @@ The goal of this project was to create a functional and scalable platform using 
 - **Clinical Decision**: Facilitating access to regulations, protocols, and pharmaceutical information.
 - **Management Efficiency**: Centralization of critical resources to strengthen digital public health in the state.
 `
-            },
-            {
-                id: "gerenciador-credenciais",
-                name: "Inventory System (Credential Manager)",
-                tech: ["C#", ".NET 8.0", "ASP.NET Core MVC", "Entity Framework", "SQL Server", "Bootstrap"],
-                description: "Web application developed to catalog and manage digital resources like virtual machines, e-mail accounts, websites, and credentials, focused on security and organization.",
-                highlight: "Robust authentication via OpenID Connect and sensitive data encryption with automated PDF reports.",
-                visibility: "private" as const,
-                role: "Systems Analyst & Developer",
-                date: "January 2025",
-                status: "Active",
-                impact: "Centralizes digital resource control, providing efficiency, traceability, and security for the institution's technological management.",
-                metrics: [
-                    { label: "Security", value: "High", icon: "shield" },
-                    { label: "Auth", value: "Azure AD", icon: "security" },
-                    { label: "Reports", value: "PDF Auto", icon: "picture_as_pdf" },
-                    { label: "UI", value: "Responsive", icon: "devices" }
-                ],
-                media: [
-                    { type: 'image', url: '/projects/gerenciador-credenciais/sindv 1.png', alt: 'Inventory System Description and Technologies' },
-                    { type: 'image', url: '/projects/gerenciador-credenciais/sindv 2.png', alt: 'Overview and Used Frameworks' },
-                    { type: 'image', url: '/projects/gerenciador-credenciais/sindv 3.png', alt: 'Security, UI, and Special Features' },
-                    { type: 'image', url: '/projects/gerenciador-credenciais/sindv 4.png', alt: 'Description for Portfolio and Conclusion' }
-                ],
-                content: `
+    },
+    {
+        id: "gerenciador-credenciais",
+        name: "Inventory System (Credential Manager)",
+        tech: ["C#", ".NET 8.0", "ASP.NET Core MVC", "Entity Framework", "SQL Server", "Bootstrap"],
+        description: "Web application developed to catalog and manage digital resources like virtual machines, e-mail accounts, websites, and credentials, focused on security and organization.",
+        highlight: "Robust authentication via OpenID Connect and sensitive data encryption with automated PDF reports.",
+        visibility: "private" as const,
+        role: "Systems Analyst & Developer",
+        date: "January 2025",
+        status: "Active",
+        impact: "Centralizes digital resource control, providing efficiency, traceability, and security for the institution's technological management.",
+        metrics: [
+            { label: "Security", value: "High", icon: "shield" },
+            { label: "Auth", value: "Azure AD", icon: "security" },
+            { label: "Reports", value: "PDF Auto", icon: "picture_as_pdf" },
+            { label: "UI", value: "Responsive", icon: "devices" }
+        ],
+        media: [
+            { type: 'image', url: '/projects/gerenciador-credenciais/sindv 1.png', alt: 'Inventory System Description and Technologies' },
+            { type: 'image', url: '/projects/gerenciador-credenciais/sindv 2.png', alt: 'Overview and Used Frameworks' },
+            { type: 'image', url: '/projects/gerenciador-credenciais/sindv 3.png', alt: 'Security, UI, and Special Features' },
+            { type: 'image', url: '/projects/gerenciador-credenciais/sindv 4.png', alt: 'Description for Portfolio and Conclusion' }
+        ],
+        content: `
 # Inventory System (Credential Manager)
 
 The **Inventory** is a complete web application developed in ASP.NET Core 8.0 to catalog and manage digital resources, such as virtual machines, e-mail accounts, websites, and credentials, focusing on security and organization.
@@ -576,20 +569,19 @@ The **Inventory** is a complete web application developed in ASP.NET Core 8.0 to
 
 The Inventory system is a robust and secure platform that centralizes the control of digital resources, providing efficiency, traceability, and security for the technological management of the institution. It does not handle physical inventory, but rather serves as a smart catalog for technological resources.
 `
-            },
-        ];
-    }
+    },
+];
 
-    return [
-        {
-            id: "rpa-ana",
-            name: "Automação de Coleta de Dados Hidrológicos (RPA)",
-            tech: ["Python", "Selenium", "Pathlib", "ActionChains"],
-            description: "Solução automatizada para a coleta diária de dados históricos de qualidade da água da ANA (Agência Nacional de Águas).",
-            highlight: "Arquitetura Multi-OS com gestão dinâmica de downloads e resiliência sequencial.",
-            visibility: "public" as const,
-            repoUrl: "https://github.com/portoduque/hidro-telemetria-automation",
-            content: `
+const PROJECTS_PT: Project[] = [
+    {
+        id: "rpa-ana",
+        name: "Automação de Coleta de Dados Hidrológicos (RPA)",
+        tech: ["Python", "Selenium", "Pathlib", "ActionChains"],
+        description: "Solução automatizada para a coleta diária de dados históricos de qualidade da água da ANA (Agência Nacional de Águas).",
+        highlight: "Arquitetura Multi-OS com gestão dinâmica de downloads e resiliência sequencial.",
+        visibility: "public" as const,
+        repoUrl: "https://github.com/portoduque/hidro-telemetria-automation",
+        content: `
 # Automação de Coleta de Dados Hidrológicos (RPA)
 
 Este projeto foi desenvolvido para automatizar a coleta diária de dados históricos de qualidade da água disponibilizados pela **Agência Nacional de Águas e Saneamento Básico (ANA)**. Ele substitui um processo manual e passível de erros por um motor de execução robusto e autônomo.
@@ -608,43 +600,43 @@ Este projeto foi desenvolvido para automatizar a coleta diária de dados histór
 - **Organização Autônoma**: Arquivos são organizados automaticamente em diretórios locais pré-definidos por estação.
 - **Resiliência a Erros**: Execução sequencial com log individual de falhas por estação.
 `,
-            media: [
-                { type: 'video', url: '/projects/rpa-ana/gracacao-robo-hidrotelemetria.mp4', alt: 'Demonstração real do robô RPA coletando dados' }
-            ],
-            role: "Analista e Desenvolvedor de Sistemas",
-            date: "2025",
-            impact: "Substituiu um processo manual e sujeito a erros por um motor de execução totalmente autônomo.",
-            metrics: [
-                { label: "Estações", value: "4", icon: "location_on" },
-                { label: "Compat.", value: "Multi-OS", icon: "devices" },
-                { label: "Processo", value: "100% Auto", icon: "smart_toy" },
-                { label: "Resiliência", value: "Sequencial", icon: "shield" }
-            ]
-        },
-        {
-            id: "fluxo-paciente",
-            name: "Sistema Fluxo Transporte Paciente (Fluxo Paciente)",
-            tech: ["PHP", "MadBuilder", "PostgreSQL", "MySQL", "MariaDB", "WhatsApp API", "ViaCEP", "Bootstrap"],
-            description: "Gestão completa de logística inter-hospitalar para transferência de pacientes com roteamento otimizado.",
-            highlight: "Redução de 40% no tempo de organização e 30% de economia nos custos de transporte.",
-            visibility: "private" as const,
-            role: "Analista e Desenvolvedor de Sistemas",
-            date: "Junho de 2025",
-            status: "Em Desenvolvimento",
-            impact: "Revolucionou a logística de transferências de pacientes através de automação inteligente e integração multi-plataforma.",
-            metrics: [
-                { label: "Tempo de Org.", value: "-40%", icon: "timer" },
-                { label: "Custos", value: "-30%", icon: "savings" },
-                { label: "Sincronia", value: "Tempo Real", icon: "sync" },
-                { label: "Padrão", value: "HL7/FHIR", icon: "verified" }
-            ],
-            media: [
-                { type: 'image', url: '/projects/fluxo-paciente/1 - fluxotp.png', alt: 'Gerenciamento Central de Solicitações de Transporte Inter-hospitalar' },
-                { type: 'image', url: '/projects/fluxo-paciente/2 - fluxotp.png', alt: 'Interface para Cadastro e Edição de Solicitações de Transporte' },
-                { type: 'image', url: '/projects/fluxo-paciente/3 - fluxotp.png', alt: 'Módulo de Gestão e Cadastro de Pacientes' },
-                { type: 'image', url: '/projects/fluxo-paciente/4 - fluxotp.png', alt: 'Configuração e Listagem de Unidades de Saúde e Hospitais' }
-            ],
-            content: `
+        media: [
+            { type: 'video', url: '/projects/rpa-ana/gracacao-robo-hidrotelemetria.mp4', alt: 'Demonstração real do robô RPA coletando dados' }
+        ],
+        role: "Analista e Desenvolvedor de Sistemas",
+        date: "2025",
+        impact: "Substituiu um processo manual e sujeito a erros por um motor de execução totalmente autônomo.",
+        metrics: [
+            { label: "Estações", value: "4", icon: "location_on" },
+            { label: "Compat.", value: "Multi-OS", icon: "devices" },
+            { label: "Processo", value: "100% Auto", icon: "smart_toy" },
+            { label: "Resiliência", value: "Sequencial", icon: "shield" }
+        ]
+    },
+    {
+        id: "fluxo-paciente",
+        name: "Sistema Fluxo Transporte Paciente (Fluxo Paciente)",
+        tech: ["PHP", "MadBuilder", "PostgreSQL", "MySQL", "MariaDB", "WhatsApp API", "ViaCEP", "Bootstrap"],
+        description: "Gestão completa de logística inter-hospitalar para transferência de pacientes com roteamento otimizado.",
+        highlight: "Redução de 40% no tempo de organização e 30% de economia nos custos de transporte.",
+        visibility: "private" as const,
+        role: "Analista e Desenvolvedor de Sistemas",
+        date: "Junho de 2025",
+        status: "Em Desenvolvimento",
+        impact: "Revolucionou a logística de transferências de pacientes através de automação inteligente e integração multi-plataforma.",
+        metrics: [
+            { label: "Tempo de Org.", value: "-40%", icon: "timer" },
+            { label: "Custos", value: "-30%", icon: "savings" },
+            { label: "Sincronia", value: "Tempo Real", icon: "sync" },
+            { label: "Padrão", value: "HL7/FHIR", icon: "verified" }
+        ],
+        media: [
+            { type: 'image', url: '/projects/fluxo-paciente/1 - fluxotp.png', alt: 'Gerenciamento Central de Solicitações de Transporte Inter-hospitalar' },
+            { type: 'image', url: '/projects/fluxo-paciente/2 - fluxotp.png', alt: 'Interface para Cadastro e Edição de Solicitações de Transporte' },
+            { type: 'image', url: '/projects/fluxo-paciente/3 - fluxotp.png', alt: 'Módulo de Gestão e Cadastro de Pacientes' },
+            { type: 'image', url: '/projects/fluxo-paciente/4 - fluxotp.png', alt: 'Configuração e Listagem de Unidades de Saúde e Hospitais' }
+        ],
+        content: `
 # Sistema Fluxo Transporte Paciente (Fluxo Paciente)
 
 Sistema web completo para gerenciamento de fluxo de transporte inter-hospitalar, desenvolvido com arquitetura robusta e integração multi-plataforma. Uma solução que revoluciona a logística de transferência de pacientes entre cidades e unidades de saúde através de automação inteligente e comunicação em tempo real.
@@ -664,30 +656,30 @@ Sistema web completo para gerenciamento de fluxo de transporte inter-hospitalar,
 - **Economia Financeira**: Otimização de 30% nos custos de transporte.
 - **Comunicação Ativa**: Atualizações em tempo real para equipes médicas e pacientes via integração com WhatsApp API.
 `
-        },
-        {
-            id: "portal-ciges",
-            name: "Portal do CIGES (Painel Estratégico de Saúde)",
-            tech: ["HTML5", "CSS3", "JavaScript Vanilla", "Bootstrap", "CSS Grid/Flexbox", "C#", ".NET"],
-            description: "Plataforma digital centralizada para dados estratégicos de saúde pública em Rondônia, apoiando a gestão baseada em evidências do SUS.",
-            highlight: "Desenvolvimento de dashboards interativos para monitoramento de leitos, obras em saúde e crises climáticas.",
-            visibility: "public" as const,
-            role: "Analista e Desenvolvedor de Sistemas",
-            date: "Janeiro de 2025",
-            impact: "Transformou a gestão de dados de saúde em Rondônia, fornecendo visibilidade em tempo real de indicadores críticos para a SESAU-RO.",
-            liveUrl: "https://ciges.sesau.ro.gov.br",
-            metrics: [
-                { label: "Qualidade", value: "Estratégica", icon: "insights" },
-                { label: "Design", value: "Responsivo", icon: "devices" },
-                { label: "Integração", value: "APIs REST", icon: "api" },
-                { label: "Acessibilidade", value: "W3C / Padrões", icon: "accessibility" }
-            ],
-            media: [
-                { type: 'image', url: '/projects/portal-ciges/ciges 1.png', alt: 'Página Inicial do Portal CIGES - Pilares estratégicos principais' },
-                { type: 'image', url: '/projects/portal-ciges/ciges 2.png', alt: 'Dashboard de Gestão da Saúde - Indicadores de crise hídrica, obras e ocupação de leitos' },
-                { type: 'image', url: '/projects/portal-ciges/ciges 3.png', alt: 'Sessão de Suporte e Contato - Localização institucional e formulários dinâmicos' }
-            ],
-            content: `
+    },
+    {
+        id: "portal-ciges",
+        name: "Portal do CIGES (Painel Estratégico de Saúde)",
+        tech: ["HTML5", "CSS3", "JavaScript Vanilla", "Bootstrap", "CSS Grid/Flexbox", "C#", ".NET"],
+        description: "Plataforma digital centralizada para dados estratégicos de saúde pública em Rondônia, apoiando a gestão baseada em evidências do SUS.",
+        highlight: "Desenvolvimento de dashboards interativos para monitoramento de leitos, obras em saúde e crises climáticas.",
+        visibility: "public" as const,
+        role: "Analista e Desenvolvedor de Sistemas",
+        date: "Janeiro de 2025",
+        impact: "Transformou a gestão de dados de saúde em Rondônia, fornecendo visibilidade em tempo real de indicadores críticos para a SESAU-RO.",
+        liveUrl: "https://ciges.sesau.ro.gov.br",
+        metrics: [
+            { label: "Qualidade", value: "Estratégica", icon: "insights" },
+            { label: "Design", value: "Responsivo", icon: "devices" },
+            { label: "Integração", value: "APIs REST", icon: "api" },
+            { label: "Acessibilidade", value: "W3C / Padrões", icon: "accessibility" }
+        ],
+        media: [
+            { type: 'image', url: '/projects/portal-ciges/ciges 1.png', alt: 'Página Inicial do Portal CIGES - Pilares estratégicos principais' },
+            { type: 'image', url: '/projects/portal-ciges/ciges 2.png', alt: 'Dashboard de Gestão da Saúde - Indicadores de crise hídrica, obras e ocupação de leitos' },
+            { type: 'image', url: '/projects/portal-ciges/ciges 3.png', alt: 'Sessão de Suporte e Contato - Localização institucional e formulários dinâmicos' }
+        ],
+        content: `
 # Portal CIGES (Painel Estratégico de Saúde)
 
 O **Portal CIGES** é uma plataforma digital que centraliza dados estratégicos de saúde para apoiar a gestão do Sistema Único de Saúde (**SUS**) em Rondônia. Ele oferece relatórios detalhados, indicadores de saúde, análises estratégicas e ferramentas de visualização de dados, permitindo que gestores, pesquisadores e profissionais de saúde tomem decisões baseadas em evidências.
@@ -708,29 +700,29 @@ O **Portal CIGES** é uma plataforma digital que centraliza dados estratégicos 
 - **Apoio à Decisão**: Melhoria significativa na velocidade e precisão de decisões sobre alocação de recursos e respostas a emergências.
 - **Transparência e Governança**: Fortalecimento da governança digital através do monitoramento transparente de projetos de saúde e tendências regionais.
 `
-        },
-        {
-            id: "respirar-mobile",
-            name: "Projeto RespirAR (Mobile)",
-            tech: ["Flutter & Dart", "FlutterFlow", "PHP", "MadBuilder", "Firebase", "PostgreSQL", "REST API"],
-            description: "Aplicativo mobile voltado para saúde e bem-estar, proporcionando uma experiência intuitiva para monitoramento e gestão em saúde.",
-            highlight: "Desenvolvimento visual acelerado com FlutterFlow e backend robusto integrado com Firebase e MadBuilder.",
-            visibility: "public" as const,
-            role: "Analista e Desenvolvedor de Sistemas",
-            date: "Outubro de 2025",
-            impact: "Centralização de serviços de saúde mobile com notificações push e geolocalização, otimizando o acompanhamento do paciente.",
-            liveUrl: "https://respirar.sesau.ro.gov.br",
-            metrics: [
-                { label: "Plataformas", value: "iOS & Android", icon: "smartphone" },
-                { label: "Sync", value: "Tempo Real", icon: "sync" },
-                { label: "Residência", value: "Modo Offline", icon: "cloud_off" },
-                { label: "UX", value: "Material Design", icon: "palette" }
-            ],
-            media: [
-                { type: 'image', url: '/projects/respirar-mobile/respirar-1.png', alt: 'Interface do Aplicativo Mobile RespirAR 1' },
-                { type: 'image', url: '/projects/respirar-mobile/respirar-2.png', alt: 'Interface do Aplicativo Mobile RespirAR 2' }
-            ],
-            content: `
+    },
+    {
+        id: "respirar-mobile",
+        name: "Projeto RespirAR (Mobile)",
+        tech: ["Flutter & Dart", "FlutterFlow", "PHP", "MadBuilder", "Firebase", "PostgreSQL", "REST API"],
+        description: "Aplicativo mobile voltado para saúde e bem-estar, proporcionando uma experiência intuitiva para monitoramento e gestão em saúde.",
+        highlight: "Desenvolvimento visual acelerado com FlutterFlow e backend robusto integrado com Firebase e MadBuilder.",
+        visibility: "public" as const,
+        role: "Analista e Desenvolvedor de Sistemas",
+        date: "Outubro de 2025",
+        impact: "Centralização de serviços de saúde mobile com notificações push e geolocalização, otimizando o acompanhamento do paciente.",
+        liveUrl: "https://respirar.sesau.ro.gov.br",
+        metrics: [
+            { label: "Plataformas", value: "iOS & Android", icon: "smartphone" },
+            { label: "Sync", value: "Tempo Real", icon: "sync" },
+            { label: "Residência", value: "Modo Offline", icon: "cloud_off" },
+            { label: "UX", value: "Material Design", icon: "palette" }
+        ],
+        media: [
+            { type: 'image', url: '/projects/respirar-mobile/respirar-1.png', alt: 'Interface do Aplicativo Mobile RespirAR 1' },
+            { type: 'image', url: '/projects/respirar-mobile/respirar-2.png', alt: 'Interface do Aplicativo Mobile RespirAR 2' }
+        ],
+        content: `
 # Projeto RespirAR (Mobile)
 
 O projeto **RespirAR** é um aplicativo mobile robusto focado em saúde e bem-estar, desenvolvido para proporcionar uma experiência fluida tanto para usuários finais quanto para administradores de sistema.
@@ -750,32 +742,32 @@ O projeto **RespirAR** é um aplicativo mobile robusto focado em saúde e bem-es
 - Relatórios e analytics integrados.
 - Interface administrativa web para gerenciamento global.
 `
-        },
-        {
-            id: "saude-digital",
-            name: "Portal da Saúde Digital (SESAU-RO)",
-            tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "CSS Grid/Flexbox", "C#", ".NET"],
-            description: "Portal oficial da Saúde Digital da Secretaria de Estado de Saúde de Rondônia que centraliza informações sobre iniciativas, projetos e avanços tecnológicos.",
-            highlight: "Criação e otimização total de Interface de Usuário com foco em acessibilidade e integração com serviços de saúde do Estado.",
-            visibility: "public" as const,
-            role: "Analista e Desenvolvedor de Sistemas",
-            date: "Dezembro de 2024",
-            status: "Ativo",
-            impact: "Promoveu a transparência na saúde digital de Rondônia, unindo dados governamentais à acessibilidade do cidadão.",
-            liveUrl: "https://saudedigital.sesau.ro.gov.br",
-            metrics: [
-                { label: "Acessibilidade", value: "Padrão W3C", icon: "accessibility" },
-                { label: "Design", value: "Moderno/Fluido", icon: "devices" },
-                { label: "Performance", value: "Otimizada", icon: "speed" },
-                { label: "Soluções Gov.", value: "Integradas", icon: "public" }
-            ],
-            media: [
-                { type: 'image', url: '/projects/saude-digital/1 - saudedigital.png', alt: 'Portal da Saúde Digital - Navegação e Acessibilidade' },
-                { type: 'image', url: '/projects/saude-digital/2 - saudedigital.png', alt: 'Layout Responsivo e Interface Moderna' },
-                { type: 'image', url: '/projects/saude-digital/3 - saudedigital.png', alt: 'Integração com Serviços de Saúde e Dados' },
-                { type: 'image', url: '/projects/saude-digital/4 - saudedigital.png', alt: 'Experiência do Usuário e Sessões Informativas' }
-            ],
-            content: `
+    },
+    {
+        id: "saude-digital",
+        name: "Portal da Saúde Digital (SESAU-RO)",
+        tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "CSS Grid/Flexbox", "C#", ".NET"],
+        description: "Portal oficial da Saúde Digital da Secretaria de Estado de Saúde de Rondônia que centraliza informações sobre iniciativas, projetos e avanços tecnológicos.",
+        highlight: "Criação e otimização total de Interface de Usuário com foco em acessibilidade e integração com serviços de saúde do Estado.",
+        visibility: "public" as const,
+        role: "Analista e Desenvolvedor de Sistemas",
+        date: "Dezembro de 2024",
+        status: "Ativo",
+        impact: "Promoveu a transparência na saúde digital de Rondônia, unindo dados governamentais à acessibilidade do cidadão.",
+        liveUrl: "https://saudedigital.sesau.ro.gov.br",
+        metrics: [
+            { label: "Acessibilidade", value: "Padrão W3C", icon: "accessibility" },
+            { label: "Design", value: "Moderno/Fluido", icon: "devices" },
+            { label: "Performance", value: "Otimizada", icon: "speed" },
+            { label: "Soluções Gov.", value: "Integradas", icon: "public" }
+        ],
+        media: [
+            { type: 'image', url: '/projects/saude-digital/1 - saudedigital.png', alt: 'Portal da Saúde Digital - Navegação e Acessibilidade' },
+            { type: 'image', url: '/projects/saude-digital/2 - saudedigital.png', alt: 'Layout Responsivo e Interface Moderna' },
+            { type: 'image', url: '/projects/saude-digital/3 - saudedigital.png', alt: 'Integração com Serviços de Saúde e Dados' },
+            { type: 'image', url: '/projects/saude-digital/4 - saudedigital.png', alt: 'Experiência do Usuário e Sessões Informativas' }
+        ],
+        content: `
 # Portal da Saúde Digital (SESAU-RO)
 
 O **Portal da Saúde Digital** é a porta de entrada oficial para as iniciativas de tecnologia em saúde no Estado de Rondônia. Ele centraliza informações sobre avanços tecnológicos, projetos e dados públicos, promovendo a transparência e aproximando o Estado dos cidadãos.
@@ -811,31 +803,31 @@ Este projeto consistiu na **criação e otimização da Interface do usuário** 
 
 O projeto consolidou a minha experiência no **desenvolvimento frontend responsivo e acessível**, fortalecendo as habilidades de colaboração em equipes multidisciplinares e entregando soluções digitais eficazes para a saúde pública.
 `
-        },
-        {
-            id: "captacao-recursos",
-            name: "Sistema de Captação de Recursos",
-            tech: ["HTML5", "CSS3", "PHP", "WordPress", "JetEngine", "Elementor"],
-            description: "Plataforma desenvolvida para gerenciar e monitorar recursos financeiros destinados a projetos e iniciativas voltadas à saúde pública, garantindo transparência e eficiência.",
-            highlight: "Centralização de oportunidades de financiamento (editais/parcerias) e fortalecimento da gestão financeira pública.",
-            visibility: "public" as const,
-            role: "Analista e Desenvolvedor de Sistemas",
-            date: "Março de 2025",
-            status: "Em Desenvolvimento",
-            impact: "Modernização da gestão de financiamentos e impulso à transparência na sustentabilidade de iniciativas sociais e públicas.",
-            metrics: [
-                { label: "Gestão", value: "Financeira", icon: "account_balance" },
-                { label: "Status", value: "Em curso", icon: "pending" },
-                { label: "Foco", value: "Saúde Pública", icon: "healing" },
-                { label: "Padrão", value: "Gov. Digital", icon: "gavel" }
-            ],
-            media: [
-                { type: 'image', url: '/projects/captacao-recursos/cap-recursos-01.png', alt: 'Visão Geral da Plataforma - Captação e Gestão de Recursos' },
-                { type: 'image', url: '/projects/captacao-recursos/cap-recursos-02.png', alt: 'Visualização Detalhada de Projetos e Editais' },
-                { type: 'image', url: '/projects/captacao-recursos/cap-recursos-03.png', alt: 'Dashboard Financeiro e Monitoramento de Recursos' },
-                { type: 'image', url: '/projects/captacao-recursos/cap-recursos-04.png', alt: 'Interface de Parcerias e Colaboração Institucional' }
-            ],
-            content: `
+    },
+    {
+        id: "captacao-recursos",
+        name: "Sistema de Captação de Recursos",
+        tech: ["HTML5", "CSS3", "PHP", "WordPress", "JetEngine", "Elementor"],
+        description: "Plataforma desenvolvida para gerenciar e monitorar recursos financeiros destinados a projetos e iniciativas voltadas à saúde pública, garantindo transparência e eficiência.",
+        highlight: "Centralização de oportunidades de financiamento (editais/parcerias) e fortalecimento da gestão financeira pública.",
+        visibility: "public" as const,
+        role: "Analista e Desenvolvedor de Sistemas",
+        date: "Março de 2025",
+        status: "Em Desenvolvimento",
+        impact: "Modernização da gestão de financiamentos e impulso à transparência na sustentabilidade de iniciativas sociais e públicas.",
+        metrics: [
+            { label: "Gestão", value: "Financeira", icon: "account_balance" },
+            { label: "Status", value: "Em curso", icon: "pending" },
+            { label: "Foco", value: "Saúde Pública", icon: "healing" },
+            { label: "Padrão", value: "Gov. Digital", icon: "gavel" }
+        ],
+        media: [
+            { type: 'image', url: '/projects/captacao-recursos/cap-recursos-01.png', alt: 'Visão Geral da Plataforma - Captação e Gestão de Recursos' },
+            { type: 'image', url: '/projects/captacao-recursos/cap-recursos-02.png', alt: 'Visualização Detalhada de Projetos e Editais' },
+            { type: 'image', url: '/projects/captacao-recursos/cap-recursos-03.png', alt: 'Dashboard Financeiro e Monitoramento de Recursos' },
+            { type: 'image', url: '/projects/captacao-recursos/cap-recursos-04.png', alt: 'Interface de Parcerias e Colaboração Institucional' }
+        ],
+        content: `
 # Sistema de Captação de Recursos
 
 O **Sistema de Captação de Recursos** é uma plataforma estratégica desenvolvida para gerenciar e monitorar recursos financeiros destinados a projetos e iniciativas de saúde pública. Sua principal função é facilitar a identificação de oportunidades de captação, como editais de financiamento, parcerias com agentes públicos e programas de custeio.
@@ -860,31 +852,31 @@ O **Sistema de Captação de Recursos** é uma plataforma estratégica desenvolv
 - **Eficiência**: Centralização e facilidade de acesso a editais e parcerias em um sistema intuitivo.
 - **Sustentabilidade**: Impulso direto à viabilidade de iniciativas sociais e públicas de longo prazo.
 `
-        },
-        {
-            id: "portal-telesaude",
-            name: "Portal da Telesaúde",
-            tech: ["WordPress", "PHP", "Elementor", "JetEngine", "HTML5", "CSS3"],
-            description: "Plataforma digital que conecta profissionais de saúde e pacientes para consultas à distância, integrando teleconsultas, gestão de prontuários eletrônicos e monitoramento remoto.",
-            highlight: "Expansão do acesso à saúde em áreas remotas de Rondônia através de telemedicina e apoio à decisão clínica.",
-            visibility: "public" as const,
-            role: "Analista e Desenvolvedor de Sistemas",
-            date: "Fevereiro de 2025",
-            status: "Ativo",
-            impact: "Fortalecimento da gestão digital da saúde pública e ampliação do alcance de serviços assistenciais em Rondônia.",
-            metrics: [
-                { label: "Performance", value: "Otimizada", icon: "speed" },
-                { label: "Design", value: "Responsivo", icon: "devices" },
-                { label: "SEO", value: "On-Page", icon: "search" },
-                { label: "Segurança", value: "Saúde Digital", icon: "shield" }
-            ],
-            media: [
-                { type: 'image', url: '/projects/portal-telesaude/telesaude 1.png', alt: 'Descrição e Tecnologias do Portal Telesaúde' },
-                { type: 'image', url: '/projects/portal-telesaude/telesaude 2.png', alt: 'Visão Geral e Tarefas Desenvolvidas' },
-                { type: 'image', url: '/projects/portal-telesaude/telesaude 3.png', alt: 'Habilidades e Impacto Gerado' },
-                { type: 'image', url: '/projects/portal-telesaude/telesaude 4.png', alt: 'Conclusão e Visão de Negócio' }
-            ],
-            content: `
+    },
+    {
+        id: "portal-telesaude",
+        name: "Portal da Telesaúde",
+        tech: ["WordPress", "PHP", "Elementor", "JetEngine", "HTML5", "CSS3"],
+        description: "Plataforma digital que conecta profissionais de saúde e pacientes para consultas à distância, integrando teleconsultas, gestão de prontuários eletrônicos e monitoramento remoto.",
+        highlight: "Expansão do acesso à saúde em áreas remotas de Rondônia através de telemedicina e apoio à decisão clínica.",
+        visibility: "public" as const,
+        role: "Analista e Desenvolvedor de Sistemas",
+        date: "Fevereiro de 2025",
+        status: "Ativo",
+        impact: "Fortalecimento da gestão digital da saúde pública e ampliação do alcance de serviços assistenciais em Rondônia.",
+        metrics: [
+            { label: "Performance", value: "Otimizada", icon: "speed" },
+            { label: "Design", value: "Responsivo", icon: "devices" },
+            { label: "SEO", value: "On-Page", icon: "search" },
+            { label: "Segurança", value: "Saúde Digital", icon: "shield" }
+        ],
+        media: [
+            { type: 'image', url: '/projects/portal-telesaude/telesaude 1.png', alt: 'Descrição e Tecnologias do Portal Telesaúde' },
+            { type: 'image', url: '/projects/portal-telesaude/telesaude 2.png', alt: 'Visão Geral e Tarefas Desenvolvidas' },
+            { type: 'image', url: '/projects/portal-telesaude/telesaude 3.png', alt: 'Habilidades e Impacto Gerado' },
+            { type: 'image', url: '/projects/portal-telesaude/telesaude 4.png', alt: 'Conclusão e Visão de Negócio' }
+        ],
+        content: `
 # Portal da Telesaúde
 
 O **Portal Telesaúde** é uma plataforma digital desenvolvida para conectar profissionais de saúde e pacientes no estado de Rondônia, facilitando consultas à distância e a gestão estratégica de serviços assistenciais.
@@ -916,31 +908,31 @@ Este projeto teve como objetivo criar uma plataforma funcional e escalável util
 - **Decisão Clínica**: Facilitação do acesso a regulamentações, protocolos e informações farmacêuticas.
 - **Eficiência na Gestão**: Centralização de recursos críticos para o fortalecimento da saúde pública digital no estado.
 `
-        },
-        {
-            id: "gerenciador-credenciais",
-            name: "Sistema de Inventário (Gerenciador de Credenciais)",
-            tech: ["C#", ".NET 8.0", "ASP.NET Core MVC", "Entity Framework", "SQL Server", "Bootstrap"],
-            description: "Aplicação web desenvolvida para catalogar e gerenciar recursos digitais como máquinas virtuais, contas de e-mail, sites e credenciais, com foco em segurança e organização.",
-            highlight: "Autenticação robusta via OpenID Connect e criptografia de dados sensíveis com relatórios PDF automatizados.",
-            visibility: "private" as const,
-            role: "Analista e Desenvolvedor de Sistemas",
-            date: "Janeiro de 2025",
-            status: "Ativo",
-            impact: "Centraliza o controle de recursos digitais, proporcionando eficiência, rastreabilidade e segurança para a gestão tecnológica da instituição.",
-            metrics: [
-                { label: "Segurança", value: "Alta", icon: "shield" },
-                { label: "Autenticação", value: "Azure AD", icon: "security" },
-                { label: "Relatórios", value: "PDF Auto", icon: "picture_as_pdf" },
-                { label: "UI", value: "Responsiva", icon: "devices" }
-            ],
-            media: [
-                { type: 'image', url: '/projects/gerenciador-credenciais/sindv 1.png', alt: 'Descrição e Tecnologias do Sistema de Inventário' },
-                { type: 'image', url: '/projects/gerenciador-credenciais/sindv 2.png', alt: 'Visão Geral e Frameworks Utilizados' },
-                { type: 'image', url: '/projects/gerenciador-credenciais/sindv 3.png', alt: 'Segurança, UI e Funcionalidades Especiais' },
-                { type: 'image', url: '/projects/gerenciador-credenciais/sindv 4.png', alt: 'Descrição para Portfólio e Conclusão' }
-            ],
-            content: `
+    },
+    {
+        id: "gerenciador-credenciais",
+        name: "Sistema de Inventário (Gerenciador de Credenciais)",
+        tech: ["C#", ".NET 8.0", "ASP.NET Core MVC", "Entity Framework", "SQL Server", "Bootstrap"],
+        description: "Aplicação web desenvolvida para catalogar e gerenciar recursos digitais como máquinas virtuais, contas de e-mail, sites e credenciais, com foco em segurança e organização.",
+        highlight: "Autenticação robusta via OpenID Connect e criptografia de dados sensíveis com relatórios PDF automatizados.",
+        visibility: "private" as const,
+        role: "Analista e Desenvolvedor de Sistemas",
+        date: "Janeiro de 2025",
+        status: "Ativo",
+        impact: "Centraliza o controle de recursos digitais, proporcionando eficiência, rastreabilidade e segurança para a gestão tecnológica da instituição.",
+        metrics: [
+            { label: "Segurança", value: "Alta", icon: "shield" },
+            { label: "Autenticação", value: "Azure AD", icon: "security" },
+            { label: "Relatórios", value: "PDF Auto", icon: "picture_as_pdf" },
+            { label: "UI", value: "Responsiva", icon: "devices" }
+        ],
+        media: [
+            { type: 'image', url: '/projects/gerenciador-credenciais/sindv 1.png', alt: 'Descrição e Tecnologias do Sistema de Inventário' },
+            { type: 'image', url: '/projects/gerenciador-credenciais/sindv 2.png', alt: 'Visão Geral e Frameworks Utilizados' },
+            { type: 'image', url: '/projects/gerenciador-credenciais/sindv 3.png', alt: 'Segurança, UI e Funcionalidades Especiais' },
+            { type: 'image', url: '/projects/gerenciador-credenciais/sindv 4.png', alt: 'Descrição para Portfólio e Conclusão' }
+        ],
+        content: `
 # Sistema de Inventário (Gerenciador de Credenciais)
 
 O **Inventário** é uma aplicação web completa desenvolvida em ASP.NET Core 8.0 para gerenciar e organizar recursos digitais, como máquinas virtuais, contas de e-mail, sites e credenciais, com foco em segurança e organização.
@@ -962,42 +954,45 @@ O **Inventário** é uma aplicação web completa desenvolvida em ASP.NET Core 8
 
 O sistema Inventário é uma plataforma robusta e segura que centraliza o controle de recursos digitais, proporcionando eficiência, rastreabilidade e segurança para a gestão tecnológica da instituição. O sistema não trata de estoque físico, mas sim do catálogo inteligente de recursos tecnológicos da instituição.
 `
-        },
-    ];
+    },
+];
+
+export function getProjects(locale: Locale): Project[] {
+    return locale === "en" ? PROJECTS_EN : PROJECTS_PT;
 }
 
-export function getActivityLog(locale: Locale) {
-    if (locale === "en") {
-        return [
-            { hash: "d8f2a1c", message: "feat: hydrological data scrapper (RPA)", time: "2h ago" },
-            { hash: "b5e9c0f", message: "fix: WhatsApp API notification service", time: "5h ago" },
-            { hash: "7a3d2e1", message: "feat: CIGES dashboards integration", time: "1d ago" },
-            { hash: "e9b4c6a", message: "feat: push notifications health alerts", time: "2d ago" },
-            { hash: "f6d3s2a", message: "refactor: optimize patient transfer SQL queries", time: "3d ago" },
-            { hash: "c1v8n9m", message: "feat: build health digital portal (SESAU-RO)", time: "4d ago" },
-            { hash: "k4j7h2l", message: "fix: responsive layout for Telesaúde portal", time: "1w ago" },
-            { hash: "p0o9i8u", message: "docs: cybersecurity risk assessment report", time: "2w ago" },
-            { hash: "n5m3v2x", message: "chore: setup Airflow DAGs for data pipeline", time: "3w ago" },
-            { hash: "u8y1t9r", message: "test: integration tests for RPA selenium module", time: "1m ago" },
-            { hash: "q1w2e3r", message: "ci: github actions for security scanning (OWASP)", time: "1m ago" },
-            { hash: "l9k8j7h", message: "fix: Linux Apache server hardening", time: "1m ago" },
-        ];
-    }
+const ACTIVITY_LOG_EN = [
+    { hash: "d8f2a1c", message: "feat: hydrological data scrapper (RPA)", time: "2h ago" },
+    { hash: "b5e9c0f", message: "fix: WhatsApp API notification service", time: "5h ago" },
+    { hash: "7a3d2e1", message: "feat: CIGES dashboards integration", time: "1d ago" },
+    { hash: "e9b4c6a", message: "feat: push notifications health alerts", time: "2d ago" },
+    { hash: "f6d3s2a", message: "refactor: optimize patient transfer SQL queries", time: "3d ago" },
+    { hash: "c1v8n9m", message: "feat: build health digital portal (SESAU-RO)", time: "4d ago" },
+    { hash: "k4j7h2l", message: "fix: responsive layout for Telesaúde portal", time: "1w ago" },
+    { hash: "p0o9i8u", message: "docs: cybersecurity risk assessment report", time: "2w ago" },
+    { hash: "n5m3v2x", message: "chore: setup Airflow DAGs for data pipeline", time: "3w ago" },
+    { hash: "u8y1t9r", message: "test: integration tests for RPA selenium module", time: "1m ago" },
+    { hash: "q1w2e3r", message: "ci: github actions for security scanning (OWASP)", time: "1m ago" },
+    { hash: "l9k8j7h", message: "fix: Linux Apache server hardening", time: "1m ago" },
+];
 
-    return [
-        { hash: "d8f2a1c", message: "feat: coletor de dados hidrológicos (RPA)", time: "2h atrás" },
-        { hash: "b5e9c0f", message: "fix: serviço de notificação WhatsApp API", time: "5h atrás" },
-        { hash: "7a3d2e1", message: "feat: integração de dashboards CIGES", time: "1d atrás" },
-        { hash: "e9b4c6a", message: "feat: notificações push alertas de saúde", time: "2d atrás" },
-        { hash: "f6d3s2a", message: "refactor: otimização de queries SQL fluxo paciente", time: "3d atrás" },
-        { hash: "c1v8n9m", message: "feat: desenvolvimento portal saúde digital (SESAU-RO)", time: "4d atrás" },
-        { hash: "k4j7h2l", message: "fix: layout responsivo portal telesaúde", time: "1sem atrás" },
-        { hash: "p0o9i8u", message: "docs: relatório de análise de riscos de segurança", time: "2sem atrás" },
-        { hash: "n5m3v2x", message: "chore: configuração de DAGs Airflow para pipeline", time: "3sem atrás" },
-        { hash: "u8y1t9r", message: "test: testes de integração módulo RPA selenium", time: "1mês atrás" },
-        { hash: "q1w2e3r", message: "ci: automação de scan de segurança (OWASP)", time: "1mês atrás" },
-        { hash: "l9k8j7h", message: "fix: hardening de servidor Apache Linux", time: "1mês atrás" },
-    ];
+const ACTIVITY_LOG_PT = [
+    { hash: "d8f2a1c", message: "feat: coletor de dados hidrológicos (RPA)", time: "2h atrás" },
+    { hash: "b5e9c0f", message: "fix: serviço de notificação WhatsApp API", time: "5h atrás" },
+    { hash: "7a3d2e1", message: "feat: integração de dashboards CIGES", time: "1d atrás" },
+    { hash: "e9b4c6a", message: "feat: notificações push alertas de saúde", time: "2d atrás" },
+    { hash: "f6d3s2a", message: "refactor: otimização de queries SQL fluxo paciente", time: "3d atrás" },
+    { hash: "c1v8n9m", message: "feat: desenvolvimento portal saúde digital (SESAU-RO)", time: "4d atrás" },
+    { hash: "k4j7h2l", message: "fix: layout responsivo portal telesaúde", time: "1sem atrás" },
+    { hash: "p0o9i8u", message: "docs: relatório de análise de riscos de segurança", time: "2sem atrás" },
+    { hash: "n5m3v2x", message: "chore: configuração de DAGs Airflow para pipeline", time: "3sem atrás" },
+    { hash: "u8y1t9r", message: "test: testes de integração módulo RPA selenium", time: "1mês atrás" },
+    { hash: "q1w2e3r", message: "ci: automação de scan de segurança (OWASP)", time: "1mês atrás" },
+    { hash: "l9k8j7h", message: "fix: hardening de servidor Apache Linux", time: "1mês atrás" },
+];
+
+export function getActivityLog(locale: Locale) {
+    return locale === "en" ? ACTIVITY_LOG_EN : ACTIVITY_LOG_PT;
 }
 
 // Keep backward-compatible exports for non-i18n usage
