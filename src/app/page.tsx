@@ -2,10 +2,20 @@
 
 import { useState } from "react";
 import { SystemOverview } from "@/components/hero/SystemOverview";
-import { DockerComposeView } from "@/components/content/DockerComposeView";
-import { CareerPipelineView } from "@/components/content/CareerPipelineView";
-import { ContactView } from "@/components/content/ContactView";
 import { CompetenceCard } from "@/components/content/CompetenceCard";
+import dynamic from "next/dynamic";
+
+const DockerComposeView = dynamic(() => import("@/components/content/DockerComposeView").then(mod => mod.DockerComposeView), {
+  loading: () => <div className="p-8 flex justify-center w-full h-full items-center"><div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"></div></div>
+});
+
+const CareerPipelineView = dynamic(() => import("@/components/content/CareerPipelineView").then(mod => mod.CareerPipelineView), {
+  loading: () => <div className="p-8 flex justify-center w-full h-full items-center"><div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"></div></div>
+});
+
+const ContactView = dynamic(() => import("@/components/content/ContactView").then(mod => mod.ContactView), {
+  loading: () => <div className="p-8 flex justify-center w-full h-full items-center"><div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"></div></div>
+});
 import { getProfile, getActivityLog } from "@/lib/data";
 import { useLanguage } from "@/lib/i18n";
 import { clsx } from "clsx";
