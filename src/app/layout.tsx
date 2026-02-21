@@ -22,23 +22,23 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Gabriel Porto Duque Estrada Fiorante | Desenvolvedor Full Stack & Cyber Sec",
+  title: "Gabriel Porto | Full Stack Developer & Cybersecurity Specialist",
   description:
-    "Portfólio de Gabriel Porto Duque Estrada Fiorante — Profissional de TI com experiência em infraestrutura, desenvolvimento web, segurança cibernética e automação de processos. Conheça meus projetos.",
-  keywords: ["Gabriel Porto", "Portfólio", "Desenvolvedor", "Infraestrutura", "Cyber Security", "Full Stack"],
+    "Portfolio of Gabriel Porto Duque Estrada Fiorante — IT Professional experienced in infrastructure, web development, cybersecurity, and process automation.",
+  keywords: ["Gabriel Porto", "Portfolio", "Full Stack Developer", "Infrastructure", "Cybersecurity", "RPA", "Python", "PHP"],
   authors: [{ name: "Gabriel Porto" }],
   openGraph: {
-    title: "Gabriel Porto Duque Estrada Fiorante | Desenvolvedor Full Stack",
-    description: "Portfólio interativo de Gabriel Porto — Desenvolvedor de Software e Especialista em Infraestrutura.",
+    title: "Gabriel Porto | Full Stack Developer",
+    description: "Interactive portfolio of Gabriel Porto — Software Developer and Infrastructure Specialist.",
     url: "https://gabrielporto.com.br",
     siteName: "Gabriel Porto Portfolio",
-    locale: "pt_BR",
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gabriel Porto | Portfólio",
-    description: "Portfólio completo com projetos inovadores de Gabriel Porto.",
+    title: "Gabriel Porto | Portfolio",
+    description: "Full portfolio with innovative projects by Gabriel Porto.",
   },
   robots: {
     index: true,

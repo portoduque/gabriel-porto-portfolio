@@ -20,7 +20,7 @@ const PROFILE_EN = {
     role: "Full-Stack Developer",
     location: "Porto Velho - RO, Brazil",
     summary:
-        "Turning complex problems into scalable digital products. As a Full-Stack Developer, I leverage ecosystems like Python and PHP to build Web and Mobile (Flutter) applications focused on UX and high availability. My edge is a 360° vision: I combine high-quality code with RPA automation and a secure infrastructure (CCNA/Linux), ensuring solutions are not only functional but efficient and protected.",
+        "Turning complex problems into scalable digital products. As a Full-Stack Developer, I leverage ecosystems like Python and PHP to build Web and Mobile (FlutterFlow) applications focused on UX and high availability. My edge is a 360° vision: I combine high-quality code with RPA automation and a secure infrastructure (CCNA/Linux), ensuring solutions are not only functional but efficient and protected.",
 };
 
 const PROFILE_PT = {
@@ -28,7 +28,7 @@ const PROFILE_PT = {
     role: "Desenvolvedor Full-Stack",
     location: "Porto Velho - RO, Brasil",
     summary:
-        "Transformando problemas complexos em produtos digitais escaláveis. Como Desenvolvedor Full-Stack, utilizo ecossistemas como Python e PHP para construir aplicações Web e Mobile (Flutter) focadas em UX e alta disponibilidade. Meu diferencial está na visão 360º: uno código de alta qualidade com automação RPA e uma infraestrutura segura (CCNA/Linux), garantindo que a solução não apenas funcione, mas seja eficiente e protegida.",
+        "Transformando problemas complexos em produtos digitais escaláveis. Como Desenvolvedor Full-Stack, utilizo ecossistemas como Python e PHP para construir aplicações Web e Mobile (FlutterFlow) focadas em UX e alta disponibilidade. Meu diferencial está na visão 360º: uno código de alta qualidade com automação RPA e uma infraestrutura segura (CCNA/Linux), garantindo que a solução não apenas funcione, mas seja eficiente e protegida.",
 };
 
 export function getProfile(locale: Locale) {
@@ -36,7 +36,7 @@ export function getProfile(locale: Locale) {
 }
 
 
-export const SKILLS = {
+const SKILLS_EN = {
     languages: ["PHP", "Python", "JavaScript (ES6+)", "HTML5", "CSS3"],
     frameworks: ["Bootstrap", "MadBuilder (PHP)", "Flutter/Dart"],
     mobile: ["Flutter", "FlutterFlow"],
@@ -65,15 +65,51 @@ export const SKILLS = {
     ],
 };
 
+const SKILLS_PT = {
+    languages: ["PHP", "Python", "JavaScript (ES6+)", "HTML5", "CSS3"],
+    frameworks: ["Bootstrap", "MadBuilder (PHP)", "Flutter/Dart"],
+    mobile: ["Flutter", "FlutterFlow"],
+    infrastructure: [
+        "Linux (Apache)",
+        "Windows Server 2016 (AD, Group Policy)",
+        "Cisco CCNA",
+        "Resolução de Problemas (Troubleshooting)",
+    ],
+    security: [
+        "Google Cybersecurity Professional",
+        "Conformidade LGPD",
+        "Mitigação de Riscos",
+    ],
+    tools: [
+        "WordPress (Elementor, JetEngine)",
+        "Jira",
+        "Trello",
+        "Metodologias Ágeis",
+        "GitHub",
+        "Selenium WebDriver",
+        "RPA",
+        "Airflow",
+        "Madbuilder",
+        "FlutterFlow",
+    ],
+};
+
+export function getSkills(locale: Locale) {
+    return locale === "en" ? SKILLS_EN : SKILLS_PT;
+}
+
+export const SKILLS = SKILLS_PT;
+
 const EXPERIENCE_EN = [
     {
         role: "Systems Analyst & Developer",
         period: "December 2024 – Present",
         description: [
-            "Development of websites and web systems (WordPress, PHP/MadBuilder).",
-            "Creation of automations (RPA) with Python, Selenium and Airflow.",
-            "Deployment and configuration of Linux servers (Apache).",
-            "Requirements gathering, system modeling for healthcare, and project management.",
+            "Automated critical processes through RPA flows (Python/Airflow).",
+            "Develop Web (PHP/MadBuilder) and Mobile (Flutter/FlutterFlow) applications focused on high availability and user experience.",
+            "Modeled scalable system architectures to meet the state's public health demand.",
+            "Linux server deployment and configuration (Apache).",
+            "Requirements gathering and project management.",
         ],
     },
     {
@@ -101,10 +137,11 @@ const EXPERIENCE_PT = [
         role: "Analista e Desenvolvedor de Sistemas",
         period: "Dezembro 2024 – Presente",
         description: [
-            "Desenvolvimento de sites e sistemas web (WordPress, PHP/MadBuilder).",
-            "Criação de automações (RPA) com Python, Selenium e Airflow.",
+            "Automatizei processos críticos através de fluxos RPA (Python/Airflow)",
+            "Desenvolvo aplicações Web (PHP/MadBuilder) e Mobile (Flutter/FlutterFlow) focadas em alta disponibilidade e experiência do usuário",
+            "Modelei arquiteturas de sistemas escaláveis para atender à demanda de saúde pública do estado.",
             "Implantação e configuração de servidores Linux (Apache).",
-            "Levantamento de requisitos, modelagem de sistemas para a área da saúde e gestão de projetos.",
+            "Levantamento de requisitos e gestão de projetos.",
         ],
     },
     {
@@ -121,8 +158,6 @@ const EXPERIENCE_PT = [
         period: "01/2021 – 12/2023",
         description: [
             "Atendimento de alto padrão em ambiente multicultural, demonstrando forte adaptabilidade e comunicação global.",
-            "Gestão de transações com sistema Micros, garantindo precisão e confiabilidade no registro de operações.",
-            "Adesão estrita a rigorosos padrões internacionais de segurança e conformidade estabelecidos pelo CDC/FDA.",
         ],
     },
 ];
@@ -132,30 +167,46 @@ export function getExperience(locale: Locale) {
 }
 
 const EDUCATION_EN = [
-    { degree: "Postgraduate in Data Science", year: "2026 – Present" },
-    { degree: "Postgraduate in Enterprise Cybersecurity Management", year: "2025" },
-    { degree: "Bachelor's in Information Systems", year: "2017 – 2021" },
+    { degree: "Postgraduate in Data Science", year: "2026 – 2027 (Focus College)" },
+    { degree: "Postgraduate in Enterprise Cybersecurity Management", year: "2025 – 2026 (Estácio)" },
+    { degree: "Bachelor's in Information Systems", year: "2017 – 2021 (Estácio)" },
 ];
 
 const EDUCATION_PT = [
-    { degree: "Pós-graduação em Ciência de Dados", year: "2026 – Presente" },
-    { degree: "Pós-graduação em Gestão na Cibersegurança Empresarial", year: "2025" },
-    { degree: "Bacharelado em Sistemas de Informação", year: "2017 – 2021" },
+    { degree: "Pós-graduação em Ciência de Dados", year: "2026 – 2027 (Faculdade Focus)" },
+    { degree: "Pós-graduação em Gestão na Cibersegurança Empresarial", year: "2025 – 2026 (Estácio)" },
+    { degree: "Bacharelado em Sistemas de Informação", year: "2017 – 2021 (Estácio)" },
 ];
 
 export function getEducation(locale: Locale) {
     return locale === "en" ? EDUCATION_EN : EDUCATION_PT;
 }
 
-export const CERTIFICATES = [
+const CERTIFICATES_EN = [
+    "Cisco Certified Network Associate (CCNA)",
+    "Google Cybersecurity Professional Certificate",
+    "CS50's Introduction to Programming with Python (Harvard)",
+    "C# COMPLETE - Object Oriented Programming",
+    "CompTIA Security+ (SY0-701) Complete Course",
+    "Linux Administrator Course",
+    "Google Cloud Foundations Academy"
+];
+
+const CERTIFICATES_PT = [
     "Cisco Certified Network Associate (CCNA)",
     "Google Cybersecurity Professional Certificate",
     "CS50's Introduction to Programming with Python (Harvard)",
     "C# COMPLETO - Programação Orientada a Objetos",
-    "CompTIA Security+ (SY0-701) Complete Course",
+    "CompTIA Security+ (SY0-701) Curso Completo",
     "Curso de Administrador Linux",
     "Google Cloud Foundations Academy"
 ];
+
+export function getCertificates(locale: Locale) {
+    return locale === "en" ? CERTIFICATES_EN : CERTIFICATES_PT;
+}
+
+export const CERTIFICATES = CERTIFICATES_PT;
 
 export interface ProjectMedia {
     type: "image" | "video";

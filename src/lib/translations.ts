@@ -220,6 +220,47 @@ const pt: Record<string, string> = {
     "activity.10.time": "1mês atrás",
     "activity.11.message": "fix: hardening de servidor Apache Linux",
     "activity.11.time": "1mês atrás",
+
+    // Misc
+    "nav.resume.title": "Baixar / Abrir Currículo",
+    "contact.country.name": "Brasil",
+    "docker.log.health_check": "✓ Verificação de saúde aprovada",
+    "docker.log.api_status": "GET /api/v1/status 200 OK",
+    "docker.log.webhook_created": "POST /webhook 201 Criado",
+    "docker.log.worker_listening": "INFO: Worker escutando em :3000",
+    "docker.log.db_connected": "✓ Banco de dados conectado",
+    "docker.log.cache_ratio": "INFO: Taxa de cache: 94.2%",
+    "docker.log.health_ok": "GET /health 200 OK (2ms)",
+
+    // Errors & Navigation
+    "error.project_not_found": "Projeto não encontrado",
+    "error.return_to_projects": "Voltar aos projetos",
+    "common.back": "Voltar",
+    "nav.home.title": "Início (main.py)",
+    "nav.projects.title": "Projetos (projetos.yml)",
+    "nav.experience.title": "Experiência (carreira.sh)",
+    "nav.contact.title": "Contato",
+
+    // Project Details View
+    "project.details.tech": "Tecnologias",
+    "project.details.live": "Acessar Site",
+    "project.details.repo": "Ver no GitHub",
+    "project.details.readme.empty": "# README vazio.",
+    "project.details.videos": "VÍDEOS",
+    "project.details.capturas": "CAPTURAS",
+    "project.details.impact": "IMPACTO",
+    "project.details.metrics": "MÉTRICAS CHAVE",
+    "project.details.title": "DETALHES DO PROJETO",
+    "project.details.role": "cargo",
+    "project.details.year": "ano",
+
+    // Language Toggle
+    "toggle.to_pt": "Mudar para Português",
+    "toggle.to_en": "Mudar para Inglês",
+
+    // Common
+    "common.public": "Público",
+    "common.private": "Privado",
 };
 
 const en: Record<string, string> = {
@@ -442,6 +483,47 @@ const en: Record<string, string> = {
     "activity.10.time": "1m ago",
     "activity.11.message": "fix: Linux Apache server hardening",
     "activity.11.time": "1m ago",
+
+    // Misc
+    "nav.resume.title": "Download / Open Resume",
+    "contact.country.name": "Brazil",
+    "docker.log.health_check": "✓ Health check passed",
+    "docker.log.api_status": "GET /api/v1/status 200 OK",
+    "docker.log.webhook_created": "POST /webhook 201 Created",
+    "docker.log.worker_listening": "INFO: Worker listening on :3000",
+    "docker.log.db_connected": "✓ Database connected",
+    "docker.log.cache_ratio": "INFO: Cache hit ratio: 94.2%",
+    "docker.log.health_ok": "GET /health 200 OK (2ms)",
+
+    // Errors & Navigation
+    "error.project_not_found": "Project not found",
+    "error.return_to_projects": "Return to projects",
+    "common.back": "Back",
+    "nav.home.title": "Home (main.py)",
+    "nav.projects.title": "Projects (projetos.yml)",
+    "nav.experience.title": "Experience (carreira.sh)",
+    "nav.contact.title": "Contact",
+
+    // Project Details View
+    "project.details.tech": "Tech Stack",
+    "project.details.live": "Live Demo",
+    "project.details.repo": "Source Code",
+    "project.details.readme.empty": "# README is empty.",
+    "project.details.videos": "VIDEOS",
+    "project.details.capturas": "SCREENSHOTS",
+    "project.details.impact": "IMPACT",
+    "project.details.metrics": "KEY METRICS",
+    "project.details.title": "PROJECT DETAILS",
+    "project.details.role": "role",
+    "project.details.year": "year",
+
+    // Language Toggle
+    "toggle.to_pt": "Switch to Portuguese",
+    "toggle.to_en": "Switch to English",
+
+    // Common
+    "common.public": "Public",
+    "common.private": "Private",
 };
 
 

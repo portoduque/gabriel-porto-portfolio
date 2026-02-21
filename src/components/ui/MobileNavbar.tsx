@@ -77,7 +77,7 @@ export function MobileNavbar() {
                 activeColor="text-red-400"
             />
             <a
-                href="/Gabriel-Porto-Resume.pdf"
+                href="/gabrielportocurriculo.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex flex-col items-center gap-1 p-2 rounded-lg transition-all text-muted hover:text-foreground active:scale-95 min-w-[64px]"

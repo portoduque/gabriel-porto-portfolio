@@ -12,7 +12,7 @@
 ---
 
 ## 🚀 Resumo Profissional
-Profissional de Tecnologia da Informação com sólida experiência em infraestrutura de TI, suporte técnico, desenvolvimento web e segurança cibernética. Especialista em administração de servidores (Linux/Windows) e desenvolvimento de soluções ágeis para o setor público, com foco em saúde digital e automação de processos (RPA).
+Transformando problemas complexos em produtos digitais escaláveis. Como Desenvolvedor Full-Stack, utilizo ecossistemas como Python e PHP para construir aplicações Web e Mobile (FlutterFlow) focadas em UX e alta disponibilidade. Meu diferencial está na visão 360º: uno código de alta qualidade com automação RPA e uma infraestrutura segura (CCNA/Linux), garantindo que a solução não apenas funcione, mas seja eficiente e protegida.
 
 ---
 
@@ -38,12 +38,13 @@ Profissional de Tecnologia da Informação com sólida experiência em infraestr
 
 ## 💼 Experiência Profissional
 
-### Analista e Desenvolvedor de Sistemas
-*Dezembro 2024 – Presente*
-- Desenvolvimento de sites e sistemas web (WordPress, PHP/MadBuilder).
-- Criação de automações (RPA) com Python, Selenium e Airflow.
+### Analista e Desenvolvedor de Sistemas (Sesau/RO)
+*Dezembro 2024 – Atual*
+- Automatizei processos críticos através de fluxos RPA (Python/Airflow).
+- Desenvolvo aplicações Web (PHP/MadBuilder) e Mobile (Flutter/FlutterFlow) focadas em alta disponibilidade e experiência do usuário.
+- Modelei arquiteturas de sistemas escaláveis para atender à demanda de saúde pública do estado.
 - Implantação e configuração de servidores Linux (Apache).
-- Levantamento de requisitos, modelagem de sistemas para a área da saúde e gestão de projetos.
+- Levantamento de requisitos e gestão de projetos.
 
 ### Suporte Técnico de TI
 *Agosto 2024 – Dezembro 2024*
@@ -60,9 +61,9 @@ Profissional de Tecnologia da Informação com sólida experiência em infraestr
 ---
 
 ## 🎓 Formação Acadêmica
-- **Pós-graduação em Ciência de Dados** (2026 – Presente)
-- **Pós-graduação em Gestão na Cibersegurança Empresarial** (2025)
-- **Bacharelado em Sistemas de Informação** (2017 – 2021)
+- **Pós-graduação em Ciência de Dados** (2026 – 2027) - Faculdade Focus - *Cursando*
+- **Pós-graduação em Gestão na Cibersegurança Empresarial** (2025 – 2026) - Universidade Estácio de Sá - *Concluído*
+- **Bacharelado em Sistemas de Informação** (2017 – 2021) - Universidade Estácio de Sá - *Formado*
 
 ---
 

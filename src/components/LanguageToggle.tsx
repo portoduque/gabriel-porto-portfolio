@@ -4,7 +4,7 @@ import { useLanguage } from "@/lib/i18n";
 import { useState, useEffect } from "react";
 
 export function LanguageToggle() {
-    const { locale, setLocale } = useLanguage();
+    const { locale, setLocale, t } = useLanguage();
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -22,8 +22,8 @@ export function LanguageToggle() {
         <button
             onClick={() => setLocale(isEn ? "pt-BR" : "en")}
             className="relative flex items-center justify-center p-2 md:px-3 md:py-2 rounded-full bg-background dark:bg-panel border border-border/50 dark:border-border shadow-sm hover:shadow-md transition-all duration-300 group"
-            aria-label={isEn ? "Switch to Portuguese" : "Mudar para Inglês"}
-            title={isEn ? "Switch to Portuguese" : "Mudar para Inglês"}
+            aria-label={t(isEn ? "toggle.to_pt" : "toggle.to_en")}
+            title={t(isEn ? "toggle.to_pt" : "toggle.to_en")}
         >
             {/* Desktop: Full Toggle (Pill) */}
             <div className="hidden md:flex items-center gap-3">

@@ -28,9 +28,9 @@ export default function ProjectDetails() {
 
     if (!project) return (
         <div className="flex flex-col h-screen w-full relative font-[family-name:var(--font-display)] bg-background text-foreground items-center justify-center">
-            <span className="text-xl mb-4">{locale === "en" ? "Project not found" : "Projeto não encontrado"}</span>
+            <span className="text-xl mb-4">{t("error.project_not_found")}</span>
             <button onClick={() => router.push("/?tab=projetos.yml")} className="text-primary hover:underline">
-                {locale === "en" ? "Return to projects" : "Voltar aos projetos"}
+                {t("error.return_to_projects")}
             </button>
         </div>
     );
@@ -46,20 +46,23 @@ export default function ProjectDetails() {
             <div className="flex flex-1 overflow-hidden z-10 w-full relative">
 
                 {/* ===== SIDEBAR ===== */}
-                <aside className="w-12 bg-background border-r border-border hidden md:flex flex-col items-center py-4 gap-6 shrink-0">
-                    <button onClick={() => router.push("/?tab=main.py")} className="text-muted hover:text-foreground transition-colors cursor-pointer" title="Home (main.py)">
-                        <SiPython size={24} />
+                <aside className="w-12 bg-background border-r border-border hidden md:flex flex-col items-center py-4 gap-2 shrink-0">
+                    <button onClick={() => router.push("/?tab=main.py")} className="relative group flex items-center justify-center w-full h-12 text-muted hover:text-foreground transition-colors cursor-pointer" title="Home (main.py)">
+                        <div className="absolute left-0 top-0 bottom-0 w-[2px] transition-all duration-200 bg-primary opacity-0 group-hover:opacity-50" />
+                        <SiPython size={24} className="transition-transform duration-200 group-hover:scale-110" />
                     </button>
-                    <button onClick={() => router.push("/?tab=projetos.yml")} className="text-foreground group relative transition-colors cursor-pointer" title="Projetos (projetos.yml)">
-                        <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />
-                        <SiDocker size={24} />
+                    <button onClick={() => router.push("/?tab=projetos.yml")} className="text-foreground group relative flex items-center justify-center w-full h-12 transition-colors cursor-pointer" title="Projetos (projetos.yml)">
+                        <div className="absolute left-0 top-0 bottom-0 w-[2px] transition-all duration-200 bg-primary opacity-100" />
+                        <SiDocker size={24} className="transition-transform duration-200 group-hover:scale-110" />
                     </button>
-                    <button onClick={() => router.push("/?tab=carreira.sh")} className="text-muted hover:text-foreground transition-colors cursor-pointer" title="Experiência (carreira.sh)">
-                        <VscTerminal size={24} />
+                    <button onClick={() => router.push("/?tab=carreira.sh")} className="relative group flex items-center justify-center w-full h-12 text-muted hover:text-foreground transition-colors cursor-pointer" title="Experiência (carreira.sh)">
+                        <div className="absolute left-0 top-0 bottom-0 w-[2px] transition-all duration-200 bg-primary opacity-0 group-hover:opacity-50" />
+                        <VscTerminal size={24} className="transition-transform duration-200 group-hover:scale-110" />
                     </button>
                     <div className="flex-1" />
-                    <button onClick={() => router.push("/?tab=contact.yaml")} className="pb-4 text-muted hover:text-foreground transition-colors cursor-pointer" title="Contato">
-                        <VscMail size={24} />
+                    <button onClick={() => router.push("/?tab=contact.yaml")} className="relative group flex items-center justify-center w-full h-12 pb-2 text-muted hover:text-foreground transition-colors cursor-pointer" title="Contato">
+                        <div className="absolute left-0 top-0 bottom-0 w-[2px] transition-all duration-200 bg-primary opacity-0 group-hover:opacity-50" />
+                        <VscMail size={24} className="transition-transform duration-200 group-hover:scale-110" />
                     </button>
                 </aside>
 
@@ -97,11 +100,11 @@ export default function ProjectDetails() {
                         </button>
                         {/* CV Download / Open Tab */}
                         <a
-                            href="/Gabriel-Porto-Resume.pdf"
+                            href="/gabrielportocurriculo.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`${baseTabClasses} hover:text-foreground`}
-                            title="Download / Open Resume"
+                            title={t("nav.resume.title")}
                         >
                             <VscFilePdf size={16} className="text-red-400" />
                             <span className="text-xs font-[family-name:var(--font-mono)]">{t("nav.resume")}</span>
@@ -126,7 +129,7 @@ export default function ProjectDetails() {
                             className="group flex items-center gap-2 text-sm font-[family-name:var(--font-mono)] text-muted hover:text-primary transition-colors cursor-pointer w-fit"
                         >
                             <VscArrowLeft size={16} className="text-primary group-hover:-translate-x-1 transition-transform" />
-                            <span>{locale === "en" ? "Back" : "Voltar"}</span>
+                            <span>{t("common.back")}</span>
                         </button>
                     </div>
 

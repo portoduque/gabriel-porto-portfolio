@@ -12,7 +12,7 @@
 ---
 
 ## 🚀 Professional Summary
-Information Technology professional with solid experience in IT infrastructure, technical support, web development, and cybersecurity. Expert in server administration (Linux/Windows) and agile solutions development for the public sector, focusing on digital health and robotic process automation (RPA).
+Turning complex problems into scalable digital products. As a Full-Stack Developer, I leverage ecosystems like Python and PHP to build Web and Mobile (FlutterFlow) applications focused on UX and high availability. My edge is a 360° vision: I combine high-quality code with RPA automation and a secure infrastructure (CCNA/Linux), ensuring solutions are not only functional but efficient and protected.
 
 ---
 
@@ -38,12 +38,13 @@ Information Technology professional with solid experience in IT infrastructure, 
 
 ## 💼 Professional Experience
 
-### Systems Analyst and Developer
+### Systems Analyst and Developer (Sesau/RO)
 *December 2024 – Present*
-- Development of websites and web systems (WordPress, PHP/MadBuilder).
-- Creation of automations (RPA) with Python, Selenium, and Airflow.
+- Automated critical processes through RPA flows (Python/Airflow).
+- Develop Web (PHP/MadBuilder) and Mobile (Flutter/FlutterFlow) applications focused on high availability and user experience.
+- Modeled scalable system architectures to meet the state's public health demand.
 - Linux server deployment and configuration (Apache).
-- Requirements gathering, system modeling for the health sector, and project management.
+- Requirements gathering and project management.
 
 ### IT Technical Support
 *August 2024 – December 2024*
@@ -60,9 +61,9 @@ Information Technology professional with solid experience in IT infrastructure, 
 ---
 
 ## 🎓 Academic Background
-- **Postgraduate in Data Science** (2026 – Present)
-- **Postgraduate in Corporate Cybersecurity Management** (2025)
-- **Bachelor's in Information Systems** (2017 – 2021)
+- **Postgraduate in Data Science** (2026 – 2027) - Focus College - *Ongoing*
+- **Postgraduate in Corporate Cybersecurity Management** (2025 – 2026) - Estácio de Sá University - *Completed*
+- **Bachelor's in Information Systems** (2017 – 2021) - Estácio de Sá University - *Graduated*
 
 ---
 

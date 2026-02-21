@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
-import { getProfile, SKILLS } from "@/lib/data";
+import { getProfile, getSkills, SKILLS } from "@/lib/data";
 import { useLanguage } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
@@ -79,8 +79,9 @@ export function SystemOverview() {
         y.set(0);
     };
 
-    const stackDisplay = "[PHP, Python, HTML5, CSS3, Flutter, Docker, REST API]";
-    const toolsDisplay = "[Linux, WordPress, RPA, Apache, Airflow, FlutterFlow, Madbuilder]";
+    const skills = getSkills(locale);
+    const stackDisplay = `[${skills.languages.join(", ")}, Flutter, Docker, REST API]`;
+    const toolsDisplay = `[${skills.tools.slice(0, 7).join(", ")}]`;
 
     return (
         <motion.div

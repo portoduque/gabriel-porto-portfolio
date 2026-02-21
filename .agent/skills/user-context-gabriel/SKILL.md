@@ -6,7 +6,7 @@ description: Perfil profissional, habilidades, experiências e portfólio de Gab
 # User Context: Gabriel Porto Duque Estrada Fiorante
 
 ## Visão Geral
-Esta skill contém o contexto profissional completo de Gabriel Porto Duque Estrada Fiorante, consolidado a partir de seu repositório de currículo/portfólio. Ela deve ser usada como fonte única de verdade para qualquer tarefa que envolva as informações do usuário.
+Esta skill contém o contexto profissional completo de Gabriel Porto Duque Estrada Fiorante, consolidado a partir de seu repositório de currículo/portfólio e atualizado em Fevereiro de 2026 com base no novo currículo em PDF. Ela deve ser usada como fonte única de verdade para qualquer tarefa que envolva as informações do usuário.
 
 ## Como Usar
 Sempre que o usuário solicitar algo relacionado à sua carreira, projetos ou habilidades:

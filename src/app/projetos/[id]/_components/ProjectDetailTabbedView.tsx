@@ -4,6 +4,8 @@ import { Project, ProjectMedia } from "@/lib/data";
 import { useState } from "react";
 import { IconType } from "react-icons";
 import Image from "next/image";
+import { useLanguage } from "@/lib/i18n";
+
 import { motion, AnimatePresence } from "framer-motion";
 import {
     SiPython, SiSelenium, SiNextdotjs, SiReact,
@@ -104,6 +106,7 @@ function renderContent(text: string) {
 }
 
 export default function ProjectDetailTabbedView({ project, locale }: Props) {
+    const { t } = useLanguage();
     const [activeTab, setActiveTab] = useState<TabId>("readme");
     const [activeMedia, setActiveMedia] = useState<ProjectMedia | null>(null);
 
@@ -112,8 +115,8 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
 
     const tabs: { id: TabId; label: string; icon: string; show: boolean }[] = [
         { id: "readme", label: "README.md", icon: "description", show: true },
-        { id: "gallery", label: locale === "en" ? "gallery/" : "galeria/", icon: "photo_library", show: !!hasMedia },
-        { id: "metrics", label: locale === "en" ? "metrics.json" : "metricas.json", icon: "monitoring", show: !!hasMetrics },
+        { id: "gallery", label: "gallery/", icon: "photo_library", show: !!hasMedia },
+        { id: "metrics", label: "metrics.json", icon: "monitoring", show: !!hasMetrics },
     ];
 
     return (
@@ -143,7 +146,7 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
                             <div className="flex flex-col gap-3 flex-1 min-w-[280px]">
                                 <div className="flex items-center gap-2 text-[10px] font-bold font-[family-name:var(--font-mono)] text-muted/50 uppercase tracking-[0.2em] mb-1">
                                     <span className="material-symbols-outlined text-[14px] text-primary/70">terminal</span>
-                                    <span>{locale === "en" ? "Tech Stack" : "Tecnologias"}</span>
+                                    <span>{t("project.details.tech")}</span>
                                 </div>
                                 <div className="flex flex-wrap gap-2.5 items-center">
                                     {project.tech.map((t: string) => {
@@ -166,7 +169,7 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
                                         className="group relative flex justify-center w-full sm:w-auto items-center gap-3 px-4 sm:px-6 py-3 rounded-full bg-primary border border-primary/50 hover:bg-primary/90 text-white transition-all shadow-sm hover:shadow-md active:scale-95">
                                         <span className="material-symbols-outlined text-[18px] relative z-10">language</span>
                                         <span className="text-xs font-bold font-[family-name:var(--font-mono)] uppercase tracking-wider relative z-10">
-                                            {locale === "en" ? "Live Demo" : "Acessar Site"}
+                                            {t("project.details.live")}
                                         </span>
                                         <span className="material-symbols-outlined text-[16px] relative z-10 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform">arrow_outward</span>
                                     </a>
@@ -177,7 +180,7 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
                                         className="group relative flex justify-center w-full sm:w-auto items-center gap-3 px-4 sm:px-6 py-3 rounded-full bg-panel border border-border/50 hover:border-foreground/30 hover:bg-foreground hover:text-background transition-all overflow-hidden shadow-sm hover:shadow-md active:scale-95">
                                         <SiGithub size={18} className="relative z-10" />
                                         <span className="text-xs font-bold font-[family-name:var(--font-mono)] uppercase tracking-wider relative z-10">
-                                            {locale === "en" ? "Source Code" : "Ver no GitHub"}
+                                            {t("project.details.repo")}
                                         </span>
                                         <span className="material-symbols-outlined text-[16px] relative z-10 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform">arrow_outward</span>
                                     </a>
@@ -220,7 +223,7 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
                                     {project.content ? renderContent(project.content) : (
                                         <div className="w-full p-8 border border-dashed border-border/50 text-center rounded-xl bg-panel/30">
                                             <p className="text-muted italic font-[family-name:var(--font-mono)] text-sm">
-                                                {locale === "en" ? "# README is empty." : "# README vazio."}
+                                                {t("project.details.readme.empty")}
                                             </p>
                                         </div>
                                     )}
@@ -241,7 +244,7 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
                                         <div>
                                             <div className="flex items-center gap-2 text-[10px] font-bold font-[family-name:var(--font-mono)] text-muted/50 uppercase tracking-widest mb-4">
                                                 <span className="material-symbols-outlined text-[14px]">videocam</span>
-                                                {locale === "en" ? "VIDEOS" : "VÍDEOS"}
+                                                {t("project.details.videos")}
                                             </div>
                                             <div className="space-y-4">
                                                 {project.media!.filter(m => m.type === 'video').map((item, idx) => (
@@ -276,7 +279,7 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
                                         <div>
                                             <div className="flex items-center gap-2 text-[10px] font-bold font-[family-name:var(--font-mono)] text-muted/50 uppercase tracking-widest mb-4">
                                                 <span className="material-symbols-outlined text-[14px]">photo_library</span>
-                                                {locale === "en" ? "SCREENSHOTS" : "CAPTURAS"}
+                                                {t("project.details.capturas")}
                                             </div>
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                                 {project.media!.filter(m => m.type === 'image').map((item, idx) => (
@@ -319,7 +322,7 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
                                         <div className="p-5 bg-primary/5 border border-primary/20 rounded-xl">
                                             <div className="flex items-center gap-2 text-[10px] font-bold font-[family-name:var(--font-mono)] text-primary/60 uppercase tracking-widest mb-3">
                                                 <span className="material-symbols-outlined text-[14px]">bolt</span>
-                                                {locale === "en" ? "IMPACT" : "IMPACTO"}
+                                                {t("project.details.impact")}
                                             </div>
                                             <p className="text-foreground/80 leading-relaxed italic">
                                                 &quot;{project.impact}&quot;
@@ -331,7 +334,7 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
                                     <div>
                                         <div className="flex items-center gap-2 text-[10px] font-bold font-[family-name:var(--font-mono)] text-muted/50 uppercase tracking-widest mb-4">
                                             <span className="material-symbols-outlined text-[14px]">monitoring</span>
-                                            {locale === "en" ? "KEY METRICS" : "MÉTRICAS CHAVE"}
+                                            {t("project.details.metrics")}
                                         </div>
                                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                             {project.metrics!.map((m, i) => (
@@ -351,19 +354,19 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
                                         <div className="px-5 py-3 bg-panel/50 border-b border-border/30">
                                             <div className="flex items-center gap-2 text-[10px] font-bold font-[family-name:var(--font-mono)] text-muted/50 uppercase tracking-widest">
                                                 <span className="material-symbols-outlined text-[14px]">info</span>
-                                                {locale === "en" ? "PROJECT DETAILS" : "DETALHES DO PROJETO"}
+                                                {t("project.details.title")}
                                             </div>
                                         </div>
                                         <div className="divide-y divide-border/20">
                                             {project.role && (
                                                 <div className="flex items-center justify-between px-5 py-3">
-                                                    <span className="text-xs text-muted/60 font-[family-name:var(--font-mono)]">{locale === "en" ? "role" : "cargo"}</span>
+                                                    <span className="text-xs text-muted/60 font-[family-name:var(--font-mono)]">{t("project.details.role")}</span>
                                                     <span className="text-sm text-foreground/80 font-medium">{project.role}</span>
                                                 </div>
                                             )}
                                             {project.date && (
                                                 <div className="flex items-center justify-between px-5 py-3">
-                                                    <span className="text-xs text-muted/60 font-[family-name:var(--font-mono)]">{locale === "en" ? "year" : "ano"}</span>
+                                                    <span className="text-xs text-muted/60 font-[family-name:var(--font-mono)]">{t("project.details.year")}</span>
                                                     <span className="text-sm text-foreground/80 font-medium">{project.date}</span>
                                                 </div>
                                             )}
@@ -377,8 +380,8 @@ export default function ProjectDetailTabbedView({ project, locale }: Props) {
                                                     }`}>
                                                     {project.status || (
                                                         project.visibility === "public"
-                                                            ? (locale === "en" ? "Public" : "Público")
-                                                            : (locale === "en" ? "Private" : "Privado")
+                                                            ? t("common.public")
+                                                            : t("common.private")
                                                     )}
                                                 </span>
                                             </div>

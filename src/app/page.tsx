@@ -5,6 +5,7 @@ import { SystemOverview } from "@/components/hero/SystemOverview";
 import { DockerComposeView } from "@/components/content/DockerComposeView";
 import { CareerPipelineView } from "@/components/content/CareerPipelineView";
 import { ContactView } from "@/components/content/ContactView";
+import { CompetenceCard } from "@/components/content/CompetenceCard";
 import { getProfile, getActivityLog } from "@/lib/data";
 import { useLanguage } from "@/lib/i18n";
 import { clsx } from "clsx";
@@ -69,39 +70,39 @@ function HomeContent() {
       {/* ========== MAIN AREA ========== */}
       <div className="flex flex-1 overflow-hidden z-10 w-full min-w-0">
         {/* ===== SIDEBAR ===== */}
-        <aside className="w-12 bg-background border-r border-border hidden md:flex flex-col items-center py-4 gap-6 shrink-0">
+        <aside className="w-12 bg-background border-r border-border hidden md:flex flex-col items-center py-4 gap-2 shrink-0">
           <button
             aria-label={t("nav.main")}
             onClick={() => handleTabChange("main.py")}
-            className={clsx("relative group transition-colors", activeTab === "main.py" ? "text-foreground" : "text-muted hover:text-foreground")}
+            className={clsx("relative group transition-colors flex items-center justify-center w-full h-12", activeTab === "main.py" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
-            {activeTab === "main.py" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
-            <SiPython size={24} />
+            <div className={clsx("absolute left-0 top-0 bottom-0 w-[2px] transition-all duration-200", activeTab === "main.py" ? "bg-primary opacity-100" : "bg-primary opacity-0 group-hover:opacity-50")} />
+            <SiPython size={24} className="transition-transform duration-200 group-hover:scale-110" />
           </button>
           <button
             aria-label={t("nav.projects")}
             onClick={() => handleTabChange("projetos.yml")}
-            className={clsx("transition-colors relative", activeTab === "projetos.yml" ? "text-foreground" : "text-muted hover:text-foreground")}
+            className={clsx("relative group transition-colors flex items-center justify-center w-full h-12", activeTab === "projetos.yml" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
-            {activeTab === "projetos.yml" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
-            <SiDocker size={24} />
+            <div className={clsx("absolute left-0 top-0 bottom-0 w-[2px] transition-all duration-200", activeTab === "projetos.yml" ? "bg-primary opacity-100" : "bg-primary opacity-0 group-hover:opacity-50")} />
+            <SiDocker size={24} className="transition-transform duration-200 group-hover:scale-110" />
           </button>
           <button
             aria-label={t("nav.experience")}
             onClick={() => handleTabChange("carreira.sh")}
-            className={clsx("transition-colors relative", activeTab === "carreira.sh" ? "text-foreground" : "text-muted hover:text-foreground")}
+            className={clsx("relative group transition-colors flex items-center justify-center w-full h-12", activeTab === "carreira.sh" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
-            {activeTab === "carreira.sh" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
-            <VscTerminal size={24} />
+            <div className={clsx("absolute left-0 top-0 bottom-0 w-[2px] transition-all duration-200", activeTab === "carreira.sh" ? "bg-primary opacity-100" : "bg-primary opacity-0 group-hover:opacity-50")} />
+            <VscTerminal size={24} className="transition-transform duration-200 group-hover:scale-110" />
           </button>
           <div className="flex-1" />
           <button
             aria-label={t("nav.contact")}
             onClick={() => handleTabChange("contact.yaml")}
-            className={clsx("pb-4 transition-colors relative", activeTab === "contact.yaml" ? "text-foreground" : "text-muted hover:text-foreground")}
+            className={clsx("relative group transition-colors flex items-center justify-center w-full h-12 pb-2", activeTab === "contact.yaml" ? "text-foreground" : "text-muted hover:text-foreground")}
           >
-            {activeTab === "contact.yaml" && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary -ml-[13px]" />}
-            <VscMail size={24} />
+            <div className={clsx("absolute left-0 top-0 bottom-0 w-[2px] transition-all duration-200", activeTab === "contact.yaml" ? "bg-primary opacity-100" : "bg-primary opacity-0 group-hover:opacity-50")} />
+            <VscMail size={24} className="transition-transform duration-200 group-hover:scale-110" />
           </button>
         </aside>
 
@@ -139,11 +140,11 @@ function HomeContent() {
             />
             {/* CV Download / Open Tab */}
             <a
-              href="/Gabriel-Porto-Resume.pdf"
+              href="/gabrielportocurriculo.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 h-full border-r border-border min-w-[140px] cursor-pointer group transition-colors select-none bg-panel text-muted hover:bg-background dark:hover:bg-panel-highlight border-t-[2px] border-t-transparent hover:text-foreground"
-              title="Download / Open Resume"
+              title={t("nav.resume.title")}
             >
               <VscFilePdf size={16} className="text-red-400" />
               <span className="text-xs font-[family-name:var(--font-mono)]">{t("nav.resume")}</span>
@@ -242,89 +243,94 @@ function HomeContent() {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l border-t border-border -ml-px lg:-ml-px -mt-px relative w-full overflow-hidden">
                       {/* Critical Thinking */}
-                      <div className="bg-panel dark:bg-panel-highlight  border border-border dark:border-border rounded-none p-8 group border-r border-b border-border hover:border-neon-blue/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[8px_8px_0px_0px_rgba(6,123,249,0.8)] relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 rounded-none border border-border bg-neon-blue/10 flex items-center justify-center text-neon-blue group-hover:scale-110 transition-transform">
-                            <span className="material-symbols-outlined">psychology</span>
-                          </div>
-                          <h3 className="font-[family-name:var(--font-mono)] text-neon-blue font-bold group-hover:text-foreground transition-colors">{t("expertise.critical_thinking")}</h3>
-                        </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-none border border-border border border-border group-hover:border-primary/20 transition-colors">
-                          <span className="text-syntax-comment">{t("expertise.critical_thinking.comment")}</span><br />
-                          <span className="text-syntax-variable">result</span> = [<span className="text-syntax-function">logic</span>(v) <span className="text-syntax-keyword">for</span> v <span className="text-syntax-keyword">in</span> <span className="text-syntax-function">analyze</span>(data)]
-                        </div>
-                      </div>
+                      <CompetenceCard
+                        index={0}
+                        title={t("expertise.critical_thinking")}
+                        icon="psychology"
+                        color="blue"
+                        comment={t("expertise.critical_thinking.comment")}
+                        code={
+                          <>
+                            <span className="text-syntax-variable">result</span> = [
+                            <span className="text-syntax-function">logic</span>(v){" "}
+                            <span className="text-syntax-keyword">for</span> v{" "}
+                            <span className="text-syntax-keyword">in</span>{" "}
+                            <span className="text-syntax-function">analyze</span>(data)]
+                          </>
+                        }
+                      />
                       {/* Continuous Learning */}
-                      <div className="bg-panel dark:bg-panel-highlight  border border-border dark:border-border rounded-none p-8 group border-r border-b border-border hover:border-neon-emerald/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[8px_8px_0px_0px_rgba(52,211,153,0.8)] relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-neon-emerald/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 rounded-none border border-border bg-neon-emerald/10 flex items-center justify-center text-neon-emerald group-hover:scale-110 transition-transform">
-                            <span className="material-symbols-outlined">auto_stories</span>
-                          </div>
-                          <h3 className="font-[family-name:var(--font-mono)] text-neon-emerald font-bold group-hover:text-foreground transition-colors">{t("expertise.learning")}</h3>
-                        </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-none border border-border border border-border group-hover:border-neon-emerald/20 transition-colors">
-                          <span className="text-syntax-comment">{t("expertise.learning.comment")}</span><br />
-                          <span className="text-syntax-keyword">while</span> <span className="text-syntax-keyword">True</span>: <span className="text-syntax-function">learn</span>(<span className="text-syntax-variable">new_tech</span>)
-                        </div>
-                      </div>
+                      <CompetenceCard
+                        index={1}
+                        title={t("expertise.learning")}
+                        icon="auto_stories"
+                        color="emerald"
+                        comment={t("expertise.learning.comment")}
+                        code={
+                          <>
+                            <span className="text-syntax-keyword">while</span>{" "}
+                            <span className="text-syntax-keyword">True</span>:{" "}
+                            <span className="text-syntax-function">learn</span>(
+                            <span className="text-syntax-variable">new_tech</span>)
+                          </>
+                        }
+                      />
                       {/* Time Management */}
-                      <div className="bg-panel dark:bg-panel-highlight  border border-border dark:border-border rounded-none p-8 group border-r border-b border-border hover:border-neon-green/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[8px_8px_0px_0px_rgba(63,185,80,0.8)] relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-neon-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 rounded-none border border-border bg-neon-green/10 flex items-center justify-center text-neon-green group-hover:scale-110 transition-transform">
-                            <span className="material-symbols-outlined">schedule</span>
-                          </div>
-                          <h3 className="font-[family-name:var(--font-mono)] text-neon-green font-bold group-hover:text-foreground transition-colors">{t("expertise.time_management")}</h3>
-                        </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-none border border-border border border-border group-hover:border-neon-green/20 transition-colors">
-                          <span className="text-syntax-comment">{t("expertise.time_management.comment")}</span><br />
-                          tasks.<span className="text-syntax-function">sort</span>(key=<span className="text-syntax-keyword">lambda</span> t: -t.priority)
-                        </div>
-                      </div>
+                      <CompetenceCard
+                        index={2}
+                        title={t("expertise.time_management")}
+                        icon="schedule"
+                        color="green"
+                        comment={t("expertise.time_management.comment")}
+                        code={
+                          <>
+                            tasks.<span className="text-syntax-function">sort</span>(key=
+                            <span className="text-syntax-keyword">lambda</span> t: -t.priority)
+                          </>
+                        }
+                      />
                       {/* Problem Solving */}
-                      <div className="bg-panel dark:bg-panel-highlight  border border-border dark:border-border rounded-none p-8 group border-r border-b border-border hover:border-neon-orange/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[8px_8px_0px_0px_rgba(255,166,87,0.8)] relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-neon-orange/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 rounded-none border border-border bg-neon-orange/10 flex items-center justify-center text-neon-orange group-hover:scale-110 transition-transform">
-                            <span className="material-symbols-outlined">terminal</span>
-                          </div>
-                          <h3 className="font-[family-name:var(--font-mono)] text-neon-orange font-bold group-hover:text-foreground transition-colors">{t("expertise.problem_solving")}</h3>
-                        </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-none border border-border border border-border group-hover:border-neon-orange/20 transition-colors">
-                          <span className="text-syntax-comment">{t("expertise.problem_solving.comment")}</span><br />
-                          <span className="text-syntax-variable">root_cause</span> = <span className="text-syntax-function">debug</span>(issue)
-                        </div>
-                      </div>
+                      <CompetenceCard
+                        index={3}
+                        title={t("expertise.problem_solving")}
+                        icon="terminal"
+                        color="orange"
+                        comment={t("expertise.problem_solving.comment")}
+                        code={
+                          <>
+                            <span className="text-syntax-variable">root_cause</span> ={" "}
+                            <span className="text-syntax-function">debug</span>(issue)
+                          </>
+                        }
+                      />
                       {/* Technical Communication */}
-                      <div className="bg-panel dark:bg-panel-highlight  border border-border dark:border-border rounded-none p-8 group border-r border-b border-border hover:border-neon-cyan/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[8px_8px_0px_0px_rgba(57,197,187,0.8)] relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 rounded-none border border-border bg-neon-cyan/10 flex items-center justify-center text-neon-cyan group-hover:scale-110 transition-transform">
-                            <span className="material-symbols-outlined">forum</span>
-                          </div>
-                          <h3 className="font-[family-name:var(--font-mono)] text-neon-cyan font-bold group-hover:text-foreground transition-colors">{t("expertise.communication")}</h3>
-                        </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-none border border-border border border-border group-hover:border-neon-cyan/20 transition-colors">
-                          <span className="text-syntax-comment">{t("expertise.communication.comment")}</span><br />
-                          <span className="text-syntax-function">explain</span>(complex_code).<span className="text-syntax-function">to</span>(humans)
-                        </div>
-                      </div>
+                      <CompetenceCard
+                        index={4}
+                        title={t("expertise.communication")}
+                        icon="forum"
+                        color="cyan"
+                        comment={t("expertise.communication.comment")}
+                        code={
+                          <>
+                            <span className="text-syntax-function">explain</span>(complex_code).
+                            <span className="text-syntax-function">to</span>(humans)
+                          </>
+                        }
+                      />
                       {/* Agile Collaboration */}
-                      <div className="bg-panel dark:bg-panel-highlight  border border-border dark:border-border rounded-none p-8 group border-r border-b border-border hover:border-neon-yellow/50 transition-all duration-500 hover:-translate-y-1 hover:bg-panel/80 dark:hover:bg-panel-highlight hover:shadow-[8px_8px_0px_0px_rgba(241,224,90,0.8)] relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-neon-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 rounded-none border border-border bg-neon-yellow/10 flex items-center justify-center text-neon-yellow group-hover:scale-110 transition-transform">
-                            <span className="material-symbols-outlined">groups</span>
-                          </div>
-                          <h3 className="font-[family-name:var(--font-mono)] text-neon-yellow font-bold group-hover:text-foreground transition-colors">{t("expertise.collaboration")}</h3>
-                        </div>
-                        <div className="font-[family-name:var(--font-mono)] text-xs text-muted/80 leading-relaxed bg-background p-4 rounded-none border border-border border border-border group-hover:border-neon-yellow/20 transition-colors">
-                          <span className="text-syntax-comment">{t("expertise.collaboration.comment")}</span><br />
-                          git.<span className="text-syntax-function">merge</span>(collective_intelligence)
-                        </div>
-                      </div>
+                      <CompetenceCard
+                        index={5}
+                        title={t("expertise.collaboration")}
+                        icon="groups"
+                        color="yellow"
+                        comment={t("expertise.collaboration.comment")}
+                        code={
+                          <>
+                            git.<span className="text-syntax-function">merge</span>(
+                            collective_intelligence)
+                          </>
+                        }
+                      />
                     </div>
                   </div>
 

@@ -159,7 +159,7 @@ export function ContactView() {
                     <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible" className="pl-6 sm:pl-12 flex flex-wrap gap-x-1">
                         <span className="text-[#005cc5] dark:text-[#8be9fd]">{t("contact.yaml.country")}</span>
                         <span className="text-[#24292e] dark:text-[#f8f8f2]">: </span>
-                        <span className="text-[#22863a] dark:text-[#f1fa8c] break-all">&quot;{isPt ? "Brasil" : "Brazil"}&quot;</span>
+                        <span className="text-[#22863a] dark:text-[#f1fa8c] break-all">&quot;{t("contact.country.name")}&quot;</span>
                     </motion.div>
 
                     <motion.div custom={nextLine()} variants={lineVariants} initial="hidden" animate="visible">
