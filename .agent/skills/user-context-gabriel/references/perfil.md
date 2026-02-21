@@ -79,43 +79,133 @@ Profissional de Tecnologia da Informação com sólida experiência em infraestr
 ## 📂 Portfólio de Projetos
 
 ### 1. Automação de Coleta de Dados Hidrológicos (RPA)
-- **Tecnologias:** Python, Selenium WebDriver
-- **Descrição:** Solução para coleta diária e automática de dados históricos de qualidade da água da ANA.
-- **Destaque:** Redução de falhas manuais e organização automatizada de diretórios por estação.
+- **Repo:** [portoduque/hidro-telemetria-automation](https://github.com/portoduque/hidro-telemetria-automation)
+- **Tecnologias:** Python (3.12+), Selenium WebDriver, Pathlib, ActionChains, WebDriverWait.
+- **Insights Técnicos & Arquitetura:**
+    - **Padrão de Automação Iterativa:** Desenvolveu um motor de execução sequencial que percorre um dicionário de estações (Ji-Paraná, Ariquemes, Porto Velho, Guajará), garantindo que falhas isoladas em uma estação não interrompam o fluxo global (`try-except` block individual).
+    - **Gerenciamento de Download Dinâmico:** Implementou a manipulação de `ChromeOptions` em tempo de execução para redefinir o diretório de download (`download.default_directory`) conforme a estação processada, eliminando a intervenção manual de "Salvar Como".
+    - **Navegação Complexa via ActionChains:** Utilizou simulação de eventos de mouse (hover) para navegar em menus dinâmicos de portais governamentais (SNIRH/ANA).
+    - **Resiliência e Sincronização:** Aplicação rigorosa de `Expected Conditions` (EC) e `WebDriverWait` para lidar com a latência variável do portal SNIRH, evitando erros de "ElementNotInteractable".
+    - **Arquitetura Multi-OS:** Uso de `pathlib` para garantir a portabilidade do script entre Windows e Linux, localizando dinamicamente a pasta de Downloads do usuário.
+- **Habilidades Demonstradas:** Engenharia de Automação, Scripting Escalável, Manipulação de DOM Dinâmico, e Gestão de Fluxo de Dados Autônomo.
+- **Visibilidade:** Público (GitHub)
+
+### 2. Sistema Fluxo Transporte Paciente (Fluxo Paciente)
+- **Tecnologias:** PHP com MadBuilder (baseado no Adianti Framework), Bootstrap, Material Design, JavaScript otimizado, PostgreSQL, MySQL e MariaDB, WhatsApp API, ViaCEP.
+- **Insights Técnicos & Arquitetura:**
+    - **Arquitetura MVC & APIs RESTful:** Estrutura robusta desenvolvida para garantir integração multi-plataforma e sincronização de dados em tempo real.
+    - **Workflow Automatizado de Logística:** Automatização do fluxo de solicitações de transporte inter-hospitalar, com roteamento otimizado (cálculo de distâncias e tempos).
+    - ** Builder Visual Proprietário:** Desenvolvimento de uma ferramenta visual para gerenciamento de migração e versionamento do banco de dados.
+    - **Interoperabilidade em Saúde:** Integração com sistemas hospitalares utilizando padrões internacionais (HL7/FHIR).
+    - **Segurança e LGPD:** Implementação de controle de permissões avançado e conformidade estrita com a Lei Geral de Proteção de Dados.
+    - **Escalabilidade:** Uso de microserviços escaláveis com cache distribuído para alta performance.
+- **Resultados Alcançados:**
+    - Redução de 40% no tempo de organização de transferências.
+    - Otimização de 30% nos custos de transporte.
+    - Melhoria drástica na comunicação entre equipes médicas e pacientes via WhatsApp API.
+- **Status:** Em Desenvolvimento (Junho de 2025)
 - **Visibilidade:** Interno/Privado
 
-### 2. Sistema Fluxo Transporte Paciente
-- **Tecnologias:** PHP, MadBuilder, PostgreSQL/MySQL
-- **Descrição:** Gestão de logística inter-hospitalar para transferência de pacientes.
-- **Destaque:** Redução de 40% no tempo de organização e integração com WhatsApp API.
-- **Visibilidade:** Interno/Privado
-
-### 3. Portal do CIGES (Saúde Pública)
-- **Tecnologias:** C#, .NET, JavaScript, Bootstrap
-- **Descrição:** Plataforma de dashboards dinâmicos para indicadores de saúde de Rondônia.
-- **Destaque:** Centralização de dados críticos para decisões baseadas em evidências (SESAU-RO).
+### 3. Portal CIGES (Painel Estratégico de Saúde)
+- **URL:** [ciges.sesau.ro.gov.br](https://ciges.sesau.ro.gov.br)
+- **Tecnologias:** HTML5, CSS3, JavaScript Vanilla, C#, .NET, Bootstrap, CSS Grid/Flexbox.
+- **Insights Técnicos & Arquitetura:**
+    - **Desenvolvimento de Dashboards Dinâmicos:** Criação de interfaces interativas para visualização de indicadores de saúde pública, incluindo módulos como **Gestão da Saúde**, **Atenção à Saúde** e **Vigilância em Saúde**.
+    - **Módulos Específicos Implementados:**
+        - **Painel da Crise Hídrica (Crise Climática):** Monitoramento de indicadores ambientais impactando a saúde.
+        - **Dashboard de Obras em Saúde:** Gestão e acompanhamento do progresso de obras hospitalares em Rondônia.
+        - **Dashboard de Leitos:** Visualização em tempo real de indicadores de ocupação e disponibilidade de leitos.
+    - **Otimização Multi-dispositivo:** Implementação de design responsivo utilizando Media Queries e Bootstrap, garantindo usabilidade em smartphones e tablets.
+    - **Integração de APIs REST:** Consumo de APIs da equipe backend SETIC-RO com foco em segurança (OAuth) e eficiência.
+    - **Acessibilidade e Semântica:** Desenvolvimento seguindo as diretrizes do W3C, priorizando a legibilidade e a navegação acessível.
+    - **Colaboração e Governança:** Trabalho conjunto com designers para padronização visual e conformidade rigorosa com normas de governança digital estadual.
+    - **Funcionalidades de Suporte:** Implementação de formulários de contato dinâmicos e sessões de informações institucionais.
+- **Habilidades e Conhecimentos Adquiridos:**
+    - Domínio avançado de **Bootstrap, JavaScript Vanilla** e otimização de performance web.
+    - Resolução de desafios como **compatibilidade com navegadores antigos** e Integração segura de APIs REST com autenticação OAuth.
+    - Gestão de prazos rigorosos em projeto crítico, com foco em qualidade técnica e agilidade.
+- **Habilidades Técnicas Demonstradas:**
+    - Frontend (HTML5, CSS3, JavaScript) e Responsive Design.
+    - Otimização de Performance e Acessibilidade.
+    - Integração de APIs REST e Trabalho em Equipe Multidisciplinar.
+    - Soluções para Governança Digital e Saúde Pública.
+- **Impacto Gerado:**
+    - Centralização de dados estratégicos do SUS em Rondônia para apoio à gestão.
+    - Facilitação de decisões baseadas em evidências para gestores, pesquisadores e profissionais de saúde através de visualizações claras de leitos e obras.
+    - Suporte à análise de tendências regionais para otimização de recursos da SESAU-RO.
+- **Data:** Janeiro de 2025
 - **Visibilidade:** Público
 
 ### 4. Projeto RespirAR (Mobile)
-- **Tecnologias:** Flutter, FlutterFlow, Firebase
-- **Descrição:** Aplicativo focado em saúde e bem-estar com notificações push e geolocalização.
-- **Destaque:** Experiência intuitiva multiplataforma (Android/iOS).
+- **URL:** [respirar.sesau.ro.gov.br](https://respirar.sesau.ro.gov.br)
+- **Tecnologias:** Flutter & Dart, FlutterFlow, PHP, MadBuilder (API REST & administrativo), Firebase (Firestore, Auth, Storage, Cloud Functions), PostgreSQL, REST API, OAuth 2.0.
+- **Insights Técnicos & Arquitetura:**
+    - **Desenvolvimento Visual Acelerado:** Utilização do FlutterFlow para prototipagem rápida de UI e integração eficiente com backends complexos.
+    - **Backend e Sistema Administrativo:** Desenvolvimento de API REST e painel administrativo web utilizando MadBuilder (PHP).
+    - **Estratégia Híbrida de Dados:** Uso de Firebase Firestore (NoSQL) para sincronização em tempo real no mobile e PostgreSQL para dados relacionais administrativos.
+    - **Segurança e Autenticação:** Implementação de Firebase Authentication e OAuth 2.0 para acesso seguro e integração com provedores externos.
+    - **Recursos Nativos e Geolocalização:** Integração com APIs nativas Android/iOS para Push Notifications e serviços baseados em localização.
+    - **Resiliência Offline:** Implementação de Local Storage para cache de dados e funcionamento offline.
+    - **Lógica Serverless:** Uso de Cloud Functions para processamento de lógica de negócio escalável.
+- **Recursos do Sistema:**
+    - Gestão completa de usuários e perfis.
+    - Sistema de monitoramento de saúde em tempo real.
+    - Interface administrativa integrada para relatórios e analytics.
+- **Habilidades Demonstradas:** Desenvolvimento Mobile Multiplataforma, Arquitetura de Backend Híbrida, Integração de Hardware/Nativo e UX/UI Responsiva (Material Design).
+- **Data:** Outubro de 2025
 - **Visibilidade:** Público
 
 ### 5. Portal da Saúde Digital (SESAU-RO)
-- **Tecnologias:** HTML5, CSS3, JavaScript, Bootstrap
-- **Descrição:** Site oficial para iniciativas de saúde digital, promovendo transparência.
-- **Destaque:** Foco em acessibilidade e navegação fluida em dispositivos móveis.
+- **URL:** [saudedigital.sesau.ro.gov.br](https://saudedigital.sesau.ro.gov.br)
+- **Tecnologias:** HTML5, CSS3, JavaScript, C#, .NET, Bootstrap, CSS Grid/Flexbox.
+- **Insights Técnicos & Arquitetura:**
+    - **Criação e Otimização de UI:** Foco total em acessibilidade, responsividade e integração com serviços de saúde (CIGES e Telessaúde).
+    - **Desenvolvimento de Layouts:** Criação de interfaces intuitivas utilizando tecnologias modernas para garantir navegação eficiente em múltiplos dispositivos.
+    - **Componentes Interativos:** Implementação de menus dinâmicos, carrosséis de notícias e formulários de FAQ.
+    - **Otimização para Dispositivos Móveis:** Uso de Media Queries e Bootstrap para adaptação fluida em diferentes tamanhos de tela.
+    - **Compatibilidade:** Testes e ajustes para garantir funcionamento perfeito em Chrome, Firefox e Edge, incluindo navegadores antigos.
+    - **Colaboração Estratégica:** Integração com APIs da equipe backend (GSTEC) e trabalho conjunto com designers para conformidade com requisitos institucionais.
+- **Habilidades Técnicas Demonstradas:**
+    - Frontend e Responsive Design.
+    - Acessibilidade Web e Otimização de Performance.
+    - Resolução de problemas de compatibilidade e integração de APIs.
+- **Impacto Gerado:**
+    - Portal moderno e acessível que centraliza iniciativas de saúde digital em Rondônia.
+    - Navegação fluida e segura para o cidadão, promovendo transparência governamental.
+    - Integração eficiente com serviços digitais de saúde do Estado.
+- **Status:** Ativo
+- **Data:** Dezembro de 2024
 - **Visibilidade:** Público
 
 ### 6. Sistema de Captação de Recursos
-- **Tecnologias:** WordPress, PHP, JetEngine
-- **Descrição:** Gestão de editais e financiamentos para projetos de saúde pública.
-- **Destaque:** Fortalecimento da governança digital e sustentabilidade financeira.
-- **Visibilidade:** Interno/Privado
+- **Tecnologias:** HTML5, CSS3, PHP, WordPress (Temas customizados, JetEngine, Elementor).
+- **Insights Técnicos & Arquitetura:**
+    *   **Gestão de Recursos Públicos:** Desenvolvimento de uma plataforma para gerenciar e monitorar recursos financeiros (editais, parcerias e programas de custeio) voltados à saúde pública, promovendo transparência e eficiência.
+    *   **Desenvolvimento de Temas e Plugins:** Criação de temas personalizados e uso especializado de plugins (JetEngine) para estruturar seções complexas como editais e parcerias.
+    *   **Otimização de Performance e SEO:** Implementação de SEO On-Page (meta tags/URLs amigáveis) e técnicas de performance como compressão de imagens, lazy loading e uso de CDN.
+    *   **Interoperabilidade e APIs:** Integração com APIs de editais e ferramentas de gestão financeira para facilitar a identificação de oportunidades.
+    *   **Metodologias Ágeis:** Colaboração em ambiente multidisciplinar utilizando ferramentas como Trello para organização de sprints.
+- **Habilidades e Aprendizados:**
+    *   Domínio avançado de WordPress e customização profunda (Elementor/JetEngine).
+    *   Resolução de problemas de compatibilidade e otimização para conectividade limitada.
+    *   Governança Digital e Conformidade Legal para plataformas governamentais.
+- **Impacto Gerado:**
+    *   Centralização e facilidade de acesso a oportunidades de financiamento público e privado.
+    *   Fortalecimento da sustentabilidade financeira e transparência na alocação de fundos para projetos de saúde.
+- **Status:** Em Desenvolvimento (Março de 2025)
+- **Visibilidade:** Público
 
 ### 7. Portal da Telesaúde
-- **Tecnologias:** WordPress, PHP, Elementor
-- **Descrição:** Plataforma para teleconsultas e monitoramento remoto de pacientes.
-- **Destaque:** Expansão do acesso à saúde em áreas remotas de Rondônia.
+- **Tecnologias:** WordPress, PHP, Elementor, JetEngine, HTML5, CSS3, Git, Trello.
+- **Insights Técnicos & Arquitetura:**
+    - **Criação de Plataforma Escalável:** Desenvolvimento fundamentado em WordPress para centralizar recursos estratégicos de telessaúde em Rondônia, com foco em estabilidade e escalabilidade.
+    - **Módulos de Saúde Especializados:** Implementação de funcionalidades para Regulação, Farmácia e Unidades de Saúde, priorizando a usabilidade para profissionais da linha de frente.
+    - **Performance e SEO:** Aplicação de SEO On-Page, compressão de imagens, lazy loading e CDN para garantir tempos de carregamento mínimos.
+    - **Trabalho em Equipe e Metodologias:** Colaboração direta com médicos e gestores através de metodologias ágeis (Trello) e controle de versão rigoroso com Git.
+- **Impacto Gerado:**
+    - Expansão do acesso à saúde e telemedicina em áreas remotas do estado.
+    - Facilitação de consultas à distância e acesso a protocolos clínicos e farmacêuticos.
+    - Modernização da gestão digital da saúde pública estadual.
+- **Status:** Ativo (Fevereiro de 2025)
 - **Visibilidade:** Público
+

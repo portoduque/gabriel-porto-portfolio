@@ -87,10 +87,32 @@ export function DockerComposeView() {
 
     const enriched = projects.map((p, i) => {
         const meta = PROJECT_METADATA[p.id] || { deps: [], resources: { cpu: "0%", mem: "0MiB" } };
+        const containerMeta = CONTAINER_META[i % CONTAINER_META.length];
+
+        // Use 'exited' status for visual "In Development" state if the project is marked as such
+        const isDev = p.status === "Em Desenvolvimento" || p.status === "In Development";
+        const isActive = p.status === "Ativo" || p.status === "Active";
+
+        let status = containerMeta.status;
+        let uptime = containerMeta.uptime;
+
+        if (isDev) {
+            status = "exited";
+            uptime = "—";
+        }
+
+        if (isActive) {
+            status = "running";
+            // Ensure newly active projects have a valid mock uptime if the metadata was placeholder
+            if (uptime === "—") uptime = "4d 12h";
+        }
+
         return {
             ...p,
             containerId: generateHash(),
-            ...CONTAINER_META[i % CONTAINER_META.length],
+            ...containerMeta,
+            status,
+            uptime,
             dockerMeta: meta
         };
     });

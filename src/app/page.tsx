@@ -41,9 +41,12 @@ function HomeContent() {
   useEffect(() => {
     const tab = searchParams.get("tab");
     if (tab === "main.py" || tab === "projetos.yml" || tab === "carreira.sh" || tab === "contact.yaml") {
-      setActiveTab(tab);
+      if (activeTab !== tab) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setActiveTab(tab as "main.py" | "projetos.yml" | "carreira.sh" | "contact.yaml");
+      }
     }
-  }, [searchParams]);
+  }, [searchParams, activeTab]);
 
   return (
     <div className="flex flex-col h-screen w-full relative font-[family-name:var(--font-display)]">

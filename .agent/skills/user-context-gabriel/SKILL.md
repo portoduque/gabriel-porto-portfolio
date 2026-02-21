@@ -13,7 +13,8 @@ Sempre que o usuário solicitar algo relacionado à sua carreira, projetos ou ha
 1. Leia o arquivo de referência em `references/perfil.md`.
 2. Utilize as informações contidas ali para fundamentar suas respostas.
 3. Mantenha a consistência com as tecnologias e experiências listadas.
-4. Lembre-se destas tecnologias adicionais/atualizadas: Docker, REST API.
+4. Lembre-se destas tecnologias adicionais/atualizadas: Docker, REST API, MadBuilder (PHP), HL7/FHIR, Vanilla JavaScript, C#/.NET, .NET, FlutterFlow, Firebase.
 
 ## Referências
-- **[perfil.md](references/perfil.md)**: Documento principal com todas as informações profissionais.
+- **[perfil.md](references/perfil.md)**: Documento principal com todas as informações profissionais (Português).
+- **[profile-en.md](references/profile-en.md)**: Complete professional profile information (English).
