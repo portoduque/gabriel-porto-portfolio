@@ -79,10 +79,6 @@ export function SystemOverview() {
         y.set(0);
     };
 
-    const skills = getSkills(locale);
-    const stackDisplay = `[${skills.languages.join(", ")}, Flutter, Docker, REST API]`;
-    const toolsDisplay = `[${skills.tools.slice(0, 7).join(", ")}]`;
-
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -115,14 +111,15 @@ export function SystemOverview() {
 
                         <div className="h-4 lg:h-6 flex items-center px-2 lg:px-4"><div className="h-px bg-border/30 w-full" /></div>
 
-                        <EnvRow label={t("system.label.stack")} value={stackDisplay} color="text-yellow-400" delay={1300} />
-                        <EnvRow label={t("system.label.tools")} value={toolsDisplay} color="text-orange-400" delay={1600} />
+                        <EnvRow label={t("system.label.dev")} value={t("system.value.dev")} color="text-yellow-400" delay={1300} />
+                        <EnvRow label={t("system.label.auto")} value={t("system.value.auto")} color="text-orange-400" delay={1600} />
+                        <EnvRow label={t("system.label.env")} value={t("system.value.env")} color="text-purple-400" delay={1900} />
 
                         <div className="h-4 lg:h-6 flex items-center px-2 lg:px-4"><div className="h-px bg-border/30 w-full" /></div>
 
                         {/* Status Row */}
                         <div className="flex items-center gap-2 lg:gap-3 px-1 min-h-[1.5rem] group/status cursor-pointer">
-                            <span className="text-red-400 font-bold w-16 sm:w-20 lg:w-24 shrink-0 tracking-wider text-[9px] sm:text-[10px] lg:text-xs leading-5 lg:leading-6 opacity-70 truncate">{t("system.label.status")}</span>
+                            <span className="text-red-400 font-bold w-24 sm:w-28 lg:w-32 shrink-0 tracking-wider text-[9px] sm:text-[10px] lg:text-xs leading-5 lg:leading-6 opacity-70 truncate">{t("system.label.status")}</span>
                             <div className="flex items-center gap-2 bg-green-500/10 px-1.5 lg:px-2 h-4 lg:h-5 rounded border border-green-500/20 group-hover/status:border-green-500/50 transition-colors">
                                 <span className="text-green-400 font-bold text-[8px] lg:text-[10px] uppercase tracking-tighter animate-pulse truncate">{t("system.status")}</span>
                             </div>
@@ -138,7 +135,7 @@ export function SystemOverview() {
                                             label={h.label === "CERT" ? t("system.label.cert") : h.label === "TECH" ? t("system.label.tech") : h.label}
                                             value={h.value}
                                             color={i === 0 ? "text-cyan-400" : i === 1 ? "text-pink-400" : "text-amber-400"}
-                                            delay={1900 + (i * 300)}
+                                            delay={2200 + (i * 300)}
                                         />
                                     ))}
                                 </div>
@@ -165,9 +162,9 @@ function EnvRow({ label, value, color, delay }: { label: string, value: string, 
 
     return (
         <div className="flex flex-row items-start lg:items-baseline gap-2 lg:gap-3 px-1 py-0.5 min-h-[1.5rem] rounded transition-colors duration-200 group/row w-full overflow-hidden">
-            <span className={cn("font-bold w-16 sm:w-20 lg:w-24 shrink-0 tracking-wider text-[9px] sm:text-[10px] lg:text-xs opacity-70 group-hover/row:opacity-100 transition-opacity leading-snug sm:leading-5 lg:leading-6 truncate", color)}>{label}</span>
+            <span className={cn("font-bold w-24 sm:w-28 lg:w-32 shrink-0 tracking-wider text-[9px] sm:text-[10px] lg:text-xs opacity-70 group-hover/row:opacity-100 transition-opacity leading-snug sm:leading-5 lg:leading-6 truncate", color)}>{label}</span>
             <span className="text-foreground/80 font-normal tracking-wide group-hover/row:text-foreground transition-colors leading-relaxed sm:leading-5 lg:leading-6 flex-1 min-w-0 break-words whitespace-pre-wrap">
-                {label === "STACK" || label === t("system.label.tools") ? (
+                {[t("system.label.stack"), t("system.label.dev"), t("system.label.auto"), t("system.label.env"), t("system.label.tools")].includes(label) ? (
                     <span className="text-syntax-string">{scrambled}</span>
                 ) : (
                     <span>&quot;{scrambled}&quot;</span>
