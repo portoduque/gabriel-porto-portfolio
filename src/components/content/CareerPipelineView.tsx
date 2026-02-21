@@ -50,7 +50,7 @@ export function CareerPipelineView() {
                 <div className="flex items-center gap-2">
                     <span className="material-symbols-outlined text-primary text-lg">play_circle</span>
                     <div>
-                        <p className="text-xs text-muted font-[family-name:var(--font-mono)]">Status</p>
+                        <p className="text-xs text-muted font-[family-name:var(--font-mono)]">{t("career.pipeline.status_label")}</p>
                         <p className="text-sm font-bold text-neon-green">{t("career.pipeline.running")}</p>
                     </div>
                 </div>

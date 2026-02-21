@@ -165,8 +165,8 @@ function HomeContent() {
                 <div className="w-full max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-20 mt-8 mb-12">
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start relative z-10">
                     {/* Left Column: Hero Content */}
-                    <div className="col-span-1 lg:col-span-7 flex flex-col gap-8 items-start text-left">
-                      <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold tracking-tighter text-foreground leading-[1.05]">
+                    <div className="col-span-1 lg:col-span-6 flex flex-col gap-8 items-start text-left">
+                      <h1 className="text-3xl lg:text-5xl xl:text-6xl font-bold tracking-tighter text-foreground leading-[1.1]">
                         {t("hero.title.prefix")}{" "}
                         <span className="relative inline-block">
                           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-neon-blue to-primary animate-gradient-x">
@@ -177,16 +177,16 @@ function HomeContent() {
                       </h1>
 
                       {/* Role subtitle */}
-                      <div className="font-[family-name:var(--font-mono)] text-lg lg:text-2xl text-muted flex flex-wrap justify-start items-center gap-3">
+                      <div className="font-[family-name:var(--font-mono)] text-base lg:text-xl text-muted flex flex-wrap justify-start items-center gap-3">
                         <span className="text-primary font-bold animate-pulse">&gt;</span>
-                        <span className="text-syntax-variable">role</span>
+                        <span className="text-syntax-variable">{t("hero.role_var")}</span>
                         <span className="text-foreground">=</span>
                         <span className="text-syntax-string font-medium">&quot;{profile.role}&quot;</span>
                         <span className="w-2 h-5 bg-primary animate-blink inline-block ml-1 shadow-[0_0_8px_var(--color-primary)]" />
                       </div>
 
                       {/* Description */}
-                      <p className="text-muted text-lg lg:text-xl max-w-2xl font-light leading-relaxed">
+                      <p className="text-muted text-base lg:text-lg max-w-2xl font-light leading-relaxed">
                         {profile.summary}
                       </p>
 
@@ -229,7 +229,7 @@ function HomeContent() {
                     </div>
 
                     {/* Right Column: System Overview Component */}
-                    <div className="col-span-1 lg:col-span-5 w-full flex justify-end items-center perspective-[2000px] mt-8 lg:mt-0 lg:pl-8">
+                    <div className="col-span-1 lg:col-span-6 w-full flex justify-end items-center perspective-[2000px] mt-8 lg:mt-0 lg:pl-4">
                       <SystemOverview />
                     </div>
                   </div>

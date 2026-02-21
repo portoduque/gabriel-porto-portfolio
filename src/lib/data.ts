@@ -22,12 +22,20 @@ export function getProfile(locale: Locale) {
             location: "Porto Velho - RO, Brazil",
             summary:
                 "Turning complex problems into scalable digital products. As a Full-Stack Developer, I leverage ecosystems like Python and PHP to build Web and Mobile (Flutter) applications focused on UX and high availability. My edge is a 360° vision: I combine high-quality code with RPA automation and a secure infrastructure (CCNA/Linux), ensuring solutions are not only functional but efficient and protected.",
+            highlights: [
+                { label: "CERT", value: "CCNA + Google + Harvard CS50’s" },
+                { label: "TECH", value: "Full Stack + DevOps + Security" }
+            ]
         }
         : {
             role: "Desenvolvedor Full-Stack",
             location: "Porto Velho - RO, Brasil",
             summary:
                 "Transformando problemas complexos em produtos digitais escaláveis. Como Desenvolvedor Full-Stack, utilizo ecossistemas como Python e PHP para construir aplicações Web e Mobile (Flutter) focadas em UX e alta disponibilidade. Meu diferencial está na visão 360º: uno código de alta qualidade com automação RPA e uma infraestrutura segura (CCNA/Linux), garantindo que a solução não apenas funcione, mas seja eficiente e protegida.",
+            highlights: [
+                { label: "CERT", value: "CCNA + Google + Harvard CS50’s" },
+                { label: "TECH", value: "Full Stack + DevOps + Security" }
+            ]
         };
 
     return { ...PROFILE, ...localized };

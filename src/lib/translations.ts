@@ -9,6 +9,7 @@ const pt: Record<string, string> = {
     // Hero
     "hero.title.prefix": "Transformando",
     "hero.title.highlight": "problemas em produtos digitais",
+    "hero.role_var": "cargo",
     "hero.cta.projects": "cd /projetos",
     "hero.cta.contact": "contato.yaml",
 
@@ -30,12 +31,14 @@ const pt: Record<string, string> = {
     // System Overview
     "system.loc": "Porto Velho, Brasil",
     "system.status": "DISPONÍVEL",
-    "system.label.user": "USUARIO",
+    "system.label.user": "USUÁRIO",
     "system.label.role": "CARGO",
     "system.label.loc": "LOCAL",
     "system.label.stack": "STACK",
     "system.label.tools": "FERRAMENTAS",
     "system.label.status": "STATUS",
+    "system.label.cert": "CERT",
+    "system.label.tech": "TECH",
     "system.prompt": "portoduque@portfolio:~$",
 
     // Sections
@@ -58,6 +61,7 @@ const pt: Record<string, string> = {
     "career.pipeline.title": "deploy-carreira.sh",
     "career.pipeline.header": "Pipeline de Carreira",
     "career.pipeline.stages": "Etapas",
+    "career.pipeline.status_label": "Status",
     "career.pipeline.running": "Em execução",
     "career.pipeline.cert.title": "Certificações",
     "career.pipeline.cert.value": "Google Cybersec & CCNA",
@@ -157,7 +161,7 @@ const pt: Record<string, string> = {
     "git.repos.footer": "Repositórios fazem parte do portfólio de Gabriel Porto.",
 
     // Docker View
-    "docker.title": "Serviços",
+    "docker.title": "Projetos",
     "docker.subtitle": "docker compose up -d",
     "docker.total": "Containers",
     "docker.status.running": "Ativo",
@@ -227,6 +231,7 @@ const en: Record<string, string> = {
     // Hero
     "hero.title.prefix": "Transforming",
     "hero.title.highlight": "problems into digital products",
+    "hero.role_var": "role",
     "hero.cta.projects": "cd /projects",
     "hero.cta.contact": "contact.yaml",
 
@@ -254,6 +259,8 @@ const en: Record<string, string> = {
     "system.label.stack": "STACK",
     "system.label.tools": "TOOLS",
     "system.label.status": "STATUS",
+    "system.label.cert": "CERT",
+    "system.label.tech": "TECH",
     "system.prompt": "portoduque@portfolio:~$",
 
     // Sections
@@ -276,6 +283,7 @@ const en: Record<string, string> = {
     "career.pipeline.title": "deploy-career.sh",
     "career.pipeline.header": "Career Pipeline",
     "career.pipeline.stages": "Stages",
+    "career.pipeline.status_label": "Status",
     "career.pipeline.running": "Running",
     "career.pipeline.cert.title": "Certifications",
     "career.pipeline.cert.value": "Google Cybersec & CCNA",
@@ -375,7 +383,7 @@ const en: Record<string, string> = {
     "git.repos.footer": "Repositories are part of Gabriel Porto's portfolio.",
 
     // Docker View
-    "docker.title": "Services",
+    "docker.title": "Projects",
     "docker.subtitle": "docker compose up -d",
     "docker.total": "Containers",
     "docker.status.running": "Active",
