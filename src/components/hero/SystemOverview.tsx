@@ -2,14 +2,9 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
 import { getProfile, SKILLS } from "@/lib/data";
 import { useLanguage } from "@/lib/i18n";
-
-function cn(...inputs: ClassValue[]) {
-    return twMerge(clsx(inputs));
-}
+import { cn } from "@/lib/utils";
 
 function useScrambleText(text: string, delay: number = 0) {
     const [displayText, setDisplayText] = useState("");
